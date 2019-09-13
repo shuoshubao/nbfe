@@ -1,8 +1,7 @@
 {
     "name": "@nbfe/flow",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "技术项目工程化",
-    "author": "shuoshubao <759979885@qq.com>",
     "author": "fangtao04",
     "repository": {
         "url": "https://github.com/shuoshubao/nbfe",

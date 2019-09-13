@@ -1,6 +1,6 @@
 {
     "name": "@nbfe/js2html",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "通过js配置来生成Document字符串",
     "author": "shuoshubao <759979885@qq.com>",
     "main": "index.js",
