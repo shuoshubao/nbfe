@@ -2,7 +2,7 @@
     "name": "@nbfe/tools",
     "version": "0.1.1",
     "description": "工具库",
-    "author": "fangtao04",
+    "author": "shuoshubao <759979885@qq.com>",
     "repository": {
         "url": "https://github.com/shuoshubao/nbfe",
         "type": "git"

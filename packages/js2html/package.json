@@ -1,0 +1,20 @@
+{
+    "name": "@nbfe/js2html",
+    "version": "1.0.0",
+    "description": "通过js配置来生成Document字符串",
+    "author": "shuoshubao <759979885@qq.com>",
+    "main": "index.js",
+    "keywords": [
+        "硕鼠宝",
+        "js2html",
+        "html"
+    ],
+    "license": "MIT",
+    "repository": {
+        "url": "https://github.com/shuoshubao/js2html",
+        "type": "git"
+    },
+    "dependencies": {
+        "lodash": "^4.17.15"
+    }
+}

@@ -2,7 +2,7 @@
     "name": "@nbfe/config",
     "version": "0.1.1",
     "description": "通用配置",
-    "author": "fangtao04",
+    "author": "shuoshubao <759979885@qq.com>",
     "repository": {
         "url": "https://github.com/shuoshubao/nbfe",
         "type": "git"

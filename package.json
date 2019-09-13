@@ -9,22 +9,41 @@
     },
     "license": "ISC",
     "scripts": {
-        "bootstrap": "node bin/bootstrap",
         "commit": "npx git-cz",
         "release:patch": "npx lerna version patch --conventional-commits",
         "release:minor": "npx lerna version minor --conventional-commits",
         "release:major": "npx lerna version major --conventional-commits",
         "publish": "npx lerna publish from-package",
         "prettier": "npx prettier --write '**/*.js'",
-        "eslint": "npx eslint 'packages/**/*.{js,vue}' -f html -o ESLintReport.html",
-        "eslint:fix": "npx eslint --fix 'packages/**/*.{js,vue}' -f table",
-        "docs:build": "node bin/docs",
-        "docs": "npm run docs:build && docs-cli serve",
-        "docs:commit": "npm run docs:build && git add docs && git commit -m 'docs(docs): 更新文档'"
+        "eslint": "npx eslint --ext .ts,.js -f html -o ESLintReport.html packages",
+        "eslint:fix": "npx eslint --ext .ts,.js --fix -f table packages"
     },
     "dependencies": {
+        "@nbfe/config": "^0.1.1",
+        "@nbfe/flow": "^0.1.0",
         "lerna": "^3.16.4",
         "typescript": "^3.6.3"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -e $GIT_PARAMS",
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "linters": {
+            "*.{js,ts,vue,css,less,scss,md,json}": [
+                "prettier --write",
+                "git add"
+            ],
+            "*.{js,vue}": [
+                "eslint -f table",
+                "git add"
+            ]
+        },
+        "ignore": [
+            "package-lock.json"
+        ]
     },
     "config": {
         "commitizen": {
