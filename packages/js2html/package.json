@@ -11,7 +11,7 @@
     ],
     "license": "MIT",
     "repository": {
-        "url": "https://github.com/shuoshubao/js2html",
+        "url": "https://github.com/shuoshubao/nbfe",
         "type": "git"
     },
     "dependencies": {
