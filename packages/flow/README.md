@@ -1,4 +1,4 @@
-yarn add @lsfe/flow -D
+yarn add @nbfe/flow -D
 
 // package.json
 
@@ -40,11 +40,6 @@ yarn add @lsfe/flow -D
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "standard-version": {
-    "scripts": {
-      "postchangelog": "echo postchangelog"
-    }
   }
 }
 ```
