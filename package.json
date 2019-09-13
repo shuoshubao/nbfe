@@ -1,0 +1,39 @@
+{
+    "name": "shuoshubao",
+    "version": "1.0.0",
+    "private": true,
+    "description": "技术项目合集",
+    "repository": {
+        "url": "https://github.com/shuoshubao/nbfe",
+        "type": "git"
+    },
+    "license": "ISC",
+    "scripts": {
+        "bootstrap": "node bin/bootstrap",
+        "commit": "npx git-cz",
+        "release:patch": "npx lerna version patch --conventional-commits",
+        "release:minor": "npx lerna version minor --conventional-commits",
+        "release:major": "npx lerna version major --conventional-commits",
+        "publish": "npx lerna publish from-package",
+        "prettier": "npx prettier --write '**/*.js'",
+        "eslint": "npx eslint 'packages/**/*.{js,vue}' -f html -o ESLintReport.html",
+        "eslint:fix": "npx eslint --fix 'packages/**/*.{js,vue}' -f table",
+        "docs:build": "node bin/docs",
+        "docs": "npm run docs:build && docs-cli serve",
+        "docs:commit": "npm run docs:build && git add docs && git commit -m 'docs(docs): 更新文档'"
+    },
+    "dependencies": {
+        "lerna": "^3.16.4",
+        "typescript": "^3.6.3"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    }
+}

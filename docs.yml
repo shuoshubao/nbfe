@@ -1,0 +1,71 @@
+remove: false
+docs_dir: .
+builder:
+  name: mkdocs
+  configure:
+    site_name: 小象技术项目合集
+    theme: material
+    pages:
+      - 首页: index.md
+      - 开发者指南: introduce.md
+      - 管理者指南: admin.md
+      - beta发版规范: beta.md
+      - lerna文档: lerna.md
+      - '@lsfe/error-monitor':
+          - 概述: packages/error-monitor/README.md
+          - 更新日志: changelog/error-monitor.md
+          - changelog-old: packages/error-monitor/changelog-old.md
+      - '@lsfe/eslint':
+          - 概述: packages/eslint/README.md
+          - 更新日志: changelog/eslint.md
+      - '@lsfe/eslint-base':
+          - 概述: packages/eslint-base/README.md
+          - 更新日志: changelog/eslint-base.md
+      - '@lsfe/flow':
+          - 概述: packages/flow/README.md
+          - 更新日志: changelog/flow.md
+      - '@lsfe/jimu-server-build':
+          - 概述: packages/jimu-server-build/README.md
+          - 更新日志: changelog/jimu-server-build.md
+      - '@lsfe/maglar':
+          - 概述: packages/maglar/README.md
+          - 更新日志: changelog/maglar.md
+          - changelog-old: packages/maglar/changelog-old.md
+      - '@lsfe/magpie':
+          - 概述: packages/magpie/README.md
+          - 更新日志: changelog/magpie.md
+          - changelog-old: packages/magpie/changelog-old.md
+          - config: packages/magpie/config.md
+          - usage: packages/magpie/usage.md
+          - webpack: packages/magpie/webpack.md
+      - '@lsfe/node-tools':
+          - 概述: packages/node-tools/README.md
+          - 更新日志: changelog/node-tools.md
+      - '@lsfe/prettier':
+          - 概述: packages/prettier/README.md
+          - 更新日志: changelog/prettier.md
+      - '@lsfe/rules':
+          - 概述: packages/rules/README.md
+          - 更新日志: changelog/rules.md
+      - '@lsfe/skeleton':
+          - 概述: packages/skeleton/README.md
+          - 更新日志: changelog/skeleton.md
+      - '@lsfe/tools':
+          - 概述: packages/tools/README.md
+          - 更新日志: changelog/tools.md
+          - ajax: packages/tools/ajax.md
+          - cookie: packages/tools/cookie.md
+          - data: packages/tools/data.md
+          - decimal: packages/tools/decimal.md
+          - dom: packages/tools/dom.md
+          - enum: packages/tools/enum.md
+          - lodash: packages/tools/lodash.md
+          - math: packages/tools/math.md
+          - portal: packages/tools/portal.md
+          - route: packages/tools/route.md
+          - style: packages/tools/style.md
+          - time: packages/tools/time.md
+          - types: packages/tools/types.md
+      - '@lsfe/vendors':
+          - 概述: packages/vendors/README.md
+          - 更新日志: changelog/vendors.md

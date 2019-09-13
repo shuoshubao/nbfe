@@ -1,0 +1,35 @@
+{
+    "name": "@nbfe/config",
+    "version": "0.1.0",
+    "description": "通用配置",
+    "author": "fangtao04",
+    "repository": {
+        "url": "https://github.com/shuoshubao/nbfe",
+        "type": "git"
+    },
+    "license": "ISC",
+    "main": "index.js",
+    "scripts": {
+        "lint": "npx eslint src  --ext .ts,.js -f html -o ESLintReport.html -c eslint.js"
+    },
+    "dependencies": {
+        "@typescript-eslint/eslint-plugin": "^2.0.0",
+        "@typescript-eslint/parser": "^2.0.0",
+        "babel-eslint": "^10.0.2",
+        "eslint": "^6.0.1",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-config-prettier": "^5.1.0",
+        "eslint-formatter-html": "^1.2.0",
+        "eslint-plugin-import": "^2.18.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-vue": "^5.2.3",
+        "prettier": "^1.18.2",
+        "vue-eslint-parser": "^6.0.4"
+    },
+    "peerDependencies": {
+        "lodash": ">=4.0.0"
+    },
+    "devDependencies": {
+        "typescript": "^3.5.3"
+    }
+}

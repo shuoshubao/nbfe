@@ -1,0 +1,28 @@
+{
+    "name": "@nbfe/tools",
+    "version": "0.1.0",
+    "description": "工具库",
+    "author": "fangtao04",
+    "repository": {
+        "url": "https://github.com/shuoshubao/nbfe",
+        "type": "git"
+    },
+    "license": "ISC",
+    "main": "dist/index.js",
+    "scripts": {
+        "test": "npx ava --verbose",
+        "test:watch": "npx ava --verbose --watch",
+        "coverage": "npx nyc ava",
+        "coverage:summary": "npx nyc --reporter=lcov --reporter=text-summary ava",
+        "build": "rollup -c",
+        "prepublishOnly": "npm run build"
+    },
+    "devDependencies": {
+        "ava": "^2.3.0",
+        "browser-env": "^3.2.6",
+        "lodash": "^4.17.15",
+        "node-fetch": "^2.6.0",
+        "nyc": "^14.1.1",
+        "rollup": "^1.19.4"
+    }
+}

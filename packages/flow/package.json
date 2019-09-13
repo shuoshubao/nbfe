@@ -1,0 +1,20 @@
+{
+  "name": "@nbfe/flow",
+  "version": "0.1.0",
+  "description": "技术项目工程化",
+  "author": "fangtao04",
+  "repository": {
+    "url": "https://github.com/shuoshubao/nbfe",
+    "type": "git"
+  },
+  "license": "ISC",
+  "main": "index.js",
+  "dependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "commitizen": "^3.1.1",
+    "husky": "^3.0.4",
+    "lint-staged": "^8.2.1",
+    "standard-version": "^6.0.1"
+  }
+}
