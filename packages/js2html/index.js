@@ -1,176 +1,153 @@
-const { uniqWith, isEqual, isArray, omit } = require('lodash');
+const prettier = require('prettier');
+const { merge, get, isString, isObject } = require('lodash');
 
-const tabSpace = 4;
-
-const spaceHtml = ' ';
+const defaultDocumentConfig = {
+    title: '',
+    meta: [
+        {
+            charset: 'utf-8'
+        },
+        {
+            name: 'viewport',
+            content: 'width=device-width, initial-scale=1'
+        }
+    ],
+    link: {},
+    headScript: [],
+    style: [],
+    bodyAttrs: {},
+    bodyHtml: '',
+    script: []
+};
 
 const singleTag = ['meta', 'link'];
 
-const getSpaceHtml = deep => spaceHtml.repeat(deep * tabSpace);
-
-const attrsToHtml = (attrs = {}) => {
+const attrsStringify = (attrs = {}) => {
     return Object.entries(attrs)
         .reduce((prev, [key, val]) => {
-            prev.push(val === '' ? key : `${key}="${val}"`);
+            prev.push(val === '' || val === true ? key : `${key}="${val}"`);
             return prev;
         }, [])
-        .join(spaceHtml);
+        .join(' ');
 };
 
-const getLeftTagHtml = (tagName, attrs = {}) => {
-    return `<${[tagName, attrsToHtml(attrs)].filter(Boolean).join(spaceHtml)}>`;
-};
-
-const getRightTagHtml = tagName => `</${tagName}>`;
-
-const getHtml = (tagName, attrs = {}, text = '', deep = 0) => {
-    let ret = '';
+const getElementHtml = (tagName = '', attrs = {}, text = '') => {
+    const attrsString = attrsStringify(attrs);
     if (singleTag.includes(tagName)) {
-        ret = getLeftTagHtml(tagName, attrs);
-    } else {
-        ret = getLeftTagHtml(tagName, attrs) + text + getRightTagHtml(tagName);
+        return `<${tagName} ${attrsString}>`;
     }
-    return getSpaceHtml(deep) + ret;
+    return `<${tagName} ${attrsString}>${text}</${tagName}>`;
+};
+
+const renderDocument = ({
+    title = '',
+    meta = '',
+    link = '',
+    style = '',
+    headScript = '',
+    script = '',
+    bodyAttrs = {},
+    bodyHtml = ''
+}) => {
+    const result = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            ${title}
+            ${meta}
+            ${link}
+            ${style}
+            ${headScript}
+        </head>
+        <body ${attrsStringify(bodyAttrs)}>
+            ${bodyHtml}
+            ${script}
+        </body>
+        </html>
+    `;
+    return result
+        .split('\n')
+        .filter(v => v.trim())
+        .join('\n');
 };
 
 const getDocText = documentConfig => {
-    ['meta', 'headScript', 'style', 'bodyHtml', 'script'].forEach(v => {
-        documentConfig[v] = documentConfig[v].filter(Boolean);
-    });
+    const config = merge({}, defaultDocumentConfig, documentConfig);
 
-    const titleString = getHtml('title', {}, documentConfig.title, 2);
+    const { title, meta, link, headScript, style, bodyAttrs, bodyHtml, script } = config;
 
-    const metaString = documentConfig.meta.map(v => getHtml('meta', v, '', 2)).join('\n');
+    const titleString = getElementHtml('title', {}, title);
 
-    const linkString = Object.entries(documentConfig.link)
-        .reduce((prev, [key, val]) => {
-            (isArray(val) ? val : [val]).forEach(v => {
-                prev.push({ rel: key, href: v });
+    const metaString = meta
+        .map(v => {
+            return getElementHtml('meta', v);
+        })
+        .join('\n');
+
+    const linkString = Object.entries(link)
+        .map(([k, v]) => {
+            return getElementHtml('link', {
+                rel: k,
+                href: v
             });
-            return prev;
-        }, [])
-        .map(v => getHtml('link', v, '', 2))
+        })
         .join('\n');
 
-    const styleString = documentConfig.style
+    const styleString = style
         .map(v => {
-            if (typeof v === 'string') {
-                return getHtml('link', { rel: 'stylesheet', href: v }, '', 2);
+            // 外链
+            if (isString(v)) {
+                return getElementHtml('link', {
+                    rel: 'stylesheet',
+                    href: v
+                });
             }
-            const __text = v.__text
-                .split('\n')
-                .filter(v2 => v2.trim())
-                .join('');
-            return getHtml('style', {}, __text, 2);
+            // 内联
+            const styleText = get(v, 'text', '');
+            if (styleText) {
+                return getElementHtml('style', {}, styleText);
+            }
+            return '';
         })
         .join('\n');
 
-    const bodyHtmlString = documentConfig.bodyHtml
-        .map(v => {
-            return v
-                .split('\n')
-                .filter(v2 => v2.trim())
-                .map(v2 => getSpaceHtml(2) + v2)
-                .join('\n');
-        })
-        .join('\n');
-
-    const headScriptString = documentConfig.headScript
-        .map(v => {
-            const attrs = (() => {
-                if (typeof v === 'string') {
-                    return { src: v };
+    const getScriptString = (scriptList = []) => {
+        return scriptList
+            .map(v => {
+                // 外链
+                if (isString(v)) {
+                    return getElementHtml('script', { src: v });
                 }
-                return omit(v, ['__text']);
-            })();
-            const text = (() => {
-                if (v.__text) {
-                    const __text = v.__text
-                        .split('\n')
-                        .filter(v2 => v2.trim())
-                        .map(v2 => getSpaceHtml(3) + v2)
-                        .join('\n');
-                    return `\n${__text}\n${getSpaceHtml(2)}`;
+                // 内联
+                const scriptText = get(v, 'text', '');
+                if (scriptText) {
+                    return getElementHtml('script', {}, scriptText);
+                }
+                if (isObject(v)) {
+                    return getElementHtml('script', v);
                 }
                 return '';
-            })();
-            return getHtml('script', attrs, text, 2);
-        })
-        .join('\n');
-
-    const scriptString = documentConfig.script
-        .map(v => {
-            const attrs = (() => {
-                if (typeof v === 'string') {
-                    return { src: v };
-                }
-                return omit(v, ['__text']);
-            })();
-            const text = (() => {
-                if (v.__text) {
-                    const __text = v.__text
-                        .split('\n')
-                        .filter(v2 => v2.trim())
-                        .map(v2 => getSpaceHtml(3) + v2)
-                        .join('\n');
-                    return `\n${__text}\n${getSpaceHtml(2)}`;
-                }
-                return '';
-            })();
-            return getHtml('script', attrs, text, 2);
-        })
-        .join('\n');
-
-    const documentString = [
-        '<!DOCTYPE html>',
-        '<html>',
-        '    <head>',
-        titleString,
-        metaString,
-        linkString,
-        styleString,
-        headScriptString,
-        '    </head>',
-        '    ',
-        getLeftTagHtml('body', documentConfig.bodyAttrs),
-        bodyHtmlString,
-        scriptString,
-        '    </body>',
-        '</html>'
-    ]
-        .filter(Boolean)
-        .join('\n');
-
-    return `${documentString}\n`;
-};
-
-module.exports = convertDoc => {
-    const documentConfig = {
-        title: '',
-        meta: [
-            {
-                charset: 'utf-8'
-            },
-            {
-                name: 'viewport',
-                content: 'width=device-width, initial-scale=1'
-            }
-        ],
-        link: {},
-        headScript: [],
-        style: [],
-        bodyAttrs: {},
-        bodyHtml: [],
-        script: []
+            })
+            .join('\n');
     };
 
-    const computedDocumentConfig = convertDoc(documentConfig) || documentConfig;
-
-    Object.entries(computedDocumentConfig).forEach(([k, v]) => {
-        if (isArray(v)) {
-            computedDocumentConfig[k] = uniqWith(v, isEqual);
-        }
+    const documentHtml = renderDocument({
+        title: titleString,
+        meta: metaString,
+        link: linkString,
+        style: styleString,
+        bodyAttrs,
+        bodyHtml,
+        headScript: getScriptString(headScript),
+        script: getScriptString(script)
     });
 
-    return getDocText(computedDocumentConfig);
+    return prettier.format(documentHtml, {
+        parser: 'html',
+        printWidth: 200,
+        tabWidth: 4,
+        singleQuote: true // 单引号
+    });
 };
+
+module.exports = getDocText;
