@@ -12,7 +12,7 @@ const defaultDocumentConfig = {
             content: 'width=device-width, initial-scale=1'
         }
     ],
-    link: {},
+    link: [],
     headScript: [],
     style: [],
     bodyAttrs: {},
@@ -84,12 +84,9 @@ const getDocText = documentConfig => {
         })
         .join('\n');
 
-    const linkString = Object.entries(link)
-        .map(([k, v]) => {
-            return getElementHtml('link', {
-                rel: k,
-                href: v
-            });
+    const linkString = link
+        .map(v => {
+            return getElementHtml('link', v);
         })
         .join('\n');
 
