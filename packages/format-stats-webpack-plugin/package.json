@@ -1,0 +1,16 @@
+{
+    "name": "@nbfe/format-stats-webpack-plugin",
+    "version": "0.1.2",
+    "description": "webpack stats 分析",
+    "author": "shuoshubao <759979885@qq.com>",
+    "repository": {
+        "url": "https://github.com/shuoshubao/nbfe",
+        "type": "git"
+    },
+    "license": "MIT",
+    "main": "index.js",
+    "devDependencies": {
+        "chalk": "^3.0.0",
+        "cliui": "^6.0.0"
+    }
+}
