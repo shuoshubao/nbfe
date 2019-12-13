@@ -2,6 +2,10 @@ const { extname } = require('path');
 const chalk = require('chalk');
 const cliui = require('cliui');
 
+const { NODE_ENV } = process.env;
+const isDevelopment = NODE_ENV === 'development';
+const isProduction = NODE_ENV === 'production';
+
 // 打印带颜色的信息
 const log = (str = '', color = '') => {
     // eslint-disable-next-line no-console
@@ -20,6 +24,11 @@ const filesize = size => {
         return `${size} B`;
     }
     return `${(size / 2 ** 10).toFixed(2)} KB`;
+};
+
+// 默认配置
+const defaultConfig = {
+    disable: false
 };
 
 const formatStats = stats => {
@@ -59,7 +68,20 @@ const formatStats = stats => {
 };
 
 class FormatStatsWebpackPlugin {
+    constructor(options = {}) {
+        this.options = { ...defaultConfig, ...options };
+    }
+
     apply(compiler) {
+        if (isDevelopment) {
+            return;
+        }
+
+        const { disable } = this.options;
+
+        if (disable) {
+            return;
+        }
         compiler.hooks.done.tap('FormatStatsWebpackPlugin', stats => {
             formatStats(stats);
         });

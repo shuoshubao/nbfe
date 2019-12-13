@@ -9,7 +9,7 @@
     },
     "license": "MIT",
     "main": "index.js",
-    "devDependencies": {
+    "dependencies": {
         "chalk": "^3.0.0",
         "cliui": "^6.0.0"
     }
