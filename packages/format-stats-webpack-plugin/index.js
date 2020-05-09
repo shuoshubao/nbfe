@@ -62,9 +62,10 @@ const formatStats = stats => {
         })
         .sort((a, b) => a.len - b.len)
         .forEach(({ type, len, size }) => renderTable([type, len, filesize(size)]));
-    const tableFoot = ['总计', data.length, filesize(sum(data.map(v => v.size)))].map(v => chalk.green(v));
+    const tableFoot = ['合计', data.length, filesize(sum(data.map(v => v.size)))].map(v => chalk.green(v));
     renderTable(tableFoot);
     log(ui.toString());
+    log('\n');
 };
 
 class FormatStatsWebpackPlugin {

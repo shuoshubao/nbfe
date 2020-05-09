@@ -1,0 +1,25 @@
+{
+    "name": "@nbfe/tinypng",
+    "version": "1.0.0",
+    "description": "封装 tinify",
+    "author": "shuoshubao <759979885@qq.com>",
+    "homepage": "https://github.com/shuoshubao/nbfe#readme",
+    "license": "ISC",
+    "main": "index.js",
+    "bin": {
+        "tinypng": "index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/shuoshubao/nbfe.git"
+    },
+    "dependencies": {
+        "chalk": "^4.0.0",
+        "glob": "^7.1.6",
+        "inquirer": "^7.1.0",
+        "inquirer-fuzzy-path": "1.0.0",
+        "ora": "^4.0.4",
+        "progress": "^2.0.3",
+        "tinify": "^1.6.0-beta.2"
+    }
+}
