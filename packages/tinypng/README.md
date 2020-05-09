@@ -5,7 +5,7 @@
 ## Usage
 
 ```
-const tinypng = require('@nbfe/tinypng');
+yarn add @nbfe/tinypng
 
 npx tinypng
 ```
