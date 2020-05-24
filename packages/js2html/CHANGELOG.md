@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.1...@nbfe/js2html@1.1.2) (2020-05-24)
+
+### Features
+
+-   移除 prettier ([9082aff](https://github.com/shuoshubao/nbfe/commit/9082aff))
+
 ## [1.1.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.0...@nbfe/js2html@1.1.1) (2019-10-30)
 
 ### Bug Fixes

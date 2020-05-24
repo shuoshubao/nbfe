@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/config@0.1.3...@nbfe/config@0.1.4) (2020-05-24)
+
+### Features
+
+-   更新依赖 ([612ea17](https://github.com/shuoshubao/nbfe/commit/612ea17))
+
 ## [0.1.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/config@0.1.2...@nbfe/config@0.1.3) (2019-09-15)
 
 ### Features
