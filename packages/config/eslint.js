@@ -1,26 +1,35 @@
-const { omit } = require('lodash');
+const { cosmiconfigSync } = require('prettier/third-party');
 const PrettierConfig = require('./prettier');
 
-const PrettierEslintConfig = omit(PrettierConfig, ['parser', 'overrides']);
+const rootPath = process.cwd();
+
+const explorerSync = cosmiconfigSync('prettier', {
+    stopDir: rootPath
+});
+
+const { config: projectPrettierConfig } = explorerSync.search() || {};
+
+const PrettierEslintConfig = projectPrettierConfig || PrettierConfig;
 
 module.exports = {
     parser: 'vue-eslint-parser',
     parserOptions: {
         parser: '@typescript-eslint/parser',
-        ecmaVersion: 2019,
+        ecmaVersion: 2020,
         extraFileExtensions: ['.vue'],
-        project: './tsconfig.json',
-        tsconfigRootDir: __dirname
+        tsconfigRootDir: rootPath,
+        ecmaFeatures: {
+            jsx: true
+        }
     },
     extends: [
         'eslint:recommended',
-        'plugin:vue/base',
-        'airbnb-base',
+        'plugin:vue/essential',
         'plugin:prettier/recommended',
-        'prettier/standard',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'prettier',
+        'prettier/vue',
         'prettier/@typescript-eslint'
     ],
     plugins: ['prettier', 'import', '@typescript-eslint'],
@@ -56,7 +65,25 @@ module.exports = {
                 peerDependencies: true
             }
         ],
+        'import/extensions': [
+            2,
+            'never',
+            {
+                vue: 'always'
+            }
+        ],
+        'class-methods-use-this': [0],
+        'no-empty': [2, { allowEmptyCatch: true }],
         // typescript-eslint
         '@typescript-eslint/interface-name-prefix': [2, { prefixWithI: 'always' }]
-    }
+    },
+    overrides: [
+        {
+            // 项目中的js文件一般是 nodejs代码, 允许使用 require
+            files: ['*.js'],
+            rules: {
+                '@typescript-eslint/no-var-requires': [0]
+            }
+        }
+    ]
 };
