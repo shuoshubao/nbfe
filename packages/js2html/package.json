@@ -14,8 +14,8 @@
         "url": "https://github.com/shuoshubao/nbfe",
         "type": "git"
     },
-    "dependencies": {
-        "lodash": "^4.17.15",
-        "prettier": "^1.18.2"
+    "devDependencies": {
+        "lodash": "~4.17.15",
+        "typescript": "^3.5.3"
     }
 }

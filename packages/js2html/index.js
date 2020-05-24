@@ -1,4 +1,3 @@
-const prettier = require('prettier');
 const { merge, get, isString, isObject } = require('lodash');
 
 const defaultDocumentConfig = {
@@ -138,13 +137,7 @@ const getDocText = documentConfig => {
         headScript: getScriptString(headScript),
         script: getScriptString(script)
     });
-
-    return prettier.format(documentHtml, {
-        parser: 'html',
-        printWidth: 200,
-        tabWidth: 4,
-        singleQuote: true // 单引号
-    });
+    return documentHtml;
 };
 
 module.exports = getDocText;
