@@ -13,7 +13,7 @@
         "release:patch": "npx lerna version patch --conventional-commits",
         "release:minor": "npx lerna version minor --conventional-commits",
         "release:major": "npx lerna version major --conventional-commits",
-        "publish": "npx lerna publish from-package",
+        "release": "npx lerna publish from-package",
         "prettier": "npx prettier --write '**/*.js'",
         "eslint": "npx eslint --ext .ts,.js -f html -o ESLintReport.html packages",
         "eslint:fix": "npx eslint --ext .ts,.js --fix -f table packages"
