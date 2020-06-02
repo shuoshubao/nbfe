@@ -14,9 +14,10 @@
         "release:minor": "npx lerna version minor --conventional-commits",
         "release:major": "npx lerna version major --conventional-commits",
         "release": "npx lerna publish from-package",
-        "prettier": "npx prettier --write '**/*.js'",
-        "eslint": "npx eslint --ext .ts,.js -f html -o ESLintReport.html packages",
-        "eslint:fix": "npx eslint --ext .ts,.js --fix -f table packages"
+        "prettier": "npx prettier --write **/packages/**/*.{js,jsx,ts,tsx,vue,css,less,scss,md,json}",
+        "lint": "npx eslint --ext .ts,.tsx,.vue -f html -o ESLintReport.html",
+        "eslint": "npm run lint -- packages",
+        "eslint:fix": "npx eslint --ext .ts,.tsx,.vue --fix -- packages"
     },
     "dependencies": {
         "@nbfe/config": "^0.1.1",
@@ -32,12 +33,16 @@
     },
     "lint-staged": {
         "linters": {
-            "*.{js,ts,vue,css,less,scss,md,json}": [
+            "*.{ts,vue,css,less,scss,md,json}": [
                 "prettier --write",
                 "git add"
             ],
-            "*.{js,vue}": [
-                "eslint -f table",
+            "packages/**/*.{ts,tsx}": [
+                "eslint --fix",
+                "git add"
+            ],
+            "packages/**/*.{ts,tsx,vue}": [
+                "eslint",
                 "git add"
             ]
         },
