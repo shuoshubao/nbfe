@@ -1,5 +1,11 @@
 import test from 'ava';
-import { isNullOrUndefined, isEmptyString, isEmptyValue } from '../../lib/types';
+import { isUniq, isNullOrUndefined, isEmptyString, isEmptyValue } from '../../lib/types';
+
+test('isUniq', async t => {
+    t.true(isUniq());
+    t.true(isUniq([1, '1']));
+    t.false(isUniq([1, 1]));
+});
 
 test('isNullOrUndefined', async t => {
     const { truthy, falsy } = t;

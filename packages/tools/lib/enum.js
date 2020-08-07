@@ -1,6 +1,18 @@
 import { get, isPlainObject } from 'lodash';
 import { isEmptyValue } from './types';
-import { isEmptyObject } from './math';
+
+// 从集合中取值 比 getLabelByValue 更宽松
+// 容错, 默认值
+export const getValueInCollection = (value, collection = [], options = {}) => {
+    const { key = '', valueKey = '', emptyText = '--' } = options;
+    const item = collection.find(v => {
+        return String(value) === String(v[key]);
+    });
+    if (item) {
+        return item[valueKey];
+    }
+    return emptyText;
+};
 
 // 通过 value 获取 label
 export const getLabelByValue = (value, data = [], emptyText = '--') => {
@@ -35,7 +47,7 @@ export const getValueByLabel = (label, data = [], emptyText = '--') => {
     return emptyText;
 };
 
-// 将接口返回转换成 Enum [{ value, label }]
+// 将任意数据返回转换成 Enum [{ value, label }]
 export const convertDataToEnum = (res, options = {}) => {
     if (isEmptyValue(res)) {
         return [];
@@ -43,7 +55,8 @@ export const convertDataToEnum = (res, options = {}) => {
     const {
         path = '', // list 的路径
         valueKey = 'value',
-        labelKey = 'label'
+        labelKey = 'label',
+        renderLabel = node => node.label
     } = options;
     const list = path ? get(res, path, []) : res;
     return list.map(v => {
@@ -54,15 +67,21 @@ export const convertDataToEnum = (res, options = {}) => {
                 label: v
             };
         }
+        const value = get(v, valueKey);
+        const label = renderLabel({
+            ...v,
+            value,
+            label: get(v, labelKey)
+        });
         return {
             ...v,
-            value: get(v, valueKey),
-            label: get(v, labelKey)
+            value,
+            label
         };
     });
 };
 
-// 将接口返回转换成 Cascader: [{ value, label, children: [{ value, label }]}]
+// 将任意数据返回转换成 Cascader: [{ value, label, children: [{ value, label }]}]
 export const convertDataToCascader = (res, config) => {
     const {
         path = '',
@@ -88,32 +107,4 @@ export const convertDataToCascader = (res, config) => {
     };
     const list = path ? get(res, path, []) : res;
     return convertData(list);
-};
-
-// 针对后端接口不规范的二级级联
-// 第一层的字段名和第二层的字段名不一致
-export const convertDataToCascaderDeepTwo = (res, config) => {
-    const {
-        path = '',
-        value1Key = 'value',
-        label1Key = 'label',
-        childrenKey = 'children',
-        value2Key = 'value',
-        label2Key = 'label',
-        renderLabel = node => node.label
-    } = config;
-    const list = path ? get(res, path, []) : res;
-    return list.map(v => {
-        return {
-            value: v[value1Key],
-            label: v[label1Key],
-            children: (v[childrenKey] || []).map(v2 => {
-                return {
-                    value: v2[value2Key],
-                    label: v2[label2Key],
-                    children: []
-                };
-            })
-        };
-    });
 };

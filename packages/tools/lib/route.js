@@ -1,6 +1,5 @@
 import { isPlainObject, pick } from 'lodash';
-import { isNullOrUndefined } from './types';
-import { isEmptyObject } from './math';
+import { isNullOrUndefined, isEmptyObject } from './types';
 import { queryParse, queryStringify } from './qs';
 
 export const getParams = (str, key) => {
@@ -40,19 +39,10 @@ export const linkTo = (url = '', params = {}, options = {}) => {
         rel: 'noreferrer', // a 标签属性
         download: '' // a 标签属性
     };
-    let computedOptions;
-    if (isPlainObject(options)) {
-        computedOptions = {
-            ...defaultOptions,
-            ...options
-        };
-    } else {
-        // 兼容旧版：第三个参数 isNewTab = false | true
-        computedOptions = {
-            ...defaultOptions,
-            isNewTab: !!options
-        };
-    }
+    const computedOptions = {
+        ...defaultOptions,
+        ...options
+    };
     if (computedOptions.isNewTab) {
         computedOptions.target = '_blank';
     }
@@ -84,7 +74,7 @@ export const parseUrl = (url = '') => {
     return pick(elmentA, ['protocol', 'host', 'pathname', 'port', 'search', 'hash']);
 };
 
-// 根据 url获取完整 url
+// 获取完整 url
 export const getFullUrl = (url = '') => {
     if (!url) {
         return '';

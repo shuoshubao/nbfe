@@ -1,11 +1,5 @@
 import test from 'ava';
-import { isUniq, formatEmptyToDefault, convertObjectToArray, convertArrayToObject } from '../../lib/data';
-
-test('isUniq', async t => {
-    t.true(isUniq());
-    t.true(isUniq([1, '1']));
-    t.false(isUniq([1, 1]));
-});
+import { formatEmptyToDefault, convertObjectToArray, convertArrayToObject } from '../../lib/data';
 
 test('formatEmptyToDefault', async t => {
     const { deepEqual } = t;
@@ -48,7 +42,10 @@ test('convertObjectToArray', async t => {
 
     const data1 = { 1: { b: 2, c: 3 }, 2: { b: 2, c: 3 } };
 
-    const data2 = [{ id: '1', b: 2, c: 3 }, { id: '2', b: 2, c: 3 }];
+    const data2 = [
+        { id: '1', b: 2, c: 3 },
+        { id: '2', b: 2, c: 3 }
+    ];
 
     deepEqual(convertObjectToArray(data1, 'id'), data2);
 });
@@ -60,7 +57,10 @@ test('convertArrayToObject', async t => {
         convertArrayToObject();
     });
 
-    const data1 = [{ a: 1, b: 2, c: 3 }, { a: 2, b: 2, c: 3 }];
+    const data1 = [
+        { a: 1, b: 2, c: 3 },
+        { a: 2, b: 2, c: 3 }
+    ];
 
     const data2 = { 1: { b: 2, c: 3 }, 2: { b: 2, c: 3 } };
 

@@ -1,8 +1,44 @@
-import { uniq, omit } from 'lodash';
+import { omit, flatten } from 'lodash';
+import { isEmptyValue } from './types';
 
-// 重复数组
-export const isUniq = (arr = []) => {
-    return uniq(arr).length === arr.length;
+// 只保留对象的部分属性(删除之外的属性)
+export const reserveProperties = (data = {}, keys = []) => {
+    Object.keys(data)
+        .filter(v => !keys.includes(v))
+        .forEach(v => {
+            delete data[v];
+        });
+};
+
+// 批量删除属性
+export const removeProperties = (data = {}, keys = []) => {
+    keys.forEach(v => {
+        delete data[v];
+    });
+};
+
+// 批量删除属性值为空的属性
+export const removeEmptyProperties = (data = {}) => {
+    Object.entries(data).forEach(([k, v]) => {
+        if (isEmptyValue(v)) {
+            delete data[k];
+        }
+    });
+};
+
+/**
+ * 产生一个值全是空字符串的对象
+ * input: ['a', 'b']
+ * output: {
+ *     a: '',
+ *     b: ''
+ * }
+ */
+export const produceEmptyObject = (keys = [], emptyText = '') => {
+    return flatten(keys).reduce((prev, cur) => {
+        prev[cur] = emptyText;
+        return prev;
+    }, {});
 };
 
 // 将数据中的空值('', undefined, null)替换为默认值
@@ -10,7 +46,7 @@ export const formatEmptyToDefault = (data = {}, formater = {}) => {
     Object.entries(data).forEach(([k, v]) => {
         Object.entries(formater).forEach(([k2, v2]) => {
             if (k2 === k) {
-                if (v === '' || v == null) {
+                if (isEmptyValue(v)) {
                     data[k] = v2;
                 }
             }
@@ -50,5 +86,24 @@ export const pifyValidate = validateFn => {
         validateFn(valid => {
             resolve(valid);
         });
+    });
+};
+
+// 将 promise变成一个只有 resolved 态
+export const booleanPromise = (promise, params) => {
+    return new Promise(resolve => {
+        let tempPromise;
+        if (params) {
+            tempPromise = promise(params);
+        } else {
+            tempPromise = promise();
+        }
+        tempPromise
+            .then(() => {
+                resolve(true);
+            })
+            .catch(() => {
+                resolve(false);
+            });
     });
 };
