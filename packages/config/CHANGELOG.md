@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/config@0.1.4...@nbfe/config@0.1.5) (2020-08-07)
+
+### Features
+
+-   eslint 支持 vue react typescript ([c5f8f92](https://github.com/shuoshubao/nbfe/commit/c5f8f92))
+
 ## [0.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/config@0.1.3...@nbfe/config@0.1.4) (2020-05-24)
 
 ### Features
