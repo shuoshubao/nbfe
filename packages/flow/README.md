@@ -11,8 +11,8 @@ yarn add @nbfe/flow -D
     "release:major": "standard-version --release-as major",
     "online": "mnpm publish && git push && git push --follow-tags origin",
     "prettier": "npx prettier --write '**/*.js'",
-    "eslint": "npx eslint src --ext .ts,.vue.js --ignore-path .gitignore -f html -o ESLintReport.html",
-    "eslint:fix": "npx eslint --fix src --ext .ts,.vue.js --ignore-path .gitignore -f table"
+    "eslint": "npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html src",
+    "eslint:fix": "npx eslint --fix --ext .ts,.tsx,.js,.jsx,.vue -f table src"
   },
   "husky": {
     "hooks": {
