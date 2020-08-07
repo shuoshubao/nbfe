@@ -1,3 +1,4 @@
+export { version } from '../package.json';
 export * from './data';
 export * from './decimal';
 export * from './dev';

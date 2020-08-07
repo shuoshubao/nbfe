@@ -39,7 +39,7 @@ export const formatTime = (date, format = 'YYYY-MM-DD', invalidText = '--') => {
     });
 
     // 上午|下午
-    parse.a = hour / 12 > 1 ? 'pm' : 'am';
+    parse.a = hour / 12 >= 1 ? 'pm' : 'am';
     parse.A = parse.a.toUpperCase();
 
     return Object.entries(parse).reduce((prev, [k, v]) => {
