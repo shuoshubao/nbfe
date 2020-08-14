@@ -1,6 +1,18 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/config@0.1.5...@nbfe/config@0.1.6) (2020-08-14)
+
+
+### Features
+
+* 优化react规则 ([d7b9de8](https://github.com/shuoshubao/nbfe/commit/d7b9de8))
+
+
+
+
 
 ## [0.1.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/config@0.1.4...@nbfe/config@0.1.5) (2020-08-07)
 

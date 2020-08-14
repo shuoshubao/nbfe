@@ -1,6 +1,20 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/flow@0.1.2...@nbfe/flow@0.1.3) (2020-08-14)
+
+
+### Features
+
+* 增加脚本 init.js ([68a7a40](https://github.com/shuoshubao/nbfe/commit/68a7a40))
+* 增加prettier钩子 pretty-quick ([ef14db0](https://github.com/shuoshubao/nbfe/commit/ef14db0))
+* eslint 支持 vue react typescript ([c5f8f92](https://github.com/shuoshubao/nbfe/commit/c5f8f92))
+
+
+
+
 
 ## [0.1.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/flow@0.1.1...@nbfe/flow@0.1.2) (2019-09-13)
 
