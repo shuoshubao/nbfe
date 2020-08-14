@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/config@0.1.6...@nbfe/config@0.1.7) (2020-08-14)
+
+
+### Features
+
+* 自动识别react和vue ([1717153](https://github.com/shuoshubao/nbfe/commit/1717153))
+
+
+
+
+
 ## [0.1.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/config@0.1.5...@nbfe/config@0.1.6) (2020-08-14)
 
 
