@@ -9,26 +9,23 @@ yarn add @nbfe/flow -D
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
-    "online": "mnpm publish && git push && git push --follow-tags origin",
-    "prettier": "npx prettier --write '**/*.js'",
-    "lint": "npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html "
+    "release": "npm publish && git push && git push --follow-tags origin",
+    "prettier": "npx prettier --write",
+    "lint": "npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html"
   },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
-      "pre-commit": "lint-staged"
+      "pre-commit": ["pretty-quick --staged", "lint-staged"]
     }
   },
   "lint-staged": {
     "linters": {
-      "*.js": [
+      "*.{ts,tsx,js,jsx,vue}": [
         "eslint -f table",
         "git add"
       ]
-    },
-    "ignore": [
-      "package.json"
-    ]
+    }
   },
   "config": {
     "commitizen": {
@@ -41,6 +38,12 @@ yarn add @nbfe/flow -D
     ]
   }
 }
+```
+
+# init
+
+```
+node node_modules/@nbfe/flow/init
 ```
 
 # lint
