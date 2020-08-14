@@ -14,10 +14,10 @@
         "release:minor": "npx lerna version minor --conventional-commits",
         "release:major": "npx lerna version major --conventional-commits",
         "release": "npx lerna publish from-package",
-        "prettier": "npx prettier --write **/packages/**/*.{js,jsx,ts,tsx,vue,css,less,scss,md,json}",
-        "lint": "npx eslint --ext .ts,.tsx,.vue -f html -o ESLintReport.html",
+        "prettier": "npx prettier --write",
+        "lint": "npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html",
         "eslint": "npm run lint -- packages",
-        "eslint:fix": "npx eslint --ext .ts,.tsx,.vue --fix -- packages"
+        "eslint:fix": "npm run lint -- --fix packages"
     },
     "dependencies": {
         "@nbfe/config": "^0.1.1",
@@ -28,27 +28,19 @@
     "husky": {
         "hooks": {
             "commit-msg": "commitlint -e $GIT_PARAMS",
-            "pre-commit": "lint-staged"
+            "pre-commit": [
+                "pretty-quick --staged",
+                "lint-staged"
+            ]
         }
     },
     "lint-staged": {
         "linters": {
-            "*.{ts,vue,css,less,scss,md,json}": [
-                "prettier --write",
-                "git add"
-            ],
-            "packages/**/*.{ts,tsx}": [
-                "eslint --fix",
-                "git add"
-            ],
-            "packages/**/*.{ts,tsx,vue}": [
-                "eslint",
+            "*.{ts,tsx,js,jsx,vue}": [
+                "eslint -f table",
                 "git add"
             ]
-        },
-        "ignore": [
-            "package-lock.json"
-        ]
+        }
     },
     "config": {
         "commitizen": {
