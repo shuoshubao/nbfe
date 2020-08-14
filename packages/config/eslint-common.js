@@ -5,9 +5,7 @@ const PrettierConfig = require('./prettier.config');
 
 const rootPath = process.cwd();
 
-const explorerSync = cosmiconfigSync('prettier', {
-    stopDir: rootPath
-});
+const explorerSync = cosmiconfigSync('prettier', { stopDir: rootPath });
 
 const { config: projectPrettierConfig } = explorerSync.search() || {};
 
@@ -66,6 +64,7 @@ const EslintConfig = {
         'import/extensions': [0], // 文件后缀
         'class-methods-use-this': [0],
         'no-useless-catch': [0],
+        'object-curly-newline': [0],
         'no-empty': [2, { allowEmptyCatch: true }]
     }
 };
