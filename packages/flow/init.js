@@ -1,9 +1,11 @@
-const { writeJsonSync } = require('fs-extra');
+const { outputFileSync, writeJsonSync } = require('fs-extra');
 const { resolve } = require('path');
 const { merge } = require('lodash');
 
 const rootPath = process.cwd();
 const pkgPath = resolve(rootPath, 'package.json');
+const prettierConfigPath = resolve(rootPath, 'prettier.config.js');
+const eslintConfigPath = resolve(rootPath, '.eslintrc.js');
 
 const pkg = require(pkgPath);
 
@@ -16,13 +18,15 @@ merge(pkg, {
     husky: {
         hooks: {
             'commit-msg': 'commitlint -e $GIT_PARAMS',
-            'pre-commit': ['pretty-quick --staged', 'lint-staged']
+            'pre-commit': ['lint-staged']
         }
     },
     'lint-staged': {
         linters: {
+            '*.{ts,tsx,js,jsx,vue,less,scss,sass,json,md}': ['prettier --write', 'git add'],
             '*.{ts,tsx,js,jsx,vue}': ['eslint -f table', 'git add']
-        }
+        },
+        ignore: ['CHANGELOG.md']
     },
     config: {
         commitizen: {
@@ -46,6 +50,26 @@ if (!pkg.private) {
     });
 }
 
-console.log(pkg);
+const prettierConfigContent = `
+const PrettierConfig = require('@nbfe/config/prettier.config');
+
+module.exports = {
+    ...PrettierConfig
+};
+`;
+
+const eslintConfigContent = `
+const EslintConfig = require('@nbfe/config/eslint-react');
+
+module.exports = {
+    ...EslintConfig,
+    rules: {
+        ...EslintConfig.rules
+    }
+};
+`;
+
+outputFileSync(prettierConfigPath, prettierConfigContent.trimLeft());
+outputFileSync(eslintConfigPath, eslintConfigContent.trimLeft());
 
 writeJsonSync(pkgPath, pkg, { spaces: 4 });

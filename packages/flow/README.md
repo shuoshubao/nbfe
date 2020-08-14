@@ -1,5 +1,13 @@
 yarn add @nbfe/flow -D
 
+注意: 业务仓库的 `package.json` 请设置字段: `"private": true`
+
+# init
+
+```
+node node_modules/@nbfe/flow/init
+```
+
 // package.json
 
 ```
@@ -16,16 +24,23 @@ yarn add @nbfe/flow -D
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
-      "pre-commit": ["pretty-quick --staged", "lint-staged"]
+      "pre-commit": ["lint-staged"]
     }
   },
   "lint-staged": {
     "linters": {
-      "*.{ts,tsx,js,jsx,vue}": [
-        "eslint -f table",
-        "git add"
-      ]
-    }
+        "*.{ts,tsx,js,jsx,vue,less,scss,sass,json,md}": [
+            "prettier --write",
+            "git add"
+        ],
+        "*.{ts,tsx,js,jsx,vue}": [
+            "eslint -f table",
+            "git add"
+        ]
+    },
+    "ignore": [
+        "CHANGELOG.md"
+    ]
   },
   "config": {
     "commitizen": {
@@ -38,12 +53,6 @@ yarn add @nbfe/flow -D
     ]
   }
 }
-```
-
-# init
-
-```
-node node_modules/@nbfe/flow/init
 ```
 
 # lint
