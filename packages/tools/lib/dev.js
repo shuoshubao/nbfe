@@ -5,7 +5,10 @@ export const sleep = (time = -1) => {
     return new Promise(resolve => setTimeout(resolve, sleepTime * 1e3));
 };
 
-export const fakeFetch = async (data = {}, time = -1) => {
-    await sleep(time);
-    return Promise.resolve(data);
+export const fakeFetch = (data = {}, time = -1) => {
+    return new Promise(resolve => {
+        sleep(time).then(() => {
+            resolve(data);
+        });
+    });
 };
