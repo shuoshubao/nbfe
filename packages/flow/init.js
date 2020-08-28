@@ -23,7 +23,7 @@ merge(pkg, {
     },
     'lint-staged': {
         linters: {
-            '*.{ts,tsx,js,jsx,vue,less,scss,sass,json,md}': ['prettier --write', 'git add'],
+            '*.{ts,tsx,js,jsx,vue,css,less,scss,sass,json,md}': ['prettier --write', 'git add'],
             '*.{ts,tsx,js,jsx,vue}': ['eslint -f table', 'git add']
         },
         ignore: ['CHANGELOG.md']
@@ -44,7 +44,7 @@ if (!pkg.private) {
         scripts: {
             'release:patch': 'standard-version --release-as patch',
             'release:minor': 'standard-version --release-as minor',
-            ':major': 'standard-version --release-as major',
+            'release:major': 'standard-version --release-as major',
             release: 'npm publish && git push && git push --follow-tags origin'
         }
     });
