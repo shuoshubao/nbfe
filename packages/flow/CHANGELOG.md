@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/flow@0.1.4...@nbfe/flow@0.1.5) (2020-08-28)
+
+
+### Bug Fixes
+
+* 初始化脚本的缺陷 ([620117c](https://github.com/shuoshubao/nbfe/commit/620117c))
+
+
+
+
+
 ## [0.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/flow@0.1.3...@nbfe/flow@0.1.4) (2020-08-14)
 
 

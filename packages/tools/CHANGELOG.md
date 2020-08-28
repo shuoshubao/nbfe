@@ -1,6 +1,18 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.1.3...@nbfe/tools@0.1.4) (2020-08-28)
+
+
+### Bug Fixes
+
+* 去掉 async-await ([ce0fd9c](https://github.com/shuoshubao/nbfe/commit/ce0fd9c))
+
+
+
+
 
 ## [0.1.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.1.2...@nbfe/tools@0.1.3) (2020-08-07)
 
