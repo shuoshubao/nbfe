@@ -5,7 +5,8 @@
  * async-validator: https://www.npmjs.com/package/async-validator
  */
 
-import { isEmpty, isNumber, isUndefined } from 'lodash';
+import { isEmpty, isNumber, isUndefined, find } from 'lodash';
+import { isEmptyArray } from './types';
 
 class ValidatorRules {
     constructor() {
@@ -22,6 +23,57 @@ class ValidatorRules {
         };
     }
 
+    // 数字范围: 错误信息拼接函数
+    static numberRangeMessageFunc = (description, value) => {
+        return ['应', description, value].join('');
+    };
+
+    // 数字范围: 描述
+    static numberRangeValidatorList = [
+        {
+            key: 'eq',
+            description: '等于',
+            validate: (a, b) => {
+                return a === b;
+            }
+        },
+        {
+            key: 'ne',
+            description: '不等于',
+            validate: (a, b) => {
+                return a !== b;
+            }
+        },
+        {
+            key: 'gt',
+            description: '大于',
+            validate: (a, b) => {
+                return a > b;
+            }
+        },
+        {
+            key: 'lt',
+            description: '小于',
+            validate: (a, b) => {
+                return a < b;
+            }
+        },
+        {
+            key: 'ge',
+            description: '大于等于',
+            validate: (a, b) => {
+                return a >= b;
+            }
+        },
+        {
+            key: 'le',
+            description: '小于等于',
+            validate: (a, b) => {
+                return a <= b;
+            }
+        }
+    ];
+
     // 必填: 输入框
     required = (text = '') => {
         return { required: true, message: `${text}不能为空`, trigger: 'blur change' };
@@ -32,7 +84,7 @@ class ValidatorRules {
         return {
             required: true,
             message: `请选择${text}`,
-            trigger: 'change',
+            trigger: 'blur change',
             transform(value) {
                 if (isNumber(value)) {
                     return String(value);
@@ -61,7 +113,7 @@ class ValidatorRules {
                     }
                     return callback();
                 },
-                trigger: 'change'
+                trigger: 'blur change'
             }
         ];
     };
@@ -94,6 +146,28 @@ class ValidatorRules {
         return {
             max: num,
             message: `最多${num}个字符`
+        };
+    };
+
+    // 数字范围
+    numberRange = (text = '', config = {}, messageFuc = ValidatorRules.numberRangeMessageFunc) => {
+        return (rule, value, callback) => {
+            const val = Number(value);
+
+            const results = [];
+
+            Object.entries(config).forEach(([k, v]) => {
+                const { description, validate } = find(ValidatorRules.numberRangeValidatorList, { key: k });
+                if (!validate(val, v)) {
+                    results.push(messageFuc(description, v));
+                }
+            });
+
+            if (!isEmptyArray(results)) {
+                callback(new Error(`${text}: ${results[0]}`));
+            }
+
+            callback();
         };
     };
 }
