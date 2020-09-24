@@ -1,4 +1,4 @@
-import { isPlainObject, pick } from 'lodash';
+import { pick } from 'lodash';
 import { isNullOrUndefined, isEmptyObject } from './types';
 import { queryParse, queryStringify } from './qs';
 

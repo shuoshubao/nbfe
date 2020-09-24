@@ -11,12 +11,12 @@ const removeDot = num => {
 
 const mulTwo = (a, b) => {
     const decAll = getDecLength(a) + getDecLength(b);
-    return (removeDot(a) * removeDot(b)) / Math.pow(10, decAll);
+    return (removeDot(a) * removeDot(b)) / 10 ** decAll;
 };
 
 const plusTwo = (a, b) => {
     const decMax = Math.max(getDecLength(a), getDecLength(b));
-    const temp = Math.pow(10, decMax);
+    const temp = 10 ** decMax;
     return (mulTwo(a, temp) + mulTwo(b, temp)) / temp;
 };
 
@@ -38,7 +38,7 @@ export const mul = (...args) => {
 
 export const div = (a, b) => {
     const decMax = Math.max(getDecLength(a), getDecLength(b));
-    const temp = Math.pow(10, decMax);
+    const temp = 10 ** decMax;
     return mulTwo(a, temp) / mulTwo(b, temp);
 };
 

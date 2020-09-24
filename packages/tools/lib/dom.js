@@ -140,4 +140,4 @@ export const suffixClassNames = (baseClassName = '', suffixConfig = {}, config =
         }
     });
     return classNames(classNameList);
-}
+};

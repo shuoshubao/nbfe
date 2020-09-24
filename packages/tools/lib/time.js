@@ -1,6 +1,3 @@
-import { isArray } from 'lodash';
-import { convertArrayToObject } from './data';
-
 // 日期格式化
 const WeekTextMap = ['日', '一', '二', '三', '四', '五', '六'];
 

@@ -76,7 +76,7 @@ class ValidatorRules {
 
     // 必填: 输入框
     required = (text = '') => {
-        return { required: true, message: `${text}不能为空`, trigger: 'blur change' };
+        return { required: true, message: `${text}不能为空` };
     };
 
     // 必填: 单选下拉框
@@ -84,7 +84,6 @@ class ValidatorRules {
         return {
             required: true,
             message: `请选择${text}`,
-            trigger: 'blur change',
             transform(value) {
                 if (isNumber(value)) {
                     return String(value);
@@ -112,8 +111,7 @@ class ValidatorRules {
                         return callback(new Error(`请选择${text}`));
                     }
                     return callback();
-                },
-                trigger: 'blur change'
+                }
             }
         ];
     };
@@ -123,7 +121,6 @@ class ValidatorRules {
         return {
             required: true,
             message: `请选择${text}`,
-            trigger: 'blur change',
             transform(value) {
                 if (isUndefined(value)) {
                     return '';
