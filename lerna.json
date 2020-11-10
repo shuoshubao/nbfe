@@ -9,7 +9,7 @@
       "allowBranch": ["master"],
       "ignoreChanges": [
         "**/{test,__tests__,docs,bin}/**",
-        "**/*.{md,yml}",
+        "**/*.{LICENSE,md,yml}",
         "**/{.gitignore,package-lock.json,yarn.lock}"
       ],
       "message": "chore(release): publish"
