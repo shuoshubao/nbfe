@@ -10,9 +10,9 @@
     "license": "ISC",
     "scripts": {
         "commit": "npx git-cz",
-        "release:patch": "npx lerna version patch --conventional-commits",
-        "release:minor": "npx lerna version minor --conventional-commits",
-        "release:major": "npx lerna version major --conventional-commits",
+        "version:patch": "npx lerna version patch --conventional-commits",
+        "version:minor": "npx lerna version minor --conventional-commits",
+        "version:major": "npx lerna version major --conventional-commits",
         "release": "npx lerna publish from-package",
         "prettier": "npx prettier --write",
         "lint": "npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html",

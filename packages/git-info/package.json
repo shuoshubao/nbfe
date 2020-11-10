@@ -1,0 +1,15 @@
+{
+    "name": "@nbfe/git-info",
+    "version": "0.1.0",
+    "description": "获取 .git 信息",
+    "author": "shuoshubao <759979885@qq.com>",
+    "repository": {
+        "url": "https://github.com/shuoshubao/nbfe",
+        "type": "git"
+    },
+    "license": "ISC",
+    "main": "index.js",
+    "dependencies": {
+        "ini": "^1.3.5"
+    }
+}
