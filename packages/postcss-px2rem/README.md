@@ -1,4 +1,4 @@
-# @nbfe/px2rem-postcss
+# @nbfe/postcss-px2rem
 
 -   [postcss-px2rem](https://www.npmjs.com/package/postcss-px2rem)
 -   [px2rem](https://www.npmjs.com/package/px2rem)
@@ -10,9 +10,9 @@
 # 使用
 
 ```javascript
-// npm i -D @nbfe/px2rem-postcss
+// npm i -D @nbfe/postcss-px2rem
 
-const px2rem = require('@nbfe/px2rem-postcss');
+const px2rem = require('@nbfe/postcss-px2rem');
 
 px2rem({ remUnit: 100 });
 ```
@@ -24,7 +24,7 @@ px2rem({ remUnit: 100 });
 * 不支持原有的 [cli功能](https://github.com/songsiqi/px2rem/blob/master/bin/px2rem.js)
 * 移除依赖 `extend `, 使用 es6的api 和 `lodash.cloneDeep`
 
-## px2rem-postcss
+## postcss-px2rem
 
 * 移除依赖 `postcss `, 因为宿主环境一定会有这个依赖
 

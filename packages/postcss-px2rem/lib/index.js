@@ -4,10 +4,10 @@
  * @Description: copy from https://github.com/songsiqi/px2rem-postcss/blob/master/lib/index.js
  */
 
-const postcss = require('postcss');
-const Px2rem = require('./px2rem');
+import postcss from 'postcss';
+import Px2rem from './px2rem';
 
-module.exports = postcss.plugin('postcss-px2rem', function (options) {
+export default postcss.plugin('postcss-px2rem', function (options) {
     return function (css, result) {
         const oldCssText = css.toString();
         const px2remIns = new Px2rem(options);

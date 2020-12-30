@@ -1,7 +1,7 @@
 {
-    "name": "@nbfe/px2rem-postcss",
+    "name": "@nbfe/postcss-px2rem",
     "version": "0.1.0",
-    "description": "px2rem-postcss 的替代品",
+    "description": "postcss-px2rem 的替代品",
     "author": "shuoshubao <759979885@qq.com>",
     "repository": {
         "url": "https://github.com/shuoshubao/nbfe",
