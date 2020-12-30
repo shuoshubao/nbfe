@@ -1,6 +1,6 @@
 {
     "name": "@nbfe/git-info",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "获取 .git 信息",
     "author": "shuoshubao <759979885@qq.com>",
     "repository": {
