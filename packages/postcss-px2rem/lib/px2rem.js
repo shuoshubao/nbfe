@@ -6,8 +6,8 @@
 
 /* eslint-disable */
 
-const css = require('css');
-const { cloneDeep } = require('lodash');
+import css from 'css';
+import { cloneDeep } from 'lodash';
 
 const defaultConfig = {
     baseDpr: 2, // base device pixel ratio (default: 2)
@@ -183,4 +183,4 @@ Px2rem.prototype._getCalcValue = function (type, value, dpr) {
     });
 };
 
-module.exports = Px2rem;
+export default Px2rem;
