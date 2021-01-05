@@ -114,7 +114,11 @@
                 >
             </div>
             <div slot="footer">
-                <mtd-announcement :type="modalData.selectItem.severity" show-icon :description="modalData.selectItem.text" />
+                <mtd-announcement
+                    :type="modalData.selectItem.severity"
+                    show-icon
+                    :description="modalData.selectItem.text"
+                />
             </div>
         </mtd-modal>
     </div>
