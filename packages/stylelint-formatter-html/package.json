@@ -1,6 +1,6 @@
 {
   "name": "stylelint-formatters-html",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "stylelint-formatters-html",
   "main": "index.js",
   "repository": {
