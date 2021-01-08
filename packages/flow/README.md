@@ -1,4 +1,8 @@
-yarn add @nbfe/flow -D
+# 安装
+
+```
+npm i -D @nbfe/flow @nbfe/config
+```
 
 注意: 业务仓库的 `package.json` 请设置字段: `"private": true`
 
@@ -19,7 +23,8 @@ node node_modules/@nbfe/flow/init
     "release:major": "standard-version --release-as major",
     "release": "npm publish && git push && git push --follow-tags origin",
     "prettier": "npx prettier --write",
-    "lint": "npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html"
+    "lint": "npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html",
+    "lint:style": "stylelint -o StyleLintReport.html --custom-formatter node_modules/stylelint-formatters-html **/*.{css,scss,sass,less}"
   },
   "husky": {
     "hooks": {
@@ -29,7 +34,7 @@ node node_modules/@nbfe/flow/init
   },
   "lint-staged": {
     "linters": {
-        "*.{ts,tsx,js,jsx,vue,less,scss,sass,json,md}": [
+        "*.{ts,tsx,js,jsx,vue,css,less,scss,sass,json,md}": [
             "prettier --write",
             "git add"
         ],

@@ -12,6 +12,7 @@
     "dependencies": {
         "@commitlint/cli": "^8.0.0",
         "@commitlint/config-conventional": "^8.0.0",
+        "@nbfe/git-info": "^0.1.2",
         "commitizen": "^3.1.1",
         "husky": "^3.0.4",
         "lint-staged": "^8.2.1",
@@ -19,6 +20,7 @@
     },
     "devDependencies": {
         "fs-extra": "^9.0.1",
+        "glob": "^7.1.6",
         "lodash": "^4.17.20"
     }
 }
