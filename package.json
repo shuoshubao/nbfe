@@ -40,7 +40,7 @@
                 "git add"
             ],
             "*.{ts,tsx,js,jsx,vue}": [
-                "eslint -f table",
+                "eslint -f table --fix",
                 "git add"
             ]
         }
