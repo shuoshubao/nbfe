@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/flow@0.1.6...@nbfe/flow@0.1.7) (2021-01-08)
+
+### Features
+
+-   支持 stylelint ([16fc9fb](https://github.com/shuoshubao/nbfe/commit/16fc9fb))
+
 ## [0.1.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/flow@0.1.5...@nbfe/flow@0.1.6) (2020-12-30)
 
 **Note:** Version bump only for package @nbfe/flow
