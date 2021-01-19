@@ -31,6 +31,13 @@ export const stringifyUrl = (url = '', params = {}) => {
     return [url, queryStringify(args)].join('?');
 };
 
+// 更新 url 某个参数
+export const updateUrlQuery = (params = {}, url = window.location.href) => {
+    const query = getParams(url);
+    const baseUrl = url.split('?')[0];
+    return stringifyUrl(baseUrl, { ...query, ...params });
+};
+
 // 跳转页面
 export const linkTo = (url = '', params = {}, options = {}) => {
     const defaultOptions = {
