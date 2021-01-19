@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.1.7...@nbfe/tools@0.1.8) (2021-01-19)
+
+
+### Features
+
+* 增加函数 updateUrlQuery ([74b14bb](https://github.com/shuoshubao/nbfe/commit/74b14bb))
+
+
+
+
+
 ## [0.1.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.1.6...@nbfe/tools@0.1.7) (2021-01-12)
 
 
