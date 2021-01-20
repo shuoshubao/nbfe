@@ -1,10 +1,10 @@
 import { pick } from 'lodash';
-import { isNullOrUndefined, isEmptyObject } from './types';
+import { isNullOrUndefined, isEmptyObject, isEmptyValue } from './types';
 import { queryParse, queryStringify } from './qs';
 
 export const getParams = (str, key) => {
     const params = queryParse(str);
-    if (key === '') {
+    if (isEmptyValue(key)) {
         return params;
     }
     return params[key];
