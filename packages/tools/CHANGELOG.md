@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.10](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.1.8...@nbfe/tools@0.1.10) (2021-01-22)
+
+
+### Bug Fixes
+
+* updateUrlQuery 实现有问题 ([a091f2f](https://github.com/shuoshubao/nbfe/commit/a091f2f))
+
+
+### Features
+
+* parseUrl 返回origin 和 hostname ([2a36942](https://github.com/shuoshubao/nbfe/commit/2a36942))
+
+
+
+
+
 ## [0.1.9](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.1.8...@nbfe/tools@0.1.9) (2021-01-20)
 
 
