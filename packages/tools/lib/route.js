@@ -76,9 +76,11 @@ export const linkTo = (url = '', params = {}, options = {}) => {
 
 // 解析 url
 export const parseUrl = (url = '') => {
-    const elmentA = document.createElement('a');
+    let elmentA = document.createElement('a');
     elmentA.href = url;
-    return pick(elmentA, ['protocol', 'host', 'pathname', 'port', 'search', 'hash']);
+    const result = pick(elmentA, ['protocol', 'host', 'pathname', 'port', 'search', 'hash', 'origin', 'hostname']);
+    elmentA = null;
+    return result;
 };
 
 // 获取完整 url
@@ -86,7 +88,9 @@ export const getFullUrl = (url = '') => {
     if (!url) {
         return '';
     }
-    const a = document.createElement('a');
-    a.href = url;
-    return a.href;
+    let elmentA = document.createElement('a');
+    elmentA.href = url;
+    const result = elmentA.href;
+    elmentA = null;
+    return result;
 };
