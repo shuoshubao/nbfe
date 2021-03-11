@@ -1,7 +1,22 @@
 # Useage
 
+```js
+const {
+    createElement,
+    gernerateDocument,
+
+    gernerateElement,
+    gernerateAttrsText,
+    convertCssom,
+    getCssText,
+    voidHtmlTags
+} = require('@nbfe/js2html');
+```
+
+## gernerateDocument
+
 ```javascript
-const getDocText = require('@nbfe/js2html');
+const { gernerateDocument } = require('@nbfe/js2html');
 
 const docText = getDocText({
     title: 'bala',
@@ -49,7 +64,7 @@ const docText = getDocText({
 console.log(docText);
 ```
 
-# Return
+### Return
 
 ```html
 <!DOCTYPE html>
