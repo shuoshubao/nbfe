@@ -18,7 +18,7 @@ const {
 ```javascript
 const { gernerateDocument } = require('@nbfe/js2html');
 
-const docText = getDocText({
+const docText = gernerateDocument({
     title: 'bala',
     meta: [
         {
