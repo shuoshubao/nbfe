@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.10](https://github.com/shuoshubao/nbfe/compare/@nbfe/config@0.1.9...@nbfe/config@0.1.10) (2021-03-12)
+
+**Note:** Version bump only for package @nbfe/config
+
+
+
+
+
 ## [0.1.9](https://github.com/shuoshubao/nbfe/compare/@nbfe/config@0.1.8...@nbfe/config@0.1.9) (2021-01-08)
 
 

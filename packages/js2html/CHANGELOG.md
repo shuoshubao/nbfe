@@ -1,6 +1,18 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.1.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.2...@nbfe/js2html@1.1.3) (2021-03-12)
+
+
+### Features
+
+* 封装底层方法 createElement ([ec95858](https://github.com/shuoshubao/nbfe/commit/ec95858))
+
+
+
+
 
 ## [1.1.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.1...@nbfe/js2html@1.1.2) (2020-05-24)
 

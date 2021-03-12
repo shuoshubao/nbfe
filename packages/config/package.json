@@ -1,6 +1,6 @@
 {
     "name": "@nbfe/config",
-    "version": "0.1.9",
+    "version": "0.1.10",
     "description": "通用配置",
     "author": "shuoshubao <759979885@qq.com>",
     "repository": {
@@ -34,7 +34,7 @@
         "stylelint-config-rational-order": "^0.1.2",
         "stylelint-config-recommended": "^3.0.0",
         "stylelint-config-standard": "^20.0.0",
-        "stylelint-formatters-html": "^1.0.0",
+        "stylelint-formatters-html": "^1.0.1",
         "stylelint-order": "^4.1.0",
         "stylelint-prettier": "^1.1.2",
         "vue-eslint-parser": "^7.1.1"
