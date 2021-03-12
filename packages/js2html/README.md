@@ -1,4 +1,4 @@
-# Useage
+# 使用
 
 ```js
 const {
@@ -11,6 +11,31 @@ const {
     getCssText,
     voidHtmlTags
 } = require('@nbfe/js2html');
+```
+
+## createElement
+
+```javascript
+createElement({ tagName: 'div' }); // <div></div>
+createElement({ tagName: 'div', text: 'text' }); // <div>text</div>
+createElement({ tagName: 'div', attrs: { id: 1, name: 2 } }); // <div id="1" name="2"></div>
+createElement({ tagName: 'div', text: 'text', attrs: { id: 1, name: 2 } }); // <div id="1" name="2">text</div>
+createElement({ tagName: 'div', attrs: { id: 1, name: 2 }, children: [{ tagName: 'h1' }] }); // <div id="1" name="2"><h1></h1></div>
+createElement({ tagName: 'div', attrs: { id: 1, name: 2 }, children: [{ tagName: 'h1', text: 'text' }] }); // <div id="1" name="2"><h1>text</h1></div>
+createElement({
+    tagName: 'div',
+    attrs: { id: 1, name: 2 },
+    children: [
+        { tagName: 'h1', text: 'text' },
+        {
+            tagName: 'img',
+            attrs: {
+                src: '1.png',
+                alt: '图片'
+            }
+        }
+    ]
+}); // <div id="1" name="2"><h1>text</h1><img src="1.png" alt="图片"></div>
 ```
 
 ## gernerateDocument
