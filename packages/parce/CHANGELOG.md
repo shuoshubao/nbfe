@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/parce@1.1.2...@nbfe/parce@1.1.4) (2021-03-15)
+
+
+### Features
+
+* 依赖包 升级 @nbfe/js2html ([564eff2](https://github.com/shuoshubao/nbfe/commit/564eff2))
+
+
+
+
+
 ## [1.1.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/parce@1.1.2...@nbfe/parce@1.1.3) (2021-03-12)
 
 **Note:** Version bump only for package @nbfe/parce
