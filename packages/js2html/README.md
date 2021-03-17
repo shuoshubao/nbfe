@@ -16,6 +16,8 @@ const {
 ## createElement
 
 ```javascript
+const { createElement } = require('@nbfe/js2html');
+
 createElement({ tagName: 'div' }); // <div></div>
 createElement({ tagName: 'div', text: 'text' }); // <div>text</div>
 createElement({ tagName: 'div', attrs: { id: 1, name: 2 } }); // <div id="1" name="2"></div>
@@ -75,7 +77,9 @@ const docText = gernerateDocument({
     },
     bodyHtml: ['<div id="app"></div>'],
     script: [
-        'https://code.jquery.com/jquery-3.3.1.min.js',
+        {
+            src: 'https://code.jquery.com/jquery-3.3.1.min.js'
+        },
         {
             src: 'bala.js',
             crossorigin: 'anonymous'
@@ -87,39 +91,16 @@ const docText = gernerateDocument({
 });
 
 console.log(docText);
+
 ```
 
-### Return
+### 输出
 
 ```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>bala</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="shortcut icon" href="/static/favicon.ico" />
-        <link rel="dns-prefetch" href="bala" />
-        <link rel="stylesheet" href="static/a.css" />
-        <style>
-            body {
-                margin: 0;
-            }
-        </style>
-        <script src="bala.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="body-development">
-        <div id="app"></div>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="bala.js" crossorigin="anonymous"></script>
-        <script>
-            console.log('123');
-        </script>
-    </body>
-</html>
+<!DOCTYPE html><html><head><title>bala</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="static/a.css"><style>body {margin: 0;}</style><script src="bala.js" crossorigin="anonymous"></script></head><body class="body-development"><div id="app"></div><script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="bala.js" crossorigin="anonymous"></script><script>console.log("123")</script></body></html>
 ```
 
-# Config
+### documentConfig
 
 ```javascript
 // documentConfig
@@ -170,6 +151,10 @@ console.log(docText);
 }
 ```
 
-### mark
+## gernerateTable
 
--   npm publish --registry https://registry.npmjs.org
+```js
+const { gernerateTable } = require('@nbfe/js2html');
+
+gernerateTable(columns = [], data = []);
+```
