@@ -1,7 +1,11 @@
-import { isNumber, get, merge } from 'lodash';
+import { isNumber, isUndefined, get, merge } from 'lodash';
 import { createElement } from './createElement';
 
 export const gernerateTable = (columns = [], data = []) => {
+    const innerColumns = columns.filter(v => {
+        const { visible } = v;
+        return isUndefined(visible) || Boolean(visible);
+    });
     return createElement({
         tagName: 'table',
         attrs: {
@@ -13,7 +17,7 @@ export const gernerateTable = (columns = [], data = []) => {
         children: [
             {
                 tagName: 'colgroup',
-                children: columns.map(v => {
+                children: innerColumns.map(v => {
                     const attrs = {};
                     if ('width' in v) {
                         const { width } = v;
@@ -30,7 +34,7 @@ export const gernerateTable = (columns = [], data = []) => {
                 children: [
                     {
                         tagName: 'tr',
-                        children: columns.map(v => {
+                        children: innerColumns.map(v => {
                             const { label, align } = v;
                             const attrs = {};
                             if (align) {
@@ -52,7 +56,7 @@ export const gernerateTable = (columns = [], data = []) => {
                 children: data.map(v => {
                     return {
                         tagName: 'tr',
-                        children: columns.map(v2 => {
+                        children: innerColumns.map(v2 => {
                             const { prop, align } = v2;
                             const attrs = {};
                             if (align) {
