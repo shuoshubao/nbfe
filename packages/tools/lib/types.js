@@ -1,4 +1,4 @@
-import { uniq, isNull, isUndefined, isFunction, isObject, isArray } from 'lodash';
+import { uniq, isNull, isUndefined, isFunction, isObject, isArray, flatten } from 'lodash';
 
 // 是否重复数组
 export const isUniq = (arr = []) => {
@@ -35,4 +35,24 @@ export const isEmptyArray = arr => {
 // 空对象 {}
 export const isEmptyObject = obj => {
     return isEmptyArray(Object.keys(obj));
+};
+
+// 全真
+export const isEveryTruthy = (...args) => {
+    return flatten(args).every(Boolean);
+};
+
+// 全假
+export const isEveryFalsy = (...args) => {
+    return flatten(args).every(v => !Boolean(v));
+};
+
+// 部分真
+export const isSomeTruthy = (...args) => {
+    return flatten(args).some(Boolean);
+};
+
+// 部分假
+export const isSomeFalsy = (...args) => {
+    return flatten(args).some(v => !Boolean(v));
 };
