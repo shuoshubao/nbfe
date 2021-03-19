@@ -1,6 +1,5 @@
 import babel from '@rollup/plugin-babel';
 import json from '@rollup/plugin-json';
-import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
 const createComment = data => {
@@ -31,7 +30,6 @@ export default {
         banner: getBanner()
     },
     plugins: [
-        terser(),
         json(),
         babel({
             babelrc: false,
