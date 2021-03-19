@@ -21,7 +21,7 @@ const defaultDocumentConfig = {
     script: []
 };
 
-export const gernerateDocument = documentConfig => {
+export const generateDocument = documentConfig => {
     const config = merge({}, defaultDocumentConfig, documentConfig);
 
     const { title, meta, link, headScript, style, bodyAttrs, bodyHtml, script } = config;

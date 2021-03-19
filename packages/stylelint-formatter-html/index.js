@@ -1,7 +1,7 @@
 const { readFileSync } = require('fs');
 const { relative, resolve } = require('path');
 const stripAnsi = require('strip-ansi');
-const { gernerateDocument } = require('@nbfe/js2html');
+const { generateDocument } = require('@nbfe/js2html');
 
 const rootPath = process.cwd();
 
@@ -36,7 +36,7 @@ module.exports = (results, returnValue) => {
 
     formatStylelintResults(results);
 
-    return gernerateDocument({
+    return generateDocument({
         title: 'StylelintReport',
         link: [
             {

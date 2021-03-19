@@ -3,10 +3,10 @@
 ```js
 const {
     createElement,
-    gernerateDocument,
+    generateDocument,
 
-    gernerateElement,
-    gernerateAttrsText,
+    generateElement,
+    generateAttrsText,
     convertCssom,
     getCssText,
     voidHtmlTags
@@ -40,12 +40,12 @@ createElement({
 }); // <div id="1" name="2"><h1>text</h1><img src="1.png" alt="图片"></div>
 ```
 
-## gernerateDocument
+## generateDocument
 
 ```javascript
-const { gernerateDocument } = require('@nbfe/js2html');
+const { generateDocument } = require('@nbfe/js2html');
 
-const docText = gernerateDocument({
+const docText = generateDocument({
     title: 'bala',
     meta: [
         {
@@ -151,10 +151,10 @@ console.log(docText);
 }
 ```
 
-## gernerateTable
+## generateTable
 
 ```js
-const { gernerateTable } = require('@nbfe/js2html');
+const { generateTable } = require('@nbfe/js2html');
 
-gernerateTable(columns = [], data = []);
+generateTable(columns = [], data = []);
 ```

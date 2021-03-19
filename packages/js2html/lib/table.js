@@ -1,7 +1,7 @@
 import { isNumber, isUndefined, get, merge } from 'lodash';
 import { createElement } from './createElement';
 
-export const gernerateTable = (columns = [], data = []) => {
+export const generateTable = (columns = [], data = []) => {
     const innerColumns = columns.filter(v => {
         const { visible } = v;
         return isUndefined(visible) || Boolean(visible);

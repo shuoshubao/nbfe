@@ -1,4 +1,4 @@
-import { gernerateElement } from './config';
+import { generateElement } from './config';
 
 export const createElement = options => {
     const { tagName = '', attrs = {}, text = '', children = [] } = options;
@@ -12,10 +12,10 @@ export const createElement = options => {
     }
     // 无子元素
     if (children.length === 0) {
-        return gernerateElement(tagName, attrs, text);
+        return generateElement(tagName, attrs, text);
     }
     // 有子元素
-    return gernerateElement(
+    return generateElement(
         tagName,
         attrs,
         children

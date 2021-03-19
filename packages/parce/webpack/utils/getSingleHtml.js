@@ -1,5 +1,5 @@
 const UglifyJS = require('uglify-js');
-const { gernerateDocument } = require('@nbfe/js2html');
+const { generateDocument } = require('@nbfe/js2html');
 const { NODE_ENV, isDevelopment, pathConfig, projectConfig } = require('../../config');
 
 // 注入静态资源前缀
@@ -84,5 +84,5 @@ module.exports = (outputPath, templateParams) => {
             });
     }
 
-    return gernerateDocument(documentConfig);
+    return generateDocument(documentConfig);
 };

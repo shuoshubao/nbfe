@@ -67,7 +67,7 @@ export const getCssText = (cssom = {}) => {
 };
 
 // 属性
-export const gernerateAttrsText = (attrs = {}) => {
+export const generateAttrsText = (attrs = {}) => {
     return Object.entries(attrs)
         .reduce((prev, [k, v]) => {
             let value = v;
@@ -82,8 +82,8 @@ export const gernerateAttrsText = (attrs = {}) => {
 };
 
 // 元素
-export const gernerateElement = (tagName = '', attrs = {}, text = '') => {
-    const attrsText = gernerateAttrsText(attrs);
+export const generateElement = (tagName = '', attrs = {}, text = '') => {
+    const attrsText = generateAttrsText(attrs);
     const startTag = `<${[tagName, attrsText].filter(Boolean).join(' ')}>`;
     const endTag = `</${tagName}>`;
     const isVoidTag = voidHtmlTags.includes(tagName);
