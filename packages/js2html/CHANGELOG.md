@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.5...@nbfe/js2html@1.1.6) (2021-03-20)
+
+
+### Bug Fixes
+
+* 删除测试代码 ([37f4523](https://github.com/shuoshubao/nbfe/commit/37f4523))
+
+
+
+
+
 ## [1.1.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.4...@nbfe/js2html@1.1.5) (2021-03-20)
 
 

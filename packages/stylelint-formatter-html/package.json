@@ -1,6 +1,6 @@
 {
   "name": "stylelint-formatters-html",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "stylelint-formatters-html",
   "main": "index.js",
   "repository": {
@@ -21,7 +21,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@nbfe/js2html": "^1.1.5",
+    "@nbfe/js2html": "^1.1.6",
     "strip-ansi": "^5.2.0"
   },
   "devDependencies": {
