@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/shuoshubao/nbfe/compare/stylelint-formatters-html@1.0.2...stylelint-formatters-html@1.0.3) (2021-03-20)
+
+
+### Bug Fixes
+
+* generate 单词拼错 ([50f8eaa](https://github.com/shuoshubao/nbfe/commit/50f8eaa))
+
+
+
+
+
 ## [1.0.2](https://github.com/shuoshubao/nbfe/compare/stylelint-formatters-html@1.0.0...stylelint-formatters-html@1.0.2) (2021-03-15)
 
 

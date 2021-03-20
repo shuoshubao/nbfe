@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.4...@nbfe/js2html@1.1.5) (2021-03-20)
+
+
+### Bug Fixes
+
+* generate 单词拼错 ([50f8eaa](https://github.com/shuoshubao/nbfe/commit/50f8eaa))
+
+
+### Features
+
+* gernerateTable ([24bb07f](https://github.com/shuoshubao/nbfe/commit/24bb07f))
+* gernerateTable 支持 visible ([e924099](https://github.com/shuoshubao/nbfe/commit/e924099))
+
+
+
+
+
 ## [1.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.2...@nbfe/js2html@1.1.4) (2021-03-15)
 
 

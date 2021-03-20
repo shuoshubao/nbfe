@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/parce@1.1.4...@nbfe/parce@1.1.5) (2021-03-20)
+
+
+### Bug Fixes
+
+* generate 单词拼错 ([50f8eaa](https://github.com/shuoshubao/nbfe/commit/50f8eaa))
+
+
+
+
+
 ## [1.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/parce@1.1.2...@nbfe/parce@1.1.4) (2021-03-15)
 
 
