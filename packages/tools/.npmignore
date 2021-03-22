@@ -5,3 +5,4 @@ yarn-error.log
 /test/
 /lib/
 /coverage/
+rollup.config.js
