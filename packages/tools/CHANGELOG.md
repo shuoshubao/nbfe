@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.1.12...@nbfe/tools@0.2.0) (2021-03-22)
+
+
+### Features
+
+* 新增 isEveryTruthy isEveryFalsy isSomeTruthy isSomeFalsy ([1d88b3f](https://github.com/shuoshubao/nbfe/commit/1d88b3f))
+
+
+
+
+
 ## [0.1.12](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.1.11...@nbfe/tools@0.1.12) (2021-03-20)
 
 
