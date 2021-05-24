@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.0...@nbfe/tools@0.2.1) (2021-05-24)
+
+
+### Features
+
+* numberRange 增加小数位数限制 decimalLength ([be8d657](https://github.com/shuoshubao/nbfe/commit/be8d657))
+
+
+
+
+
 # [0.2.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.1.12...@nbfe/tools@0.2.0) (2021-03-22)
 
 
