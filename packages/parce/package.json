@@ -27,7 +27,7 @@
         "@vue/babel-preset-jsx": "^1.0.0",
         "assets-webpack-plugin": "^3.9.7",
         "awesome-typescript-loader": "^5.2.1",
-        "axios": "^0.18.0",
+        "axios": "^0.21.1",
         "babel-loader": "^8.0.6",
         "chalk": "^2.3.0",
         "cheerio": "^1.0.0-rc.2",
