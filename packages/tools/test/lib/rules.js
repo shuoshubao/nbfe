@@ -42,3 +42,17 @@ test('numberRange: eq', async t => {
     const result2 = await validateData(descriptor, { fieldName: 99 });
     falsy(result2);
 });
+
+test('numberRange: decimalLength', async t => {
+    const { truthy, falsy } = t;
+
+    const descriptor = {
+        fieldName: [rules.numberRange('字段名', { decimalLength: 3 })]
+    };
+
+    const result1 = await validateData(descriptor, { fieldName: 12.345 });
+    truthy(result1);
+
+    const result2 = await validateData(descriptor, { fieldName: 12.3456 });
+    falsy(result2);
+});

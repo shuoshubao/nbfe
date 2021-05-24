@@ -71,6 +71,17 @@ class ValidatorRules {
             validate: (a, b) => {
                 return a <= b;
             }
+        },
+        // 小数位数限制
+        {
+            key: 'decimalLength',
+            description: value => {
+                return ['最多', value, '位小数'].join('');
+            },
+            validate: (a, b) => {
+                const [, decimal = ''] = String(a).split('.');
+                return decimal.length <= b;
+            }
         }
     ];
 
@@ -156,7 +167,11 @@ class ValidatorRules {
             Object.entries(config).forEach(([k, v]) => {
                 const { description, validate } = find(ValidatorRules.numberRangeValidatorList, { key: k });
                 if (!validate(val, v)) {
-                    results.push(messageFuc(description, v));
+                    if (k === 'decimalLength') {
+                        results.push(description(v));
+                    } else {
+                        results.push(messageFuc(description, v));
+                    }
                 }
             });
 
