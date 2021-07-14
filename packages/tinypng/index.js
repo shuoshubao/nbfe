@@ -3,6 +3,7 @@
 const { dirname } = require('path');
 const chalk = require('chalk');
 const glob = require('glob');
+const async = require('async');
 const inquirer = require('inquirer');
 const progress = require('progress');
 const ora = require('ora');
@@ -116,8 +117,9 @@ const promiseInquirer = () => {
         const spinner = ora('开始压缩图片').start();
 
         Promise.all(
-            selectedImageList.map((v, i) => {
-                return compressImage(KEY_LIST_Compressions[i], v, spinner);
+            async.mapLimit(selectedImageList, 5, async v => {
+                const i = selectedImageList.indexOf(v);
+                return await compressImage(KEY_LIST_Compressions[i], v, spinner);
             })
         )
             .then(() => {

@@ -13,7 +13,11 @@
         "type": "git",
         "url": "git+https://github.com/shuoshubao/nbfe.git"
     },
+    "scripts": {
+        "publish-beta": "npm publish --tag beta"
+    },
     "dependencies": {
+        "async": "^3.2.0",
         "chalk": "^4.0.0",
         "glob": "^7.1.6",
         "inquirer": "^7.1.0",
