@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.1...@nbfe/tools@0.2.2) (2021-07-26)
+
+
+### Bug Fixes
+
+* updateUrlQuery 的默认参数去掉 ([e01b619](https://github.com/shuoshubao/nbfe/commit/e01b619))
+
+
+### Features
+
+* ua相关的判断变成方法, 避免直接调用 ([88d835f](https://github.com/shuoshubao/nbfe/commit/88d835f))
+
+
+
+
+
 ## [0.2.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.0...@nbfe/tools@0.2.1) (2021-05-24)
 
 
