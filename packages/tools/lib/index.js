@@ -18,3 +18,4 @@ export * from './time';
 export * from './types';
 export * from './ua';
 export * from './Uint8Array';
+export * from './zh_CN';
