@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.4...@nbfe/tools@0.2.5) (2021-07-26)
+
+
+### Features
+
+* zh_CN ([db88c3c](https://github.com/shuoshubao/nbfe/commit/db88c3c))
+
+
+
+
+
 ## [0.2.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.3...@nbfe/tools@0.2.4) (2021-07-26)
 
 
