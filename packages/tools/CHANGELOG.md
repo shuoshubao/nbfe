@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.2...@nbfe/tools@0.2.3) (2021-07-26)
+
+
+### Bug Fixes
+
+* isIPhoneX 变成方法调用形式 ([286c365](https://github.com/shuoshubao/nbfe/commit/286c365))
+
+
+
+
+
 ## [0.2.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.1...@nbfe/tools@0.2.2) (2021-07-26)
 
 
