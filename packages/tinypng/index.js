@@ -98,7 +98,7 @@ const promiseInquirer = () => {
         const TotalCompressions = CompressionsList.reduce((prev, cur) => prev + cur, 0);
 
         if (CompressionsList.length === 0) {
-            throw new Error('该账户当月可用余额已经用完咯~');
+            throw new Error('该账户当月可用余额已经用完了~');
         }
 
         const KEY_LIST_Compressions = CompressionsList.reduce((prev, cur, index) => {
