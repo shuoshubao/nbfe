@@ -1,10 +1,21 @@
-const ua = window.navigator.userAgent;
+const getUa = () => {
+    return window.navigator.userAgent;
+};
 
-export const isAndroid = ['Android', 'Adr'].some(v => ua.includes(v));
+export const isAndroid = () => {
+    const ua = getUa();
+    ['Android', 'Adr'].some(v => ua.includes(v));
+};
 
-export const isIOS = Boolean(ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/));
+export const isIOS = () => {
+    const ua = getUa();
+    return Boolean(ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/));
+};
 
-export const isIPhone = /\biPhone\b|\biPod\b/i.test(ua);
+export const isIPhone = () => {
+    const ua = getUa();
+    return /\biPhone\b|\biPod\b/i.test(ua);
+};
 
 export const isIPhoneX = (() => {
     const { width, height } = window.screen;
