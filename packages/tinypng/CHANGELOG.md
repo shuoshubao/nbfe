@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/tinypng@1.0.3...@nbfe/tinypng@1.0.4) (2021-07-26)
+
+
+### Bug Fixes
+
+* 发版diff ([a0ea401](https://github.com/shuoshubao/nbfe/commit/a0ea401))
+
+
+
+
+
 ## [1.0.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/tinypng@1.0.2...@nbfe/tinypng@1.0.3) (2021-07-26)
 
 
