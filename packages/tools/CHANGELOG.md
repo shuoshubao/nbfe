@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.3...@nbfe/tools@0.2.4) (2021-07-26)
+
+
+### Features
+
+* defineMomentLocaleZhCn ([491a2a8](https://github.com/shuoshubao/nbfe/commit/491a2a8))
+
+
+
+
+
 ## [0.2.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.2...@nbfe/tools@0.2.3) (2021-07-26)
 
 
