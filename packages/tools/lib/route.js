@@ -32,7 +32,7 @@ export const stringifyUrl = (url = '', params = {}) => {
 };
 
 // 更新 url 某个参数
-export const updateUrlQuery = (params = {}, url = window.location.href) => {
+export const updateUrlQuery = (params = {}, url = '') => {
     const baseUrl = url.split('?')[0];
     const query = getParams(url.split('?')[1] || '');
     return stringifyUrl(baseUrl, { ...query, ...params });
