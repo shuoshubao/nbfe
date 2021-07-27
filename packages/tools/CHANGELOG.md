@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.5...@nbfe/tools@0.2.6) (2021-07-27)
+
+
+### Bug Fixes
+
+* download 额外参数 ([c2dd105](https://github.com/shuoshubao/nbfe/commit/c2dd105))
+
+
+
+
+
 ## [0.2.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.4...@nbfe/tools@0.2.5) (2021-07-26)
 
 
