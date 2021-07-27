@@ -1,4 +1,4 @@
-import { kebabCase, isNumber, isObject, flattenDeep, uniq } from 'lodash';
+import { kebabCase, isNumber, isObject, flattenDeep, uniq, last } from 'lodash';
 import { stringifyUrl } from './route';
 import { isEmptyObject } from './types';
 
@@ -24,11 +24,22 @@ export const downloadBlob = (blob, options = {}) => {
 };
 
 // 下载文件
-export const download = (url = '', params = {}) => {
+export const download = (url = '', config = {}) => {
     const elmentA = document.createElement('a');
-    const href = stringifyUrl(url, params);
-    setAttrs(elmentA, { href, download: href, target: '_blank' });
+    document.body.append(elmentA);
+    const downloadFileName = last(url.split('/'));
+    setAttrs(elmentA, {
+        href: url,
+        download: downloadFileName,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        ...config
+    });
+    setStyle(elmentA, {
+        display: 'none !important'
+    });
     elmentA.click();
+    document.body.removeChild(elmentA);
 };
 
 // 当值为数字时, 加上单位 `px` 的css属性
