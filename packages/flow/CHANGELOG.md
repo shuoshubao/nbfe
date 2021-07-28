@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/shuoshubao/nbfe/compare/@nbfe/flow@0.1.7...@nbfe/flow@0.1.8) (2021-07-28)
+
+### Features
+
+-   合并包 @nbfe/config ([a8bae4c](https://github.com/shuoshubao/nbfe/commit/a8bae4c))
+
 ## [0.1.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/flow@0.1.6...@nbfe/flow@0.1.7) (2021-01-08)
 
 ### Features
