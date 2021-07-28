@@ -25,19 +25,19 @@ merge(pkg, {
         prettier: 'npx prettier --write',
         lint: 'npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html',
         'lint:style':
-            'npx stylelint --config node_modules/@nbfe/config/stylelint.config.js --fix -o StyleLintReport.html --aei --custom-formatter node_modules/stylelint-formatters-html **/*.{css,less,scss,sass}'
+            'npx stylelint --config node_modules/@nbfe/flow/stylelint.config.js --fix -o StyleLintReport.html --aei --custom-formatter node_modules/stylelint-formatters-html **/*.{css,less,scss,sass}'
     },
     husky: {
         hooks: {
             'commit-msg': 'commitlint -e $GIT_PARAMS',
-            'pre-commit': ['lint-staged']
+            'pre-commit': 'lint-staged'
         }
     },
     'lint-staged': {
         linters: {
             '*.{ts,tsx,js,jsx,vue,css,less,scss,sass,json,md}': ['prettier --write', 'git add'],
             '*.{css,less,scss,sass}': [
-                'npx stylelint --config node_modules/@nbfe/config/stylelint.config.js --fix',
+                'npx stylelint --config node_modules/@nbfe/flow/stylelint.config.js --fix',
                 'git add'
             ],
             '*.{ts,tsx,js,jsx,vue}': ['eslint -f table', 'git add']
@@ -103,7 +103,7 @@ writeJsonSync(pkgPath, pkg, { spaces: getPkgSpaces() });
     const { dependencies } = require('./package.json');
     try {
         // eslint-disable-next-line import/no-extraneous-dependencies
-        const pkgConfig = require('@nbfe/config/package.json');
+        const pkgConfig = require('@nbfe/flow/package.json');
         Object.assign(dependencies, get(pkgConfig, 'dependencies', {}));
     } catch (e) {}
     const projectDependencies = { ...get(pkg, 'dependencies', {}), ...get(pkg, 'devDependencies', {}) };
@@ -117,9 +117,7 @@ writeJsonSync(pkgPath, pkg, { spaces: getPkgSpaces() });
             execSync(v);
         });
     };
-    const packages = ['@nbfe/config', '@nbfe/flow'];
-    const execUninstall = ['npm un', ...intersectionDependencies, ...packages].join(' ');
-    const execInstall = ['npm i -D ', ...packages].join(' ');
-    execSyncList([execUninstall, execInstall]);
+    const execUninstall = ['npm un', ...intersectionDependencies].join(' ');
+    execSyncList([execUninstall]);
     console.log('执行完毕!');
 })();

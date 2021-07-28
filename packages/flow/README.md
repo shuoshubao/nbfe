@@ -1,7 +1,7 @@
 # 安装
 
 ```
-npm i -D @nbfe/flow @nbfe/config
+npm i -D @nbfe/flow
 ```
 
 注意: 业务仓库的 `package.json` 请设置字段: `"private": true`
@@ -65,4 +65,36 @@ node node_modules/@nbfe/flow/init
 ```
 npm run lint -- src
 npm run lint -- src --fix
+```
+
+# Eslint
+
+```
+// .eslintrc.js
+
+// vue
+const EslintConfig = require('@nbfe/flow/eslint-vue');
+
+// react
+const EslintConfig = require('@nbfe/flow/eslint-react');
+
+module.exports = {
+    ...EslintConfig,
+    rules: {
+        ...EslintConfig.rules,
+        // 这里可以写自定义规则
+    }
+};
+```
+
+# prettier
+
+// prettier.config.js
+
+```
+const PrettierConfig = require('@nbfe/flow/prettier.config');
+
+module.exports = {
+    ...PrettierConfig
+};
 ```
