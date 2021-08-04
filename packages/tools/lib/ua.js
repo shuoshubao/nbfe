@@ -19,7 +19,7 @@ export const isIPhone = () => {
 
 export const isIPhoneX = () => {
     const { width, height } = window.screen;
-    if (!isIPhone) {
+    if (!isIPhone()) {
         return false;
     }
     return (height === 812 && width === 375) || (height === 896 && width === 414);
