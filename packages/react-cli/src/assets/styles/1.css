@@ -1,0 +1,12 @@
+body {
+    font-size: 14px;
+}
+
+.logo-png {
+    background-image: url('~@/assets/images/react.png');
+    background-repeat: no-repeat;
+}
+
+.logo-svg {
+    background-image: url('../images/react.svg');
+}
