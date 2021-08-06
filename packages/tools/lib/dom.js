@@ -49,7 +49,7 @@ const DefaultUnitsPxProperties = ['font-size', 'margin', 'padding', 'border'];
 ['top', 'right', 'bottom', 'left'].forEach(v => {
     DefaultUnitsPxProperties.push(v);
     DefaultUnitsPxProperties.push(['margin', v].join('-'));
-    DefaultUnitsPxProperties.push(['margin', v].join('-'));
+    DefaultUnitsPxProperties.push(['padding', v].join('-'));
     DefaultUnitsPxProperties.push(['border', v, 'width'].join('-'));
 });
 
