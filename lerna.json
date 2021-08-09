@@ -8,7 +8,7 @@
     "version": {
       "allowBranch": ["master"],
       "ignoreChanges": [
-        "**/{test,__tests__,docs,bin}/**",
+        "**/{test,__tests__,docs,bin,_site}/**",
         "**/*.{LICENSE,md,yml}",
         "**/{.gitignore,package-lock.json,yarn.lock}"
       ],

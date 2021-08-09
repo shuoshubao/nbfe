@@ -15,6 +15,7 @@
         "coverage": "npx nyc ava",
         "docs:gernerate": "node docs/generate",
         "docs:dev": "rm -rf _site/ && ydoc serve",
+        "docs:build": "rm -rf _site/ && ydoc build",
         "coverage:summary": "npx nyc --reporter=lcov --reporter=text-summary ava",
         "build": "npx rollup -c",
         "prepublishOnly": "npm run build"

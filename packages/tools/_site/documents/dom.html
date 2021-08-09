@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="UTF-8"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"/><link href="https://ke.com/favicon.ico" type="image/x-icon" rel="shortcut icon"/>;<meta name="theme-color" content="#ffffff"/><meta http-equiv="Cache-Control" content="no-transform"/><meta http-equiv="Cache-Control" content="no-siteapp"/><title>文档</title><link rel="stylesheet" href="../ydoc/styles/style.css"/><meta name="author" content="shuoshubao"/><meta name="keywords"/><meta name="description" content="工具库"/><meta id="releativePath" content=".."/><link rel="stylesheet" href="../ydoc/ydoc-plugin-search/search.css"/><link rel="stylesheet" href="https://file.ljcdn.com/bs/antd/4.16.6/dist/antd.min.css"/><link rel="stylesheet" href="../../../../../../../../../assets/style/site.css"/></head><body><div class="g-doc"><div class="m-aside"><div class="m-summary" id="js-menu"><div class="m-summary-content" id="js-menu-content"><div class="m-summary-block"><ul class="m-summary-list"><li class="item"><div class="m-summary-block"><a href="data.html" class="href">data</a><ul class="m-summary-list indent"><li class="item"><a href="data.html#reserveproperties" class="href">reserveProperties</a></li><li class="item"><a href="data.html#removeproperties" class="href">removeProperties</a></li><li class="item"><a href="data.html#removeemptyproperties" class="href">removeEmptyProperties</a></li><li class="item"><a href="data.html#produceemptyobject" class="href">produceEmptyObject</a></li><li class="item"><a href="data.html#formatemptytodefault" class="href">formatEmptyToDefault</a></li><li class="item"><a href="data.html#booleanpromise" class="href">booleanPromise</a></li></ul></div></li><li class="item"><div class="m-summary-block"><a href="decimal.html" class="href">decimal</a><ul class="m-summary-list indent"><li class="item"><a href="decimal.html#plus" class="href">plus</a></li><li class="item"><a href="decimal.html#minus" class="href">minus</a></li><li class="item"><a href="decimal.html#mul" class="href">mul</a></li><li class="item"><a href="decimal.html#div" class="href">div</a></li></ul></div></li><li class="item"><div class="m-summary-block"><a href="dev.html" class="href">dev</a><ul class="m-summary-list indent"><li class="item"><a href="dev.html#sleep" class="href">sleep</a></li><li class="item"><a href="dev.html#fakefetch" class="href">fakeFetch</a></li></ul></div></li><li class="item"><div class="m-summary-block"><a href="" class="href">dom</a><ul class="m-summary-list indent"><li class="item"><a href="dom.html#setattrs" class="href">setAttrs</a></li><li class="item"><a href="dom.html#downloadblob" class="href">downloadBlob</a></li><li class="item"><a href="dom.html#download" class="href">download</a></li><li class="item"><a href="dom.html#convertcssom" class="href">convertCssom</a></li><li class="item"><a href="dom.html#setstyle" class="href">setStyle</a></li><li class="item"><a href="dom.html#getcsstext" class="href">getCssText</a></li><li class="item"><a href="dom.html#getwordwidth" class="href">getWordWidth</a></li><li class="item"><a href="dom.html#copytext" class="href">copyText</a></li><li class="item"><a href="dom.html#classnames" class="href">classNames</a></li><li class="item"><a href="dom.html#suffixclassnames" class="href">suffixClassNames</a></li></ul></div></li><li class="item"><div class="m-summary-block"><a href="enum.html" class="href">enum</a><ul class="m-summary-list indent"><li class="item"><a href="enum.html#getlabelbyvalue" class="href">getLabelByValue</a></li><li class="item"><a href="enum.html#convertjsontoenum" class="href">convertJsonToEnum</a></li><li class="item"><a href="enum.html#getvaluebylabel" class="href">getValueByLabel</a></li><li class="item"><a href="enum.html#convertdatatoenum" class="href">convertDataToEnum</a></li><li class="item"><a href="enum.html#convertdatatocascader" class="href">convertDataToCascader</a></li><li class="item"><a href="enum.html#getvalueincollection" class="href">getValueInCollection</a></li></ul></div></li><li class="item"><div class="m-summary-block"><a href="file.html" class="href">file</a><ul class="m-summary-list indent"><li class="item"><a href="file.html#b64toblob" class="href">b64toBlob</a></li></ul></div></li><li class="item"><div class="m-summary-block"><a href="formatters.html" class="href">formatters</a><ul class="m-summary-list indent"><li class="item"><a href="formatters.html#formatters" class="href">formatters</a></li></ul></div></li></ul></div></div></div><div class="m-summary-switch" id="js-summary-switch"><svg viewBox="0 0 926.23699 573.74994" version="1.1" x="0px" y="0px" width="15" height="15" class="bottom"><g transform="translate(904.92214,-879.1482)"><path d="m -673.67664,1221.6502 -231.2455,-231.24803 55.6165,-55.627 c 30.5891,-30.59485 56.1806,-55.627 56.8701,-55.627 0.6894,0 79.8637,78.60862 175.9427,174.68583 l 174.6892,174.6858 174.6892,-174.6858 c 96.079,-96.07721 175.253196,-174.68583 175.942696,-174.68583 0.6895,0 26.281,25.03215 56.8701,55.627 l 55.6165,55.627 -231.245496,231.24803 c -127.185,127.1864-231.5279,231.248 -231.873,231.248 -0.3451,0 -104.688,-104.0616 -231.873,-231.248 z" fill="#fff"></path></g></svg><svg viewBox="0 0 926.23699 573.74994" version="1.1" x="0px" y="0px" width="15" height="15" class="top"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="aaa" fill="#fff" fill-rule="nonzero"><path d="M231.2455,342.502 L0,111.25397 L55.6165,55.62697 C86.2056,25.03212 111.7971,-2.99999998e-05 112.4866,-2.99999998e-05 C113.176,-2.99999998e-05 192.3503,78.60859 288.4293,174.6858 L463.1185,349.3716 L637.8077,174.6858 C733.8867,78.60859 813.060896,-2.99999997e-05 813.750396,-2.99999997e-05 C814.439896,-2.99999997e-05 840.031396,25.03212 870.620496,55.62697 L926.236996,111.25397 L694.9915,342.502 C567.8065,469.6884 463.4636,573.75 463.1185,573.75 C462.7734,573.75 358.4305,469.6884 231.2455,342.502 Z" id="Shape" transform="translate(463.118498, 286.874985) scale(1, -1) translate(-463.118498, -286.874985) "></path></g></g></svg></div></div><div class="m-main" id="js-panel"><header class="m-header" id="js-header"><div class="m-header-title js-logo"><a href="../index.html" target="_self"><img class="logo" width="36" src="https://ke.com/favicon.ico"/><h6 class="name">工具库</h6></a></div><div><div class="m-search">
+      <div class="icon">&#xf0fd;</div>
+      <input type="text" class="input js-input" placeholder="搜索" />
+      <div class="m-search-result js-search-result"></div>
+    </div></div><nav class="m-header-nav js-nav"><ul class="m-header-items"><li class="item "><a class="href" href="../install/index.html">使用</a></li><li class="item active"><a class="href" href="data.html">文档</a></li><li class="item "><a class="href" href="../CHANGELOG.html">更新日志</a></li><li class="item "><a class="href" href="../CONTRIBUTING.html">开发者指南</a></li></ul></nav><div id="js-nav-btn" class="m-header-btn ui-font-ydoc"></div></header><div class="m-content" id="js-content"><div id="markdown-body" class="m-content-container markdown-body"><div><div id="setattrs" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>setAttrs(element, attrs = {})</span><i arialabel="图标: code" class="anticon anticon-code action-showCode" data-code="const setAttrs = (element, attrs = {}) => {
+    Object.entries(attrs).forEach(([k, v]) => {
+        element.setAttribute(k, v);
+    });
+};"><svg viewbox="64 64 896 896" focusable="false" dataicon="code" width="1em" height="1em" fill="currentColor" ariahidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"/></svg></i></div></div><div class="item-method-content"><div>给元素批量设置属性</div><h4>Arguments</h4><div><strong style="color: #1890ff;">element</strong><strong style="color: #1890ff;"> (HTMLElement)</strong><span>: dom元素</span></div><div><strong style="color: #1890ff;">[attrs]</strong><strong style="color: #1890ff;"> (Object)</strong><span>: 属性</span></div><h4>Returns</h4><span><strong style="color: #1890ff;">(*)</strong><span>: undefined</span></span><h4>Example</h4><div style="display: none;">暂无</div><pre style>
+setAttrs(eDiv, { id: 1, class: &#39;abc&#39; })
+=&gt; &lt;div id=&quot;1&quot; class=&quot;abc&quot;&gt;&lt;/div&gt;</pre></div></div>
+<div><div id="downloadblob" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>downloadBlob(blob, options = {})</span><i arialabel="图标: code" class="anticon anticon-code action-showCode" data-code="const downloadBlob = (blob, options = {}) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(blob);
+    fileReader.onload = e => {
+        const elmentA = document.createElement('a');
+        const href = e.target.result;
+        setAttrs(elmentA, { ...options, href });
+        document.body.appendChild(elmentA);
+        elmentA.click();
+        document.body.removeChild(elmentA);
+    };
+};"><svg viewbox="64 64 896 896" focusable="false" dataicon="code" width="1em" height="1em" fill="currentColor" ariahidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"/></svg></i></div></div><div class="item-method-content"><div>下载 blob</div><h4>Arguments</h4><div><strong style="color: #1890ff;">blob</strong><strong style="color: #1890ff;"> (*)</strong><span>: blob数据</span></div><div><strong style="color: #1890ff;">[options]</strong><strong style="color: #1890ff;"> (Object)</strong><span>: a链接的属性</span></div><h4>Returns</h4><span><strong style="color: #1890ff;">(*)</strong><span>: undefined</span></span><h4>Example</h4><div style="display: none;">暂无</div><pre style>
+downloadBlob(blobData, { download: &#39;demo.png&#39; })
+=&gt; 浏览器下载文件</pre></div></div>
+<div><div id="download" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>download(url = '', config = {})</span><i 64 896 arialabel="图标: code" class="anticon anticon-code action-showCode" data-code="const download = (url = '', config = {}) => {
+    const elmentA = document.createElement('a');
+    document.body.append(elmentA);
+    const downloadFileName = last(url.split('/'));
+    setAttrs(elmentA, {
+        href: url,
+        download: downloadFileName,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        ...config
+    });
+    setStyle(elmentA, {
+        display: 'none !important'
+    });
+    elmentA.click();
+    document.body.removeChild(elmentA);
+};
+<p>// 当值为数字时, 加上单位 <code>px</code> 的 css 属性 const DefaultUnitsPxProperties = ['font-size', 'margin', 'padding', 'border'];</p>
+<p>// margin, padding, border ['top', 'right', 'bottom', 'left'].forEach(v =&gt; { DefaultUnitsPxProperties.push(v); DefaultUnitsPxProperties.push(['margin', v].join('-')); DefaultUnitsPxProperties.push(['padding', v].join('-')); DefaultUnitsPxProperties.push(['border', v, 'width'].join('-')); });</p>
+<p>// max min ['width', 'height'].forEach(v =&gt; { DefaultUnitsPxProperties.push(v); DefaultUnitsPxProperties.push(['max', v].join('-'), ['min', v].join('-')); });&quot;&gt;<svg viewBox=" 896" focusable="false" dataicon="code" width="1em" height="1em" fill="currentColor" ariahidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path></i></div></div><div class="item-method-content"><div>下载文件</div><h4>Arguments</h4><div><strong style="color: #1890ff;">url</strong><strong style="color: #1890ff;"> (String)</strong><span>: [description]</span></div><div><strong style="color: #1890ff;">config</strong><strong style="color: #1890ff;"> (Object)</strong><span>: [description]</span></div><h4>Returns</h4><span><strong style="color: #1890ff;">(*)</strong><span>: undefined</span></span><h4>Example</h4><div style="display: none;">暂无</div><pre style> download('https://ke.com/favicon.ico', { download: 'favicon.ico' }) =&gt; 浏览器下载文件</pre></div></div><p></p>
+<div><div id="convertcssom" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>convertCssom(cssom = {})</span><i arialabel="图标: code" class="anticon anticon-code action-showCode" data-code="const convertCssom = (cssom = {}) => {
+    return Object.entries(cssom).reduce((prev, [k, v]) => {
+        const key = kebabCase(k);
+        // 对于一些特定属性, 当值为数字时, 加上单位 px
+        if (isNumber(v) && DefaultUnitsPxProperties.includes(key)) {
+            prev[key] = `${v}px`;
+        } else {
+            prev[key] = v;
+        }
+        return prev;
+    }, {});
+};"><svg viewbox="64 64 896 896" focusable="false" dataicon="code" width="1em" height="1em" fill="currentColor" ariahidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"/></svg></i></div></div><div class="item-method-content"><div>给cssom加上单位px</div><h4>Arguments</h4><div><strong style="color: #1890ff;">[cssom]</strong><strong style="color: #1890ff;"> (Object)</strong><span>: [description]</span></div><h4>Returns</h4><span><strong style="color: #1890ff;">(Object)</strong><span>: 带有'px'单位的 cssom</span></span><h4>Example</h4><div style="display: none;">暂无</div><pre style>
+convertCssom({ width: 100, height: 200 })
+=&gt; { width: &#39;100px&#39;, height: &#39;200px&#39; }</pre><pre style="margin-top: -16px; border-top: 1px solid #f0f0f0;">
+convertCssom({ width: 100, minHeight: 100, marginTop: 10, paddingBottom: 10 })
+=&gt; { width: &#39;100px&#39;, &#39;min-height&#39;: &#39;100px&#39;, &#39;margin-top&#39;: &#39;10px&#39;, &#39;padding-bottom&#39;: &#39;10px&#39; }</pre></div></div>
+<div><div id="setstyle" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>setStyle(element, cssom)</span><i arialabel="图标: code" class="anticon anticon-code action-showCode" data-code="const setStyle = (element, cssom) => {
+    const computedCssom = convertCssom(cssom);
+    Object.entries(computedCssom).forEach(([k, v]) => {
+        element.style[k] = v;
+    });
+};"><svg viewbox="64 64 896 896" focusable="false" dataicon="code" width="1em" height="1em" fill="currentColor" ariahidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"/></svg></i></div></div><div class="item-method-content"><div>给元素批量设置样式</div><h4>Arguments</h4><div><strong style="color: #1890ff;">element</strong><strong style="color: #1890ff;"> (HTMLElement)</strong><span>: dom元素</span></div><div><strong style="color: #1890ff;">cssom</strong><strong style="color: #1890ff;"> (StyleSheet)</strong><span>: cssom</span></div><h4>Returns</h4><span><strong style="color: #1890ff;">(*)</strong><span>: undefined</span></span><h4>Example</h4><div style="display: none;">暂无</div><pre style>
+setStyle(eDiv, { width: 100, color: &#39;red&#39; })
+=&gt; &lt;div style=&quot;width: 100px; color: red;&quot;&gt;&lt;/div&gt;</pre></div></div>
+<div><div id="getcsstext" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>getCssText(cssom = {})</span><i arialabel="图标: code" class="anticon anticon-code action-showCode" data-code="const getCssText = (cssom = {}) => {
+    if (isEmptyObject(cssom)) {
+        return '';
+    }
+    const computedCssom = convertCssom(cssom);
+    const cssText = Object.entries(computedCssom)
+        .reduce((prev, [k, v]) => {
+            prev.push([k, v].join(': '));
+            return prev;
+        }, [])
+        .join('; ');
+    return [cssText, ';'].join('');
+};"><svg viewbox="64 64 896 896" focusable="false" dataicon="code" width="1em" height="1em" fill="currentColor" ariahidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"/></svg></i></div></div><div class="item-method-content"><div>获取 cssText</div><h4>Arguments</h4><div><strong style="color: #1890ff;">cssom</strong><strong style="color: #1890ff;"> (StyleSheet)</strong><span>: cssom</span></div><h4>Returns</h4><span><strong style="color: #1890ff;">(String)</strong><span>: cssText 字符串</span></span><h4>Example</h4><div style="display: none;">暂无</div><pre style>
+getCssText({ width: 100, color: &#39;red&#39; })
+=&gt; &#39;width: 100px; color: red;&#39;</pre></div></div>
+<div><div id="getwordwidth" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>getWordWidth(word = '', cssom = {})</span><i arialabel="图标: code" class="anticon anticon-code action-showCode" data-code="const getWordWidth = (word = '', cssom = {}) => {
+    const eleSpan = document.createElement('span');
+    const defaultCssom = { visibility: 'hidden', whiteSpace: 'nowrap', fontSize: 14 };
+    eleSpan.style.cssText = getCssText({
+        ...defaultCssom,
+        ...cssom
+    });
+    document.body.appendChild(eleSpan);
+    eleSpan.innerText = word;
+    const width = eleSpan.offsetWidth;
+    document.body.removeChild(eleSpan);
+    return Math.ceil(Number.parseFloat(width));
+};"><svg viewbox="64 64 896 896" focusable="false" dataicon="code" width="1em" height="1em" fill="currentColor" ariahidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"/></svg></i></div></div><div class="item-method-content"><div>获取字符串在浏览器中所占的长度</div><h4>Arguments</h4><div><strong style="color: #1890ff;">word</strong><strong style="color: #1890ff;"> (String)</strong><span>: 字符串</span></div><div><strong style="color: #1890ff;">cssom</strong><strong style="color: #1890ff;"> (StyleSheet)</strong><span>: cssom</span></div><h4>Returns</h4><span><strong style="color: #1890ff;">(Number)</strong><span>: 字符串在浏览器中所占的长度</span></span><h4>Example</h4><div style="display: none;">暂无</div><pre style>getWordWidth(&#39;四个汉字&#39;)
+=&gt; 56</pre><pre style="margin-top: -16px; border-top: 1px solid #f0f0f0;">getWordWidth(&#39;汉字abc123&#39;)
+=&gt; 78</pre></div></div>
+<div><div id="copytext" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>copyText(text = '')</span><i arialabel="图标: code" class="anticon anticon-code action-showCode" data-code="const copyText = (text = '') => {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+};"><svg viewbox="64 64 896 896" focusable="false" dataicon="code" width="1em" height="1em" fill="currentColor" ariahidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"/></svg></i></div></div><div class="item-method-content"><div>复制文本</div><h4>Arguments</h4><div><strong style="color: #1890ff;">element</strong><strong style="color: #1890ff;"> (*)</strong><span>: [description]</span></div><div><strong style="color: #1890ff;">attrs</strong><strong style="color: #1890ff;"> (Object)</strong><span>: [description]</span></div><h4>Returns</h4><span><strong style="color: #1890ff;">(*)</strong><span>: undefined</span></span><h4>Example</h4><div style="display: none;">暂无</div><pre style>
+copyText(&#39;abc&#39;)
+=&gt; 复制内容到粘贴板</pre><pre style="margin-top: -16px; border-top: 1px solid #f0f0f0;">
+copyText(&#39;abc\n123&#39;)
+=&gt; 复制内容到粘贴板</pre></div></div>
+<div><div id="classnames" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>classNames(...args)</span><i arialabel="图标: code" class="anticon anticon-code action-showCode" data-code="const classNames = (...args) => {
+    const classNameList = [];
+    flattenDeep([args]).forEach(v => {
+        if (isObject(v)) {
+            Object.entries(v).forEach(([k2, v2]) => {
+                if (v2) {
+                    classNameList.push(k2);
+                }
+            });
+        } else {
+            classNameList.push(String(v || '').trim());
+        }
+    });
+    return uniq(classNameList.filter(Boolean)).join(' ');
+};"><svg viewbox="64 64 896 896" focusable="false" dataicon="code" width="1em" height="1em" fill="currentColor" ariahidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"/></svg></i></div></div><div class="item-method-content"><div>classNames</div><h4>See</h4><a href="https://www.npmjs.com/package/classnames" target="_blank" style="color: #1890ff;">https://www.npmjs.com/package/classnames</a><h4>Arguments</h4><div><strong style="color: #1890ff;">args</strong><strong style="color: #1890ff;"> (*)</strong><span>: 每个className的描述</span></div><h4>Returns</h4><span><strong style="color: #1890ff;">(String)</strong><span>: className 字符串</span></span><h4>Example</h4><div style="display: none;">暂无</div><pre style>
+classNames(&#39;foo&#39;, &#39;bar&#39;)
+// =&gt; &#39;foo bar&#39;</pre><pre style="margin-top: -16px; border-top: 1px solid #f0f0f0;">
+classNames(&#39;foo&#39;, { bar: true })
+// =&gt; &#39;foo bar&#39;</pre><pre style="margin-top: -16px; border-top: 1px solid #f0f0f0;">
+classNames({ &#39;foo-bar&#39;: true })
+// =&gt; &#39;foo-bar&#39;</pre><pre style="margin-top: -16px; border-top: 1px solid #f0f0f0;">
+classNames({ &#39;foo-bar&#39;: false })
+// =&gt; &#39;&#39;</pre><pre style="margin-top: -16px; border-top: 1px solid #f0f0f0;">
+classNames({ foo: true }, { bar: true })
+// =&gt; &#39;foo bar&#39;</pre><pre style="margin-top: -16px; border-top: 1px solid #f0f0f0;">
+classNames({ foo: true, bar: true })
+// =&gt; &#39;foo bar&#39;</pre></div></div>
+<div><div id="suffixclassnames" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>suffixClassNames(baseClassName = '', suffixConfig = {}, config = {})</span><i arialabel="图标: code" class="anticon anticon-code action-showCode" data-code="const suffixClassNames = (baseClassName = '', suffixConfig = {}, config = {}) => {
+    const computedConfig = {
+        separator: '-',
+        ...config
+    };
+    const classNameList = [baseClassName];
+    Object.entries(suffixConfig).forEach(([k, v]) => {
+        if (v) {
+            classNameList.push([baseClassName, k].join(computedConfig.separator));
+        }
+    });
+    return classNames(classNameList);
+};"><svg viewbox="64 64 896 896" focusable="false" dataicon="code" width="1em" height="1em" fill="currentColor" ariahidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"/></svg></i></div></div><div class="item-method-content"><div>给 className 加后缀<br>适用于开发组件库时, 给className加作用域</div><h4>Arguments</h4><div><strong style="color: #1890ff;">[baseClassName='']</strong><strong style="color: #1890ff;"> (String)</strong><span>: 基准 ClassName</span></div><div><strong style="color: #1890ff;">[suffixConfig={}]</strong><strong style="color: #1890ff;"> (Object)</strong><span>: classNames 对象</span></div><div><strong style="color: #1890ff;">[config={separator: '-'}]</strong><strong style="color: #1890ff;"> (Object)</strong><span>: classNames 对象</span></div><h4>Returns</h4><span><strong style="color: #1890ff;">(String)</strong><span>: className 字符串</span></span><h4>Example</h4><div style="display: none;">暂无</div><pre style>
+suffixClassNames(&#39;table&#39;, { bordered: true, shadow: false })
+// =&gt; &#39;table table-bordered&#39;</pre></div></div>
+</div><div class="m-content-container m-paging"><div class="m-paging-prev m-paging-item"><a href="dev.html" class="href"><span class="ui-font-ydoc"></span>dev</a></div><div class="m-paging-next m-paging-item"><a href="enum.html" class="href">enum<span class="ui-font-ydoc"></span></a></div></div></div></div></div><div></div><script>
+    var $content = document.getElementById('js-content');
+    var $summaryItems = Array.prototype.slice.call(document.querySelectorAll('#js-menu .href'));
+    var $menu = document.getElementById('js-menu');
+    if (sessionStorage.prevPathname) {
+      sessionStorage.setItem('prevPrevPathname', sessionStorage.prevPathname);
+      sessionStorage.setItem('prevPrevMenuScrollTop', sessionStorage.prevMenuScrollTop);
+      sessionStorage.setItem('prevPrevContentScrollTop', sessionStorage.prevContentScrollTop);
+    }
+    if (sessionStorage.locationPathname) {
+      sessionStorage.setItem('prevPathname', sessionStorage.locationPathname);
+      sessionStorage.setItem('prevMenuScrollTop', sessionStorage.menuScrollTop);
+      sessionStorage.setItem('prevContentScrollTop', sessionStorage.contentScrollTop);
+    }
+    if ($menu && sessionStorage.menuScrollTop) {
+		  $menu.scrollTop = sessionStorage.menuScrollTop;
+    }
+    // 刷新页面但不切换 pathname 的时候，内容区恢复到记忆的高度
+    if ($content && sessionStorage.contentScrollTop && window.location.pathname == sessionStorage.locationPathname) {
+      $content.scrollTop = sessionStorage.contentScrollTop;
+    } else if (sessionStorage.prevPrevPathname && sessionStorage.prevPrevPathname === window.location.pathname) {
+      if ($menu && sessionStorage.prevPrevMenuScrollTop) {
+        $menu.scrollTop = sessionStorage.prevPrevMenuScrollTop;
+      }
+      if ($content && sessionStorage.prevPrevContentScrollTop) {
+        $content.scrollTop = sessionStorage.prevPrevContentScrollTop;
+      }
+    }
+    sessionStorage.setItem('locationPathname', window.location.pathname);
+    </script><script src="../ydoc/scripts/plugins/dollar.min.js"></script><script src="../ydoc/scripts/plugins/responsive-nav.min.js"></script><script src="../ydoc/scripts/plugins/slideout.min.js"></script><script src="../ydoc/scripts/app.js"></script><script src="../ydoc/ydoc-plugin-search/core.js"></script><script src="../ydoc/ydoc-plugin-search/search.js"></script><script src="https://file.ljcdn.com/bs/lodash/4.17.21/lodash.min.js"></script><script src="https://file.ljcdn.com/bs/react/17.0.2/umd/react.production.min.js"></script><script src="https://file.ljcdn.com/bs/react-dom/17.0.2/umd/react-dom.production.min.js"></script><script src="https://file.ljcdn.com/bs/antd/4.16.6/dist/antd.min.js"></script><script src="../../../../../../../../../assets/js/code.js"></script><script src="../search_json.js"></script></body></html>
