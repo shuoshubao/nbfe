@@ -1,7 +1,12 @@
 import { omit, flatten } from 'lodash';
 import { isEmptyValue } from './types';
 
-// 只保留对象的部分属性(删除之外的属性)
+/**
+ * 只保留对象的部分属性(删除之外的属性)
+ * @param  {Object} [data] 数据源
+ * @param  {Array}  [keys] 需要保留的属性列表
+ * @return {*}      修改数据源
+ */
 export const reserveProperties = (data = {}, keys = []) => {
     Object.keys(data)
         .filter(v => !keys.includes(v))
@@ -10,14 +15,23 @@ export const reserveProperties = (data = {}, keys = []) => {
         });
 };
 
-// 批量删除属性
+/**
+ * 批量删除属性
+ * @param  {Object} [data] 数据源
+ * @param  {Array}  [keys] 需要删除的属性列表
+ * @return {*}      修改数据源
+ */
 export const removeProperties = (data = {}, keys = []) => {
     keys.forEach(v => {
         delete data[v];
     });
 };
 
-// 批量删除属性值为空的属性
+/**
+ * 批量删除属性值为空的属性
+ * @param  {Object} [data] 数据源
+ * @return {*}      修改数据源
+ */
 export const removeEmptyProperties = (data = {}) => {
     Object.entries(data).forEach(([k, v]) => {
         if (isEmptyValue(v)) {
@@ -27,12 +41,10 @@ export const removeEmptyProperties = (data = {}) => {
 };
 
 /**
- * 产生一个值全是空字符串的对象
- * input: ['a', 'b']
- * output: {
- *     a: '',
- *     b: ''
- * }
+ * 产生一个值全为空的对象
+ * @param  {Array}  [keys]      属性列表
+ * @param  {String} [emptyText] 空值
+ * @return {Object}           [值全为空的对象]
  */
 export const produceEmptyObject = (keys = [], emptyText = '') => {
     return flatten(keys).reduce((prev, cur) => {
@@ -41,7 +53,26 @@ export const produceEmptyObject = (keys = [], emptyText = '') => {
     }, {});
 };
 
-// 将数据中的空值('', undefined, null)替换为默认值
+/**
+ * 将数据中的空值替换为默认值
+ * @param  {Object} data     数据源
+ * @param  {Object} formater [{ key, value }]
+ * @return {*}      修改数据源
+ * @example
+ * const data1 = {
+ *     a: 1,
+ *     b: null,
+ *     c: '',
+ *     d: ' '
+ * };
+ * const formater1 = {
+ *     a: '',
+ *     b: -1,
+ *     c: -1
+ * };
+ * formatEmptyToDefault(data1, formater1);
+ * // => { a: 1, b: -1, c: -1, d: ' ' }
+ */
 export const formatEmptyToDefault = (data = {}, formater = {}) => {
     Object.entries(data).forEach(([k, v]) => {
         Object.entries(formater).forEach(([k2, v2]) => {
@@ -54,33 +85,11 @@ export const formatEmptyToDefault = (data = {}, formater = {}) => {
     });
 };
 
-// 将对象转换为数组
-export const convertObjectToArray = (data = {}, propKey = '') => {
-    if (!propKey) {
-        throw new Error('Missing required arguments: "propKey"');
-    }
-    return Object.entries(data).reduce((prev, cur) => {
-        const [k, v] = cur;
-        prev.push({
-            ...v,
-            [propKey]: k
-        });
-        return prev;
-    }, []);
-};
-
-// 将数组转换为对象
-export const convertArrayToObject = (data = [], propKey = '') => {
-    if (!propKey) {
-        throw new Error('Missing required arguments: "propKey"');
-    }
-    return data.reduce((prev, cur) => {
-        prev[cur[propKey]] = omit(cur, [propKey]);
-        return prev;
-    }, {});
-};
-
-// 将 element-ui 或 mtd 的 validate 变成一个始终是resolved状态的promise, 不用写try-catch或者回调函数的形式
+/**
+ * 将 element-ui Form组件 的 validate 变成一个始终是resolved状态的promise, 不用写try-catch或者回调函数的形式
+ * @param  {Function} [.validate] 校验方法
+ * @return {Promise<Boolean>} 校验结果
+ */
 export const pifyValidate = validateFn => {
     return new Promise(resolve => {
         validateFn(valid => {
@@ -89,7 +98,12 @@ export const pifyValidate = validateFn => {
     });
 };
 
-// 将 promise变成一个只有 resolved 态
+/**
+ * 将 promise变成一个只有 resolved 态
+ * @param  {Promise} promise Promise实例
+ * @param  {any} params  需要传入的参数
+ * @return {Promise<Boolean>}         Promise 执行结果
+ */
 export const booleanPromise = (promise, params) => {
     return new Promise(resolve => {
         let tempPromise;
