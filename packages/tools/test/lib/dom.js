@@ -21,5 +21,8 @@ test('suffixClassNames', t => {
     is(suffixClassNames('abc', { actived: true }), 'abc abc-actived');
     is(suffixClassNames('abc', { actived: true, hover: false }), 'abc abc-actived');
     is(suffixClassNames('abc', { actived: true, hover: true }), 'abc abc-actived abc-hover');
-    is(suffixClassNames('abc-de', { actived: true, hover: true }, { separator: '__' }), 'abc-de abc-de__actived abc-de__hover');
+    is(
+        suffixClassNames('abc-de', { actived: true, hover: true }, { separator: '__' }),
+        'abc-de abc-de__actived abc-de__hover'
+    );
 });
