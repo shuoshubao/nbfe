@@ -6,3 +6,7 @@ yarn-error.log
 /lib/
 /coverage/
 rollup.config.js
+
+/_site/
+/docs/
+/bin/

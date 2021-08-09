@@ -6,6 +6,13 @@ import { isEmptyValue } from './types';
  * @param  {Object} [data] 数据源
  * @param  {Array}  [keys] 需要保留的属性列表
  * @return {*}      修改数据源
+ * @example
+ *
+ * var data = { a: 1, b: 2, c: 3 };
+ * reserveProperties(data, ['a']);
+ *
+ * => data = { a: 1 };
+ *
  */
 export const reserveProperties = (data = {}, keys = []) => {
     Object.keys(data)
@@ -20,6 +27,12 @@ export const reserveProperties = (data = {}, keys = []) => {
  * @param  {Object} [data] 数据源
  * @param  {Array}  [keys] 需要删除的属性列表
  * @return {*}      修改数据源
+ * @example
+ *
+ * var data = { a: 1, b: 2, c: 3 };
+ * reserveProperties(data, ['a']);
+ *
+ * => data = { b: 2, c: 3 };
  */
 export const removeProperties = (data = {}, keys = []) => {
     keys.forEach(v => {
@@ -59,6 +72,7 @@ export const produceEmptyObject = (keys = [], emptyText = '') => {
  * @param  {Object} formater [{ key, value }]
  * @return {*}      修改数据源
  * @example
+ *
  * const data1 = {
  *     a: 1,
  *     b: null,
