@@ -1,4 +1,10 @@
-// base64 转成 blob
+/**
+ * base64 转成 blob
+ * @param  {String} b64Data     base64数据
+ * @param  {String} contentType blob的contentType
+ * @param  {Number} [sliceSize=512]   [字符串切割比例]
+ * @return {Blob}             blob数据
+ */
 export const b64toBlob = (b64Data, contentType = 'image/jpeg', sliceSize = 512) => {
     const byteCharacters = atob(b64Data.split(';base64,')[1]);
     const byteArrays = [];

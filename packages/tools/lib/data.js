@@ -44,6 +44,12 @@ export const removeProperties = (data = {}, keys = []) => {
  * 批量删除属性值为空的属性
  * @param  {Object} [data] 数据源
  * @return {*}      修改数据源
+ * @example
+ *
+ * var data = { a: '', b: 0, c: false, d: null, e: { a: 0 } };
+ * removeEmptyProperties(data, ['a']);
+ *
+ * => data = { b: 0, c: false, e: { a: 0 } };
  */
 export const removeEmptyProperties = (data = {}) => {
     Object.entries(data).forEach(([k, v]) => {
@@ -58,6 +64,17 @@ export const removeEmptyProperties = (data = {}) => {
  * @param  {Array}  [keys]      属性列表
  * @param  {String} [emptyText] 空值
  * @return {Object}           [值全为空的对象]
+ * @example
+ *
+ * produceEmptyObject(['a', 'b']);
+ *
+ * => { a: '', b: '' }
+ *
+ * @example
+ *
+ * produceEmptyObject(['a', 'b'], null);
+ *
+ * => { a: null, b: null }
  */
 export const produceEmptyObject = (keys = [], emptyText = '') => {
     return flatten(keys).reduce((prev, cur) => {
@@ -100,23 +117,13 @@ export const formatEmptyToDefault = (data = {}, formater = {}) => {
 };
 
 /**
- * 将 element-ui Form组件 的 validate 变成一个始终是resolved状态的promise, 不用写try-catch或者回调函数的形式
- * @param  {Function} [.validate] 校验方法
- * @return {Promise<Boolean>} 校验结果
- */
-export const pifyValidate = validateFn => {
-    return new Promise(resolve => {
-        validateFn(valid => {
-            resolve(valid);
-        });
-    });
-};
-
-/**
  * 将 promise变成一个只有 resolved 态
  * @param  {Promise} promise Promise实例
- * @param  {any} params  需要传入的参数
+ * @param  {any} [params]  需要传入的参数
  * @return {Promise<Boolean>}         Promise 执行结果
+ * @example
+ *
+ * nothing
  */
 export const booleanPromise = (promise, params) => {
     return new Promise(resolve => {

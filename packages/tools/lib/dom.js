@@ -2,14 +2,32 @@ import { kebabCase, isNumber, isObject, flattenDeep, uniq, last } from 'lodash';
 import { stringifyUrl } from './route';
 import { isEmptyObject } from './types';
 
-// 给元素批量设置属性
-export const setAttrs = (ele, attrs = {}) => {
+/**
+ * 给元素批量设置属性
+ * @param  {HTMLElement} element   dom元素
+ * @param  {Object} [attrs] 属性
+ * @return {*}       undefined
+ * @example
+ *
+ * setAttrs(eDiv, { id: 1, class: 'abc' })
+ * => <div id="1" class="abc"></div>
+ */
+export const setAttrs = (element, attrs = {}) => {
     Object.entries(attrs).forEach(([k, v]) => {
-        ele.setAttribute(k, v);
+        element.setAttribute(k, v);
     });
 };
 
-// 下载 blob
+/**
+ * 下载 blob
+ * @param  {*} blob    blob数据
+ * @param  {Object} [options] a链接的属性
+ * @return {*}       undefined
+ * @example
+ *
+ * downloadBlob(blobData, { download: 'demo.png' })
+ * => 浏览器下载文件
+ */
 export const downloadBlob = (blob, options = {}) => {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(blob);
@@ -23,7 +41,16 @@ export const downloadBlob = (blob, options = {}) => {
     };
 };
 
-// 下载文件
+/**
+ * 下载文件
+ * @param  {String} url    [description]
+ * @param  {Object} config [description]
+ * @return {*}       undefined
+ * @example
+ *
+ * download('https://ke.com/favicon.ico', { download: 'favicon.ico' })
+ * => 浏览器下载文件
+ */
 export const download = (url = '', config = {}) => {
     const elmentA = document.createElement('a');
     document.body.append(elmentA);
@@ -59,7 +86,20 @@ const DefaultUnitsPxProperties = ['font-size', 'margin', 'padding', 'border'];
     DefaultUnitsPxProperties.push(['max', v].join('-'), ['min', v].join('-'));
 });
 
-// 给cssom加上单位px
+/**
+ * 给cssom加上单位px
+ * @param  {Object} [cssom] [description]
+ * @return {Object}       带有'px'单位的 cssom
+ * @example
+ *
+ * convertCssom({ width: 100, height: 200 })
+ * => { width: '100px', height: '200px' }
+ *
+ * @example
+ *
+ * convertCssom({ width: 100, minHeight: 100, marginTop: 10, paddingBottom: 10 })
+ * => { width: '100px', 'min-height': '100px', 'margin-top': '10px', 'padding-bottom': '10px' }
+ */
 export const convertCssom = (cssom = {}) => {
     return Object.entries(cssom).reduce((prev, [k, v]) => {
         const key = kebabCase(k);
@@ -73,15 +113,32 @@ export const convertCssom = (cssom = {}) => {
     }, {});
 };
 
-// 给元素批量设置样式
-export const setStyle = (ele, cssom) => {
+/**
+ * 给元素批量设置样式
+ * @param  {HTMLElement} element   dom元素
+ * @param  {StyleSheet} cssom   cssom
+ * @return {*}       undefined
+ * @example
+ *
+ * setStyle(eDiv, { width: 100, color: 'red' })
+ * => <div style="width: 100px; color: red;"></div>
+ */
+export const setStyle = (element, cssom) => {
     const computedCssom = convertCssom(cssom);
     Object.entries(computedCssom).forEach(([k, v]) => {
-        ele.style[k] = v;
+        element.style[k] = v;
     });
 };
 
-// 获取 cssText
+/**
+ * 获取 cssText
+ * @param  {StyleSheet} cssom   cssom
+ * @return {String}       cssText 字符串
+ * @example
+ *
+ * getCssText({ width: 100, color: 'red' })
+ * => 'width: 100px; color: red;'
+ */
 export const getCssText = (cssom = {}) => {
     if (isEmptyObject(cssom)) {
         return '';
@@ -96,7 +153,20 @@ export const getCssText = (cssom = {}) => {
     return [cssText, ';'].join('');
 };
 
-// 获取字符串在浏览器中所占的长度
+/**
+ * 获取字符串在浏览器中所占的长度
+ * @param  {String} word  字符串
+ * @param  {StyleSheet} cssom   cssom
+ * @return {Number}       字符串在浏览器中所占的长度
+ *
+ * @example
+ * getWordWidth('四个汉字')
+ * => 56
+ *
+ * @example
+ * getWordWidth('汉字abc123')
+ * => 78
+ */
 export const getWordWidth = (word = '', cssom = {}) => {
     const eleSpan = document.createElement('span');
     const defaultCssom = { visibility: 'hidden', whiteSpace: 'nowrap', fontSize: 14 };
@@ -111,17 +181,65 @@ export const getWordWidth = (word = '', cssom = {}) => {
     return Math.ceil(Number.parseFloat(width));
 };
 
-// 复制文本
+/**
+ * 复制文本
+ * @param  {*} element   [description]
+ * @param  {Object} attrs [description]
+ * @return {*}       undefined
+ * @example
+ *
+ * copyText('abc')
+ * => 复制内容到粘贴板
+ *
+ * @example
+ *
+ * copyText('abc\n123')
+ * => 复制内容到粘贴板
+ */
 export const copyText = (text = '') => {
-    const input = document.createElement('input');
-    document.body.appendChild(input);
-    input.setAttribute('value', text);
-    input.select();
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
     document.execCommand('copy');
-    document.body.removeChild(input);
+    document.body.removeChild(textarea);
 };
 
-// 轮子王: https://www.npmjs.com/package/classnames
+/**
+ * classNames
+ * @see https://www.npmjs.com/package/classnames
+ * @param  {...*} args   每个className的描述
+ * @return {String}       className 字符串
+ * @example
+ *
+ * classNames('foo', 'bar')
+ * // => 'foo bar'
+ *
+ * @example
+ *
+ * classNames('foo', { bar: true })
+ * // => 'foo bar'
+ *
+ * @example
+ *
+ * classNames({ 'foo-bar': true })
+ * // => 'foo-bar'
+ *
+ * @example
+ *
+ * classNames({ 'foo-bar': false })
+ * // => ''
+ *
+ * @example
+ *
+ * classNames({ foo: true }, { bar: true })
+ * // => 'foo bar'
+ *
+ * @example
+ *
+ * classNames({ foo: true, bar: true })
+ * // => 'foo bar'
+ */
 export const classNames = (...args) => {
     const classNameList = [];
     flattenDeep([args]).forEach(v => {
@@ -138,7 +256,18 @@ export const classNames = (...args) => {
     return uniq(classNameList.filter(Boolean)).join(' ');
 };
 
-// 给 className 加后缀
+/**
+ * 给 className 加后缀
+ * 适用于开发组件库时, 给className加作用域
+ * @param  {String} [baseClassName='']   基准 ClassName
+ * @param  {Object} [suffixConfig={}]   classNames 对象
+ * @param  {Object} [config={separator: '-'}]   classNames 对象
+ * @return {String}       className 字符串
+ * @example
+ *
+ * suffixClassNames('table', { bordered: true, shadow: false })
+ * // => 'table table-bordered'
+ */
 export const suffixClassNames = (baseClassName = '', suffixConfig = {}, config = {}) => {
     const computedConfig = {
         separator: '-',
