@@ -67,14 +67,12 @@ export const removeEmptyProperties = (data = {}) => {
  * @return {Object}           [值全为空的对象]
  * @example
  *
- * const data1 = produceEmptyObject(['a', 'b']);
- * console.log(data1);
+ * produceEmptyObject(['a', 'b']);
  * // => { a: '', b: '' }
  *
  * @example
  *
- * const data2 = produceEmptyObject(['a', 'b'], null);
- * console.log(data1);
+ * produceEmptyObject(['a', 'b'], null);
  * // => { a: null, b: null }
  */
 export const produceEmptyObject = (keys = [], emptyText = '') => {
