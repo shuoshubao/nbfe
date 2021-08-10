@@ -22,19 +22,33 @@ const getBanner = () => {
     return createComment(data);
 };
 
-export default {
-    input: 'lib/index.js',
-    output: {
-        file: 'dist/index.js',
-        format: 'cjs',
-        banner: getBanner()
+const plugins = [
+    json(),
+    babel({
+        babelrc: false,
+        presets: ['@babel/preset-env'],
+        plugins: ['@babel/plugin-proposal-class-properties']
+    })
+];
+
+export default [
+    {
+        input: 'lib/index.js',
+        output: {
+            file: 'dist/index.js',
+            format: 'cjs',
+            banner: getBanner()
+        },
+        plugins
     },
-    plugins: [
-        json(),
-        babel({
-            babelrc: false,
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-class-properties']
-        })
-    ]
-};
+    {
+        input: 'lib/index.js',
+        output: {
+            name: 'tools',
+            file: 'dist/index.umd.js',
+            format: 'umd',
+            banner: getBanner()
+        },
+        plugins
+    }
+];

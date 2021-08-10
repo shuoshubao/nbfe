@@ -13,7 +13,7 @@
         "test": "npx ava --verbose",
         "test:watch": "npx ava --verbose --watch",
         "coverage": "npx nyc ava",
-        "docs:gernerate": "node docs/generate",
+        "docs:gernerate": "nodemon docs/generate.js --watch lib",
         "docs:dev": "rm -rf _site/ && ydoc serve",
         "docs:build": "rm -rf _site/ && ydoc build",
         "coverage:summary": "npx nyc --reporter=lcov --reporter=text-summary ava",
