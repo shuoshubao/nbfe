@@ -17,8 +17,9 @@ const MenuListText = [];
 // removeSync('docs/documents');
 ensureDirSync('docs/documents');
 copySync('CHANGELOG.md', 'docs/CHANGELOG.md');
+writeFileSync('docs/assets/js/index.umd.js', readFileSync('dist/index.umd.js').toString().replaceAll('lodash.', '_.'));
 
-files.slice(0, 7).forEach(v => {
+files.slice(0, 8).forEach(v => {
     const fileName = v.split(/[\/|.]/)[1];
     const content = readFileSync(v).toString();
     const exportList = content

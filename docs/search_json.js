@@ -49,12 +49,18 @@ window.ydoc_plugin_search_json = {
       "content": "",
       "url": "/documents/formatters.html",
       "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/html.html",
+      "children": []
     }
   ],
   "更新日志": [
     {
       "title": "Change Log0.2.0 (2021-03-22)",
-      "content": "All notable changes to this project will be documented in this file. See Conventional Commits for commit guidelines.",
+      "content": "All notable changes to this project will be documented in this file.See Conventional Commits for commit guidelines.",
       "url": "/CHANGELOG.html",
       "children": [
         {
@@ -120,7 +126,7 @@ window.ydoc_plugin_search_json = {
         {
           "title": "Features",
           "url": "/CHANGELOG.html#0.2.2-2021-07-26-features",
-          "content": "Featuresua 相关的判断变成方法, 避免直接调用 (88d835f)\n"
+          "content": "Featuresua相关的判断变成方法, 避免直接调用 (88d835f)\n"
         },
         {
           "title": "0.2.1 (2021-05-24)",
@@ -150,7 +156,7 @@ window.ydoc_plugin_search_json = {
         {
           "title": "Bug Fixes",
           "url": "/CHANGELOG.html#0.1.11-2021-01-26-bug-fixes",
-          "content": "Bug FixesupdateUrlQuery 取 query 错误 (8dd24ce)\n"
+          "content": "Bug FixesupdateUrlQuery 取query错误 (8dd24ce)\n"
         },
         {
           "title": "0.1.10 (2021-01-22)",
@@ -165,7 +171,7 @@ window.ydoc_plugin_search_json = {
         {
           "title": "Features",
           "url": "/CHANGELOG.html#0.1.10-2021-01-22-features",
-          "content": "FeaturesparseUrl 返回 origin 和 hostname (2a36942)\n"
+          "content": "FeaturesparseUrl 返回origin 和 hostname (2a36942)\n"
         },
         {
           "title": "0.1.9 (2021-01-20)",
