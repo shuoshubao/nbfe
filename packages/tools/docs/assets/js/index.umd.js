@@ -1436,6 +1436,20 @@
      * @param  {Number} value  值
      * @param  {Object} config { emptyText = '--', // 空文本 reverse = false, // 颜色切换 disabled = false // 不使用颜色 }
      * @return {String}        html 字符串
+     * @example
+     *
+     * getPercentageHtml(0.23)
+     * // => '<span style="color: #00b365;">23%</span>'
+     *
+     * @example
+     *
+     * getPercentageHtml(-0.23)
+     * // => '<span style="color: #00b365;">-23%</span>'
+     *
+     * @example
+     *
+     * getPercentageHtml(0.23, { disabled: true })
+     * // => '23%'
      */
 
     var getPercentageHtml = function getPercentageHtml(value) {
@@ -1473,11 +1487,24 @@
       return String(emptyText);
     };
 
+    /**
+     * 获取图片的尺寸
+     * @param  {String} url [description]
+     * @return {Object}     [description]
+     * @example
+     *
+     * (async() => {
+     *   const size = await getImageSize('https://ke.com/favicon.ico');
+     *   console.log(size);
+     * })();
+     *
+     * // => { width: 24, height: 24 }
+     */
+
     var getImageSize = function getImageSize() {
       var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       return new Promise(function (reslove) {
         var img = new Image();
-        img.setAttribute('crossorigin', 'anonymous');
         img.src = url;
         img.onload = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
           return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -1494,7 +1521,12 @@
           }, _callee);
         }));
       });
-    }; // 将图片的 http-url 变成 base64
+    };
+    /**
+     * 将图片的 http-url 变成 base64
+     * @param  {String} url [description]
+     * @return {String}     [description]
+     */
 
     var changeImageUrlToBase64 = function changeImageUrlToBase64(url) {
       if (url.startsWith('data:image')) {

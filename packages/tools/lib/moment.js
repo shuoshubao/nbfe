@@ -1,4 +1,11 @@
-// moment/locale/zh-cn.js
+/**
+ * moment/locale/zh-cn.js 中文语言包
+ * @param  {Moment} moment moment.js
+ * @return {*}        注册中文语言包
+ * @example
+ *
+ * defineMomentLocaleZhCn(moment);
+ */
 export const defineMomentLocaleZhCn = moment => {
     moment.defineLocale('zh-cn', {
         months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
