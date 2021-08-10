@@ -11,19 +11,19 @@ import { isEmptyValue } from './types';
  *
  * const data = [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格' }]
  * getLabelByValue(5, data)
- * => '优秀'
+ * // => '优秀'
  *
  * @example
  * getLabelByValue('5', data)
- * => '优秀'
+ * // => '优秀'
  *
  * @example
  * getLabelByValue(null, data)
- * => '--'
+ * // => '--'
  *
  * @example
  * getLabelByValue(null, data, '暂无')
- * => '暂无'
+ * // => '暂无'
  */
 export const getLabelByValue = (value, data = [], emptyText = '--') => {
     const item = data.find(v => String(v.value) === String(value));
@@ -41,7 +41,7 @@ export const getLabelByValue = (value, data = [], emptyText = '--') => {
  *
  * const data = { 优秀: 5, 良好: 4, 及格: 3 }
  * convertJsonToEnum(data)
- * => [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格' }]
+ * // => [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格' }]
  */
 export const convertJsonToEnum = (data = {}) => {
     return Object.entries(data).reduce((prev, [k, v]) => {
@@ -64,7 +64,7 @@ export const convertJsonToEnum = (data = {}) => {
  *
  * const data = [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格' } }]
  * getValueByLabel('优秀', data)
- * => 5
+ * // => 5
  */
 export const getValueByLabel = (label, data = [], emptyText = '--') => {
     let tempData = data;
@@ -87,7 +87,7 @@ export const getValueByLabel = (label, data = [], emptyText = '--') => {
  *
  * const res = { code: 1, data: { list: [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格' } }] }, message: 'success' }
  * convertDataToEnum(res, { path: 'data.list', valueKey: 'code', labelKey: 'desc' })
- * => [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格' }]
+ * // => [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格' }]
  */
 export const convertDataToEnum = (res, options = {}) => {
     if (isEmptyValue(res)) {
@@ -131,7 +131,7 @@ export const convertDataToEnum = (res, options = {}) => {
  *
  * const res = { code: 1, data: { list: [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格', list: [ { code: 3.5, desc: '一般' } ] } }] }, message: 'success' }
  * convertDataToCascader(res, { path: 'data.list', valueKey: 'code', labelKey: 'desc', childrenKey: 'list' })
- * => [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格', children: [{ value: 3.5, label: '一般' }] }]
+ * // => [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格', children: [{ value: 3.5, label: '一般' }] }]
  */
 export const convertDataToCascader = (res, config) => {
     const {
@@ -172,13 +172,13 @@ export const convertDataToCascader = (res, config) => {
  *
  * const data = [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格' } }];
  * getValueInCollection('优秀', data, { key: 'code', valueKey: 'desc' })
- * => 5
+ * // => 5
  *
  * @example
  *
  * const data = [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格' } }];
  * getValueInCollection(5, data, { valueKey: 'code', key: 'desc' })
- * => '优秀'
+ * // => '优秀'
  */
 export const getValueInCollection = (value, data = [], options = {}) => {
     const { key = '', valueKey = '', emptyText = '--' } = options;

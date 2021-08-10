@@ -28,17 +28,17 @@ const plusTwo = (a, b) => {
  * @example
  *
  * plus(0.1, 0.2)
- * => 0.3
+ * // => 0.3
  *
  * @example
  *
  * plus(0.1, 0.1, 0.1)
- * => 0.3
+ * // => 0.3
  *
  * @example
  *
  * plus([0.1, 0.1, 0.1])
- * => 0.3
+ * // => 0.3
  */
 export const plus = (...args) => {
     return flatten(args).reduce((prev, cur) => {
@@ -55,7 +55,7 @@ export const plus = (...args) => {
  * @example
  *
  * minus(0.3, 0.1)
- * => 0.2
+ * // => 0.2
  */
 export const minus = (a, b) => {
     return plus(a, mulTwo(b, -1));
@@ -69,17 +69,17 @@ export const minus = (a, b) => {
  * @example
  *
  * mul(0.1, 0.2)
- * => 0.03
+ * // => 0.02
  *
  * @example
  *
  * mul(0.1, 0.1, 0.1)
- * => 0.001
+ * // => 0.001
  *
  * @example
  *
  * mul([0.1, 0.1, 0.1])
- * => 0.001
+ * // => 0.001
  */
 export const mul = (...args) => {
     return flatten(args).reduce((prev, cur) => {
@@ -96,7 +96,7 @@ export const mul = (...args) => {
  * @example
  *
  * div(0.3, 0.1)
- * => 3
+ * // => 3
  */
 export const div = (a, b) => {
     const decMax = Math.max(getDecLength(a), getDecLength(b));

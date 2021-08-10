@@ -6,7 +6,7 @@
  *
  * const isValid = await validateFn(this.$refs.form.validate)
  *
- * => false
+ * // => false
  */
 export const pifyValidate = validateFn => {
     return new Promise(resolve => {

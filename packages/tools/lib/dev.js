@@ -8,12 +8,12 @@ import { random } from 'lodash';
  *
  * await sleep()
  * console.log(1)
- * => 随机时间(2s-5s)后输出: 1
+ * // => 随机时间(2s-5s)后输出: 1
  *
  * @example
  * await sleep(3)
  * console.log(1)
- * => 3秒后输出: 1
+ * // => 3秒后输出: 1
  */
 export const sleep = (time = -1) => {
     const sleepTime = time < 0 ? random(2, 5) : time;
@@ -28,7 +28,7 @@ export const sleep = (time = -1) => {
  *
  * const data = await fakeFetch({ a: 1 }, 1.5)
  * console.log(data);
- * => 1.5秒后输出: { a: 1 }
+ * // => 1.5秒后输出: { a: 1 }
  */
 export const fakeFetch = (data = {}, time = -1) => {
     return new Promise(resolve => {

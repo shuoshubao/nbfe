@@ -10,7 +10,7 @@ import { isEmptyObject } from './types';
  * @example
  *
  * setAttrs(eDiv, { id: 1, class: 'abc' })
- * => <div id="1" class="abc"></div>
+ * // => <div id="1" class="abc"></div>
  */
 export const setAttrs = (element, attrs = {}) => {
     Object.entries(attrs).forEach(([k, v]) => {
@@ -26,7 +26,7 @@ export const setAttrs = (element, attrs = {}) => {
  * @example
  *
  * downloadBlob(blobData, { download: 'demo.png' })
- * => 浏览器下载文件
+ * // => 浏览器下载文件
  */
 export const downloadBlob = (blob, options = {}) => {
     const fileReader = new FileReader();
@@ -49,7 +49,7 @@ export const downloadBlob = (blob, options = {}) => {
  * @example
  *
  * download('https://ke.com/favicon.ico', { download: 'favicon.ico' })
- * => 浏览器下载文件
+ * // => 浏览器下载文件
  */
 export const download = (url = '', config = {}) => {
     const elmentA = document.createElement('a');
@@ -93,12 +93,12 @@ const DefaultUnitsPxProperties = ['font-size', 'margin', 'padding', 'border'];
  * @example
  *
  * convertCssom({ width: 100, height: 200 })
- * => { width: '100px', height: '200px' }
+ * // => { width: '100px', height: '200px' }
  *
  * @example
  *
  * convertCssom({ width: 100, minHeight: 100, marginTop: 10, paddingBottom: 10 })
- * => { width: '100px', 'min-height': '100px', 'margin-top': '10px', 'padding-bottom': '10px' }
+ * // => { width: '100px', 'min-height': '100px', 'margin-top': '10px', 'padding-bottom': '10px' }
  */
 export const convertCssom = (cssom = {}) => {
     return Object.entries(cssom).reduce((prev, [k, v]) => {
@@ -121,7 +121,7 @@ export const convertCssom = (cssom = {}) => {
  * @example
  *
  * setStyle(eDiv, { width: 100, color: 'red' })
- * => <div style="width: 100px; color: red;"></div>
+ * // => <div style="width: 100px; color: red;"></div>
  */
 export const setStyle = (element, cssom) => {
     const computedCssom = convertCssom(cssom);
@@ -137,7 +137,7 @@ export const setStyle = (element, cssom) => {
  * @example
  *
  * getCssText({ width: 100, color: 'red' })
- * => 'width: 100px; color: red;'
+ * // => 'width: 100px; color: red;'
  */
 export const getCssText = (cssom = {}) => {
     if (isEmptyObject(cssom)) {
@@ -161,11 +161,11 @@ export const getCssText = (cssom = {}) => {
  *
  * @example
  * getWordWidth('四个汉字')
- * => 56
+ * // => 56
  *
  * @example
  * getWordWidth('汉字abc123')
- * => 78
+ * // => 78
  */
 export const getWordWidth = (word = '', cssom = {}) => {
     const eleSpan = document.createElement('span');
@@ -189,12 +189,12 @@ export const getWordWidth = (word = '', cssom = {}) => {
  * @example
  *
  * copyText('abc')
- * => 复制内容到粘贴板
+ * // => 复制内容到粘贴板
  *
  * @example
  *
  * copyText('abc\n123')
- * => 复制内容到粘贴板
+ * // => 复制内容到粘贴板
  */
 export const copyText = (text = '') => {
     const textarea = document.createElement('textarea');

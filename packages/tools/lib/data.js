@@ -8,10 +8,11 @@ import { isEmptyValue } from './types';
  * @return {*}      修改数据源
  * @example
  *
- * var data = { a: 1, b: 2, c: 3 };
- * reserveProperties(data, ['a']);
+ * var data = { a: 1, b: 2, c: 3 }
+ * reserveProperties(data, ['a'])
+ * console.log(data);
  *
- * => data = { a: 1 };
+ * // => { a: 1 };
  *
  */
 export const reserveProperties = (data = {}, keys = []) => {
@@ -30,9 +31,9 @@ export const reserveProperties = (data = {}, keys = []) => {
  * @example
  *
  * var data = { a: 1, b: 2, c: 3 };
- * reserveProperties(data, ['a']);
- *
- * => data = { b: 2, c: 3 };
+ * removeProperties(data, ['a']);
+ * console.log(data);
+ * // => { b: 2, c: 3 };
  */
 export const removeProperties = (data = {}, keys = []) => {
     keys.forEach(v => {
@@ -48,8 +49,8 @@ export const removeProperties = (data = {}, keys = []) => {
  *
  * var data = { a: '', b: 0, c: false, d: null, e: { a: 0 } };
  * removeEmptyProperties(data, ['a']);
- *
- * => data = { b: 0, c: false, e: { a: 0 } };
+ * console.log(data);
+ * // => { b: 0, c: false, e: { a: 0 } };
  */
 export const removeEmptyProperties = (data = {}) => {
     Object.entries(data).forEach(([k, v]) => {
@@ -66,15 +67,15 @@ export const removeEmptyProperties = (data = {}) => {
  * @return {Object}           [值全为空的对象]
  * @example
  *
- * produceEmptyObject(['a', 'b']);
- *
- * => { a: '', b: '' }
+ * const data1 = produceEmptyObject(['a', 'b']);
+ * console.log(data1);
+ * // => { a: '', b: '' }
  *
  * @example
  *
- * produceEmptyObject(['a', 'b'], null);
- *
- * => { a: null, b: null }
+ * const data2 = produceEmptyObject(['a', 'b'], null);
+ * console.log(data1);
+ * // => { a: null, b: null }
  */
 export const produceEmptyObject = (keys = [], emptyText = '') => {
     return flatten(keys).reduce((prev, cur) => {
@@ -90,7 +91,7 @@ export const produceEmptyObject = (keys = [], emptyText = '') => {
  * @return {*}      修改数据源
  * @example
  *
- * const data1 = {
+ * const data = {
  *     a: 1,
  *     b: null,
  *     c: '',
@@ -101,7 +102,8 @@ export const produceEmptyObject = (keys = [], emptyText = '') => {
  *     b: -1,
  *     c: -1
  * };
- * formatEmptyToDefault(data1, formater1);
+ * formatEmptyToDefault(data, formater1);
+ * console.log(data);
  * // => { a: 1, b: -1, c: -1, d: ' ' }
  */
 export const formatEmptyToDefault = (data = {}, formater = {}) => {
@@ -123,7 +125,7 @@ export const formatEmptyToDefault = (data = {}, formater = {}) => {
  * @return {Promise<Boolean>}         Promise 执行结果
  * @example
  *
- * nothing
+ * // nothing
  */
 export const booleanPromise = (promise, params) => {
     return new Promise(resolve => {

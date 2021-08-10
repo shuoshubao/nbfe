@@ -1,4 +1,4 @@
-const isDevelopment = process.env === 'development';
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
     title: 'tools',
@@ -15,6 +15,7 @@ module.exports = {
                 'https://file.ljcdn.com/bs/react/17.0.2/umd/react.production.min.js',
                 'https://file.ljcdn.com/bs/react-dom/17.0.2/umd/react-dom.production.min.js',
                 'https://file.ljcdn.com/bs/antd/4.16.6/dist/antd.min.js',
+                'https://embed.runkit.com',
                 isDevelopment ? '/assets/js/code.js' : 'https://shuoshubao.github.io/nbfe/assets/js/code.js'
             ]
         }
