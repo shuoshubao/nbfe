@@ -55,6 +55,18 @@ window.ydoc_plugin_search_json = {
       "content": "",
       "url": "/documents/html.html",
       "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/image.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/moment.html",
+      "children": []
     }
   ],
   "更新日志": [

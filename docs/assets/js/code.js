@@ -2,7 +2,7 @@
  * @Author: fangt11
  * @Date:   2021-08-06 20:16:27
  * @Last Modified by:   fangt11
- * @Last Modified time: 2021-08-10 15:24:33
+ * @Last Modified time: 2021-08-10 15:53:23
  */
 
 const { React, antd } = window;
@@ -41,7 +41,7 @@ window.addEventListener('load', () => {
                     element: document.getElementById(domId),
                     source
                 });
-            }, 1000);
+            }, 0);
         }
     });
 });
