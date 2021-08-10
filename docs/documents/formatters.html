@@ -2,26 +2,7 @@
       <div class="icon">&#xf0fd;</div>
       <input type="text" class="input js-input" placeholder="搜索" />
       <div class="m-search-result js-search-result"></div>
-    </div></div><nav class="m-header-nav js-nav"><ul class="m-header-items"><li class="item "><a class="href" href="../install/index.html">使用</a></li><li class="item active"><a class="href" href="data.html">文档</a></li><li class="item "><a class="href" href="../CHANGELOG.html">更新日志</a></li><li class="item "><a class="href" href="../CONTRIBUTING.html">开发者指南</a></li></ul></nav><div id="js-nav-btn" class="m-header-btn ui-font-ydoc"></div></header><div class="m-content" id="js-content"><div id="markdown-body" class="m-content-container markdown-body"><div><div id="formatters" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>formatters(new Formatters();)</span><i 64 896 arialabel="图标: code" class="anticon anticon-code action-showCode" data-code="import { isNumber } from 'lodash';
-import { thousands } from './numeral';
-import { mul } from './decimal';
-<p>class Formatters { // 不作处理 text(value) { return value; }</p>
-<pre><code>// 百分比
-percentage(value) {
-    if (isNumber(value)) {
-        const temp = Number(mul(value, 1e2).toFixed(2));
-        return `${temp}%`;
-    }
-    return value;
-}
-
-// 数字千分位
-number(value) {
-    return thousands(value);
-}
-</code></pre>
-<p>}</p>
-<p>const formatters = new Formatters();&quot;&gt;<svg viewBox=" 896" focusable="false" dataicon="code" width="1em" height="1em" fill="currentColor" ariahidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path></i></div></div><div class="item-method-content"><div></div><h4>Arguments</h4><h4>Returns</h4><h4>Example</h4><div style="display: block;">暂无</div></div></div><p></p>
+    </div></div><nav class="m-header-nav js-nav"><ul class="m-header-items"><li class="item "><a class="href" href="../install/index.html">使用</a></li><li class="item active"><a class="href" href="data.html">文档</a></li><li class="item "><a class="href" href="../CHANGELOG.html">更新日志</a></li><li class="item "><a class="href" href="../CONTRIBUTING.html">开发者指南</a></li></ul></nav><div id="js-nav-btn" class="m-header-btn ui-font-ydoc"></div></header><div class="m-content" id="js-content"><div id="markdown-body" class="m-content-container markdown-body"><div><div id="formatters" class="item-method-name" style="margin-top: -65px; padding-top: 65px;"><div class="item-method-name-area"><span>formatters(new Formatters();)</span><i arialabel="图标: code" class="anticon anticon-code action-showCode" data-funcname="formatters" data-example><svg viewbox="64 64 896 896" focusable="false" class="" data-icon="code" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"/></svg></i></div></div><div class="item-method-content"><div></div><h4>Arguments</h4><h4>Returns</h4><h4>Example</h4><div style="display: block;">暂无</div></div></div>
 </div><div class="m-content-container m-paging"><div class="m-paging-prev m-paging-item"><a href="file.html" class="href"><span class="ui-font-ydoc"></span>file</a></div></div></div></div></div><div></div><script>
     var $content = document.getElementById('js-content');
     var $summaryItems = Array.prototype.slice.call(document.querySelectorAll('#js-menu .href'));
@@ -51,4 +32,4 @@ number(value) {
       }
     }
     sessionStorage.setItem('locationPathname', window.location.pathname);
-    </script><script src="../ydoc/scripts/plugins/dollar.min.js"></script><script src="../ydoc/scripts/plugins/responsive-nav.min.js"></script><script src="../ydoc/scripts/plugins/slideout.min.js"></script><script src="../ydoc/scripts/app.js"></script><script src="../ydoc/ydoc-plugin-search/core.js"></script><script src="../ydoc/ydoc-plugin-search/search.js"></script><script src="https://file.ljcdn.com/bs/lodash/4.17.21/lodash.min.js"></script><script src="https://file.ljcdn.com/bs/react/17.0.2/umd/react.production.min.js"></script><script src="https://file.ljcdn.com/bs/react-dom/17.0.2/umd/react-dom.production.min.js"></script><script src="https://file.ljcdn.com/bs/antd/4.16.6/dist/antd.min.js"></script><script src="https://shuoshubao.github.io/nbfe/assets/js/code.js"></script><script src="../search_json.js"></script></body></html>
+    </script><script src="../ydoc/scripts/plugins/dollar.min.js"></script><script src="../ydoc/scripts/plugins/responsive-nav.min.js"></script><script src="../ydoc/scripts/plugins/slideout.min.js"></script><script src="../ydoc/scripts/app.js"></script><script src="../ydoc/ydoc-plugin-search/core.js"></script><script src="../ydoc/ydoc-plugin-search/search.js"></script><script src="https://file.ljcdn.com/bs/lodash/4.17.21/lodash.min.js"></script><script src="https://file.ljcdn.com/bs/react/17.0.2/umd/react.production.min.js"></script><script src="https://file.ljcdn.com/bs/react-dom/17.0.2/umd/react-dom.production.min.js"></script><script src="https://file.ljcdn.com/bs/antd/4.16.6/dist/antd.min.js"></script><script src="https://embed.runkit.com"></script><script src="https://shuoshubao.github.io/nbfe/assets/js/code.js"></script><script src="../search_json.js"></script></body></html>
