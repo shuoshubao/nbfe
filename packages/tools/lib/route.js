@@ -1,5 +1,5 @@
-import { pick } from 'lodash';
-import { isNullOrUndefined, isEmptyObject, isEmptyValue } from './types';
+import { pick, isNil } from 'lodash';
+import { isEmptyObject, isEmptyValue } from './types';
 import { queryParse, queryStringify } from './qs';
 
 /**
@@ -66,7 +66,7 @@ export const search = (key = '') => {
  */
 export const stringifyUrl = (url = '', params = {}) => {
     const args = Object.entries(params).reduce((prev, [k, v]) => {
-        if (!isNullOrUndefined(v) && v !== '') {
+        if (!isNil(v) && v !== '') {
             prev[k] = v;
         }
         return prev;

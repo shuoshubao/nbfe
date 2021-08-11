@@ -5,12 +5,6 @@ export const isUniq = (arr = []) => {
     return uniq(arr).length === arr.length;
 };
 
-export const isNullOrUndefined = arg => {
-    return [isNull, isUndefined].some(v => v(arg));
-};
-
-export { isNullOrUndefined as isNil };
-
 export const isEmptyString = arg => {
     return arg === '';
 };
