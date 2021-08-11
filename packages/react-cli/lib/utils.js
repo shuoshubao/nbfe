@@ -154,7 +154,12 @@ const manifestPluginGenerate = (seed, files, entries) => {
             return v2.path;
         });
 
-        const list = flattenDeep([packConfig.scripts, Object.values(dllManifest), itemCacheGroups, sortedEntryFiles]);
+        const list = flattenDeep([
+            Object.values(packConfig.assets),
+            Object.values(dllManifest),
+            itemCacheGroups,
+            sortedEntryFiles
+        ]);
         prev[k] = convertManifest(uniq(list));
         return prev;
     }, {});

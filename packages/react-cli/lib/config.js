@@ -63,7 +63,11 @@ const defaultConfig = {
     enableMock: true,
     alias: {},
     devServer: {},
-    scripts: [], // external 所需的cdn资源, 或者其他需要预先加载的js资源
+    // external 所需的cdn资源, 或者其他需要预先加载的 css js 资源
+    assets: {
+        css: [],
+        js: []
+    },
     css: {
         requireModuleExtension: true, // https://cli.vuejs.org/zh/config/#css-requiremoduleextension
         loaderOptions: {} // https://cli.vuejs.org/zh/config/#css-loaderoptions
