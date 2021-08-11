@@ -23,4 +23,8 @@ class Formatters {
     }
 }
 
+/**
+ * 文本格式化
+ * @type {Formatters}
+ */
 export const formatters = new Formatters();

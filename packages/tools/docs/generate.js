@@ -3,13 +3,16 @@ const { readFileSync, writeFileSync } = require('fs');
 const { removeSync, ensureDirSync, copySync } = require('fs-extra');
 const { sync: globSync } = require('glob');
 const { parseComments } = require('dox');
-const { filter, flatten, escape } = require('lodash');
+const { sortBy, filter, flatten, escape } = require('lodash');
 const { createElement } = require('@nbfe/js2html');
 
 const files = globSync('lib/*.js').filter(v => !v.includes('index'));
 
 const delHtmlTag = (str = '') => {
-    return str.replace(/<[^>]+>/g, '').replaceAll('\n', '<br />');
+    if (str.startsWith('<p>')) {
+        return str.slice(3, -4).replaceAll('\n', '<br />');
+    }
+    return str.replaceAll('\n', '<br />');
 };
 
 const MenuListText = [];
@@ -19,8 +22,40 @@ ensureDirSync('docs/documents');
 copySync('CHANGELOG.md', 'docs/CHANGELOG.md');
 writeFileSync('docs/assets/js/index.umd.js', readFileSync('dist/index.umd.js').toString().replaceAll('lodash.', '_.'));
 
-files.forEach(v => {
+// 优先级, 函数排序
+const FilesConfig = [
+    { category: 'date' },
+    { category: 'enum' },
+    { category: 'route', functions: ['search', 'stringifyUrl', 'linkTo', 'updateUrlQuery', 'getParams'] },
+    { category: 'qs' },
+    { category: 'decimal' },
+    { category: 'dev' },
+    { category: 'dom' },
+    { category: 'rules' },
+    { category: 'types' },
+    { category: 'data' },
+    { category: 'react' },
+    { category: 'vue' },
+    { category: 'formatters' },
+    { category: 'numeral' },
+    { category: 'html' },
+    { category: 'string' },
+    { category: 'ua' },
+    { category: 'image' },
+    { category: 'file' },
+    { category: 'Uint8Array' }
+];
+
+sortBy(files, v => {
     const fileName = v.split(/[\/|.]/)[1];
+    return FilesConfig.findIndex(v2 => {
+        return v2.category === fileName;
+    });
+}).forEach(v => {
+    const fileName = v.split(/[\/|.]/)[1];
+    const itemFilesConfig = FilesConfig.find(v2 => {
+        return v2.category === fileName;
+    });
     const content = readFileSync(v).toString();
     const exportList = content
         .split('\n')
@@ -38,11 +73,15 @@ files.forEach(v => {
             };
         });
     const docs = parseComments(content.replaceAll('export ', ''));
-    // console.log(222);
-    // console.log(JSON.stringify(docs));
-    const markdownText = exportList
-        .map((v, i) => {
-            const { description, tags, code } = docs[i];
+    const sortedExportList = sortBy(exportList, v2 => {
+        const index = (itemFilesConfig.functions || []).indexOf(v2.funcName);
+        return index === -1 ? exportList.length : index;
+    });
+    const markdownText = sortedExportList
+        .map(v => {
+            const { description, tags, code } = docs.find(v2 => {
+                return v2.ctx.name === v.funcName;
+            });
             const Aliases = filter(tags, { type: 'alias' });
             const See = filter(tags, { type: 'see' });
             const Returns = filter(tags, { type: 'return' });
@@ -246,7 +285,7 @@ files.forEach(v => {
         .join('\n');
     MenuListText.push(`- [${fileName}](${fileName}.md)`);
     MenuListText.push(
-        ...exportList.map(v => {
+        ...sortedExportList.map(v => {
             return `  - [${v.funcName}](${fileName}.md#${v.funcName})`;
         })
     );

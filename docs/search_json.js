@@ -3,7 +3,7 @@ window.ydoc_plugin_search_json = {
     {
       "title": "安装使用",
       "content": "npm i @nbfe/toolsimport { search } from '@nbfe/tools';",
-      "url": "/install/index.html",
+      "url": "/install.html",
       "children": []
     }
   ],
@@ -12,6 +12,30 @@ window.ydoc_plugin_search_json = {
       "title": "",
       "content": "",
       "url": "/documents/data.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/date.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/enum.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/route.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/qs.html",
       "children": []
     },
     {
@@ -35,79 +59,7 @@ window.ydoc_plugin_search_json = {
     {
       "title": "",
       "content": "",
-      "url": "/documents/enum.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/file.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/formatters.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/html.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/image.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/moment.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/numeral.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/qs.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/react.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/route.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
       "url": "/documents/rules.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/string.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/time.html",
       "children": []
     },
     {
@@ -119,19 +71,61 @@ window.ydoc_plugin_search_json = {
     {
       "title": "",
       "content": "",
-      "url": "/documents/ua.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
-      "url": "/documents/Uint8Array.html",
+      "url": "/documents/react.html",
       "children": []
     },
     {
       "title": "",
       "content": "",
       "url": "/documents/vue.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/formatters.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/numeral.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/html.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/string.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/ua.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/image.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/file.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/Uint8Array.html",
       "children": []
     }
   ],
