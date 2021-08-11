@@ -142,18 +142,18 @@ class ValidatorRules {
     };
 
     // min
-    min = (num = 0) => {
+    min = (text = '', num = 0) => {
         return {
             min: num,
-            message: `最少${num}个字符`
+            message: `${text}最少${num}个字符`
         };
     };
 
     // max
-    max = (num = 0) => {
+    max = (text = '', num = 0) => {
         return {
             max: num,
-            message: `最多${num}个字符`
+            message: `${text}最多${num}个字符`
         };
     };
 
