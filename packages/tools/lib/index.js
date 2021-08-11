@@ -15,7 +15,7 @@ export * from './react';
 export * from './route';
 export * from './rules';
 export * from './string';
-export * from './time';
+export * from './date';
 export * from './types';
 export * from './ua';
 export * from './Uint8Array';

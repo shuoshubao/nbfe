@@ -1,6 +1,6 @@
 import test from 'ava';
 import moment from 'moment';
-import { formatTime } from '../../lib/time';
+import { formatTime } from '../../lib/date';
 
 test('formatTime', async t => {
     const { is } = t;
