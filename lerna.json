@@ -10,7 +10,7 @@
       "ignoreChanges": [
         "**/{test,__tests__,docs,bin,_site}/**",
         "**/*.{LICENSE,md,yml}",
-        "**/{.gitignore,package-lock.json,yarn.lock}"
+        "**/{.gitignore,.npmrc,package.json,package-lock.json,yarn.lock}"
       ],
       "message": "chore(release): publish"
     },
