@@ -1,1 +1,1 @@
-<link href="https://ke.com/favicon.ico" type="image/x-icon" rel="shortcut icon" />;
+<link href="https://ke.com/favicon.ico" type="image/x-icon" rel="shortcut icon" />
