@@ -1,6 +1,6 @@
 {
     "name": "@nbfe/react-cli",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "React CLI",
     "author": "shuoshubao <759979885@qq.com>",
     "repository": {
@@ -30,7 +30,7 @@
         "@babel/register": "^7.13.16",
         "@babel/runtime": "^7.13.17",
         "@babel/runtime-corejs3": "^7.13.17",
-        "@nbfe/js2html": "^1.1.6",
+        "@nbfe/js2html": "^1.1.7",
         "@svgr/webpack": "^5.5.0",
         "add-asset-html-webpack-plugin": "^3.2.0",
         "babel-loader": "^8.2.2",

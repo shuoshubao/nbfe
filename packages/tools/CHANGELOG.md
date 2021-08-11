@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.8](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.7...@nbfe/tools@0.2.8) (2021-08-11)
+
+
+### Bug Fixes
+
+* 写错了 padding未生效 ([80d372e](https://github.com/shuoshubao/nbfe/commit/80d372e))
+* 移除方法convertObjectToArray,convertArrayToObject; 增加注释 ([9e98752](https://github.com/shuoshubao/nbfe/commit/9e98752))
+* isIPhoneX 判断 ([cbea1f7](https://github.com/shuoshubao/nbfe/commit/cbea1f7))
+* lodash中有isNil方法 ([f63bacc](https://github.com/shuoshubao/nbfe/commit/f63bacc))
+* min max 增加第一个参数 label ([efa1529](https://github.com/shuoshubao/nbfe/commit/efa1529))
+* zh_CN.js 更名 moment.js ([cb564ba](https://github.com/shuoshubao/nbfe/commit/cb564ba))
+
+
+
+
+
 ## [0.2.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.6...@nbfe/tools@0.2.7) (2021-07-28)
 
 

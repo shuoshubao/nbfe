@@ -1,6 +1,6 @@
 {
     "name": "@nbfe/tools",
-    "version": "0.2.7",
+    "version": "0.2.8",
     "description": "工具库",
     "author": "shuoshubao <759979885@qq.com>",
     "repository": {
@@ -24,7 +24,7 @@
         "@ava/babel": "^1.0.1",
         "@babel/plugin-proposal-class-properties": "^7.10.4",
         "@babel/preset-env": "^7.11.0",
-        "@nbfe/js2html": "^1.1.6",
+        "@nbfe/js2html": "^1.1.7",
         "@rollup/plugin-babel": "^5.1.0",
         "@rollup/plugin-json": "^4.1.0",
         "@types/babel__core": "^7.1.9",

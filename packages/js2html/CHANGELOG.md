@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.6...@nbfe/js2html@1.1.7) (2021-08-11)
+
+
+### Bug Fixes
+
+* 写错了 padding未生效 ([80d372e](https://github.com/shuoshubao/nbfe/commit/80d372e))
+
+
+
+
+
 ## [1.1.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.5...@nbfe/js2html@1.1.6) (2021-03-20)
 
 
