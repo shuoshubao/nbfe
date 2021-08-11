@@ -8,7 +8,7 @@ module.exports = {
         'import-asset': {
             css: [
                 'https://file.ljcdn.com/bs/antd/4.16.6/dist/antd.min.css',
-                isDevelopment ? '/assets/style/site.css' : 'https://shuoshubao.github.io/nbfe/assets/style/site.css'
+                isDevelopment ? '/assets/css/site.css' : 'https://shuoshubao.github.io/nbfe/assets/css/site.css'
             ],
             js: [
                 'https://file.ljcdn.com/bs/lodash/4.17.21/lodash.min.js',
