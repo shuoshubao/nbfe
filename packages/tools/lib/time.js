@@ -1,9 +1,42 @@
-// 日期格式化
 const WeekTextMap = ['日', '一', '二', '三', '四', '五', '六'];
 
-// YYYY-MM-DD
-// YYYY-MM-DD HH:mm
-// YYYY-MM-DD HH:mm:ss
+/**
+ * 日期格式化
+ * 参考: [dayjs.format](https://dayjs.gitee.io/docs/zh-CN/display/format)
+ * @param  {Number|String|Date} date        [description]
+ * @param  {String} [format='YYYY-MM-DD']      format
+ * @param  {String} [invalidText='--'] [description]
+ * @return {String}             [description]
+ * @example
+ *
+ * formatTime(1628659676589);
+ * // => '2021-08-11'
+ *
+ * @example
+ *
+ * formatTime(1628659676589, 'YYYY-MM-DD HH:mm');
+ * // => '2021-08-11 13:27'
+ *
+ * @example
+ *
+ * formatTime(1628659676589, 'YYYY-MM-DD HH:mm:ss');
+ * // => '2021-08-11 13:27:56'
+ *
+ * @example
+ *
+ * formatTime(new Date('2021-08-11 13:27:56'));
+ * // => '2021-08-11'
+ *
+ * @example
+ *
+ * formatTime('2021-08-11 13:27:56');
+ * // => '2021-08-11'
+ *
+ * @example
+ *
+ * tools.formatTime(null);
+ * // => '--'
+ */
 export const formatTime = (date, format = 'YYYY-MM-DD', invalidText = '--') => {
     if (+date <= 0) {
         return invalidText;

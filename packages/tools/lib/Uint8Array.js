@@ -1,8 +1,23 @@
-/* eslint-disable */
-
-// https://stackoverflow.com/questions/8936984/uint8array-to-string-in-javascript
-// https://gist.github.com/wumingdan/759564f6cb887a55bceb
-const Utf8ArrayToString = array => {
+/**
+ * Utf8数组 转 字符串
+ * 参考链接:
+ * 链接1: [https://stackoverflow.com/questions/8936984/uint8array-to-string-in-javascript](https://stackoverflow.com/questions/8936984/uint8array-to-string-in-javascript)
+ * 链接2:  [https://gist.github.com/wumingdan/759564f6cb887a55bceb](https://gist.github.com/wumingdan/759564f6cb887a55bceb)
+ * @param  {Utf8Array} array Utf8数组
+ * @return {String}       Utf8 数组转 字符串
+ * @example
+ *
+ * var arr = new Uint8Array(5);
+ * arr[0] = 0x3d;
+ * arr[1] = 0x35f;
+ * arr[2] = 0x35f;
+ * arr[3] = 0x35e;
+ * arr[4] = 0x35e;
+ *
+ * Utf8ArrayToString(arr);
+ * // => '=__^^'
+ */
+export const Utf8ArrayToString = array => {
     let out = '';
     let i = 0;
     const len = array.length;

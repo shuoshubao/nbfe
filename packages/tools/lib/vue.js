@@ -5,7 +5,6 @@
  * @example
  *
  * const isValid = await validateFn(this.$refs.form.validate)
- *
  * // => false
  */
 export const pifyValidate = validateFn => {

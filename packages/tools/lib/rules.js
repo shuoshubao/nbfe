@@ -1,10 +1,3 @@
-/**
- * 校验规则
- * @author fangtao04
- * @date   2020/04/07
- * async-validator: https://www.npmjs.com/package/async-validator
- */
-
 import { isEmpty, isNumber, isUndefined, find } from 'lodash';
 import { isEmptyArray } from './types';
 
@@ -184,4 +177,75 @@ class ValidatorRules {
     };
 }
 
+/**
+ * 校验规则
+ * 校验库参考: [async-validator](https://www.npmjs.com/package/async-validator)
+ * @type {Array.<ValidatorRules>}
+ * @example
+ *
+ * rules.required('Form.Item label')
+ * rules.selectRequired('Form.Item label')
+ * rules.multipleRequired('Form.Item label')
+ * rules.cascaderRequired('Form.Item label')
+ * rules.min('Form.Item label', 1)
+ * rules.max('Form.Item label', 5)
+ * rules.numberRange('Form.Item label', {  })
+ *
+ * // 数字范围的抽象描述
+ * [
+ *     {
+ *         key: 'eq',
+ *         description: '等于',
+ *         validate: (a, b) => {
+ *             return a === b;
+ *         }
+ *     },
+ *     {
+ *         key: 'ne',
+ *         description: '不等于',
+ *         validate: (a, b) => {
+ *             return a !== b;
+ *         }
+ *     },
+ *     {
+ *         key: 'gt',
+ *         description: '大于',
+ *         validate: (a, b) => {
+ *             return a > b;
+ *         }
+ *     },
+ *     {
+ *         key: 'lt',
+ *         description: '小于',
+ *         validate: (a, b) => {
+ *             return a < b;
+ *         }
+ *     },
+ *     {
+ *         key: 'ge',
+ *         description: '大于等于',
+ *         validate: (a, b) => {
+ *             return a >= b;
+ *         }
+ *     },
+ *     {
+ *         key: 'le',
+ *         description: '小于等于',
+ *         validate: (a, b) => {
+ *             return a <= b;
+ *         }
+ *     },
+ *     // 小数位数限制
+ *     {
+ *         key: 'decimalLength',
+ *         description: value => {
+ *             return ['最多', value, '位小数'].join('');
+ *         },
+ *         validate: (a, b) => {
+ *             const [, decimal = ''] = String(a).split('.');
+ *             return decimal.length <= b;
+ *         }
+ *     }
+ * ]
+ */
 export const rules = new ValidatorRules();

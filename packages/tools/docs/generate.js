@@ -19,7 +19,7 @@ ensureDirSync('docs/documents');
 copySync('CHANGELOG.md', 'docs/CHANGELOG.md');
 writeFileSync('docs/assets/js/index.umd.js', readFileSync('dist/index.umd.js').toString().replaceAll('lodash.', '_.'));
 
-files.slice(0, 14).forEach(v => {
+files.forEach(v => {
     const fileName = v.split(/[\/|.]/)[1];
     const content = readFileSync(v).toString();
     const exportList = content
@@ -196,7 +196,8 @@ files.slice(0, 14).forEach(v => {
                                         tagName: 'i',
                                         attrs: {
                                             style: {
-                                                marginLeft: 10
+                                                marginLeft: 10,
+                                                cursor: 'pointer'
                                             },
                                             ariaLabel: '图标: code',
                                             class: 'anticon anticon-code action-showCode',
