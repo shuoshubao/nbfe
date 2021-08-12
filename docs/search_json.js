@@ -11,12 +11,6 @@ window.ydoc_plugin_search_json = {
     {
       "title": "",
       "content": "",
-      "url": "/documents/data.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
       "url": "/documents/date.html",
       "children": []
     },
@@ -47,12 +41,6 @@ window.ydoc_plugin_search_json = {
     {
       "title": "",
       "content": "",
-      "url": "/documents/dev.html",
-      "children": []
-    },
-    {
-      "title": "",
-      "content": "",
       "url": "/documents/dom.html",
       "children": []
     },
@@ -66,6 +54,18 @@ window.ydoc_plugin_search_json = {
       "title": "",
       "content": "",
       "url": "/documents/types.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/dev.html",
+      "children": []
+    },
+    {
+      "title": "",
+      "content": "",
+      "url": "/documents/data.html",
       "children": []
     },
     {
@@ -135,6 +135,16 @@ window.ydoc_plugin_search_json = {
       "content": "All notable changes to this project will be documented in this file.See Conventional Commits for commit guidelines.",
       "url": "/CHANGELOG.html",
       "children": [
+        {
+          "title": "0.2.8 (2021-08-11)",
+          "url": "/CHANGELOG.html#0.2.8-2021-08-11",
+          "content": "0.2.8 (2021-08-11)"
+        },
+        {
+          "title": "Bug Fixes",
+          "url": "/CHANGELOG.html#0.2.8-2021-08-11-bug-fixes",
+          "content": "Bug Fixes写错了 padding未生效 (80d372e)\n移除方法convertObjectToArray,convertArrayToObject; 增加注释 (9e98752)\nisIPhoneX 判断 (cbea1f7)\nlodash中有isNil方法 (f63bacc)\nmin max 增加第一个参数 label (efa1529)\nzh_CN.js 更名 moment.js (cb564ba)\n"
+        },
         {
           "title": "0.2.7 (2021-07-28)",
           "url": "/CHANGELOG.html#0.2.7-2021-07-28",

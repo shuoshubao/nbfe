@@ -24,26 +24,30 @@ writeFileSync('docs/assets/js/index.umd.js', readFileSync('dist/index.umd.js').t
 
 // 优先级, 函数排序
 const FilesConfig = [
-    { category: 'date' },
-    { category: 'enum' },
-    { category: 'route', functions: ['search', 'stringifyUrl', 'linkTo', 'updateUrlQuery', 'getParams'] },
-    { category: 'qs' },
-    { category: 'decimal' },
-    { category: 'dev' },
-    { category: 'dom' },
-    { category: 'rules' },
-    { category: 'types' },
-    { category: 'data' },
-    { category: 'react' },
-    { category: 'vue' },
-    { category: 'formatters' },
-    { category: 'numeral' },
-    { category: 'html' },
-    { category: 'string' },
-    { category: 'ua' },
-    { category: 'image' },
-    { category: 'file' },
-    { category: 'Uint8Array' }
+    { category: 'date', categoryName: '日期' },
+    { category: 'enum', categoryName: '枚举' },
+    {
+        category: 'route',
+        categoryName: '路由',
+        functions: ['search', 'stringifyUrl', 'linkTo', 'updateUrlQuery', 'getParams']
+    },
+    { category: 'qs', categoryName: '路由' },
+    { category: 'decimal', categoryName: '浮点数计算' },
+    { category: 'dom', categoryName: 'DOM操作' },
+    { category: 'rules', categoryName: '表单校验' },
+    { category: 'types', categoryName: '类型' },
+    { category: 'dev', categoryName: '调试' },
+    { category: 'data', categoryName: '数据' },
+    { category: 'react', categoryName: 'React' },
+    { category: 'vue', categoryName: 'Vue' },
+    { category: 'formatters', categoryName: '文本格式化' },
+    { category: 'numeral', categoryName: '数值' },
+    { category: 'html', categoryName: 'Html字符串' },
+    { category: 'string', categoryName: '字符串处理' },
+    { category: 'ua', categoryName: 'UA' },
+    { category: 'image', categoryName: '图片' },
+    { category: 'file', categoryName: '文件' },
+    { category: 'Uint8Array', categoryName: '' }
 ];
 
 sortBy(files, v => {
@@ -53,7 +57,7 @@ sortBy(files, v => {
     });
 }).forEach(v => {
     const fileName = v.split(/[\/|.]/)[1];
-    const itemFilesConfig = FilesConfig.find(v2 => {
+    const { categoryName = '', functions = [] } = FilesConfig.find(v2 => {
         return v2.category === fileName;
     });
     const content = readFileSync(v).toString();
@@ -74,7 +78,7 @@ sortBy(files, v => {
         });
     const docs = parseComments(content.replaceAll('export ', ''));
     const sortedExportList = sortBy(exportList, v2 => {
-        const index = (itemFilesConfig.functions || []).indexOf(v2.funcName);
+        const index = (functions || []).indexOf(v2.funcName);
         return index === -1 ? exportList.length : index;
     });
     const markdownText = sortedExportList
@@ -282,7 +286,7 @@ sortBy(files, v => {
             });
         })
         .join('\n');
-    MenuListText.push(`- [${fileName}](${fileName}.md)`);
+    MenuListText.push(`- [${categoryName || fileName}](${fileName}.md)`);
     MenuListText.push(
         ...sortedExportList.map(v => {
             return `  - [${v.funcName}](${fileName}.md#${v.funcName})`;

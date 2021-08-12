@@ -1,5 +1,5 @@
 /*!
-* @nbfe/tools v0.2.7
+* @nbfe/tools v0.2.8
 * (c) 2019-2021 shuoshubao <759979885@qq.com>
 * Released under the ISC License.
 */
@@ -9,7 +9,7 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.tools = {}, global.lodash));
 }(this, (function (exports, lodash) { 'use strict';
 
-    var version = "0.2.7";
+    var version = "0.2.8";
 
     function ownKeys(object, enumerableOnly) {
       var keys = Object.keys(object);
@@ -638,6 +638,219 @@
         })["catch"](function () {
           resolve(false);
         });
+      });
+    };
+
+    var WeekTextMap = ['日', '一', '二', '三', '四', '五', '六'];
+    /**
+     * 日期格式化
+     * 参考: [dayjs.format](https://dayjs.gitee.io/docs/zh-CN/display/format)
+     * @param  {Number|String|Date} date        [description]
+     * @param  {String} [format='YYYY-MM-DD']      format
+     * @param  {String} [invalidText='--'] [description]
+     * @return {String}             [description]
+     * @example
+     *
+     * formatTime(1628659676589);
+     * // => '2021-08-11'
+     *
+     * @example
+     *
+     * formatTime(1628659676589, 'YYYY-MM-DD HH:mm');
+     * // => '2021-08-11 13:27'
+     *
+     * @example
+     *
+     * formatTime(1628659676589, 'YYYY-MM-DD HH:mm:ss');
+     * // => '2021-08-11 13:27:56'
+     *
+     * @example
+     *
+     * formatTime(new Date('2021-08-11 13:27:56'));
+     * // => '2021-08-11'
+     *
+     * @example
+     *
+     * formatTime('2021-08-11 13:27:56');
+     * // => '2021-08-11'
+     *
+     * @example
+     *
+     * tools.formatTime(null);
+     * // => '--'
+     */
+
+    var formatTime = function formatTime(date) {
+      var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'YYYY-MM-DD';
+      var invalidText = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '--';
+
+      if (+date <= 0) {
+        return invalidText;
+      }
+
+      var dt = new Date(+date || +new Date(date));
+      var year = dt.getFullYear();
+      var month = dt.getMonth() + 1;
+      var day = dt.getDate();
+      var hour = dt.getHours();
+      var minute = dt.getMinutes();
+      var second = dt.getSeconds();
+      var week = "\u661F\u671F".concat(WeekTextMap[dt.getDay()]);
+      var parse = {
+        YYYY: year,
+        MM: month,
+        DD: day,
+        HH: hour,
+        mm: minute,
+        ss: second,
+        w: week
+      };
+      parse.yyyy = parse.YYYY;
+      parse.dd = parse.DD;
+      parse.hh = parse.HH; // 补零
+
+      Object.entries(parse).forEach(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            k = _ref2[0],
+            v = _ref2[1];
+
+        parse[k] = String(v).padStart(2, 0);
+      }); // 上午|下午
+
+      parse.a = hour / 12 >= 1 ? 'pm' : 'am';
+      parse.A = parse.a.toUpperCase();
+      return Object.entries(parse).reduce(function (prev, _ref3) {
+        var _ref4 = _slicedToArray(_ref3, 2),
+            k = _ref4[0],
+            v = _ref4[1];
+
+        return prev.replace(k, v);
+      }, format);
+    };
+    /**
+     * moment/locale/zh-cn.js 中文语言包
+     * @param  {Moment} moment moment.js
+     * @return {*}        注册中文语言包
+     * @example
+     *
+     * defineMomentLocaleZhCn(moment);
+     */
+
+    var defineMomentLocaleZhCn = function defineMomentLocaleZhCn(moment) {
+      moment.defineLocale('zh-cn', {
+        months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
+        monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+        weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
+        weekdaysShort: '周日_周一_周二_周三_周四_周五_周六'.split('_'),
+        weekdaysMin: '日_一_二_三_四_五_六'.split('_'),
+        longDateFormat: {
+          LT: 'HH:mm',
+          LTS: 'HH:mm:ss',
+          L: 'YYYY/MM/DD',
+          LL: 'YYYY年M月D日',
+          LLL: 'YYYY年M月D日Ah点mm分',
+          LLLL: 'YYYY年M月D日ddddAh点mm分',
+          l: 'YYYY/M/D',
+          ll: 'YYYY年M月D日',
+          lll: 'YYYY年M月D日 HH:mm',
+          llll: 'YYYY年M月D日dddd HH:mm'
+        },
+        meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
+        meridiemHour: function meridiemHour(hour, meridiem) {
+          if (hour === 12) {
+            hour = 0;
+          }
+
+          if (meridiem === '凌晨' || meridiem === '早上' || meridiem === '上午') {
+            return hour;
+          } else if (meridiem === '下午' || meridiem === '晚上') {
+            return hour + 12;
+          } else {
+            // '中午'
+            return hour >= 11 ? hour : hour + 12;
+          }
+        },
+        meridiem: function meridiem(hour, minute, isLower) {
+          var hm = hour * 100 + minute;
+
+          if (hm < 600) {
+            return '凌晨';
+          } else if (hm < 900) {
+            return '早上';
+          } else if (hm < 1130) {
+            return '上午';
+          } else if (hm < 1230) {
+            return '中午';
+          } else if (hm < 1800) {
+            return '下午';
+          } else {
+            return '晚上';
+          }
+        },
+        calendar: {
+          sameDay: '[今天]LT',
+          nextDay: '[明天]LT',
+          nextWeek: function nextWeek(now) {
+            if (now.week() !== this.week()) {
+              return '[下]dddLT';
+            } else {
+              return '[本]dddLT';
+            }
+          },
+          lastDay: '[昨天]LT',
+          lastWeek: function lastWeek(now) {
+            if (this.week() !== now.week()) {
+              return '[上]dddLT';
+            } else {
+              return '[本]dddLT';
+            }
+          },
+          sameElse: 'L'
+        },
+        dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
+        ordinal: function ordinal(number, period) {
+          switch (period) {
+            case 'd':
+            case 'D':
+            case 'DDD':
+              return number + '日';
+
+            case 'M':
+              return number + '月';
+
+            case 'w':
+            case 'W':
+              return number + '周';
+
+            default:
+              return number;
+          }
+        },
+        relativeTime: {
+          future: '%s后',
+          past: '%s前',
+          s: '几秒',
+          ss: '%d 秒',
+          m: '1 分钟',
+          mm: '%d 分钟',
+          h: '1 小时',
+          hh: '%d 小时',
+          d: '1 天',
+          dd: '%d 天',
+          w: '1 周',
+          ww: '%d 周',
+          M: '1 个月',
+          MM: '%d 个月',
+          y: '1 年',
+          yy: '%d 年'
+        },
+        week: {
+          // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
+          dow: 1,
+          // Monday is the first day of the week.
+          doy: 4 // The week that contains Jan 4th is the first week of the year.
+
+        }
       });
     };
 
@@ -1896,6 +2109,11 @@
 
       return Formatters;
     }();
+    /**
+     * 文本格式化
+     * @type {Formatters}
+     */
+
 
     var formatters = new Formatters();
 
@@ -2026,132 +2244,6 @@
             }
           }, _callee2);
         }));
-      });
-    };
-
-    /**
-     * moment/locale/zh-cn.js 中文语言包
-     * @param  {Moment} moment moment.js
-     * @return {*}        注册中文语言包
-     * @example
-     *
-     * defineMomentLocaleZhCn(moment);
-     */
-    var defineMomentLocaleZhCn = function defineMomentLocaleZhCn(moment) {
-      moment.defineLocale('zh-cn', {
-        months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
-        monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
-        weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
-        weekdaysShort: '周日_周一_周二_周三_周四_周五_周六'.split('_'),
-        weekdaysMin: '日_一_二_三_四_五_六'.split('_'),
-        longDateFormat: {
-          LT: 'HH:mm',
-          LTS: 'HH:mm:ss',
-          L: 'YYYY/MM/DD',
-          LL: 'YYYY年M月D日',
-          LLL: 'YYYY年M月D日Ah点mm分',
-          LLLL: 'YYYY年M月D日ddddAh点mm分',
-          l: 'YYYY/M/D',
-          ll: 'YYYY年M月D日',
-          lll: 'YYYY年M月D日 HH:mm',
-          llll: 'YYYY年M月D日dddd HH:mm'
-        },
-        meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
-        meridiemHour: function meridiemHour(hour, meridiem) {
-          if (hour === 12) {
-            hour = 0;
-          }
-
-          if (meridiem === '凌晨' || meridiem === '早上' || meridiem === '上午') {
-            return hour;
-          } else if (meridiem === '下午' || meridiem === '晚上') {
-            return hour + 12;
-          } else {
-            // '中午'
-            return hour >= 11 ? hour : hour + 12;
-          }
-        },
-        meridiem: function meridiem(hour, minute, isLower) {
-          var hm = hour * 100 + minute;
-
-          if (hm < 600) {
-            return '凌晨';
-          } else if (hm < 900) {
-            return '早上';
-          } else if (hm < 1130) {
-            return '上午';
-          } else if (hm < 1230) {
-            return '中午';
-          } else if (hm < 1800) {
-            return '下午';
-          } else {
-            return '晚上';
-          }
-        },
-        calendar: {
-          sameDay: '[今天]LT',
-          nextDay: '[明天]LT',
-          nextWeek: function nextWeek(now) {
-            if (now.week() !== this.week()) {
-              return '[下]dddLT';
-            } else {
-              return '[本]dddLT';
-            }
-          },
-          lastDay: '[昨天]LT',
-          lastWeek: function lastWeek(now) {
-            if (this.week() !== now.week()) {
-              return '[上]dddLT';
-            } else {
-              return '[本]dddLT';
-            }
-          },
-          sameElse: 'L'
-        },
-        dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
-        ordinal: function ordinal(number, period) {
-          switch (period) {
-            case 'd':
-            case 'D':
-            case 'DDD':
-              return number + '日';
-
-            case 'M':
-              return number + '月';
-
-            case 'w':
-            case 'W':
-              return number + '周';
-
-            default:
-              return number;
-          }
-        },
-        relativeTime: {
-          future: '%s后',
-          past: '%s前',
-          s: '几秒',
-          ss: '%d 秒',
-          m: '1 分钟',
-          mm: '%d 分钟',
-          h: '1 小时',
-          hh: '%d 小时',
-          d: '1 天',
-          dd: '%d 天',
-          w: '1 周',
-          ww: '%d 周',
-          M: '1 个月',
-          MM: '%d 个月',
-          y: '1 年',
-          yy: '%d 年'
-        },
-        week: {
-          // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
-          dow: 1,
-          // Monday is the first day of the week.
-          doy: 4 // The week that contains Jan 4th is the first week of the year.
-
-        }
       });
     };
 
@@ -2484,93 +2576,6 @@
       return _.upperFirst(_.camelCase(str));
     };
 
-    var WeekTextMap = ['日', '一', '二', '三', '四', '五', '六'];
-    /**
-     * 日期格式化
-     * 参考: [dayjs.format](https://dayjs.gitee.io/docs/zh-CN/display/format)
-     * @param  {Number|String|Date} date        [description]
-     * @param  {String} [format='YYYY-MM-DD']      format
-     * @param  {String} [invalidText='--'] [description]
-     * @return {String}             [description]
-     * @example
-     *
-     * formatTime(1628659676589);
-     * // => '2021-08-11'
-     *
-     * @example
-     *
-     * formatTime(1628659676589, 'YYYY-MM-DD HH:mm');
-     * // => '2021-08-11 13:27'
-     *
-     * @example
-     *
-     * formatTime(1628659676589, 'YYYY-MM-DD HH:mm:ss');
-     * // => '2021-08-11 13:27:56'
-     *
-     * @example
-     *
-     * formatTime(new Date('2021-08-11 13:27:56'));
-     * // => '2021-08-11'
-     *
-     * @example
-     *
-     * formatTime('2021-08-11 13:27:56');
-     * // => '2021-08-11'
-     *
-     * @example
-     *
-     * tools.formatTime(null);
-     * // => '--'
-     */
-
-    var formatTime = function formatTime(date) {
-      var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'YYYY-MM-DD';
-      var invalidText = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '--';
-
-      if (+date <= 0) {
-        return invalidText;
-      }
-
-      var dt = new Date(+date || +new Date(date));
-      var year = dt.getFullYear();
-      var month = dt.getMonth() + 1;
-      var day = dt.getDate();
-      var hour = dt.getHours();
-      var minute = dt.getMinutes();
-      var second = dt.getSeconds();
-      var week = "\u661F\u671F".concat(WeekTextMap[dt.getDay()]);
-      var parse = {
-        YYYY: year,
-        MM: month,
-        DD: day,
-        HH: hour,
-        mm: minute,
-        ss: second,
-        w: week
-      };
-      parse.yyyy = parse.YYYY;
-      parse.dd = parse.DD;
-      parse.hh = parse.HH; // 补零
-
-      Object.entries(parse).forEach(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            k = _ref2[0],
-            v = _ref2[1];
-
-        parse[k] = String(v).padStart(2, 0);
-      }); // 上午|下午
-
-      parse.a = hour / 12 >= 1 ? 'pm' : 'am';
-      parse.A = parse.a.toUpperCase();
-      return Object.entries(parse).reduce(function (prev, _ref3) {
-        var _ref4 = _slicedToArray(_ref3, 2),
-            k = _ref4[0],
-            v = _ref4[1];
-
-        return prev.replace(k, v);
-      }, format);
-    };
-
     var getUa = function getUa() {
       return window.navigator.userAgent;
     };
@@ -2637,10 +2642,21 @@
     /**
      * Utf8数组 转 字符串
      * 参考链接:
-     * - https://stackoverflow.com/questions/8936984/uint8array-to-string-in-javascript
-     * - https://gist.github.com/wumingdan/759564f6cb887a55bceb
+     * 链接1: [https://stackoverflow.com/questions/8936984/uint8array-to-string-in-javascript](https://stackoverflow.com/questions/8936984/uint8array-to-string-in-javascript)
+     * 链接2:  [https://gist.github.com/wumingdan/759564f6cb887a55bceb](https://gist.github.com/wumingdan/759564f6cb887a55bceb)
      * @param  {Utf8Array} array Utf8数组
      * @return {String}       Utf8 数组转 字符串
+     * @example
+     *
+     * var arr = new Uint8Array(5);
+     * arr[0] = 0x3d;
+     * arr[1] = 0x35f;
+     * arr[2] = 0x35f;
+     * arr[3] = 0x35e;
+     * arr[4] = 0x35e;
+     *
+     * Utf8ArrayToString(arr);
+     * // => '=__^^'
      */
     var Utf8ArrayToString = function Utf8ArrayToString(array) {
       var out = '';
@@ -2692,7 +2708,6 @@
      * @example
      *
      * const isValid = await validateFn(this.$refs.form.validate)
-     *
      * // => false
      */
     var pifyValidate = function pifyValidate(validateFn) {
