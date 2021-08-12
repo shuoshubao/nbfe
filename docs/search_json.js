@@ -1,8 +1,8 @@
 window.ydoc_plugin_search_json = {
   "使用": [
     {
-      "title": "安装使用",
-      "content": "npm i @nbfe/toolsimport { search } from '@nbfe/tools';",
+      "title": "安装使用调试runkit",
+      "content": "npm i @nbfe/toolsimport { search, getLabelByValue, classNames, copyText } from '@nbfe/tools';本文档为了方便大家调试, 特地将工具包打包成umd模式, 直接注入到了页面中, 挂载到了 windows.tools你可以直接打开浏览器控制台, 输入 Object.keys(tools) 即可看到所有的方法例如, 输入 tools.classNames('a', { b: true, c: 2 < 1 }), 将会得到 'a b'传送门: runkit.com由于 runkit 运行环境是 Nodejs, 因此工具库中的很多 browser 方法调试运行会报错. 此时就推荐在浏览器命令行直接调用当然, 工具库中部分方法可同时运行在 Nodejs 和 browser 环境中",
       "url": "/install.html",
       "children": []
     }
@@ -129,10 +129,18 @@ window.ydoc_plugin_search_json = {
       "children": []
     }
   ],
+  "贡献指南": [
+    {
+      "title": "注释开发单测打包",
+      "content": "代码注释必须严格遵循 JSDoc 规范执行 npm run docs:dev // 启动 ydoc 服务, 浏览器打开 http://127.0.0.1:9999\n执行 docs:gernerate // 监听 lib 目录的修改, 实时解析注释生成文档\n为保证工具方法的质量, 每个方法必须编写单测. 本项目采用的测试库是 ava项目采用的构建工具是 rollup",
+      "url": "/CONTRIBUTING.html",
+      "children": []
+    }
+  ],
   "更新日志": [
     {
       "title": "Change Log0.2.0 (2021-03-22)",
-      "content": "All notable changes to this project will be documented in this file.See Conventional Commits for commit guidelines.",
+      "content": "All notable changes to this project will be documented in this file. See Conventional Commits for commit guidelines.",
       "url": "/CHANGELOG.html",
       "children": [
         {
@@ -143,7 +151,7 @@ window.ydoc_plugin_search_json = {
         {
           "title": "Bug Fixes",
           "url": "/CHANGELOG.html#0.2.8-2021-08-11-bug-fixes",
-          "content": "Bug Fixes写错了 padding未生效 (80d372e)\n移除方法convertObjectToArray,convertArrayToObject; 增加注释 (9e98752)\nisIPhoneX 判断 (cbea1f7)\nlodash中有isNil方法 (f63bacc)\nmin max 增加第一个参数 label (efa1529)\nzh_CN.js 更名 moment.js (cb564ba)\n"
+          "content": "Bug Fixes写错了 padding 未生效 (80d372e)\n移除方法 convertObjectToArray,convertArrayToObject; 增加注释 (9e98752)\nisIPhoneX 判断 (cbea1f7)\nlodash 中有 isNil 方法 (f63bacc)\nmin max 增加第一个参数 label (efa1529)\nzh_CN.js 更名 moment.js (cb564ba)\n"
         },
         {
           "title": "0.2.7 (2021-07-28)",
@@ -208,7 +216,7 @@ window.ydoc_plugin_search_json = {
         {
           "title": "Features",
           "url": "/CHANGELOG.html#0.2.2-2021-07-26-features",
-          "content": "Featuresua相关的判断变成方法, 避免直接调用 (88d835f)\n"
+          "content": "Featuresua 相关的判断变成方法, 避免直接调用 (88d835f)\n"
         },
         {
           "title": "0.2.1 (2021-05-24)",
@@ -238,7 +246,7 @@ window.ydoc_plugin_search_json = {
         {
           "title": "Bug Fixes",
           "url": "/CHANGELOG.html#0.1.11-2021-01-26-bug-fixes",
-          "content": "Bug FixesupdateUrlQuery 取query错误 (8dd24ce)\n"
+          "content": "Bug FixesupdateUrlQuery 取 query 错误 (8dd24ce)\n"
         },
         {
           "title": "0.1.10 (2021-01-22)",
@@ -253,7 +261,7 @@ window.ydoc_plugin_search_json = {
         {
           "title": "Features",
           "url": "/CHANGELOG.html#0.1.10-2021-01-22-features",
-          "content": "FeaturesparseUrl 返回origin 和 hostname (2a36942)\n"
+          "content": "FeaturesparseUrl 返回 origin 和 hostname (2a36942)\n"
         },
         {
           "title": "0.1.9 (2021-01-20)",
@@ -336,14 +344,6 @@ window.ydoc_plugin_search_json = {
           "content": "0.1.1 (2019-09-13)Note: Version bump only for package @nbfe/tools"
         }
       ]
-    }
-  ],
-  "贡献指南": [
-    {
-      "title": "CONTRIBUTING.md",
-      "content": "",
-      "url": "/CONTRIBUTING.html",
-      "children": []
     }
   ]
 }
