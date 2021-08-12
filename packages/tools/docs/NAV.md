@@ -4,5 +4,5 @@
 
 -   [使用](/install.md)
 -   [文档](/documents/date.md)
--   [更新日志](/CHANGELOG.md)
 -   [贡献指南](/CONTRIBUTING.md)
+-   [更新日志](/CHANGELOG.md)
