@@ -2,7 +2,7 @@
  * @Author: fangt11
  * @Date:   2021-08-06 20:16:27
  * @Last Modified by:   fangt11
- * @Last Modified time: 2021-08-10 21:08:04
+ * @Last Modified time: 2021-08-12 12:24:27
  */
 
 const { React, antd } = window;
@@ -12,8 +12,8 @@ const { Modal } = antd;
 window.addEventListener('load', () => {
     document.body.addEventListener('click', e => {
         const icon = e.target.closest('.anticon');
-        // 展示源码
-        if (icon && icon.classList.contains('action-showCode')) {
+        // Try in REPL
+        if (icon && icon.classList.contains('action-showREPL')) {
             const { funcname, example } = icon.dataset;
             const source = [
                 `require('lodash');`,

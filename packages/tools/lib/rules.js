@@ -190,7 +190,6 @@ class ValidatorRules {
  * rules.min('Form.Item label', 1)
  * rules.max('Form.Item label', 5)
  * rules.numberRange('Form.Item label', {  })
- *
  * // 数字范围的抽象描述
  * [
  *     {

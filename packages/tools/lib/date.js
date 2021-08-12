@@ -34,7 +34,7 @@ const WeekTextMap = ['日', '一', '二', '三', '四', '五', '六'];
  *
  * @example
  *
- * tools.formatTime(null);
+ * formatTime(null);
  * // => '--'
  */
 export const formatTime = (date, format = 'YYYY-MM-DD', invalidText = '--') => {
@@ -79,10 +79,11 @@ export const formatTime = (date, format = 'YYYY-MM-DD', invalidText = '--') => {
 
 /**
  * moment/locale/zh-cn.js 中文语言包
- * @param  {Moment} moment moment.js
+ * @param  {Moment} moment  moment
  * @return {*}        注册中文语言包
  * @example
  *
+ * import * as moment from 'moment';
  * defineMomentLocaleZhCn(moment);
  */
 export const defineMomentLocaleZhCn = moment => {

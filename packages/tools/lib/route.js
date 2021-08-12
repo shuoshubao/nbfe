@@ -173,7 +173,7 @@ export const parseUrl = (url = '') => {
  * @example
  *
  * // 假设当前的url为 http://aa.com/abc/d?a=1&b=2
- * tools.getFullUrl('/abc')
+ * getFullUrl('/abc')
  * // => http://aa.com/abc
  */
 export const getFullUrl = (url = '') => {
