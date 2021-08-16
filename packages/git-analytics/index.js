@@ -14,27 +14,31 @@ const dataToArgv = (data = {}) => {
 };
 
 const execGitLog = (gitLogConfig, config) => {
-    const { silent = true } = config || {};
+    const { silent = true, cwd = process.cwd() } = config || {};
     if (!silent) {
         console.log('执行命令:', ['git', 'log', ...dataToArgv(gitLogConfig)].join(' '));
     }
-    const { stdout } = spawnSync('git', ['log', ...dataToArgv(gitLogConfig)]);
+    const { stdout } = spawnSync('git', ['log', ...dataToArgv(gitLogConfig)], { cwd });
     return stdout.toString();
 };
 
 const getCodeLines = (gitLogConfig = {}, config) => {
-    const gitLogText = execGitLog({
-        oneline: true,
-        shortstat: true,
-        'no-merges': true,
-        ...gitLogConfig
-    }, config);
+    const gitLogText = execGitLog(
+        {
+            oneline: true,
+            shortstat: true,
+            'no-merges': true,
+            ...gitLogConfig
+        },
+        config
+    );
     const gitLogArray = gitLogText.trim().split('\n');
-    const commits = gitLogArray.length / 2;
+    const commits = Math.floor(gitLogArray.length / 2);
     const lines = {
         commits,
         insertions: 0,
-        deletions: 0
+        deletions: 0,
+        total: 0
     };
     Array.from({ length: commits }).forEach((v, i) => {
         const diff = gitLogArray[i * 2 + 1].trim();
