@@ -1,5 +1,8 @@
 const { spawnSync } = require('child_process');
 
+// 求和
+const sum = arr => arr.reduce((prev, cur) => prev + cur, 0);
+
 const dataToArgv = (data = {}) => {
     return Object.entries(data).reduce((prev, [k, v]) => {
         if (v === true) {
@@ -22,48 +25,74 @@ const execGitLog = (gitLogConfig, config) => {
     return stdout.toString();
 };
 
+// 后缀: js jsx ts tsx vue
+// ignore 目录: mock test tests
 const getCodeLines = (gitLogConfig = {}, config) => {
+    const extensions = ['.js', '.jsx', '.ts', '.tsx', '.vue'];
+    const lines = {
+        commits: 0,
+        insertions: 0,
+        deletions: 0,
+        total: 0,
+        allFilesInsertions: 0,
+        allFilesDeletions: 0,
+        allFilesTotal: 0
+    };
     const gitLogText = execGitLog(
         {
             oneline: true,
             shortstat: true,
             'no-merges': true,
+            'format=': true,
+            numstat: true,
             ...gitLogConfig
         },
         config
     );
     const gitLogArray = gitLogText.trim().split('\n');
-    const commits = Math.floor(gitLogArray.length / 2);
-    const lines = {
-        commits,
-        insertions: 0,
-        deletions: 0,
-        total: 0
-    };
-    Array.from({ length: commits }).forEach((v, i) => {
-        const diff = gitLogArray[i * 2 + 1].trim();
-        const diffCount = diff.match(/\d+/g);
-        // 新增+删除
-        if (diff.includes('insertion') && diff.includes('deletion')) {
-            const [files, insertions, deletions] = diffCount;
-            lines.insertions += Number(insertions);
-            lines.deletions += Number(deletions);
-        } else {
-            // 只有新增
-            if (diff.includes('insertion') && !diff.includes('deletion')) {
-                const [files, insertions] = diffCount;
-                lines.insertions += Number(insertions);
-            }
-            // 只有删除
-            if (!diff.includes('insertion') && diff.includes('deletion')) {
-                const [files, deletions] = diffCount;
-                lines.deletions += Number(deletions);
-            }
-        }
+    const commitsArray = gitLogArray.filter(v => {
+        return v.startsWith(' ');
     });
-
+    lines.commits = commitsArray.length;
+    const diffArray = gitLogArray
+        .filter(v => {
+            return !v.startsWith(' ');
+        })
+        .map(v => {
+            const [insertions, deletions, filePath] = v.split(/\s+/);
+            return {
+                insertions: +insertions,
+                deletions: +deletions,
+                filePath: filePath
+            };
+        });
+    const jsDiffArray = diffArray.filter(v => {
+        const { filePath } = v;
+        // 后缀
+        if (
+            extensions.every(v2 => {
+                return !filePath.endsWith(v2);
+            })
+        ) {
+            return false;
+        }
+        // 过滤路径
+        if (
+            ['test', 'mock', 'docs'].some(v2 => {
+                return filePath.includes(v2);
+            })
+        ) {
+            return false;
+        }
+        return true;
+    });
+    lines.insertions = sum(jsDiffArray.map(v => v.insertions));
+    lines.deletions = sum(jsDiffArray.map(v => v.deletions));
     lines.total = lines.insertions - lines.deletions;
 
+    lines.allFilesInsertions = sum(diffArray.map(v => v.insertions));
+    lines.allFilesDeletions = sum(diffArray.map(v => v.deletions));
+    lines.allFilesTotal = lines.allFilesInsertions - lines.allFilesDeletions;
     return lines;
 };
 
