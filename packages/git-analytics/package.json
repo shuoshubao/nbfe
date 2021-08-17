@@ -1,6 +1,6 @@
 {
     "name": "@nbfe/git-analytics",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "git 统计信息",
     "author": "shuoshubao <759979885@qq.com>",
     "repository": {
