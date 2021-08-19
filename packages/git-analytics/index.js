@@ -65,7 +65,7 @@ const getCodeLines = (gitLogConfig = {}, config) => {
                 deletions: +deletions,
                 filePath: filePath
             };
-        });
+        }).filter(v => !!v.filePath);
     const jsDiffArray = diffArray.filter(v => {
         const { filePath } = v;
         // 后缀
