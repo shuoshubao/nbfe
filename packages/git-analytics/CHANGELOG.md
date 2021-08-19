@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/git-analytics@0.1.2...@nbfe/git-analytics@0.1.3) (2021-08-19)
+
+
+### Bug Fixes
+
+* getCodeLines 过滤 filePath未匹配到的 ([2e6b89e](https://github.com/shuoshubao/nbfe/commit/2e6b89e))
+
+
+
+
+
 ## [0.1.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/git-analytics@0.1.1...@nbfe/git-analytics@0.1.2) (2021-08-17)
 
 
