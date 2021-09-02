@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.9...@nbfe/tools@0.2.10) (2021-09-02)
+
+
+### Features
+
+* getAntdLocaleZhCN antd 中文语言包 ([15ab0f1](https://github.com/shuoshubao/nbfe/commit/15ab0f1))
+
+
+
+
+
 ## [0.2.9](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.8...@nbfe/tools@0.2.9) (2021-08-16)
 
 **Note:** Version bump only for package @nbfe/tools
