@@ -1,217 +1,400 @@
 /*!
- * @nbfe/tools v0.2.8
- * (c) 2019-2021 shuoshubao <759979885@qq.com>
- * Released under the ISC License.
- */
+* @nbfe/tools v0.2.9
+* (c) 2019-2021 shuoshubao <759979885@qq.com>
+* Released under the ISC License.
+*/
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined'
-        ? factory(exports, require('lodash'))
-        : typeof define === 'function' && define.amd
-        ? define(['exports', 'lodash'], factory)
-        : ((global = typeof globalThis !== 'undefined' ? globalThis : global || self),
-          factory((global.tools = {}), global.lodash));
-})(this, function (exports, lodash) {
-    'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('lodash')) :
+    typeof define === 'function' && define.amd ? define(['exports', 'lodash'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.tools = {}, global.lodash));
+}(this, (function (exports, lodash) { 'use strict';
 
-    var version = '0.2.8';
+    var version = "0.2.9";
+
+    var Pagination = {
+      // Options.jsx
+      items_per_page: '条/页',
+      jump_to: '跳至',
+      jump_to_confirm: '确定',
+      page: '页',
+      // Pagination.jsx
+      prev_page: '上一页',
+      next_page: '下一页',
+      prev_5: '向前 5 页',
+      next_5: '向后 5 页',
+      prev_3: '向前 3 页',
+      next_3: '向后 3 页'
+    };
+    var CalendarLocale = {
+      locale: 'zh_CN',
+      today: '今天',
+      now: '此刻',
+      backToToday: '返回今天',
+      ok: '确定',
+      timeSelect: '选择时间',
+      dateSelect: '选择日期',
+      weekSelect: '选择周',
+      clear: '清除',
+      month: '月',
+      year: '年',
+      previousMonth: '上个月 (翻页上键)',
+      nextMonth: '下个月 (翻页下键)',
+      monthSelect: '选择月份',
+      yearSelect: '选择年份',
+      decadeSelect: '选择年代',
+      yearFormat: 'YYYY年',
+      dayFormat: 'D日',
+      dateFormat: 'YYYY年M月D日',
+      dateTimeFormat: 'YYYY年M月D日 HH时mm分ss秒',
+      previousYear: '上一年 (Control键加左方向键)',
+      nextYear: '下一年 (Control键加右方向键)',
+      previousDecade: '上一年代',
+      nextDecade: '下一年代',
+      previousCentury: '上一世纪',
+      nextCentury: '下一世纪'
+    };
+    var timePickerLocale = {
+      placeholder: '请选择时间',
+      rangePlaceholder: ['开始时间', '结束时间']
+    };
+    var DatePicker = {
+      lang: _.extend({
+        placeholder: '请选择日期',
+        yearPlaceholder: '请选择年份',
+        quarterPlaceholder: '请选择季度',
+        monthPlaceholder: '请选择月份',
+        weekPlaceholder: '请选择周',
+        rangePlaceholder: ['开始日期', '结束日期'],
+        rangeYearPlaceholder: ['开始年份', '结束年份'],
+        rangeMonthPlaceholder: ['开始月份', '结束月份'],
+        rangeWeekPlaceholder: ['开始周', '结束周']
+      }, CalendarLocale),
+      timePickerLocale: _.extend({}, timePickerLocale)
+    };
+    DatePicker.lang.ok = '确 定';
+    var Calendar = {
+      lang: _.extend({
+        placeholder: '请选择日期',
+        yearPlaceholder: '请选择年份',
+        quarterPlaceholder: '请选择季度',
+        monthPlaceholder: '请选择月份',
+        weekPlaceholder: '请选择周',
+        rangePlaceholder: ['开始日期', '结束日期'],
+        rangeYearPlaceholder: ['开始年份', '结束年份'],
+        rangeMonthPlaceholder: ['开始月份', '结束月份'],
+        rangeWeekPlaceholder: ['开始周', '结束周']
+      }, CalendarLocale),
+      timePickerLocale: _.extend({}, timePickerLocale)
+    };
+    Calendar.lang.ok = '确 定';
+    var typeTemplate = '${label}不是一个有效的${type}';
+    var antdLocaleZhCN = {
+      locale: 'zh-cn',
+      // locales for all components
+      global: {
+        placeholder: '请选择'
+      },
+      Pagination: Pagination,
+      DatePicker: DatePicker,
+      TimePicker: timePickerLocale,
+      Calendar: Calendar,
+      Table: {
+        filterTitle: '筛选',
+        filterConfirm: '确定',
+        filterReset: '重置',
+        filterEmptyText: '无筛选项',
+        selectAll: '全选当页',
+        selectInvert: '反选当页',
+        selectNone: '清空所有',
+        selectionAll: '全选所有',
+        sortTitle: '排序',
+        expand: '展开行',
+        collapse: '关闭行',
+        triggerDesc: '点击降序',
+        triggerAsc: '点击升序',
+        cancelSort: '取消排序'
+      },
+      Modal: {
+        okText: '确定',
+        cancelText: '取消',
+        justOkText: '知道了'
+      },
+      Popconfirm: {
+        cancelText: '取消',
+        okText: '确定'
+      },
+      Transfer: {
+        searchPlaceholder: '请输入搜索内容',
+        itemUnit: '项',
+        itemsUnit: '项',
+        remove: '删除',
+        selectCurrent: '全选当页',
+        removeCurrent: '删除当页',
+        selectAll: '全选所有',
+        removeAll: '删除全部',
+        selectInvert: '反选当页'
+      },
+      Upload: {
+        uploading: '文件上传中',
+        removeFile: '删除文件',
+        uploadError: '上传错误',
+        previewFile: '预览文件',
+        downloadFile: '下载文件'
+      },
+      Empty: {
+        description: '暂无数据'
+      },
+      Icon: {
+        icon: '图标'
+      },
+      Text: {
+        edit: '编辑',
+        copy: '复制',
+        copied: '复制成功',
+        expand: '展开'
+      },
+      PageHeader: {
+        back: '返回'
+      },
+      Form: {
+        optional: '（可选）',
+        defaultValidateMessages: {
+          "default": '字段验证错误${label}',
+          required: '请输入${label}',
+          "enum": '${label}必须是其中一个[${enum}]',
+          whitespace: '${label}不能为空字符',
+          date: {
+            format: '${label}日期格式无效',
+            parse: '${label}不能转换为日期',
+            invalid: '${label}是一个无效日期'
+          },
+          types: {
+            string: typeTemplate,
+            method: typeTemplate,
+            array: typeTemplate,
+            object: typeTemplate,
+            number: typeTemplate,
+            date: typeTemplate,
+            "boolean": typeTemplate,
+            integer: typeTemplate,
+            "float": typeTemplate,
+            regexp: typeTemplate,
+            email: typeTemplate,
+            url: typeTemplate,
+            hex: typeTemplate
+          },
+          string: {
+            len: '${label}须为${len}个字符',
+            min: '${label}最少${min}个字符',
+            max: '${label}最多${max}个字符',
+            range: '${label}须在${min}-${max}字符之间'
+          },
+          number: {
+            len: '${label}必须等于${len}',
+            min: '${label}最小值为${min}',
+            max: '${label}最大值为${max}',
+            range: '${label}须在${min}-${max}之间'
+          },
+          array: {
+            len: '须为${len}个${label}',
+            min: '最少${min}个${label}',
+            max: '最多${max}个${label}',
+            range: '${label}数量须在${min}-${max}之间'
+          },
+          pattern: {
+            mismatch: '${label}与模式不匹配${pattern}'
+          }
+        }
+      },
+      Image: {
+        preview: '预览'
+      }
+    };
 
     function ownKeys(object, enumerableOnly) {
-        var keys = Object.keys(object);
+      var keys = Object.keys(object);
 
-        if (Object.getOwnPropertySymbols) {
-            var symbols = Object.getOwnPropertySymbols(object);
+      if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
 
-            if (enumerableOnly) {
-                symbols = symbols.filter(function (sym) {
-                    return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-                });
-            }
-
-            keys.push.apply(keys, symbols);
+        if (enumerableOnly) {
+          symbols = symbols.filter(function (sym) {
+            return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+          });
         }
 
-        return keys;
+        keys.push.apply(keys, symbols);
+      }
+
+      return keys;
     }
 
     function _objectSpread2(target) {
-        for (var i = 1; i < arguments.length; i++) {
-            var source = arguments[i] != null ? arguments[i] : {};
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i] != null ? arguments[i] : {};
 
-            if (i % 2) {
-                ownKeys(Object(source), true).forEach(function (key) {
-                    _defineProperty(target, key, source[key]);
-                });
-            } else if (Object.getOwnPropertyDescriptors) {
-                Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-            } else {
-                ownKeys(Object(source)).forEach(function (key) {
-                    Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-                });
-            }
+        if (i % 2) {
+          ownKeys(Object(source), true).forEach(function (key) {
+            _defineProperty(target, key, source[key]);
+          });
+        } else if (Object.getOwnPropertyDescriptors) {
+          Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+        } else {
+          ownKeys(Object(source)).forEach(function (key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+          });
         }
+      }
 
-        return target;
+      return target;
     }
 
     function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-        try {
-            var info = gen[key](arg);
-            var value = info.value;
-        } catch (error) {
-            reject(error);
-            return;
-        }
+      try {
+        var info = gen[key](arg);
+        var value = info.value;
+      } catch (error) {
+        reject(error);
+        return;
+      }
 
-        if (info.done) {
-            resolve(value);
-        } else {
-            Promise.resolve(value).then(_next, _throw);
-        }
+      if (info.done) {
+        resolve(value);
+      } else {
+        Promise.resolve(value).then(_next, _throw);
+      }
     }
 
     function _asyncToGenerator(fn) {
-        return function () {
-            var self = this,
-                args = arguments;
-            return new Promise(function (resolve, reject) {
-                var gen = fn.apply(self, args);
+      return function () {
+        var self = this,
+            args = arguments;
+        return new Promise(function (resolve, reject) {
+          var gen = fn.apply(self, args);
 
-                function _next(value) {
-                    asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'next', value);
-                }
+          function _next(value) {
+            asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+          }
 
-                function _throw(err) {
-                    asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'throw', err);
-                }
+          function _throw(err) {
+            asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+          }
 
-                _next(undefined);
-            });
-        };
+          _next(undefined);
+        });
+      };
     }
 
     function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError('Cannot call a class as a function');
-        }
+      if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+      }
     }
 
     function _defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ('value' in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
-        }
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
     }
 
     function _createClass(Constructor, protoProps, staticProps) {
-        if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-        if (staticProps) _defineProperties(Constructor, staticProps);
-        return Constructor;
+      if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) _defineProperties(Constructor, staticProps);
+      return Constructor;
     }
 
     function _defineProperty(obj, key, value) {
-        if (key in obj) {
-            Object.defineProperty(obj, key, {
-                value: value,
-                enumerable: true,
-                configurable: true,
-                writable: true
-            });
-        } else {
-            obj[key] = value;
-        }
+      if (key in obj) {
+        Object.defineProperty(obj, key, {
+          value: value,
+          enumerable: true,
+          configurable: true,
+          writable: true
+        });
+      } else {
+        obj[key] = value;
+      }
 
-        return obj;
+      return obj;
     }
 
     function _slicedToArray(arr, i) {
-        return (
-            _arrayWithHoles(arr) ||
-            _iterableToArrayLimit(arr, i) ||
-            _unsupportedIterableToArray(arr, i) ||
-            _nonIterableRest()
-        );
+      return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
     }
 
     function _toConsumableArray(arr) {
-        return (
-            _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread()
-        );
+      return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
     }
 
     function _arrayWithoutHoles(arr) {
-        if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+      if (Array.isArray(arr)) return _arrayLikeToArray(arr);
     }
 
     function _arrayWithHoles(arr) {
-        if (Array.isArray(arr)) return arr;
+      if (Array.isArray(arr)) return arr;
     }
 
     function _iterableToArray(iter) {
-        if ((typeof Symbol !== 'undefined' && iter[Symbol.iterator] != null) || iter['@@iterator'] != null)
-            return Array.from(iter);
+      if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
     }
 
     function _iterableToArrayLimit(arr, i) {
-        var _i = arr == null ? null : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) || arr['@@iterator'];
+      var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
 
-        if (_i == null) return;
-        var _arr = [];
-        var _n = true;
-        var _d = false;
+      if (_i == null) return;
+      var _arr = [];
+      var _n = true;
+      var _d = false;
 
-        var _s, _e;
+      var _s, _e;
 
-        try {
-            for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-                _arr.push(_s.value);
+      try {
+        for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+          _arr.push(_s.value);
 
-                if (i && _arr.length === i) break;
-            }
-        } catch (err) {
-            _d = true;
-            _e = err;
-        } finally {
-            try {
-                if (!_n && _i['return'] != null) _i['return']();
-            } finally {
-                if (_d) throw _e;
-            }
+          if (i && _arr.length === i) break;
         }
+      } catch (err) {
+        _d = true;
+        _e = err;
+      } finally {
+        try {
+          if (!_n && _i["return"] != null) _i["return"]();
+        } finally {
+          if (_d) throw _e;
+        }
+      }
 
-        return _arr;
+      return _arr;
     }
 
     function _unsupportedIterableToArray(o, minLen) {
-        if (!o) return;
-        if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-        var n = Object.prototype.toString.call(o).slice(8, -1);
-        if (n === 'Object' && o.constructor) n = o.constructor.name;
-        if (n === 'Map' || n === 'Set') return Array.from(o);
-        if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-            return _arrayLikeToArray(o, minLen);
+      if (!o) return;
+      if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+      var n = Object.prototype.toString.call(o).slice(8, -1);
+      if (n === "Object" && o.constructor) n = o.constructor.name;
+      if (n === "Map" || n === "Set") return Array.from(o);
+      if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
     }
 
     function _arrayLikeToArray(arr, len) {
-        if (len == null || len > arr.length) len = arr.length;
+      if (len == null || len > arr.length) len = arr.length;
 
-        for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+      for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
 
-        return arr2;
+      return arr2;
     }
 
     function _nonIterableSpread() {
-        throw new TypeError(
-            'Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
-        );
+      throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }
 
     function _nonIterableRest() {
-        throw new TypeError(
-            'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
-        );
+      throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }
 
     /**
@@ -235,8 +418,8 @@
      */
 
     var isUniq = function isUniq() {
-        var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-        return _.uniq(arr).length === arr.length;
+      var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      return _.uniq(arr).length === arr.length;
     };
     /**
      * 空字符串
@@ -259,7 +442,7 @@
      */
 
     var isEmptyString = function isEmptyString(value) {
-        return value === '';
+      return value === '';
     };
     /**
      * 空值: null undefined ''
@@ -282,9 +465,9 @@
      */
 
     var isEmptyValue = function isEmptyValue(value) {
-        return [_.isNull, _.isUndefined, isEmptyString].some(function (v) {
-            return v(value);
-        });
+      return [_.isNull, _.isUndefined, isEmptyString].some(function (v) {
+        return v(value);
+      });
     };
     /**
      * Promise
@@ -303,7 +486,7 @@
      */
 
     var isPromise = function isPromise(value) {
-        return _.isObject(value) && _.isFunction(value.then);
+      return _.isObject(value) && _.isFunction(value.then);
     };
     /**
      * Blob
@@ -321,7 +504,7 @@
      */
 
     var isBlob = function isBlob(value) {
-        return Object.prototype.toString.call(value) === '[object Blob]';
+      return Object.prototype.toString.call(value) === '[object Blob]';
     };
     /**
      * 空数组
@@ -344,7 +527,7 @@
      */
 
     var isEmptyArray = function isEmptyArray(arr) {
-        return _.isArray(arr) && arr.length === 0;
+      return _.isArray(arr) && arr.length === 0;
     };
     /**
      * 空对象
@@ -367,7 +550,7 @@
      */
 
     var isEmptyObject = function isEmptyObject(obj) {
-        return obj && isEmptyArray(Object.keys(obj));
+      return obj && isEmptyArray(Object.keys(obj));
     };
     /**
      * 全真
@@ -392,11 +575,11 @@
      */
 
     var isEveryTruthy = function isEveryTruthy() {
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
 
-        return _.flatten(args).every(Boolean);
+      return _.flatten(args).every(Boolean);
     };
     /**
      * 全假
@@ -419,13 +602,13 @@
      */
 
     var isEveryFalsy = function isEveryFalsy() {
-        for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            args[_key2] = arguments[_key2];
-        }
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
 
-        return _.flatten(args).every(function (v) {
-            return !Boolean(v);
-        });
+      return _.flatten(args).every(function (v) {
+        return !Boolean(v);
+      });
     };
     /**
      * 部分真
@@ -458,11 +641,11 @@
      */
 
     var isSomeTruthy = function isSomeTruthy() {
-        for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-            args[_key3] = arguments[_key3];
-        }
+      for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+        args[_key3] = arguments[_key3];
+      }
 
-        return _.flatten(args).some(Boolean);
+      return _.flatten(args).some(Boolean);
     };
     /**
      * 部分假
@@ -485,13 +668,13 @@
      */
 
     var isSomeFalsy = function isSomeFalsy() {
-        for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-            args[_key4] = arguments[_key4];
-        }
+      for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+        args[_key4] = arguments[_key4];
+      }
 
-        return _.flatten(args).some(function (v) {
-            return !Boolean(v);
-        });
+      return _.flatten(args).some(function (v) {
+        return !Boolean(v);
+      });
     };
 
     /**
@@ -510,15 +693,13 @@
      */
 
     var reserveProperties = function reserveProperties() {
-        var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        var keys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-        Object.keys(data)
-            .filter(function (v) {
-                return !keys.includes(v);
-            })
-            .forEach(function (v) {
-                delete data[v];
-            });
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var keys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+      Object.keys(data).filter(function (v) {
+        return !keys.includes(v);
+      }).forEach(function (v) {
+        delete data[v];
+      });
     };
     /**
      * 批量删除属性
@@ -534,11 +715,11 @@
      */
 
     var removeProperties = function removeProperties() {
-        var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        var keys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-        keys.forEach(function (v) {
-            delete data[v];
-        });
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var keys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+      keys.forEach(function (v) {
+        delete data[v];
+      });
     };
     /**
      * 批量删除属性值为空的属性
@@ -553,16 +734,16 @@
      */
 
     var removeEmptyProperties = function removeEmptyProperties() {
-        var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        Object.entries(data).forEach(function (_ref) {
-            var _ref2 = _slicedToArray(_ref, 2),
-                k = _ref2[0],
-                v = _ref2[1];
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      Object.entries(data).forEach(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            k = _ref2[0],
+            v = _ref2[1];
 
-            if (isEmptyValue(v)) {
-                delete data[k];
-            }
-        });
+        if (isEmptyValue(v)) {
+          delete data[k];
+        }
+      });
     };
     /**
      * 产生一个值全为空的对象
@@ -581,12 +762,12 @@
      */
 
     var produceEmptyObject = function produceEmptyObject() {
-        var keys = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-        var emptyText = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-        return _.flatten(keys).reduce(function (prev, cur) {
-            prev[cur] = emptyText;
-            return prev;
-        }, {});
+      var keys = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      var emptyText = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      return _.flatten(keys).reduce(function (prev, cur) {
+        prev[cur] = emptyText;
+        return prev;
+      }, {});
     };
     /**
      * 将数据中的空值替换为默认值
@@ -612,25 +793,25 @@
      */
 
     var formatEmptyToDefault = function formatEmptyToDefault() {
-        var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        var formater = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        Object.entries(data).forEach(function (_ref3) {
-            var _ref4 = _slicedToArray(_ref3, 2),
-                k = _ref4[0],
-                v = _ref4[1];
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var formater = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      Object.entries(data).forEach(function (_ref3) {
+        var _ref4 = _slicedToArray(_ref3, 2),
+            k = _ref4[0],
+            v = _ref4[1];
 
-            Object.entries(formater).forEach(function (_ref5) {
-                var _ref6 = _slicedToArray(_ref5, 2),
-                    k2 = _ref6[0],
-                    v2 = _ref6[1];
+        Object.entries(formater).forEach(function (_ref5) {
+          var _ref6 = _slicedToArray(_ref5, 2),
+              k2 = _ref6[0],
+              v2 = _ref6[1];
 
-                if (k2 === k) {
-                    if (isEmptyValue(v)) {
-                        data[k] = v2;
-                    }
-                }
-            });
+          if (k2 === k) {
+            if (isEmptyValue(v)) {
+              data[k] = v2;
+            }
+          }
         });
+      });
     };
     /**
      * 将 promise变成一个只有 resolved 态
@@ -643,23 +824,21 @@
      */
 
     var booleanPromise = function booleanPromise(promise, params) {
-        return new Promise(function (resolve) {
-            var tempPromise;
+      return new Promise(function (resolve) {
+        var tempPromise;
 
-            if (params) {
-                tempPromise = promise(params);
-            } else {
-                tempPromise = promise();
-            }
+        if (params) {
+          tempPromise = promise(params);
+        } else {
+          tempPromise = promise();
+        }
 
-            tempPromise
-                .then(function () {
-                    resolve(true);
-                })
-                ['catch'](function () {
-                    resolve(false);
-                });
+        tempPromise.then(function () {
+          resolve(true);
+        })["catch"](function () {
+          resolve(false);
         });
+      });
     };
 
     var WeekTextMap = ['日', '一', '二', '三', '四', '五', '六'];
@@ -702,51 +881,51 @@
      */
 
     var formatTime = function formatTime(date) {
-        var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'YYYY-MM-DD';
-        var invalidText = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '--';
+      var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'YYYY-MM-DD';
+      var invalidText = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '--';
 
-        if (+date <= 0) {
-            return invalidText;
-        }
+      if (+date <= 0) {
+        return invalidText;
+      }
 
-        var dt = new Date(+date || +new Date(date));
-        var year = dt.getFullYear();
-        var month = dt.getMonth() + 1;
-        var day = dt.getDate();
-        var hour = dt.getHours();
-        var minute = dt.getMinutes();
-        var second = dt.getSeconds();
-        var week = '\u661F\u671F'.concat(WeekTextMap[dt.getDay()]);
-        var parse = {
-            YYYY: year,
-            MM: month,
-            DD: day,
-            HH: hour,
-            mm: minute,
-            ss: second,
-            w: week
-        };
-        parse.yyyy = parse.YYYY;
-        parse.dd = parse.DD;
-        parse.hh = parse.HH; // 补零
+      var dt = new Date(+date || +new Date(date));
+      var year = dt.getFullYear();
+      var month = dt.getMonth() + 1;
+      var day = dt.getDate();
+      var hour = dt.getHours();
+      var minute = dt.getMinutes();
+      var second = dt.getSeconds();
+      var week = "\u661F\u671F".concat(WeekTextMap[dt.getDay()]);
+      var parse = {
+        YYYY: year,
+        MM: month,
+        DD: day,
+        HH: hour,
+        mm: minute,
+        ss: second,
+        w: week
+      };
+      parse.yyyy = parse.YYYY;
+      parse.dd = parse.DD;
+      parse.hh = parse.HH; // 补零
 
-        Object.entries(parse).forEach(function (_ref) {
-            var _ref2 = _slicedToArray(_ref, 2),
-                k = _ref2[0],
-                v = _ref2[1];
+      Object.entries(parse).forEach(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            k = _ref2[0],
+            v = _ref2[1];
 
-            parse[k] = String(v).padStart(2, 0);
-        }); // 上午|下午
+        parse[k] = String(v).padStart(2, 0);
+      }); // 上午|下午
 
-        parse.a = hour / 12 >= 1 ? 'pm' : 'am';
-        parse.A = parse.a.toUpperCase();
-        return Object.entries(parse).reduce(function (prev, _ref3) {
-            var _ref4 = _slicedToArray(_ref3, 2),
-                k = _ref4[0],
-                v = _ref4[1];
+      parse.a = hour / 12 >= 1 ? 'pm' : 'am';
+      parse.A = parse.a.toUpperCase();
+      return Object.entries(parse).reduce(function (prev, _ref3) {
+        var _ref4 = _slicedToArray(_ref3, 2),
+            k = _ref4[0],
+            v = _ref4[1];
 
-            return prev.replace(k, v);
-        }, format);
+        return prev.replace(k, v);
+      }, format);
     };
     /**
      * moment/locale/zh-cn.js 中文语言包
@@ -759,144 +938,145 @@
      */
 
     var defineMomentLocaleZhCn = function defineMomentLocaleZhCn(moment) {
-        moment.defineLocale('zh-cn', {
-            months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
-            monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
-            weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
-            weekdaysShort: '周日_周一_周二_周三_周四_周五_周六'.split('_'),
-            weekdaysMin: '日_一_二_三_四_五_六'.split('_'),
-            longDateFormat: {
-                LT: 'HH:mm',
-                LTS: 'HH:mm:ss',
-                L: 'YYYY/MM/DD',
-                LL: 'YYYY年M月D日',
-                LLL: 'YYYY年M月D日Ah点mm分',
-                LLLL: 'YYYY年M月D日ddddAh点mm分',
-                l: 'YYYY/M/D',
-                ll: 'YYYY年M月D日',
-                lll: 'YYYY年M月D日 HH:mm',
-                llll: 'YYYY年M月D日dddd HH:mm'
-            },
-            meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
-            meridiemHour: function meridiemHour(hour, meridiem) {
-                if (hour === 12) {
-                    hour = 0;
-                }
+      moment.defineLocale('zh-cn', {
+        months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
+        monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+        weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
+        weekdaysShort: '周日_周一_周二_周三_周四_周五_周六'.split('_'),
+        weekdaysMin: '日_一_二_三_四_五_六'.split('_'),
+        longDateFormat: {
+          LT: 'HH:mm',
+          LTS: 'HH:mm:ss',
+          L: 'YYYY/MM/DD',
+          LL: 'YYYY年M月D日',
+          LLL: 'YYYY年M月D日Ah点mm分',
+          LLLL: 'YYYY年M月D日ddddAh点mm分',
+          l: 'YYYY/M/D',
+          ll: 'YYYY年M月D日',
+          lll: 'YYYY年M月D日 HH:mm',
+          llll: 'YYYY年M月D日dddd HH:mm'
+        },
+        meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
+        meridiemHour: function meridiemHour(hour, meridiem) {
+          if (hour === 12) {
+            hour = 0;
+          }
 
-                if (meridiem === '凌晨' || meridiem === '早上' || meridiem === '上午') {
-                    return hour;
-                } else if (meridiem === '下午' || meridiem === '晚上') {
-                    return hour + 12;
-                } else {
-                    // '中午'
-                    return hour >= 11 ? hour : hour + 12;
-                }
-            },
-            meridiem: function meridiem(hour, minute, isLower) {
-                var hm = hour * 100 + minute;
+          if (meridiem === '凌晨' || meridiem === '早上' || meridiem === '上午') {
+            return hour;
+          } else if (meridiem === '下午' || meridiem === '晚上') {
+            return hour + 12;
+          } else {
+            // '中午'
+            return hour >= 11 ? hour : hour + 12;
+          }
+        },
+        meridiem: function meridiem(hour, minute, isLower) {
+          var hm = hour * 100 + minute;
 
-                if (hm < 600) {
-                    return '凌晨';
-                } else if (hm < 900) {
-                    return '早上';
-                } else if (hm < 1130) {
-                    return '上午';
-                } else if (hm < 1230) {
-                    return '中午';
-                } else if (hm < 1800) {
-                    return '下午';
-                } else {
-                    return '晚上';
-                }
-            },
-            calendar: {
-                sameDay: '[今天]LT',
-                nextDay: '[明天]LT',
-                nextWeek: function nextWeek(now) {
-                    if (now.week() !== this.week()) {
-                        return '[下]dddLT';
-                    } else {
-                        return '[本]dddLT';
-                    }
-                },
-                lastDay: '[昨天]LT',
-                lastWeek: function lastWeek(now) {
-                    if (this.week() !== now.week()) {
-                        return '[上]dddLT';
-                    } else {
-                        return '[本]dddLT';
-                    }
-                },
-                sameElse: 'L'
-            },
-            dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
-            ordinal: function ordinal(number, period) {
-                switch (period) {
-                    case 'd':
-                    case 'D':
-                    case 'DDD':
-                        return number + '日';
-
-                    case 'M':
-                        return number + '月';
-
-                    case 'w':
-                    case 'W':
-                        return number + '周';
-
-                    default:
-                        return number;
-                }
-            },
-            relativeTime: {
-                future: '%s后',
-                past: '%s前',
-                s: '几秒',
-                ss: '%d 秒',
-                m: '1 分钟',
-                mm: '%d 分钟',
-                h: '1 小时',
-                hh: '%d 小时',
-                d: '1 天',
-                dd: '%d 天',
-                w: '1 周',
-                ww: '%d 周',
-                M: '1 个月',
-                MM: '%d 个月',
-                y: '1 年',
-                yy: '%d 年'
-            },
-            week: {
-                // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
-                dow: 1,
-                // Monday is the first day of the week.
-                doy: 4 // The week that contains Jan 4th is the first week of the year.
+          if (hm < 600) {
+            return '凌晨';
+          } else if (hm < 900) {
+            return '早上';
+          } else if (hm < 1130) {
+            return '上午';
+          } else if (hm < 1230) {
+            return '中午';
+          } else if (hm < 1800) {
+            return '下午';
+          } else {
+            return '晚上';
+          }
+        },
+        calendar: {
+          sameDay: '[今天]LT',
+          nextDay: '[明天]LT',
+          nextWeek: function nextWeek(now) {
+            if (now.week() !== this.week()) {
+              return '[下]dddLT';
+            } else {
+              return '[本]dddLT';
             }
-        });
+          },
+          lastDay: '[昨天]LT',
+          lastWeek: function lastWeek(now) {
+            if (this.week() !== now.week()) {
+              return '[上]dddLT';
+            } else {
+              return '[本]dddLT';
+            }
+          },
+          sameElse: 'L'
+        },
+        dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
+        ordinal: function ordinal(number, period) {
+          switch (period) {
+            case 'd':
+            case 'D':
+            case 'DDD':
+              return number + '日';
+
+            case 'M':
+              return number + '月';
+
+            case 'w':
+            case 'W':
+              return number + '周';
+
+            default:
+              return number;
+          }
+        },
+        relativeTime: {
+          future: '%s后',
+          past: '%s前',
+          s: '几秒',
+          ss: '%d 秒',
+          m: '1 分钟',
+          mm: '%d 分钟',
+          h: '1 小时',
+          hh: '%d 小时',
+          d: '1 天',
+          dd: '%d 天',
+          w: '1 周',
+          ww: '%d 周',
+          M: '1 个月',
+          MM: '%d 个月',
+          y: '1 年',
+          yy: '%d 年'
+        },
+        week: {
+          // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
+          dow: 1,
+          // Monday is the first day of the week.
+          doy: 4 // The week that contains Jan 4th is the first week of the year.
+
+        }
+      });
     };
 
     var getDecLength = function getDecLength(num) {
-        var _String$split = String(num).split('.'),
-            _String$split2 = _slicedToArray(_String$split, 2),
-            _String$split2$ = _String$split2[1],
-            dec = _String$split2$ === void 0 ? '' : _String$split2$;
+      var _String$split = String(num).split('.'),
+          _String$split2 = _slicedToArray(_String$split, 2),
+          _String$split2$ = _String$split2[1],
+          dec = _String$split2$ === void 0 ? '' : _String$split2$;
 
-        return dec.length;
+      return dec.length;
     };
 
     var removeDot = function removeDot(num) {
-        return +String(num).replace('.', '');
+      return +String(num).replace('.', '');
     };
 
     var mulTwo = function mulTwo(a, b) {
-        var decAll = getDecLength(a) + getDecLength(b);
-        return (removeDot(a) * removeDot(b)) / Math.pow(10, decAll);
+      var decAll = getDecLength(a) + getDecLength(b);
+      return removeDot(a) * removeDot(b) / Math.pow(10, decAll);
     };
 
     var plusTwo = function plusTwo(a, b) {
-        var decMax = Math.max(getDecLength(a), getDecLength(b));
-        var temp = Math.pow(10, decMax);
-        return (mulTwo(a, temp) + mulTwo(b, temp)) / temp;
+      var decMax = Math.max(getDecLength(a), getDecLength(b));
+      var temp = Math.pow(10, decMax);
+      return (mulTwo(a, temp) + mulTwo(b, temp)) / temp;
     };
     /**
      * 浮点数计算-加法
@@ -919,14 +1099,15 @@
      * // => 0.3
      */
 
-    var plus = function plus() {
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
 
-        return _.flatten(args).reduce(function (prev, cur) {
-            return plusTwo(prev, cur);
-        }, 0);
+    var plus = function plus() {
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      return _.flatten(args).reduce(function (prev, cur) {
+        return plusTwo(prev, cur);
+      }, 0);
     };
     /**
      * 浮点数计算-减法
@@ -941,7 +1122,7 @@
      */
 
     var minus = function minus(a, b) {
-        return plus(a, mulTwo(b, -1));
+      return plus(a, mulTwo(b, -1));
     };
     /**
      * 浮点数计算-乘法
@@ -965,13 +1146,13 @@
      */
 
     var mul = function mul() {
-        for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            args[_key2] = arguments[_key2];
-        }
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
 
-        return _.flatten(args).reduce(function (prev, cur) {
-            return mulTwo(prev, cur);
-        }, 1);
+      return _.flatten(args).reduce(function (prev, cur) {
+        return mulTwo(prev, cur);
+      }, 1);
     };
     /**
      * 浮点数计算-除法
@@ -986,9 +1167,9 @@
      */
 
     var div = function div(a, b) {
-        var decMax = Math.max(getDecLength(a), getDecLength(b));
-        var temp = Math.pow(10, decMax);
-        return mulTwo(a, temp) / mulTwo(b, temp);
+      var decMax = Math.max(getDecLength(a), getDecLength(b));
+      var temp = Math.pow(10, decMax);
+      return mulTwo(a, temp) / mulTwo(b, temp);
     };
 
     /**
@@ -1008,11 +1189,11 @@
      */
 
     var sleep = function sleep() {
-        var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : -1;
-        var sleepTime = time < 0 ? _.random(2, 5) : time;
-        return new Promise(function (resolve) {
-            return setTimeout(resolve, sleepTime * 1e3);
-        });
+      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : -1;
+      var sleepTime = time < 0 ? _.random(2, 5) : time;
+      return new Promise(function (resolve) {
+        return setTimeout(resolve, sleepTime * 1e3);
+      });
     };
     /**
      * 模拟接口请求
@@ -1026,13 +1207,13 @@
      */
 
     var fakeFetch = function fakeFetch() {
-        var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        var time = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
-        return new Promise(function (resolve) {
-            sleep(time).then(function () {
-                resolve(data);
-            });
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var time = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
+      return new Promise(function (resolve) {
+        sleep(time).then(function () {
+          resolve(data);
         });
+      });
     };
 
     /**
@@ -1101,36 +1282,36 @@
      */
 
     var queryParse = function queryParse() {
-        var queryString = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        var query;
+      var queryString = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var query;
 
-        if (queryString.startsWith('?')) {
-            query = queryString.substring(1);
+      if (queryString.startsWith('?')) {
+        query = queryString.substring(1);
+      } else {
+        query = queryString;
+      }
+
+      if (isEmptyString(query)) {
+        return {};
+      }
+
+      return query.split('&').reduce(function (prev, cur) {
+        var _cur$split = cur.split('='),
+            _cur$split2 = _slicedToArray(_cur$split, 2),
+            k = _cur$split2[0],
+            _cur$split2$ = _cur$split2[1],
+            v = _cur$split2$ === void 0 ? null : _cur$split2$;
+
+        var val = _.isNull(v) ? v : decodeURIComponent(v);
+
+        if (_.isUndefined(prev[k])) {
+          prev[k] = val;
         } else {
-            query = queryString;
+          prev[k] = _.flatten([prev[k], val]);
         }
 
-        if (isEmptyString(query)) {
-            return {};
-        }
-
-        return query.split('&').reduce(function (prev, cur) {
-            var _cur$split = cur.split('='),
-                _cur$split2 = _slicedToArray(_cur$split, 2),
-                k = _cur$split2[0],
-                _cur$split2$ = _cur$split2[1],
-                v = _cur$split2$ === void 0 ? null : _cur$split2$;
-
-            var val = _.isNull(v) ? v : decodeURIComponent(v);
-
-            if (_.isUndefined(prev[k])) {
-                prev[k] = val;
-            } else {
-                prev[k] = _.flatten([prev[k], val]);
-            }
-
-            return prev;
-        }, {});
+        return prev;
+      }, {});
     };
     /**
      * 将对象变成query字符串
@@ -1190,34 +1371,30 @@
      */
 
     var queryStringify = function queryStringify() {
-        var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        return Object.entries(params || {})
-            .reduce(function (prev, cur) {
-                var _cur = _slicedToArray(cur, 2),
-                    k = _cur[0],
-                    v = _cur[1];
+      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      return Object.entries(params || {}).reduce(function (prev, cur) {
+        var _cur = _slicedToArray(cur, 2),
+            k = _cur[0],
+            v = _cur[1];
 
-                if (_.isUndefined(v)) {
-                    return prev;
-                }
+        if (_.isUndefined(v)) {
+          return prev;
+        }
 
-                if (_.isNull(v)) {
-                    prev.push(k);
-                } else {
-                    var list = _.flatten([v])
-                        .filter(function (v2) {
-                            return !_.isUndefined(v2);
-                        })
-                        .map(function (v2) {
-                            var val = encodeURIComponent(v2);
-                            return _.isNull(v2) ? k : [k, val].join('=');
-                        });
-                    prev.push.apply(prev, _toConsumableArray(list));
-                }
+        if (_.isNull(v)) {
+          prev.push(k);
+        } else {
+          var list = _.flatten([v]).filter(function (v2) {
+            return !_.isUndefined(v2);
+          }).map(function (v2) {
+            var val = encodeURIComponent(v2);
+            return _.isNull(v2) ? k : [k, val].join('=');
+          });
+          prev.push.apply(prev, _toConsumableArray(list));
+        }
 
-                return prev;
-            }, [])
-            .join('&');
+        return prev;
+      }, []).join('&');
     };
 
     /**
@@ -1237,13 +1414,13 @@
      */
 
     var getParams = function getParams(str, key) {
-        var params = queryParse(str);
+      var params = queryParse(str);
 
-        if (isEmptyValue(key)) {
-            return params;
-        }
+      if (isEmptyValue(key)) {
+        return params;
+      }
 
-        return params[key];
+      return params[key];
     };
     /**
      * 获取 search 参数
@@ -1260,15 +1437,15 @@
      */
 
     var search = function search() {
-        var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
-        // 从hash里解析 search 参数 (router 模式)
-        var _split = (window.location.search || window.location.hash).split('?'),
-            _split2 = _slicedToArray(_split, 2),
-            _split2$ = _split2[1],
-            str = _split2$ === void 0 ? '' : _split2$;
+      // 从hash里解析 search 参数 (router 模式)
+      var _split = (window.location.search || window.location.hash).split('?'),
+          _split2 = _slicedToArray(_split, 2),
+          _split2$ = _split2[1],
+          str = _split2$ === void 0 ? '' : _split2$;
 
-        return getParams(str, key);
+      return getParams(str, key);
     };
     /**
      * 拼接url
@@ -1292,25 +1469,25 @@
      */
 
     var stringifyUrl = function stringifyUrl() {
-        var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var args = Object.entries(params).reduce(function (prev, _ref) {
-            var _ref2 = _slicedToArray(_ref, 2),
-                k = _ref2[0],
-                v = _ref2[1];
+      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var args = Object.entries(params).reduce(function (prev, _ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            k = _ref2[0],
+            v = _ref2[1];
 
-            if (!_.isNil(v) && v !== '') {
-                prev[k] = v;
-            }
-
-            return prev;
-        }, {});
-
-        if (isEmptyObject(args)) {
-            return url;
+        if (!_.isNil(v) && v !== '') {
+          prev[k] = v;
         }
 
-        return [url, queryStringify(args)].join('?');
+        return prev;
+      }, {});
+
+      if (isEmptyObject(args)) {
+        return url;
+      }
+
+      return [url, queryStringify(args)].join('?');
     };
     /**
      * 更新 url 某个参数
@@ -1329,11 +1506,11 @@
      */
 
     var updateUrlQuery = function updateUrlQuery() {
-        var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-        var baseUrl = url.split('?')[0];
-        var query = getParams(url.split('?')[1] || '');
-        return stringifyUrl(baseUrl, _objectSpread2(_objectSpread2({}, query), params));
+      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      var baseUrl = url.split('?')[0];
+      var query = getParams(url.split('?')[1] || '');
+      return stringifyUrl(baseUrl, _objectSpread2(_objectSpread2({}, query), params));
     };
     /**
      * 跳转页面
@@ -1353,49 +1530,50 @@
      */
 
     var linkTo = function linkTo() {
-        var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-        var defaultOptions = {
-            target: '_self',
-            // a 标签属性
-            isNewTab: false,
-            // 是否在新 Tab打开（窗口、tab页）
-            rel: 'noreferrer',
-            // a 标签属性
-            download: '' // a 标签属性
-        };
+      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      var defaultOptions = {
+        target: '_self',
+        // a 标签属性
+        isNewTab: false,
+        // 是否在新 Tab打开（窗口、tab页）
+        rel: 'noreferrer',
+        // a 标签属性
+        download: '' // a 标签属性
 
-        var computedOptions = _objectSpread2(_objectSpread2({}, defaultOptions), options);
+      };
 
-        if (computedOptions.isNewTab) {
-            computedOptions.target = '_blank';
+      var computedOptions = _objectSpread2(_objectSpread2({}, defaultOptions), options);
+
+      if (computedOptions.isNewTab) {
+        computedOptions.target = '_blank';
+      }
+
+      var target = computedOptions.target,
+          rel = computedOptions.rel,
+          download = computedOptions.download;
+      var href = stringifyUrl(url, params);
+      var elmentA = document.createElement('a');
+      elmentA.target = target;
+      elmentA.href = href;
+
+      if (rel) {
+        elmentA.rel = rel;
+      }
+
+      if (download) {
+        if (download === true) {
+          elmentA.setAttribute('download', '');
+        } else {
+          elmentA.setAttribute('download', download);
         }
+      }
 
-        var target = computedOptions.target,
-            rel = computedOptions.rel,
-            download = computedOptions.download;
-        var href = stringifyUrl(url, params);
-        var elmentA = document.createElement('a');
-        elmentA.target = target;
-        elmentA.href = href;
-
-        if (rel) {
-            elmentA.rel = rel;
-        }
-
-        if (download) {
-            if (download === true) {
-                elmentA.setAttribute('download', '');
-            } else {
-                elmentA.setAttribute('download', download);
-            }
-        }
-
-        elmentA.setAttribute('hidden', 'hidden');
-        document.body.appendChild(elmentA);
-        elmentA.click();
-        document.body.removeChild(elmentA);
+      elmentA.setAttribute('hidden', 'hidden');
+      document.body.appendChild(elmentA);
+      elmentA.click();
+      document.body.removeChild(elmentA);
     };
     /**
      * 解析 url
@@ -1408,12 +1586,12 @@
      */
 
     var parseUrl = function parseUrl() {
-        var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        var elmentA = document.createElement('a');
-        elmentA.href = url;
-        var result = _.pick(elmentA, ['protocol', 'host', 'pathname', 'port', 'search', 'hash', 'origin', 'hostname']);
-        elmentA = null;
-        return result;
+      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var elmentA = document.createElement('a');
+      elmentA.href = url;
+      var result = _.pick(elmentA, ['protocol', 'host', 'pathname', 'port', 'search', 'hash', 'origin', 'hostname']);
+      elmentA = null;
+      return result;
     };
     /**
      * 获取完整 url
@@ -1427,17 +1605,17 @@
      */
 
     var getFullUrl = function getFullUrl() {
-        var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
-        if (!url) {
-            return '';
-        }
+      if (!url) {
+        return '';
+      }
 
-        var elmentA = document.createElement('a');
-        elmentA.href = url;
-        var result = elmentA.href;
-        elmentA = null;
-        return result;
+      var elmentA = document.createElement('a');
+      elmentA.href = url;
+      var result = elmentA.href;
+      elmentA = null;
+      return result;
     };
 
     /**
@@ -1452,14 +1630,14 @@
      */
 
     var setAttrs = function setAttrs(element) {
-        var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        Object.entries(attrs).forEach(function (_ref) {
-            var _ref2 = _slicedToArray(_ref, 2),
-                k = _ref2[0],
-                v = _ref2[1];
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      Object.entries(attrs).forEach(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            k = _ref2[0],
+            v = _ref2[1];
 
-            element.setAttribute(k, v);
-        });
+        element.setAttribute(k, v);
+      });
     };
     /**
      * 下载 blob
@@ -1473,27 +1651,20 @@
      */
 
     var downloadBlob = function downloadBlob(blob) {
-        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var fileReader = new FileReader();
-        fileReader.readAsDataURL(blob);
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(blob);
 
-        fileReader.onload = function (e) {
-            var elmentA = document.createElement('a');
-            var href = e.target.result;
-            setAttrs(
-                elmentA,
-                _objectSpread2(
-                    _objectSpread2({}, options),
-                    {},
-                    {
-                        href: href
-                    }
-                )
-            );
-            document.body.appendChild(elmentA);
-            elmentA.click();
-            document.body.removeChild(elmentA);
-        };
+      fileReader.onload = function (e) {
+        var elmentA = document.createElement('a');
+        var href = e.target.result;
+        setAttrs(elmentA, _objectSpread2(_objectSpread2({}, options), {}, {
+          href: href
+        }));
+        document.body.appendChild(elmentA);
+        elmentA.click();
+        document.body.removeChild(elmentA);
+      };
     };
     /**
      * 下载文件
@@ -1507,42 +1678,36 @@
      */
 
     var download = function download() {
-        var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var elmentA = document.createElement('a');
-        document.body.append(elmentA);
-        var downloadFileName = _.last(url.split('/'));
-        setAttrs(
-            elmentA,
-            _objectSpread2(
-                {
-                    href: url,
-                    download: downloadFileName,
-                    target: '_blank',
-                    rel: 'noopener noreferrer'
-                },
-                config
-            )
-        );
-        setStyle(elmentA, {
-            display: 'none !important'
-        });
-        elmentA.click();
-        document.body.removeChild(elmentA);
+      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var elmentA = document.createElement('a');
+      document.body.append(elmentA);
+      var downloadFileName = _.last(url.split('/'));
+      setAttrs(elmentA, _objectSpread2({
+        href: url,
+        download: downloadFileName,
+        target: '_blank',
+        rel: 'noopener noreferrer'
+      }, config));
+      setStyle(elmentA, {
+        display: 'none !important'
+      });
+      elmentA.click();
+      document.body.removeChild(elmentA);
     }; // 当值为数字时, 加上单位 `px` 的css属性
 
     var DefaultUnitsPxProperties = ['font-size', 'margin', 'padding', 'border']; // margin, padding, border
 
     ['top', 'right', 'bottom', 'left'].forEach(function (v) {
-        DefaultUnitsPxProperties.push(v);
-        DefaultUnitsPxProperties.push(['margin', v].join('-'));
-        DefaultUnitsPxProperties.push(['padding', v].join('-'));
-        DefaultUnitsPxProperties.push(['border', v, 'width'].join('-'));
+      DefaultUnitsPxProperties.push(v);
+      DefaultUnitsPxProperties.push(['margin', v].join('-'));
+      DefaultUnitsPxProperties.push(['padding', v].join('-'));
+      DefaultUnitsPxProperties.push(['border', v, 'width'].join('-'));
     }); // max min
 
     ['width', 'height'].forEach(function (v) {
-        DefaultUnitsPxProperties.push(v);
-        DefaultUnitsPxProperties.push(['max', v].join('-'), ['min', v].join('-'));
+      DefaultUnitsPxProperties.push(v);
+      DefaultUnitsPxProperties.push(['max', v].join('-'), ['min', v].join('-'));
     });
     /**
      * 给cssom加上单位px
@@ -1560,22 +1725,22 @@
      */
 
     var convertCssom = function convertCssom() {
-        var cssom = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        return Object.entries(cssom).reduce(function (prev, _ref3) {
-            var _ref4 = _slicedToArray(_ref3, 2),
-                k = _ref4[0],
-                v = _ref4[1];
+      var cssom = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      return Object.entries(cssom).reduce(function (prev, _ref3) {
+        var _ref4 = _slicedToArray(_ref3, 2),
+            k = _ref4[0],
+            v = _ref4[1];
 
-            var key = _.kebabCase(k); // 对于一些特定属性, 当值为数字时, 加上单位 px
+        var key = _.kebabCase(k); // 对于一些特定属性, 当值为数字时, 加上单位 px
 
-            if (_.isNumber(v) && DefaultUnitsPxProperties.includes(key)) {
-                prev[key] = ''.concat(v, 'px');
-            } else {
-                prev[key] = v;
-            }
+        if (_.isNumber(v) && DefaultUnitsPxProperties.includes(key)) {
+          prev[key] = "".concat(v, "px");
+        } else {
+          prev[key] = v;
+        }
 
-            return prev;
-        }, {});
+        return prev;
+      }, {});
     };
     /**
      * 给元素批量设置样式
@@ -1589,14 +1754,14 @@
      */
 
     var setStyle = function setStyle(element, cssom) {
-        var computedCssom = convertCssom(cssom);
-        Object.entries(computedCssom).forEach(function (_ref5) {
-            var _ref6 = _slicedToArray(_ref5, 2),
-                k = _ref6[0],
-                v = _ref6[1];
+      var computedCssom = convertCssom(cssom);
+      Object.entries(computedCssom).forEach(function (_ref5) {
+        var _ref6 = _slicedToArray(_ref5, 2),
+            k = _ref6[0],
+            v = _ref6[1];
 
-            element.style[k] = v;
-        });
+        element.style[k] = v;
+      });
     };
     /**
      * 获取 cssText
@@ -1609,24 +1774,22 @@
      */
 
     var getCssText = function getCssText() {
-        var cssom = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var cssom = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-        if (isEmptyObject(cssom)) {
-            return '';
-        }
+      if (isEmptyObject(cssom)) {
+        return '';
+      }
 
-        var computedCssom = convertCssom(cssom);
-        var cssText = Object.entries(computedCssom)
-            .reduce(function (prev, _ref7) {
-                var _ref8 = _slicedToArray(_ref7, 2),
-                    k = _ref8[0],
-                    v = _ref8[1];
+      var computedCssom = convertCssom(cssom);
+      var cssText = Object.entries(computedCssom).reduce(function (prev, _ref7) {
+        var _ref8 = _slicedToArray(_ref7, 2),
+            k = _ref8[0],
+            v = _ref8[1];
 
-                prev.push([k, v].join(': '));
-                return prev;
-            }, [])
-            .join('; ');
-        return [cssText, ';'].join('');
+        prev.push([k, v].join(': '));
+        return prev;
+      }, []).join('; ');
+      return [cssText, ';'].join('');
     };
     /**
      * 获取字符串在浏览器中所占的长度
@@ -1644,20 +1807,20 @@
      */
 
     var getWordWidth = function getWordWidth() {
-        var word = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        var cssom = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var eleSpan = document.createElement('span');
-        var defaultCssom = {
-            visibility: 'hidden',
-            whiteSpace: 'nowrap',
-            fontSize: 14
-        };
-        eleSpan.style.cssText = getCssText(_objectSpread2(_objectSpread2({}, defaultCssom), cssom));
-        document.body.appendChild(eleSpan);
-        eleSpan.innerText = word;
-        var width = eleSpan.offsetWidth;
-        document.body.removeChild(eleSpan);
-        return Math.ceil(Number.parseFloat(width));
+      var word = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var cssom = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var eleSpan = document.createElement('span');
+      var defaultCssom = {
+        visibility: 'hidden',
+        whiteSpace: 'nowrap',
+        fontSize: 14
+      };
+      eleSpan.style.cssText = getCssText(_objectSpread2(_objectSpread2({}, defaultCssom), cssom));
+      document.body.appendChild(eleSpan);
+      eleSpan.innerText = word;
+      var width = eleSpan.offsetWidth;
+      document.body.removeChild(eleSpan);
+      return Math.ceil(Number.parseFloat(width));
     };
     /**
      * 复制文本
@@ -1676,13 +1839,13 @@
      */
 
     var copyText = function copyText() {
-        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        var textarea = document.createElement('textarea');
-        textarea.value = text;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
+      var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
     };
     /**
      * classNames
@@ -1721,28 +1884,28 @@
      */
 
     var classNames = function classNames() {
-        var classNameList = [];
+      var classNameList = [];
 
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
 
-        _.flattenDeep([args]).forEach(function (v) {
-            if (_.isObject(v)) {
-                Object.entries(v).forEach(function (_ref9) {
-                    var _ref10 = _slicedToArray(_ref9, 2),
-                        k2 = _ref10[0],
-                        v2 = _ref10[1];
+      _.flattenDeep([args]).forEach(function (v) {
+        if (_.isObject(v)) {
+          Object.entries(v).forEach(function (_ref9) {
+            var _ref10 = _slicedToArray(_ref9, 2),
+                k2 = _ref10[0],
+                v2 = _ref10[1];
 
-                    if (v2) {
-                        classNameList.push(k2);
-                    }
-                });
-            } else {
-                classNameList.push(String(v || '').trim());
+            if (v2) {
+              classNameList.push(k2);
             }
-        });
-        return _.uniq(classNameList.filter(Boolean)).join(' ');
+          });
+        } else {
+          classNameList.push(String(v || '').trim());
+        }
+      });
+      return _.uniq(classNameList.filter(Boolean)).join(' ');
     };
     /**
      * 给 className 加后缀
@@ -1758,28 +1921,25 @@
      */
 
     var suffixClassNames = function suffixClassNames() {
-        var baseClassName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        var suffixConfig = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      var baseClassName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var suffixConfig = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
-        var computedConfig = _objectSpread2(
-            {
-                separator: '-'
-            },
-            config
-        );
+      var computedConfig = _objectSpread2({
+        separator: '-'
+      }, config);
 
-        var classNameList = [baseClassName];
-        Object.entries(suffixConfig).forEach(function (_ref11) {
-            var _ref12 = _slicedToArray(_ref11, 2),
-                k = _ref12[0],
-                v = _ref12[1];
+      var classNameList = [baseClassName];
+      Object.entries(suffixConfig).forEach(function (_ref11) {
+        var _ref12 = _slicedToArray(_ref11, 2),
+            k = _ref12[0],
+            v = _ref12[1];
 
-            if (v) {
-                classNameList.push([baseClassName, k].join(computedConfig.separator));
-            }
-        });
-        return classNames(classNameList);
+        if (v) {
+          classNameList.push([baseClassName, k].join(computedConfig.separator));
+        }
+      });
+      return classNames(classNameList);
     };
 
     /**
@@ -1808,17 +1968,17 @@
      */
 
     var getLabelByValue = function getLabelByValue(value) {
-        var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-        var emptyText = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '--';
-        var item = data.find(function (v) {
-            return String(v.value) === String(value);
-        });
+      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+      var emptyText = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '--';
+      var item = data.find(function (v) {
+        return String(v.value) === String(value);
+      });
 
-        if (item) {
-            return item.label;
-        }
+      if (item) {
+        return item.label;
+      }
 
-        return emptyText;
+      return emptyText;
     };
     /**
      * 将 json 转换成 [{ value, label }]
@@ -1832,18 +1992,18 @@
      */
 
     var convertJsonToEnum = function convertJsonToEnum() {
-        var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        return Object.entries(data).reduce(function (prev, _ref) {
-            var _ref2 = _slicedToArray(_ref, 2),
-                k = _ref2[0],
-                v = _ref2[1];
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      return Object.entries(data).reduce(function (prev, _ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            k = _ref2[0],
+            v = _ref2[1];
 
-            prev.push({
-                value: k,
-                label: v
-            });
-            return prev;
-        }, []);
+        prev.push({
+          value: k,
+          label: v
+        });
+        return prev;
+      }, []);
     };
     /**
      * 通过 label 获取 value
@@ -1860,23 +2020,23 @@
      */
 
     var getValueByLabel = function getValueByLabel(label) {
-        var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-        var emptyText = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '--';
-        var tempData = data;
+      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+      var emptyText = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '--';
+      var tempData = data;
 
-        if (_.isPlainObject(data)) {
-            tempData = convertJsonToEnum(data);
-        }
+      if (_.isPlainObject(data)) {
+        tempData = convertJsonToEnum(data);
+      }
 
-        var item = tempData.find(function (v) {
-            return String(v.label) === String(label);
-        });
+      var item = tempData.find(function (v) {
+        return String(v.label) === String(label);
+      });
 
-        if (item) {
-            return item.value;
-        }
+      if (item) {
+        return item.value;
+      }
 
-        return emptyText;
+      return emptyText;
     };
     /**
      * 将任意数据返回转换成 Enum [{ value, label }]
@@ -1891,55 +2051,42 @@
      */
 
     var convertDataToEnum = function convertDataToEnum(res) {
-        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-        if (isEmptyValue(res)) {
-            return [];
+      if (isEmptyValue(res)) {
+        return [];
+      }
+
+      var _options$path = options.path,
+          path = _options$path === void 0 ? '' : _options$path,
+          _options$valueKey = options.valueKey,
+          valueKey = _options$valueKey === void 0 ? 'value' : _options$valueKey,
+          _options$labelKey = options.labelKey,
+          labelKey = _options$labelKey === void 0 ? 'label' : _options$labelKey,
+          _options$renderLabel = options.renderLabel,
+          renderLabel = _options$renderLabel === void 0 ? function (node) {
+        return node.label;
+      } : _options$renderLabel;
+      var list = path ? _.get(res, path, []) : res;
+      return list.map(function (v) {
+        // 数组的每一项是基本类型: number | string
+        if (!_.isPlainObject(v)) {
+          return {
+            value: v,
+            label: v
+          };
         }
 
-        var _options$path = options.path,
-            path = _options$path === void 0 ? '' : _options$path,
-            _options$valueKey = options.valueKey,
-            valueKey = _options$valueKey === void 0 ? 'value' : _options$valueKey,
-            _options$labelKey = options.labelKey,
-            labelKey = _options$labelKey === void 0 ? 'label' : _options$labelKey,
-            _options$renderLabel = options.renderLabel,
-            renderLabel =
-                _options$renderLabel === void 0
-                    ? function (node) {
-                          return node.label;
-                      }
-                    : _options$renderLabel;
-        var list = path ? _.get(res, path, []) : res;
-        return list.map(function (v) {
-            // 数组的每一项是基本类型: number | string
-            if (!_.isPlainObject(v)) {
-                return {
-                    value: v,
-                    label: v
-                };
-            }
-
-            var value = _.get(v, valueKey);
-            var label = renderLabel(
-                _objectSpread2(
-                    _objectSpread2({}, v),
-                    {},
-                    {
-                        value: value,
-                        label: _.get(v, labelKey)
-                    }
-                )
-            );
-            return _objectSpread2(
-                _objectSpread2({}, v),
-                {},
-                {
-                    value: value,
-                    label: label
-                }
-            );
+        var value = _.get(v, valueKey);
+        var label = renderLabel(_objectSpread2(_objectSpread2({}, v), {}, {
+          value: value,
+          label: _.get(v, labelKey)
+        }));
+        return _objectSpread2(_objectSpread2({}, v), {}, {
+          value: value,
+          label: label
         });
+      });
     };
     /**
      * 将任意数据返回转换成 Cascader: [{ value, label, children: [{ value, label }]}]
@@ -1954,42 +2101,39 @@
      */
 
     var convertDataToCascader = function convertDataToCascader(res, config) {
-        var _config$path = config.path,
-            path = _config$path === void 0 ? '' : _config$path,
-            _config$valueKey = config.valueKey,
-            valueKey = _config$valueKey === void 0 ? 'value' : _config$valueKey,
-            _config$labelKey = config.labelKey,
-            labelKey = _config$labelKey === void 0 ? 'label' : _config$labelKey,
-            _config$childrenKey = config.childrenKey,
-            childrenKey = _config$childrenKey === void 0 ? 'children' : _config$childrenKey,
-            _config$renderLabel = config.renderLabel,
-            renderLabel =
-                _config$renderLabel === void 0
-                    ? function (node) {
-                          return node.label;
-                      }
-                    : _config$renderLabel;
+      var _config$path = config.path,
+          path = _config$path === void 0 ? '' : _config$path,
+          _config$valueKey = config.valueKey,
+          valueKey = _config$valueKey === void 0 ? 'value' : _config$valueKey,
+          _config$labelKey = config.labelKey,
+          labelKey = _config$labelKey === void 0 ? 'label' : _config$labelKey,
+          _config$childrenKey = config.childrenKey,
+          childrenKey = _config$childrenKey === void 0 ? 'children' : _config$childrenKey,
+          _config$renderLabel = config.renderLabel,
+          renderLabel = _config$renderLabel === void 0 ? function (node) {
+        return node.label;
+      } : _config$renderLabel;
 
-        var convertData = function convertData(data) {
-            return data.reduce(function (prev, cur) {
-                var item = {
-                    value: cur[valueKey],
-                    label: cur[labelKey],
-                    children: []
-                };
-                item.label = renderLabel(item);
+      var convertData = function convertData(data) {
+        return data.reduce(function (prev, cur) {
+          var item = {
+            value: cur[valueKey],
+            label: cur[labelKey],
+            children: []
+          };
+          item.label = renderLabel(item);
 
-                if (cur[childrenKey]) {
-                    item.children = convertData(cur[childrenKey]);
-                }
+          if (cur[childrenKey]) {
+            item.children = convertData(cur[childrenKey]);
+          }
 
-                prev.push(item);
-                return prev;
-            }, []);
-        };
+          prev.push(item);
+          return prev;
+        }, []);
+      };
 
-        var list = path ? _.get(res, path, []) : res;
-        return convertData(list);
+      var list = path ? _.get(res, path, []) : res;
+      return convertData(list);
     };
     /**
      * 从集合中取值
@@ -2013,23 +2157,23 @@
      */
 
     var getValueInCollection = function getValueInCollection(value) {
-        var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-        var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-        var _options$key = options.key,
-            key = _options$key === void 0 ? '' : _options$key,
-            _options$valueKey2 = options.valueKey,
-            valueKey = _options$valueKey2 === void 0 ? '' : _options$valueKey2,
-            _options$emptyText = options.emptyText,
-            emptyText = _options$emptyText === void 0 ? '--' : _options$emptyText;
-        var item = data.find(function (v) {
-            return String(value) === String(v[key]);
-        });
+      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      var _options$key = options.key,
+          key = _options$key === void 0 ? '' : _options$key,
+          _options$valueKey2 = options.valueKey,
+          valueKey = _options$valueKey2 === void 0 ? '' : _options$valueKey2,
+          _options$emptyText = options.emptyText,
+          emptyText = _options$emptyText === void 0 ? '--' : _options$emptyText;
+      var item = data.find(function (v) {
+        return String(value) === String(v[key]);
+      });
 
-        if (item) {
-            return item[valueKey];
-        }
+      if (item) {
+        return item[valueKey];
+      }
 
-        return emptyText;
+      return emptyText;
     };
 
     /**
@@ -2040,26 +2184,26 @@
      * @return {Blob}             blob数据
      */
     var b64toBlob = function b64toBlob(b64Data) {
-        var contentType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'image/jpeg';
-        var sliceSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 512;
-        var byteCharacters = atob(b64Data.split(';base64,')[1]);
-        var byteArrays = [];
+      var contentType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'image/jpeg';
+      var sliceSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 512;
+      var byteCharacters = atob(b64Data.split(';base64,')[1]);
+      var byteArrays = [];
 
-        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-            var slice = byteCharacters.slice(offset, offset + sliceSize);
-            var byteNumbers = new Array(slice.length);
+      for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        var slice = byteCharacters.slice(offset, offset + sliceSize);
+        var byteNumbers = new Array(slice.length);
 
-            for (var i = 0; i < slice.length; i++) {
-                byteNumbers[i] = slice.charCodeAt(i);
-            }
-
-            var byteArray = new Uint8Array(byteNumbers);
-            byteArrays.push(byteArray);
+        for (var i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
         }
 
-        return new Blob(byteArrays, {
-            type: contentType
-        });
+        var byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+      }
+
+      return new Blob(byteArrays, {
+        type: contentType
+      });
     };
 
     /**
@@ -2082,24 +2226,24 @@
      * // => '1,234,567'
      */
     var thousands = function thousands(num) {
-        var data = +num || 0;
+      var data = +num || 0;
 
-        if (!data) {
-            return num;
-        }
+      if (!data) {
+        return num;
+      }
 
-        var _String$split = String(num).split('.'),
-            _String$split2 = _slicedToArray(_String$split, 2),
-            _int = _String$split2[0],
-            dec = _String$split2[1];
+      var _String$split = String(num).split('.'),
+          _String$split2 = _slicedToArray(_String$split, 2),
+          _int = _String$split2[0],
+          dec = _String$split2[1];
 
-        var formatInt = _int.replace(/(?=(?!^)(\d{3})+$)/g, ',');
+      var formatInt = _int.replace(/(?=(?!^)(\d{3})+$)/g, ',');
 
-        if (+dec) {
-            return [formatInt, dec].join('.');
-        }
+      if (+dec) {
+        return [formatInt, dec].join('.');
+      }
 
-        return formatInt;
+      return formatInt;
     };
     /**
      * 取区间值
@@ -2123,55 +2267,54 @@
      */
 
     var getValueInRange = function getValueInRange(value, min, max) {
-        if (value < min) {
-            return min;
-        }
+      if (value < min) {
+        return min;
+      }
 
-        if (value > max) {
-            return max;
-        }
+      if (value > max) {
+        return max;
+      }
 
-        return value;
+      return value;
     };
 
-    var Formatters = /*#__PURE__*/ (function () {
-        function Formatters() {
-            _classCallCheck(this, Formatters);
+    var Formatters = /*#__PURE__*/function () {
+      function Formatters() {
+        _classCallCheck(this, Formatters);
+      }
+
+      _createClass(Formatters, [{
+        key: "text",
+        // 不作处理
+        value: function text(value) {
+          return value;
+        } // 百分比
+
+      }, {
+        key: "percentage",
+        value: function percentage(value) {
+          if (_.isNumber(value)) {
+            var temp = Number(mul(value, 1e2).toFixed(2));
+            return "".concat(temp, "%");
+          }
+
+          return value;
+        } // 数字千分位
+
+      }, {
+        key: "number",
+        value: function number(value) {
+          return thousands(value);
         }
+      }]);
 
-        _createClass(Formatters, [
-            {
-                key: 'text',
-                // 不作处理
-                value: function text(value) {
-                    return value;
-                } // 百分比
-            },
-            {
-                key: 'percentage',
-                value: function percentage(value) {
-                    if (_.isNumber(value)) {
-                        var temp = Number(mul(value, 1e2).toFixed(2));
-                        return ''.concat(temp, '%');
-                    }
-
-                    return value;
-                } // 数字千分位
-            },
-            {
-                key: 'number',
-                value: function number(value) {
-                    return thousands(value);
-                }
-            }
-        ]);
-
-        return Formatters;
-    })();
+      return Formatters;
+    }();
     /**
      * 文本格式化
      * @type {Formatters}
      */
+
 
     var formatters = new Formatters();
 
@@ -2198,38 +2341,38 @@
      */
 
     var getPercentageHtml = function getPercentageHtml(value) {
-        var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var _config$emptyText = config.emptyText,
-            emptyText = _config$emptyText === void 0 ? '--' : _config$emptyText,
-            _config$reverse = config.reverse,
-            reverse = _config$reverse === void 0 ? false : _config$reverse,
-            _config$disabled = config.disabled,
-            disabled = _config$disabled === void 0 ? false : _config$disabled;
-        var tempValue = formatters.percentage(value);
-        var greenColor = '#00b365';
-        var redColor = '#f5483b';
+      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var _config$emptyText = config.emptyText,
+          emptyText = _config$emptyText === void 0 ? '--' : _config$emptyText,
+          _config$reverse = config.reverse,
+          reverse = _config$reverse === void 0 ? false : _config$reverse,
+          _config$disabled = config.disabled,
+          disabled = _config$disabled === void 0 ? false : _config$disabled;
+      var tempValue = formatters.percentage(value);
+      var greenColor = '#00b365';
+      var redColor = '#f5483b';
 
-        if (value > 0) {
-            if (disabled) {
-                return tempValue;
-            }
-
-            return '<span style="color: '.concat(reverse ? redColor : greenColor, ';">').concat(tempValue, '</span>');
+      if (value > 0) {
+        if (disabled) {
+          return tempValue;
         }
 
-        if (value < 0) {
-            if (disabled) {
-                return tempValue;
-            }
+        return "<span style=\"color: ".concat(reverse ? redColor : greenColor, ";\">").concat(tempValue, "</span>");
+      }
 
-            return '<span style="color: '.concat(reverse ? greenColor : redColor, ';">').concat(tempValue, '</span>');
+      if (value < 0) {
+        if (disabled) {
+          return tempValue;
         }
 
-        if (value === 0) {
-            return tempValue;
-        }
+        return "<span style=\"color: ".concat(reverse ? greenColor : redColor, ";\">").concat(tempValue, "</span>");
+      }
 
-        return String(emptyText);
+      if (value === 0) {
+        return tempValue;
+      }
+
+      return String(emptyText);
     };
 
     /**
@@ -2247,27 +2390,25 @@
      */
 
     var getImageSize = function getImageSize() {
-        var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        return new Promise(function (reslove) {
-            var img = new Image();
-            img.src = url;
-            img.onload = /*#__PURE__*/ _asyncToGenerator(
-                /*#__PURE__*/ regeneratorRuntime.mark(function _callee() {
-                    return regeneratorRuntime.wrap(function _callee$(_context) {
-                        while (1) {
-                            switch ((_context.prev = _context.next)) {
-                                case 0:
-                                    reslove(_.pick(img, ['width', 'height']));
+      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return new Promise(function (reslove) {
+        var img = new Image();
+        img.src = url;
+        img.onload = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  reslove(_.pick(img, ['width', 'height']));
 
-                                case 1:
-                                case 'end':
-                                    return _context.stop();
-                            }
-                        }
-                    }, _callee);
-                })
-            );
-        });
+                case 1:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        }));
+      });
     };
     /**
      * 将图片的 http-url 变成 base64
@@ -2276,37 +2417,35 @@
      */
 
     var changeImageUrlToBase64 = function changeImageUrlToBase64(url) {
-        if (url.startsWith('data:image')) {
-            return url;
-        }
+      if (url.startsWith('data:image')) {
+        return url;
+      }
 
-        return new Promise(function (reslove) {
-            var img = new Image();
-            img.src = url;
-            img.onload = /*#__PURE__*/ _asyncToGenerator(
-                /*#__PURE__*/ regeneratorRuntime.mark(function _callee2() {
-                    var canvas, ctx, width, height;
-                    return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                        while (1) {
-                            switch ((_context2.prev = _context2.next)) {
-                                case 0:
-                                    canvas = document.createElement('canvas');
-                                    ctx = canvas.getContext('2d');
-                                    (width = img.width), (height = img.height);
-                                    canvas.width = width;
-                                    canvas.height = height;
-                                    ctx.drawImage(img, 0, 0, width, height);
-                                    reslove(canvas.toDataURL('image/jpeg'));
+      return new Promise(function (reslove) {
+        var img = new Image();
+        img.src = url;
+        img.onload = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+          var canvas, ctx, width, height;
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  canvas = document.createElement('canvas');
+                  ctx = canvas.getContext('2d');
+                  width = img.width, height = img.height;
+                  canvas.width = width;
+                  canvas.height = height;
+                  ctx.drawImage(img, 0, 0, width, height);
+                  reslove(canvas.toDataURL('image/jpeg'));
 
-                                case 7:
-                                case 'end':
-                                    return _context2.stop();
-                            }
-                        }
-                    }, _callee2);
-                })
-            );
-        });
+                case 7:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+      });
     };
 
     /**
@@ -2324,149 +2463,140 @@
      * console.log('do something here');
      */
     var setAsyncState = function setAsyncState(context, newState) {
-        return new Promise(function (resolve) {
-            context.setState(newState, resolve);
-        });
+      return new Promise(function (resolve) {
+        context.setState(newState, resolve);
+      });
     };
 
     var ValidatorRules = function ValidatorRules() {
-        var _this = this;
+      var _this = this;
 
-        _classCallCheck(this, ValidatorRules);
+      _classCallCheck(this, ValidatorRules);
 
-        _defineProperty(this, 'required', function () {
-            var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-            return {
-                required: true,
-                message: ''.concat(text, '\u4E0D\u80FD\u4E3A\u7A7A')
-            };
-        });
-
-        _defineProperty(this, 'selectRequired', function () {
-            var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-            return {
-                required: true,
-                message: '\u8BF7\u9009\u62E9'.concat(text),
-                transform: function transform(value) {
-                    if (_.isNumber(value)) {
-                        return String(value);
-                    }
-
-                    return value;
-                }
-            };
-        });
-
-        _defineProperty(this, 'multipleRequired', function () {
-            var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-            return [
-                _objectSpread2(
-                    _objectSpread2({}, _this.selectRequired(text)),
-                    {},
-                    {
-                        transform: function transform(value) {
-                            if (_.isUndefined(value)) {
-                                return '';
-                            }
-
-                            return value.join('');
-                        }
-                    }
-                ),
-                {
-                    validator: function validator(rule, value, callback) {
-                        if (_.isEmpty(value)) {
-                            return callback(new Error('\u8BF7\u9009\u62E9'.concat(text)));
-                        }
-
-                        return callback();
-                    }
-                }
-            ];
-        });
-
-        _defineProperty(this, 'cascaderRequired', function () {
-            var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-            return {
-                required: true,
-                message: '\u8BF7\u9009\u62E9'.concat(text),
-                transform: function transform(value) {
-                    if (_.isUndefined(value)) {
-                        return '';
-                    }
-
-                    return value.join('');
-                }
-            };
-        });
-
-        _defineProperty(this, 'min', function () {
-            var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-            var num = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-            return {
-                min: num,
-                message: ''.concat(text, '\u6700\u5C11').concat(num, '\u4E2A\u5B57\u7B26')
-            };
-        });
-
-        _defineProperty(this, 'max', function () {
-            var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-            var num = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-            return {
-                max: num,
-                message: ''.concat(text, '\u6700\u591A').concat(num, '\u4E2A\u5B57\u7B26')
-            };
-        });
-
-        _defineProperty(this, 'numberRange', function () {
-            var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-            var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-            var messageFuc =
-                arguments.length > 2 && arguments[2] !== undefined
-                    ? arguments[2]
-                    : ValidatorRules.numberRangeMessageFunc;
-            return function (rule, value, callback) {
-                var val = Number(value);
-                var results = [];
-                Object.entries(config).forEach(function (_ref) {
-                    var _ref2 = _slicedToArray(_ref, 2),
-                        k = _ref2[0],
-                        v = _ref2[1];
-
-                    var _find = _.find(ValidatorRules.numberRangeValidatorList, {
-                            key: k
-                        }),
-                        description = _find.description,
-                        validate = _find.validate;
-
-                    if (!validate(val, v)) {
-                        if (k === 'decimalLength') {
-                            results.push(description(v));
-                        } else {
-                            results.push(messageFuc(description, v));
-                        }
-                    }
-                });
-
-                if (!isEmptyArray(results)) {
-                    callback(new Error(''.concat(text, ': ').concat(results[0])));
-                }
-
-                callback();
-            };
-        });
-
-        // 只能是中文
-        this.chinese = {
-            message: '只能输入中文',
-            pattern: /^[\u4e00-\u9fa5]+$/
-        }; // 英文 + 下划线
-
-        this.letterAndUnderline = {
-            message: '只能是英文、下划线',
-            pattern: /^[a-zA-Z_]+$/
+      _defineProperty(this, "required", function () {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        return {
+          required: true,
+          message: "".concat(text, "\u4E0D\u80FD\u4E3A\u7A7A")
         };
-    }; // 数字范围: 错误信息拼接函数
+      });
+
+      _defineProperty(this, "selectRequired", function () {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        return {
+          required: true,
+          message: "\u8BF7\u9009\u62E9".concat(text),
+          transform: function transform(value) {
+            if (_.isNumber(value)) {
+              return String(value);
+            }
+
+            return value;
+          }
+        };
+      });
+
+      _defineProperty(this, "multipleRequired", function () {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        return [_objectSpread2(_objectSpread2({}, _this.selectRequired(text)), {}, {
+          transform: function transform(value) {
+            if (_.isUndefined(value)) {
+              return '';
+            }
+
+            return value.join('');
+          }
+        }), {
+          validator: function validator(rule, value, callback) {
+            if (_.isEmpty(value)) {
+              return callback(new Error("\u8BF7\u9009\u62E9".concat(text)));
+            }
+
+            return callback();
+          }
+        }];
+      });
+
+      _defineProperty(this, "cascaderRequired", function () {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        return {
+          required: true,
+          message: "\u8BF7\u9009\u62E9".concat(text),
+          transform: function transform(value) {
+            if (_.isUndefined(value)) {
+              return '';
+            }
+
+            return value.join('');
+          }
+        };
+      });
+
+      _defineProperty(this, "min", function () {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        var num = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        return {
+          min: num,
+          message: "".concat(text, "\u6700\u5C11").concat(num, "\u4E2A\u5B57\u7B26")
+        };
+      });
+
+      _defineProperty(this, "max", function () {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        var num = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        return {
+          max: num,
+          message: "".concat(text, "\u6700\u591A").concat(num, "\u4E2A\u5B57\u7B26")
+        };
+      });
+
+      _defineProperty(this, "numberRange", function () {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+        var messageFuc = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ValidatorRules.numberRangeMessageFunc;
+        return function (rule, value, callback) {
+          var val = Number(value);
+          var results = [];
+          Object.entries(config).forEach(function (_ref) {
+            var _ref2 = _slicedToArray(_ref, 2),
+                k = _ref2[0],
+                v = _ref2[1];
+
+            var _find = _.find(ValidatorRules.numberRangeValidatorList, {
+              key: k
+            }),
+                description = _find.description,
+                validate = _find.validate;
+
+            if (!validate(val, v)) {
+              if (k === 'decimalLength') {
+                results.push(description(v));
+              } else {
+                results.push(messageFuc(description, v));
+              }
+            }
+          });
+
+          if (!isEmptyArray(results)) {
+            callback(new Error("".concat(text, ": ").concat(results[0])));
+          }
+
+          callback();
+        };
+      });
+
+      // 只能是中文
+      this.chinese = {
+        message: '只能输入中文',
+        pattern: /^[\u4e00-\u9fa5]+$/
+      }; // 英文 + 下划线
+
+      this.letterAndUnderline = {
+        message: '只能是英文、下划线',
+        pattern: /^[a-zA-Z_]+$/
+      };
+    } // 数字范围: 错误信息拼接函数
+    ;
     /**
      * 校验规则
      * 校验库参考: [async-validator](https://www.npmjs.com/package/async-validator)
@@ -2538,68 +2668,62 @@
      * ]
      */
 
-    _defineProperty(ValidatorRules, 'numberRangeMessageFunc', function (description, value) {
-        return ['应', description, value].join('');
+
+    _defineProperty(ValidatorRules, "numberRangeMessageFunc", function (description, value) {
+      return ['应', description, value].join('');
     });
 
-    _defineProperty(ValidatorRules, 'numberRangeValidatorList', [
-        {
-            key: 'eq',
-            description: '等于',
-            validate: function validate(a, b) {
-                return a === b;
-            }
-        },
-        {
-            key: 'ne',
-            description: '不等于',
-            validate: function validate(a, b) {
-                return a !== b;
-            }
-        },
-        {
-            key: 'gt',
-            description: '大于',
-            validate: function validate(a, b) {
-                return a > b;
-            }
-        },
-        {
-            key: 'lt',
-            description: '小于',
-            validate: function validate(a, b) {
-                return a < b;
-            }
-        },
-        {
-            key: 'ge',
-            description: '大于等于',
-            validate: function validate(a, b) {
-                return a >= b;
-            }
-        },
-        {
-            key: 'le',
-            description: '小于等于',
-            validate: function validate(a, b) {
-                return a <= b;
-            }
-        }, // 小数位数限制
-        {
-            key: 'decimalLength',
-            description: function description(value) {
-                return ['最多', value, '位小数'].join('');
-            },
-            validate: function validate(a, b) {
-                var _String$split = String(a).split('.'),
-                    _String$split2 = _slicedToArray(_String$split, 2),
-                    _String$split2$ = _String$split2[1],
-                    decimal = _String$split2$ === void 0 ? '' : _String$split2$;
+    _defineProperty(ValidatorRules, "numberRangeValidatorList", [{
+      key: 'eq',
+      description: '等于',
+      validate: function validate(a, b) {
+        return a === b;
+      }
+    }, {
+      key: 'ne',
+      description: '不等于',
+      validate: function validate(a, b) {
+        return a !== b;
+      }
+    }, {
+      key: 'gt',
+      description: '大于',
+      validate: function validate(a, b) {
+        return a > b;
+      }
+    }, {
+      key: 'lt',
+      description: '小于',
+      validate: function validate(a, b) {
+        return a < b;
+      }
+    }, {
+      key: 'ge',
+      description: '大于等于',
+      validate: function validate(a, b) {
+        return a >= b;
+      }
+    }, {
+      key: 'le',
+      description: '小于等于',
+      validate: function validate(a, b) {
+        return a <= b;
+      }
+    }, // 小数位数限制
+    {
+      key: 'decimalLength',
+      description: function description(value) {
+        return ['最多', value, '位小数'].join('');
+      },
+      validate: function validate(a, b) {
+        var _String$split = String(a).split('.'),
+            _String$split2 = _slicedToArray(_String$split, 2),
+            _String$split2$ = _String$split2[1],
+            decimal = _String$split2$ === void 0 ? '' : _String$split2$;
 
-                return decimal.length <= b;
-            }
-        }
-    ]);
+        return decimal.length <= b;
+      }
+    }]);
 
     var rules = new ValidatorRules();
 
@@ -2614,8 +2738,8 @@
      */
 
     var trimAll = function trimAll() {
-        var str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        return str.replace(/\s+/g, '');
+      var str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return str.replace(/\s+/g, '');
     };
     /**
      * 帕斯卡
@@ -2648,12 +2772,12 @@
      */
 
     var pascalCase = function pascalCase() {
-        var str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        return _.upperFirst(_.camelCase(str));
+      var str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return _.upperFirst(_.camelCase(str));
     };
 
     var getUa = function getUa() {
-        return window.navigator.userAgent;
+      return window.navigator.userAgent;
     };
     /**
      * isAndroid
@@ -2664,11 +2788,12 @@
      * // => false
      */
 
+
     var isAndroid = function isAndroid() {
-        var ua = getUa();
-        ['Android', 'Adr'].some(function (v) {
-            return ua.includes(v);
-        });
+      var ua = getUa();
+      ['Android', 'Adr'].some(function (v) {
+        return ua.includes(v);
+      });
     };
     /**
      * isIOS
@@ -2679,8 +2804,8 @@
      */
 
     var isIOS = function isIOS() {
-        var ua = getUa();
-        return Boolean(ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/));
+      var ua = getUa();
+      return Boolean(ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/));
     };
     /**
      * isIPhone
@@ -2691,8 +2816,8 @@
      */
 
     var isIPhone = function isIPhone() {
-        var ua = getUa();
-        return /\biPhone\b|\biPod\b/i.test(ua);
+      var ua = getUa();
+      return /\biPhone\b|\biPod\b/i.test(ua);
     };
     /**
      * isIPhoneX
@@ -2703,15 +2828,15 @@
      */
 
     var isIPhoneX = function isIPhoneX() {
-        var _window$screen = window.screen,
-            width = _window$screen.width,
-            height = _window$screen.height;
+      var _window$screen = window.screen,
+          width = _window$screen.width,
+          height = _window$screen.height;
 
-        if (!isIPhone()) {
-            return false;
-        }
+      if (!isIPhone()) {
+        return false;
+      }
 
-        return (height === 812 && width === 375) || (height === 896 && width === 414);
+      return height === 812 && width === 375 || height === 896 && width === 414;
     };
 
     /**
@@ -2734,46 +2859,46 @@
      * // => '=__^^'
      */
     var Utf8ArrayToString = function Utf8ArrayToString(array) {
-        var out = '';
-        var i = 0;
-        var len = array.length;
-        var c;
-        var char2;
-        var char3;
+      var out = '';
+      var i = 0;
+      var len = array.length;
+      var c;
+      var char2;
+      var char3;
 
-        while (i < len) {
-            c = array[i++];
+      while (i < len) {
+        c = array[i++];
 
-            switch (c >> 4) {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                    // 0xxxxxxx
-                    out += String.fromCharCode(c);
-                    break;
+        switch (c >> 4) {
+          case 0:
+          case 1:
+          case 2:
+          case 3:
+          case 4:
+          case 5:
+          case 6:
+          case 7:
+            // 0xxxxxxx
+            out += String.fromCharCode(c);
+            break;
 
-                case 12:
-                case 13:
-                    // 110x xxxx   10xx xxxx
-                    char2 = array[i++];
-                    out += String.fromCharCode(((c & 0x1f) << 6) | (char2 & 0x3f));
-                    break;
+          case 12:
+          case 13:
+            // 110x xxxx   10xx xxxx
+            char2 = array[i++];
+            out += String.fromCharCode((c & 0x1f) << 6 | char2 & 0x3f);
+            break;
 
-                case 14:
-                    // 1110 xxxx  10xx xxxx  10xx xxxx
-                    char2 = array[i++];
-                    char3 = array[i++];
-                    out += String.fromCharCode(((c & 0x0f) << 12) | ((char2 & 0x3f) << 6) | ((char3 & 0x3f) << 0));
-                    break;
-            }
+          case 14:
+            // 1110 xxxx  10xx xxxx  10xx xxxx
+            char2 = array[i++];
+            char3 = array[i++];
+            out += String.fromCharCode((c & 0x0f) << 12 | (char2 & 0x3f) << 6 | (char3 & 0x3f) << 0);
+            break;
         }
+      }
 
-        return out;
+      return out;
     };
 
     /**
@@ -2786,15 +2911,16 @@
      * // => false
      */
     var pifyValidate = function pifyValidate(validateFn) {
-        return new Promise(function (resolve) {
-            validateFn(function (valid) {
-                resolve(valid);
-            });
+      return new Promise(function (resolve) {
+        validateFn(function (valid) {
+          resolve(valid);
         });
+      });
     };
 
     exports.Utf8ArrayToString = Utf8ArrayToString;
     exports.add = plus;
+    exports.antdLocaleZhCN = antdLocaleZhCN;
     exports.b64toBlob = b64toBlob;
     exports.booleanPromise = booleanPromise;
     exports.changeImageUrlToBase64 = changeImageUrlToBase64;
@@ -2867,4 +2993,5 @@
     exports.version = version;
 
     Object.defineProperty(exports, '__esModule', { value: true });
-});
+
+})));

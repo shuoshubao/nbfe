@@ -65,7 +65,8 @@ const FilesConfig = [
     { category: 'ua', categoryName: 'UA' },
     { category: 'image', categoryName: '图片' },
     { category: 'file', categoryName: '文件' },
-    { category: 'Uint8Array', categoryName: 'Uint8Array' }
+    { category: 'Uint8Array', categoryName: 'Uint8Array' },
+    { category: 'antd-locale', categoryName: 'antd-locale' }
 ];
 
 sortBy(files, v => {

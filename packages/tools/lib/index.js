@@ -1,4 +1,5 @@
 export { version } from '../package.json';
+export * from './antd-locale';
 export * from './data';
 export * from './date';
 export * from './decimal';
