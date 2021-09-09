@@ -18,10 +18,6 @@ const resolveRootPath = (to = '', from = process.cwd()) => {
 };
 
 const babelConfig = {
-    assumptions: {
-        setPublicClassFields: true,
-        privateFieldsAsProperties: true
-    },
     presets: [
         [
             '@babel/preset-env',
@@ -36,8 +32,8 @@ const babelConfig = {
     plugins: [
         '@babel/plugin-proposal-export-default-from',
         ['@babel/plugin-proposal-decorators', { legacy: true }],
-        ['@babel/plugin-proposal-private-methods'],
-        ['@babel/plugin-proposal-class-properties'],
+        ['@babel/plugin-proposal-private-methods', { loose: true }],
+        ['@babel/plugin-proposal-class-properties', { loose: true }],
         [
             '@babel/plugin-transform-runtime',
             {
