@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.2...@nbfe/react-cli@0.1.3) (2021-09-09)
+
+
+### Features
+
+* dayjs ([e2c4c31](https://github.com/shuoshubao/nbfe/commit/e2c4c31))
+* webpack-dev-server 4.1.1 ([c2b93cd](https://github.com/shuoshubao/nbfe/commit/c2b93cd))
+
+
+
+
+
 ## [0.1.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.1...@nbfe/react-cli@0.1.2) (2021-08-12)
 
 
