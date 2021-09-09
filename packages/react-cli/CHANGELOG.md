@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.3...@nbfe/react-cli@0.1.4) (2021-09-09)
+
+
+### Features
+
+* pack 更名 react-cli ([5ce0019](https://github.com/shuoshubao/nbfe/commit/5ce0019))
+
+
+
+
+
 ## [0.1.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.2...@nbfe/react-cli@0.1.3) (2021-09-09)
 
 
