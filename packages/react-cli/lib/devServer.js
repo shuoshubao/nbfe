@@ -5,7 +5,6 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     hot: true,
-    // injectHot: true,
     liveReload: true,
     historyApiFallback: true,
     static: {
@@ -15,10 +14,8 @@ module.exports = {
             poll: 3000
         }
     },
-    transportMode: {
-        server: 'ws'
-    },
-    onBeforeSetupMiddleware: app => {
+    onBeforeSetupMiddleware: devServer => {
+        const { app } = devServer;
         if (packConfig.enableMock) {
             mock(app);
             app.use('*', (req, res, next) => {
@@ -33,7 +30,5 @@ module.exports = {
             });
         }
     },
-    onAfterSetupMiddleware: () => {},
-    onListening: () => {},
     ...packConfig.devServer
 };

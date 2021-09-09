@@ -1,10 +1,7 @@
 const path = require('path');
-const bodyParser = require('body-parser');
 const { packConfig } = require('./config');
 
 module.exports = app => {
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(bodyParser.json());
     app.use((req, res, next) => {
         let url = req.originalUrl;
         if (url.indexOf('?') > -1) {
