@@ -3,10 +3,11 @@
 const { existsSync, readFileSync, writeFileSync } = require('fs');
 const { join, extname } = require('path');
 const util = require('util');
-const filesize = require('filesize');
 const { isEqual, omit, flattenDeep, sortBy, uniq } = require('lodash');
-const chalk = require('chalk');
 const prettier = require('prettier');
+const dayjs = require('dayjs');
+const filesize = require('filesize');
+const chalk = require('chalk');
 const { createElement } = require('@nbfe/js2html');
 const { enableWebpackDll, packConfig, pkgVersionsKey } = require('./config');
 const { dllManifestPath } = require('./dll-helper');
@@ -165,7 +166,7 @@ const manifestPluginGenerate = (seed, files, entries) => {
     }, {});
 
     const manifestData = {
-        date: Date.now(),
+        date: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         seed,
         files: files.map(v => {
             return omit(v, ['chunk']);
