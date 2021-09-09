@@ -9,7 +9,7 @@
     },
     "license": "ISC",
     "bin": {
-        "pack": "index.js"
+        "react-cli": "index.js"
     },
     "main": "lib/index.js",
     "scripts": {

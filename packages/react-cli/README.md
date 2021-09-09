@@ -4,9 +4,9 @@
 
 ### 命令行
 
--   npx pack serve // 启动开发服务器
--   npx pack build // 生产环境下构建
--   npx pack inspect // 检查内部 webpack 配置
+-   npx react-cli serve // 启动开发服务器
+-   npx react-cli build // 生产环境下构建
+-   npx react-cli inspect // 检查内部 webpack 配置
 
 ### api 调用
 

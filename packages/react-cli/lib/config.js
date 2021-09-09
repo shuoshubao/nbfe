@@ -82,6 +82,7 @@ const defaultConfig = {
 };
 
 let packConfig = cloneDeep(defaultConfig);
+
 if (existsSync(resolveRootPath(defaultConfig.packConfigPath))) {
     const defineConfig = require(resolveRootPath(defaultConfig.packConfigPath));
     const projectConfig = defineConfig({
