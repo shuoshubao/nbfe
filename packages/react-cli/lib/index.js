@@ -56,8 +56,8 @@ const webpackServe = async () => {
         console.time('[webpack serve]');
         const webpackConfig = getWebpackConfig();
         const compiler = webpack(webpackConfig);
-        const server = new WebpackDevServer(compiler, devServer);
-        server.listen(devServer.port, devServer.host, err => {
+        const server = new WebpackDevServer(devServer, compiler);
+        server.start(devServer.port, devServer.host, err => {
             if (err) {
                 log(err);
             }
