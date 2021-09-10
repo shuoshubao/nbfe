@@ -44,17 +44,17 @@ module.exports = chainableConfig => {
                 reportFilename: 'WebpackAnalyzerReport.html'
             }
         ]);
-        chainableConfig.plugin('WebpackManifestPlugin').use(WebpackManifestPlugin, [
-            {
-                fileName: packConfig.manifestFileName,
-                generate: (seed, files, entries) => {
-                    const manifestData = manifestPluginGenerate(seed, files, entries);
-                    if (packConfig.manifestPluginGenerate) {
-                        return packConfig.manifestPluginGenerate({ seed, files, entries, manifestData });
-                    }
-                    return manifestData;
-                }
-            }
-        ]);
     }
+    chainableConfig.plugin('WebpackManifestPlugin').use(WebpackManifestPlugin, [
+        {
+            fileName: packConfig.manifestFileName,
+            generate: (seed, files, entries) => {
+                const manifestData = manifestPluginGenerate(seed, files, entries);
+                if (packConfig.manifestPluginGenerate) {
+                    return packConfig.manifestPluginGenerate({ seed, files, entries, manifestData });
+                }
+                return manifestData;
+            }
+        }
+    ]);
 };
