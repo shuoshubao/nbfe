@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.4...@nbfe/react-cli@0.1.5) (2021-09-14)
+
+
+### Bug Fixes
+
+* 升级WebpackDevServer api ([a5b8028](https://github.com/shuoshubao/nbfe/commit/a5b8028))
+* babel 配置 ([280c7f2](https://github.com/shuoshubao/nbfe/commit/280c7f2))
+* exclude node_modules ([4113a4b](https://github.com/shuoshubao/nbfe/commit/4113a4b))
+
+
+### Features
+
+* 开发模式也启用 WebpackManifestPlugin ([76ea964](https://github.com/shuoshubao/nbfe/commit/76ea964))
+* 升级所有的依赖 ([48668f3](https://github.com/shuoshubao/nbfe/commit/48668f3))
+
+
+
+
+
 ## [0.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.3...@nbfe/react-cli@0.1.4) (2021-09-09)
 
 
