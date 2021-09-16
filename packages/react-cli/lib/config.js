@@ -47,7 +47,7 @@ const babelConfig = {
 const defaultConfig = {
     mode,
     srcPath: 'src',
-    packConfigPath: 'pack.config.js',
+    packConfigPath: 'react.config.js',
     rootPath: process.cwd(),
     template: 'public/index.html',
     publicPath: '/',
