@@ -2,7 +2,7 @@ const path = require('path');
 const { packConfig } = require('./config');
 
 module.exports = app => {
-    app.use((req, res, next) => {
+    app.use(async (req, res, next) => {
         let url = req.originalUrl;
         if (url.indexOf('?') > -1) {
             [url] = url.split('?');
@@ -29,7 +29,7 @@ module.exports = app => {
             if (typeof action === 'function') {
                 // 引入的模块为方法，传入req, res，方法里可以拿到请求参数做一些简单业务处理
                 // 返回执行action后的结果
-                res.send(action(req, res));
+                res.send(await action(req, res));
             } else {
                 // 直接返回引入的文件
                 res.send(action);

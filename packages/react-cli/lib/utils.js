@@ -141,11 +141,13 @@ const manifestPluginGenerate = (seed, files, entries) => {
                 return v2.path;
             });
 
-        const entryFiles = entries[k].map(v2 => {
-            return files.find(v3 => {
-                return v3.path.includes(v2);
-            });
-        }).filter(Boolean);
+        const entryFiles = entries[k]
+            .map(v2 => {
+                return files.find(v3 => {
+                    return v3.path.includes(v2);
+                });
+            })
+            .filter(Boolean);
 
         const sortedEntryFiles = sortBy(entryFiles, v2 => {
             return files.findIndex(v3 => {

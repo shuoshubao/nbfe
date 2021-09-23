@@ -91,7 +91,7 @@ const webpackBuild = async () => {
 const inspectWebpackConfig = () => {
     log(packConfig.mode, 'cyan');
     logObject(getWebpackConfig());
-}
+};
 
 module.exports = {
     getWebpackConfig,
