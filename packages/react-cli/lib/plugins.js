@@ -1,5 +1,6 @@
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { injectDllReferencePlugins, injectAddAssetHtmlPlugins } = require('./dll-helper');
 const { manifestPluginGenerate } = require('./utils');
@@ -45,6 +46,7 @@ module.exports = chainableConfig => {
             }
         ]);
     }
+    chainableConfig.plugin('NodePolyfillPlugin').use(NodePolyfillPlugin);
     chainableConfig.plugin('WebpackManifestPlugin').use(WebpackManifestPlugin, [
         {
             fileName: packConfig.manifestFileName,
