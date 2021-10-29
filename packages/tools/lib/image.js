@@ -20,6 +20,9 @@ export const getImageSize = (url = '') => {
         img.onload = async () => {
             reslove(pick(img, ['width', 'height']));
         };
+        img.onerror = async () => {
+            reslove({ width: 0, height: 0 });
+        };
     });
 };
 
