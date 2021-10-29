@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.11](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.10...@nbfe/tools@0.2.11) (2021-10-29)
+
+
+### Bug Fixes
+
+* image onerror ([b4a7f50](https://github.com/shuoshubao/nbfe/commit/b4a7f50))
+
+
+
+
+
 ## [0.2.10](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.9...@nbfe/tools@0.2.10) (2021-09-02)
 
 

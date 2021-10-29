@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.5...@nbfe/react-cli@0.1.6) (2021-10-29)
+
+
+### Bug Fixes
+
+* allowedHosts: 'all' ([8122ad4](https://github.com/shuoshubao/nbfe/commit/8122ad4))
+
+
+### Features
+
+* 配置文件更名 react.config.js ([a16d7cd](https://github.com/shuoshubao/nbfe/commit/a16d7cd))
+* mock 支持异步 ([037dd79](https://github.com/shuoshubao/nbfe/commit/037dd79))
+* node-polyfill-webpack-plugin ([57af95f](https://github.com/shuoshubao/nbfe/commit/57af95f))
+
+
+
+
+
 ## [0.1.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.4...@nbfe/react-cli@0.1.5) (2021-09-14)
 
 
