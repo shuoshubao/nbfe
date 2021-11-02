@@ -158,12 +158,17 @@ const manifestPluginGenerate = (seed, files, entries) => {
         });
 
         const list = flattenDeep([
-            Object.values(packConfig.assets),
             Object.values(dllManifest),
             itemCacheGroups,
             sortedEntryFiles
         ]);
-        prev[k] = convertManifest(uniq(list));
+
+        const { css, js } = convertManifest(uniq(list));
+
+        prev[k] = {
+            css: (packConfig.assets.css || []).concat(css),
+            js: (packConfig.assets.js || []).concat(js)
+        };
         return prev;
     }, {});
 
