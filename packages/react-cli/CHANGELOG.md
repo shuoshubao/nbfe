@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.6...@nbfe/react-cli@0.1.7) (2021-11-15)
+
+
+### Bug Fixes
+
+* 依赖包 mini-svg-data-uri ([08c9eb2](https://github.com/shuoshubao/nbfe/commit/08c9eb2))
+
+
+### Features
+
+* 静态资源处理优化 ([d3c2868](https://github.com/shuoshubao/nbfe/commit/d3c2868))
+* assets 处理逻辑优化 ([9c69551](https://github.com/shuoshubao/nbfe/commit/9c69551))
+
+
+
+
+
 ## [0.1.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.5...@nbfe/react-cli@0.1.6) (2021-10-29)
 
 
