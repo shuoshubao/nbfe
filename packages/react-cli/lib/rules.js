@@ -35,21 +35,5 @@ module.exports = chainableConfig => {
         .use('ts-loader')
         .loader('ts-loader');
 
-    chainableConfig.module
-        .rule('svg')
-        .test(/\.svg$/)
-        .use('babel-loader')
-        .loader('babel-loader')
-        .options({
-            cacheDirectory: true,
-            ...packConfig.babelConfig
-        })
-        .end()
-        .use('@svgr/webpack')
-        .loader('@svgr/webpack')
-        .options({
-            babel: false
-        });
-
     injectCssRules(chainableConfig);
 };

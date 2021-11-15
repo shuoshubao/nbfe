@@ -1,5 +1,6 @@
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const miniSVGDataURI = require('mini-svg-data-uri');
 const { isDevelopment, isMac, packConfig } = require('./config');
 const devServer = require('./devServer');
 
@@ -45,8 +46,41 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(png|jpe?g|gif|svg|mp3|woff2?|eot|ttf|otf)(\?.*)?$/,
-                type: 'asset/resource'
+                test: /\.(jpe?g|png|gif)$/i,
+                type: 'asset',
+                generator: {
+                    filename: 'assets/images/[name].[hash][ext]'
+                },
+                parser: {
+                  dataUrlCondition: {
+                    maxSize: 1024 * 5
+                  }
+                }
+            },
+            {
+                test: /\.svg$/i,
+                type: 'asset',
+                generator: {
+                    dataUrl(content) {
+                        return miniSVGDataURI(content.toString());
+                    }
+                },
+                parser: {
+                  dataUrlCondition: {
+                    maxSize: 1024 * 5
+                  }
+                }
+            },
+            {
+                test: /\.(otf|eot|woff2?|ttf|svg)$/i,
+                type: 'asset',
+                generator: {
+                    filename: 'assets/fonts/[name].[hash][ext]'
+                }
+            },
+            {
+                test: /\.(txt|xml)$/i,
+                type: 'asset/source'
             }
         ]
     },
