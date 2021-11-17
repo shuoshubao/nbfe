@@ -1,3 +1,4 @@
+import { flatten, isString, isNumber } from 'lodash';
 import { formatters } from './formatters';
 
 /**
@@ -46,4 +47,102 @@ export const getPercentageHtml = (value, config = {}) => {
         return tempValue;
     }
     return String(emptyText);
+};
+
+// 自闭合标签
+export const voidHtmlTags = [
+    'area',
+    'base',
+    'br',
+    'col',
+    'embed',
+    'hr',
+    'img',
+    'input',
+    'link',
+    'menuitem',
+    'meta',
+    'param',
+    'source',
+    'track',
+    'wbr'
+];
+
+const attrKeyAlias = {
+    className: 'class'
+};
+
+export const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
+    const attrsText = Object.entries(attrs)
+        .map(([k, v]) => {
+            const key = attrKeyAlias[k] || k;
+            return [key, `"${v}"`].join('=');
+        })
+        .join(' ');
+    if (voidHtmlTags.includes(tagName)) {
+        return `<${tagName} ${attrsText} />`;
+    }
+    return `<${tagName} ${attrsText}>${text}</${tagName}>`;
+};
+
+export const createElement = (tagName = '', attrs = {}, children = []) => {
+    if (isString(children) || isNumber(children)) {
+        return gernerateElementText(tagName, attrs, children);
+    }
+    if (children.length === 0) {
+        return gernerateElementText(tagName, attrs, '');
+    }
+    return gernerateElementText(
+        tagName,
+        attrs,
+        children
+            .map(v => {
+                return createElement(...v);
+            })
+            .join('')
+    );
+};
+
+// 解析url: [文案|链接]
+const linkReg = /\[(.+?)\|(.+?)\]/g;
+
+/**
+ * 字符串转链接
+ * @param  {String} str  字符串
+ * @return {String[]}    html 字符串
+ * @example
+ *
+ * getTooltipHtml('abc')
+ * // => 'abc'
+ *
+ * @example
+ *
+ * getTooltipHtml('aa[链接|cc.co]bb')
+ * // => 'aa<a heref="cc.co" style="color: #fff; fontWeight: bold; textDecoration: underline">链接</a>bb'
+ */
+export const getTooltipHtml = (str = '') => {
+    return flatten([str])
+        .filter(Boolean)
+        .map(String)
+        .map(v => {
+            return v.replace(/\\n/g, '<br>');
+        })
+        .map(v => {
+            return v.replace(linkReg, (...args) => {
+                const [, text, href] = args;
+                return gernerateElementText(
+                    'a',
+                    {
+                        href,
+                        target: '_blank',
+                        style: {
+                            color: '#fff',
+                            fontWeight: 'bold',
+                            textDecoration: 'underline'
+                        }
+                    },
+                    text
+                );
+            });
+        });
 };
