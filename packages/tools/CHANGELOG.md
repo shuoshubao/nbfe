@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.12](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.11...@nbfe/tools@0.2.12) (2021-11-17)
+
+
+### Features
+
+* 增加方法getTooltipHtml; 转换简写的链接 ([3a5cdf6](https://github.com/shuoshubao/nbfe/commit/3a5cdf6))
+
+
+
+
+
 ## [0.2.11](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.10...@nbfe/tools@0.2.11) (2021-10-29)
 
 
