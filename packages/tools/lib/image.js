@@ -7,7 +7,7 @@ import { pick } from 'lodash';
  * @example
  *
  * (async() => {
- *   const size = await getImageSize('https://ke.com/favicon.ico');
+ *   const size = await getImageSize('https://github.githubassets.com/favicons/favicon.png');
  *   console.log(size);
  * })();
  *

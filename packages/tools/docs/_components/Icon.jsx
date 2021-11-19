@@ -1,1 +1,1 @@
-<link href="https://ke.com/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+<link href="https://github.githubassets.com/favicons/favicon.png" type="image/x-icon" rel="shortcut icon" />

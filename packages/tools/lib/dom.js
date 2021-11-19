@@ -48,7 +48,7 @@ export const downloadBlob = (blob, options = {}) => {
  * @return {*}       undefined
  * @example
  *
- * download('https://ke.com/favicon.ico', { download: 'favicon.ico' })
+ * download('https://github.githubassets.com/favicons/favicon.png', { download: 'favicon.ico' })
  * // => 浏览器下载文件
  */
 export const download = (url = '', config = {}) => {

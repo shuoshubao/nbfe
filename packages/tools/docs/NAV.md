@@ -1,6 +1,6 @@
 # 工具库
 
-![logo](https://ke.com/favicon.ico)
+![logo](https://github.githubassets.com/favicons/favicon.png)
 
 -   [使用](/install.md)
 -   [文档](/documents/date.md)
