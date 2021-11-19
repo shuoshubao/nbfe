@@ -1,5 +1,5 @@
 /*!
-* @nbfe/tools v0.2.9
+* @nbfe/tools v0.2.12
 * (c) 2019-2021 shuoshubao <759979885@qq.com>
 * Released under the ISC License.
 */
@@ -9,7 +9,7 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.tools = {}, global.lodash));
 }(this, (function (exports, lodash) { 'use strict';
 
-    var version = "0.2.9";
+    var version = "0.2.12";
 
     var Pagination = {
       // Options.jsx
@@ -209,6 +209,19 @@
       Image: {
         preview: '预览'
       }
+    };
+    /**
+     * antd 的 中文语言包
+     * @see https://ant.design/docs/react/i18n-cn
+     * @return {Object} antd 的 中文语言包
+     *
+     * @example
+     *
+     * // <ConfigProvider locale={getAntdLocaleZhCN()}>
+     */
+
+    var getAntdLocaleZhCN = function getAntdLocaleZhCN() {
+      return antdLocaleZhCN;
     };
 
     function ownKeys(object, enumerableOnly) {
@@ -1673,7 +1686,7 @@
      * @return {*}       undefined
      * @example
      *
-     * download('https://ke.com/favicon.ico', { download: 'favicon.ico' })
+     * download('https://github.githubassets.com/favicons/favicon.png', { download: 'favicon.ico' })
      * // => 浏览器下载文件
      */
 
@@ -2374,6 +2387,86 @@
 
       return String(emptyText);
     };
+    var attrKeyAlias = {
+      className: 'class'
+    };
+    var gernerateElementText = function gernerateElementText() {
+      var tagName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var text = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+      var attrsText = Object.entries(attrs).map(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            k = _ref2[0],
+            v = _ref2[1];
+
+        var key = attrKeyAlias[k] || k;
+        return [key, "\"".concat(v, "\"")].join('=');
+      }).join(' ');
+
+      if (voidHtmlTags.includes(tagName)) {
+        return "<".concat(tagName, " ").concat(attrsText, " />");
+      }
+
+      return "<".concat(tagName, " ").concat(attrsText, ">").concat(text, "</").concat(tagName, ">");
+    };
+    var createElement = function createElement() {
+      var tagName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var children = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+
+      if (_.isString(children) || _.isNumber(children)) {
+        return gernerateElementText(tagName, attrs, children);
+      }
+
+      if (children.length === 0) {
+        return gernerateElementText(tagName, attrs, '');
+      }
+
+      return gernerateElementText(tagName, attrs, children.map(function (v) {
+        return createElement.apply(void 0, _toConsumableArray(v));
+      }).join(''));
+    }; // 解析url: [文案|链接]
+
+    var linkReg = /\[(.+?)\|(.+?)\]/g;
+    /**
+     * 字符串转链接
+     * @param  {String} str  字符串
+     * @return {String[]}    html 字符串
+     * @example
+     *
+     * getTooltipHtml('abc')
+     * // => 'abc'
+     *
+     * @example
+     *
+     * getTooltipHtml('aa[链接|cc.co]bb')
+     * // => 'aa<a heref="cc.co" style="color: #fff; fontWeight: bold; textDecoration: underline">链接</a>bb'
+     */
+
+    var getTooltipHtml = function getTooltipHtml() {
+      var str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return _.flatten([str]).filter(Boolean).map(String).map(function (v) {
+        return v.replace(/\\n/g, '<br>');
+      }).map(function (v) {
+        return v.replace(linkReg, function () {
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          var text = args[1],
+              href = args[2];
+          return gernerateElementText('a', {
+            href: href,
+            target: '_blank',
+            style: {
+              color: '#fff',
+              fontWeight: 'bold',
+              textDecoration: 'underline'
+            }
+          }, text);
+        });
+      });
+    };
 
     /**
      * 获取图片的尺寸
@@ -2382,7 +2475,7 @@
      * @example
      *
      * (async() => {
-     *   const size = await getImageSize('https://ke.com/favicon.ico');
+     *   const size = await getImageSize('https://github.githubassets.com/favicons/favicon.png');
      *   console.log(size);
      * })();
      *
@@ -2408,6 +2501,23 @@
             }
           }, _callee);
         }));
+        img.onerror = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  reslove({
+                    width: 0,
+                    height: 0
+                  });
+
+                case 1:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
       });
     };
     /**
@@ -2424,11 +2534,11 @@
       return new Promise(function (reslove) {
         var img = new Image();
         img.src = url;
-        img.onload = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        img.onload = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
           var canvas, ctx, width, height;
-          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          return regeneratorRuntime.wrap(function _callee3$(_context3) {
             while (1) {
-              switch (_context2.prev = _context2.next) {
+              switch (_context3.prev = _context3.next) {
                 case 0:
                   canvas = document.createElement('canvas');
                   ctx = canvas.getContext('2d');
@@ -2440,10 +2550,10 @@
 
                 case 7:
                 case "end":
-                  return _context2.stop();
+                  return _context3.stop();
               }
             }
-          }, _callee2);
+          }, _callee3);
         }));
       });
     };
@@ -2920,7 +3030,6 @@
 
     exports.Utf8ArrayToString = Utf8ArrayToString;
     exports.add = plus;
-    exports.antdLocaleZhCN = antdLocaleZhCN;
     exports.b64toBlob = b64toBlob;
     exports.booleanPromise = booleanPromise;
     exports.changeImageUrlToBase64 = changeImageUrlToBase64;
@@ -2930,6 +3039,7 @@
     exports.convertDataToEnum = convertDataToEnum;
     exports.convertJsonToEnum = convertJsonToEnum;
     exports.copyText = copyText;
+    exports.createElement = createElement;
     exports.defineMomentLocaleZhCn = defineMomentLocaleZhCn;
     exports.div = div;
     exports.dividedBy = div;
@@ -2939,12 +3049,15 @@
     exports.formatEmptyToDefault = formatEmptyToDefault;
     exports.formatTime = formatTime;
     exports.formatters = formatters;
+    exports.gernerateElementText = gernerateElementText;
+    exports.getAntdLocaleZhCN = getAntdLocaleZhCN;
     exports.getCssText = getCssText;
     exports.getFullUrl = getFullUrl;
     exports.getImageSize = getImageSize;
     exports.getLabelByValue = getLabelByValue;
     exports.getParams = getParams;
     exports.getPercentageHtml = getPercentageHtml;
+    exports.getTooltipHtml = getTooltipHtml;
     exports.getValueByLabel = getValueByLabel;
     exports.getValueInCollection = getValueInCollection;
     exports.getValueInRange = getValueInRange;
