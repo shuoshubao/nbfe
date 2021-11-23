@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.7...@nbfe/react-cli@0.1.8) (2021-11-23)
+
+
+### Features
+
+* devServer.host 默认设置为 ipAddress ([1e767ba](https://github.com/shuoshubao/nbfe/commit/1e767ba))
+* maxSize 开发模式设置为0 ([27994bf](https://github.com/shuoshubao/nbfe/commit/27994bf))
+
+
+
+
+
 ## [0.1.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.6...@nbfe/react-cli@0.1.7) (2021-11-15)
 
 
