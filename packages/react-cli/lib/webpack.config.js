@@ -4,6 +4,8 @@ const miniSVGDataURI = require('mini-svg-data-uri');
 const { isDevelopment, isMac, packConfig } = require('./config');
 const devServer = require('./devServer');
 
+const assetsMaxSize = isDevelopment ? 0 : 1024 * 8;
+
 module.exports = {
     mode: packConfig.mode,
     target: 'web',
@@ -52,9 +54,9 @@ module.exports = {
                     filename: 'assets/images/[name].[hash][ext]'
                 },
                 parser: {
-                  dataUrlCondition: {
-                    maxSize: 1024 * 5
-                  }
+                    dataUrlCondition: {
+                        maxSize: assetsMaxSize
+                    }
                 }
             },
             {
@@ -66,9 +68,9 @@ module.exports = {
                     }
                 },
                 parser: {
-                  dataUrlCondition: {
-                    maxSize: 1024 * 5
-                  }
+                    dataUrlCondition: {
+                        maxSize: assetsMaxSize
+                    }
                 }
             },
             {
