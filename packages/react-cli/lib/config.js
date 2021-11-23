@@ -1,5 +1,6 @@
 const { existsSync } = require('fs');
 const { resolve } = require('path');
+const ip = require('ip');
 const { cloneDeep, noop, flatten } = require('lodash');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -16,6 +17,8 @@ const mode = isDevelopment ? 'development' : 'production';
 const resolveRootPath = (to = '', from = process.cwd()) => {
     return resolve(from, to);
 };
+
+const ipAddress = ip.address();
 
 const babelConfig = {
     presets: [
@@ -86,6 +89,7 @@ if (existsSync(resolveRootPath(defaultConfig.packConfigPath))) {
         isDevelopment,
         isProduction,
         isMac,
+        ipAddress,
         defaultConfig
     });
     packConfig = {
@@ -135,6 +139,7 @@ module.exports = {
     isDevelopment,
     isProduction,
     isMac,
+    ipAddress,
     packConfig,
     MiniCssExtractPlugin,
     enableWebpackDll,
