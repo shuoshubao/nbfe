@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/tinypng@1.0.5...@nbfe/tinypng@1.0.6) (2021-12-07)
+
+
+### Features
+
+* tinypng 去掉繁琐的inquirer; 增加统计功能 ([6cdac96](https://github.com/shuoshubao/nbfe/commit/6cdac96))
+
+
+
+
+
 ## [1.0.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/tinypng@1.0.4...@nbfe/tinypng@1.0.5) (2021-07-28)
 
 
