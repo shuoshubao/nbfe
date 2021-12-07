@@ -1,20 +1,60 @@
 #!/usr/bin/env node
 
-const { dirname } = require('path');
+const { existsSync, statSync } = require('fs');
+const { extname } = require('path');
 const chalk = require('chalk');
 const glob = require('glob');
 const async = require('async');
-const inquirer = require('inquirer');
 const progress = require('progress');
 const ora = require('ora');
-const fuzzypath = require('inquirer-fuzzy-path');
+const yargs = require('yargs');
+const { hideBin } = require('yargs/helpers');
 const tinify = require('tinify');
+
+const { argv } = yargs(hideBin(process.argv));
+
+const entry = argv._;
+
+const imageList = [];
+
+const extensions = ['png', 'jpg', 'jepg'];
+
+entry.forEach(v => {
+    const extension = extname(v).replace('.', '');
+    if (extensions.includes(extension)) {
+        imageList.push(v);
+    } else {
+        imageList.push(...glob.sync(`${v}**/*.+(${extensions.join('|')})`));
+    }
+});
+
+const selectedImageList = [...new Set(imageList)].sort().filter(v => {
+    return existsSync(v);
+});
+
+const getFilesSize = files => {
+    let totalSize = 0;
+
+    files.forEach(v => {
+        const { size } = statSync(v);
+        totalSize += size;
+    });
+    return (totalSize / 1000).toFixed(2);
+};
+
+const originFilesSize = getFilesSize(selectedImageList);
+
+const sleep = time => {
+    return new Promise(resolve => setTimeout(resolve, time * 1e3));
+};
 
 const KEY_LIST = [
     'XXIRu48sw8x3SMA4cA0NixJgib573DPX',
     'V3Lt8Tm4a8fBcmvyajTxbak5S_bWsi20',
     'KckuU929qtv_nPK_czL6HKfcAJO9FCKm',
-    'vWIxohgr_6Yte92ee3fB8QJb7K9iH8Ro'
+    'vWIxohgr_6Yte92ee3fB8QJb7K9iH8Ro',
+    'n03RCY69hnW3yGyrz2Sx1dvNNp4NsnVl',
+    'j9b8kB2m2Zx28kk1sN9KFlDHnpR9Mtz6'
 ];
 
 const CompressionsOneMonth = 500;
@@ -53,30 +93,9 @@ const compressImage = (key, imgPath, spinner) => {
     });
 };
 
-const imageList = glob.sync('src/**/*.+(png|jpg|jepg)');
-
 if (imageList.length === 0) {
-    throw new Error('src 目录下并没有图片');
+    throw new Error('指定目录或路径未找到图片');
 }
-
-const promiseInquirer = () => {
-    inquirer.registerPrompt('fuzzypath', fuzzypath);
-    return inquirer.prompt([
-        {
-            type: 'fuzzypath',
-            name: 'entry',
-            message: '请选择要压缩的图片或文件夹',
-            pageSize: 30,
-            rootPath: 'src',
-            pathFilter: (isDirectory, nodePath) => {
-                if (isDirectory) {
-                    return imageList.map(v => dirname(v)).includes(nodePath);
-                }
-                return ['png', 'jpg', 'jepg'].some(v => nodePath.endsWith(`.${v}`));
-            }
-        }
-    ]);
-};
 
 (async () => {
     try {
@@ -106,17 +125,13 @@ const promiseInquirer = () => {
             return prev;
         }, []);
 
-        const answers = await promiseInquirer();
-
-        const selectedImageList = imageList.filter(v => v.startsWith(answers.entry));
-
         if (selectedImageList.length > TotalCompressions) {
             throw new Error(`共${selectedImageList.length}张图片, 账号剩余可用: ${TotalCompressions}`);
         }
 
         const spinner = ora('开始压缩图片').start();
 
-        Promise.all(
+        await Promise.all(
             async.mapLimit(selectedImageList, 5, async v => {
                 const i = selectedImageList.indexOf(v);
                 return await compressImage(KEY_LIST_Compressions[i], v, spinner);
@@ -128,6 +143,21 @@ const promiseInquirer = () => {
             .catch(() => {
                 spinner.stop();
             });
+
+        await sleep(5);
+
+        console.log('共', selectedImageList.length, '张图片');
+        const nowFilesSize = getFilesSize(selectedImageList);
+        console.log(
+            '压缩大小:',
+            originFilesSize,
+            'kb - ',
+            nowFilesSize,
+            'kb = ',
+            (originFilesSize - nowFilesSize).toFixed(2),
+            'kb'
+        );
+        console.log('压缩比率:', (((originFilesSize - nowFilesSize) / originFilesSize) * 100).toFixed(2), '%');
     } catch (e) {
         console.log(e);
     }
