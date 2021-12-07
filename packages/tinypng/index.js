@@ -150,14 +150,14 @@ if (imageList.length === 0) {
         const nowFilesSize = getFilesSize(selectedImageList);
         console.log(
             '压缩大小:',
-            originFilesSize,
+            +originFilesSize,
             'kb - ',
-            nowFilesSize,
+            +nowFilesSize,
             'kb = ',
-            (originFilesSize - nowFilesSize).toFixed(2),
+            +(originFilesSize - nowFilesSize).toFixed(2),
             'kb'
         );
-        console.log('压缩比率:', (((originFilesSize - nowFilesSize) / originFilesSize) * 100).toFixed(2), '%');
+        console.log('压缩比率:', +(((originFilesSize - nowFilesSize) / originFilesSize) * 100).toFixed(2), '%');
     } catch (e) {
         console.log(e);
     }
