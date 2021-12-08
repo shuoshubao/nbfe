@@ -5,9 +5,9 @@
 ## Usage
 
 ```
-yarn add @nbfe/tinypng
+npm i -D @nbfe/tinypng
 
-npx tinypng
+npx tinypng xx/images
 ```
 
 > 内置 6 个账号, 每个月可压缩 3000 张图片. 请节约使用.
