@@ -32,22 +32,6 @@ const selectedImageList = [...new Set(imageList)].sort().filter(v => {
     return existsSync(v);
 });
 
-const getFilesSize = files => {
-    let totalSize = 0;
-
-    files.forEach(v => {
-        const { size } = statSync(v);
-        totalSize += size;
-    });
-    return (totalSize / 1000).toFixed(2);
-};
-
-const originFilesSize = getFilesSize(selectedImageList);
-
-const sleep = time => {
-    return new Promise(resolve => setTimeout(resolve, time * 1e3));
-};
-
 const KEY_LIST = [
     'XXIRu48sw8x3SMA4cA0NixJgib573DPX',
     'V3Lt8Tm4a8fBcmvyajTxbak5S_bWsi20',
@@ -143,21 +127,6 @@ if (imageList.length === 0) {
             .catch(() => {
                 spinner.stop();
             });
-
-        await sleep(5);
-
-        console.log('共', selectedImageList.length, '张图片');
-        const nowFilesSize = getFilesSize(selectedImageList);
-        console.log(
-            '压缩大小:',
-            +originFilesSize,
-            'kb - ',
-            +nowFilesSize,
-            'kb = ',
-            +(originFilesSize - nowFilesSize).toFixed(2),
-            'kb'
-        );
-        console.log('压缩比率:', +(((originFilesSize - nowFilesSize) / originFilesSize) * 100).toFixed(2), '%');
     } catch (e) {
         console.log(e);
     }
