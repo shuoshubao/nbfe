@@ -17,7 +17,7 @@ const { getWebpackConfig } = require('@nbfe/react-cli');
 const webpackConfig = getWebpackConfig();
 ```
 
-## pack.config.js
+## react.config.js
 
 ```js
 module.exports = config => {
