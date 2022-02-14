@@ -52,7 +52,7 @@ const defaultConfig = {
     srcPath: 'src',
     packConfigPath: 'react.config.js',
     rootPath: process.cwd(),
-    template: 'lib/index.html',
+    template: 'public/index.html',
     publicPath: '/',
     outputDir: 'dist',
     manifestFileName: 'cdnResource.json',
@@ -104,7 +104,7 @@ packConfig.packConfigPath = resolveRootPath(packConfig.packConfigPath);
 
 packConfig.template = resolveRootPath(packConfig.template);
 if (!existsSync(packConfig.template)) {
-    packConfig.template = resolve(__dirname, '../public/index.html');
+    packConfig.template = resolve(__dirname, './index.html');
 }
 
 packConfig.entry = Object.entries(packConfig.entry).reduce((prev, [k, v]) => {
