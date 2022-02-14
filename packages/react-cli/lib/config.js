@@ -52,7 +52,7 @@ const defaultConfig = {
     srcPath: 'src',
     packConfigPath: 'react.config.js',
     rootPath: process.cwd(),
-    template: 'public/index.html',
+    template: 'lib/index.html',
     publicPath: '/',
     outputDir: 'dist',
     manifestFileName: 'cdnResource.json',
