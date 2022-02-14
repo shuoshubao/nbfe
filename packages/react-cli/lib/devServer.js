@@ -1,8 +1,8 @@
-const { ipAddress, packConfig } = require('./config');
+const { packConfig } = require('./config');
 const mock = require('./mock');
 
 module.exports = {
-    host: ipAddress,
+    host: 'localhost',
     port: 8080,
     hot: true,
     allowedHosts: 'all',

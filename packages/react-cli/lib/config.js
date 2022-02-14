@@ -139,7 +139,6 @@ module.exports = {
     isDevelopment,
     isProduction,
     isMac,
-    ipAddress,
     packConfig,
     MiniCssExtractPlugin,
     enableWebpackDll,
