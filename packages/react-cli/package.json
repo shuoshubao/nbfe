@@ -3,21 +3,21 @@
     "version": "0.1.8",
     "description": "React CLI",
     "author": "shuoshubao <759979885@qq.com>",
+    "bin": {
+        "react-cli": "bin/index.js"
+    },
+    "main": "lib/index.js",
+    "files": ["lib", "bin"],
     "repository": {
         "url": "https://github.com/shuoshubao/nbfe",
         "type": "git"
     },
-    "bin": {
-        "react-cli": "index.js"
-    },
-    "main": "lib/index.js",
-    "files": ["lib"],
     "license": "ISC",
     "scripts": {
         "publish-beta": "npm publish --tag beta",
-        "inspect": "node index inspect",
-        "dev": "node index serve",
-        "build": "node index  build"
+        "inspect": "node bin inspect",
+        "dev": "node bin serve",
+        "build": "node bin  build"
     },
     "dependencies": {
         "@babel/core": "^7.17.2",

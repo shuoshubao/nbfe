@@ -4,7 +4,7 @@
 
 require('core-js');
 const { Command } = require('commander');
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 
 const binName = Object.keys(pkg.bin)[0];
 
@@ -19,7 +19,7 @@ program
     .action(async () => {
         process.env.NODE_ENV = 'development';
         try {
-            const { webpackServe } = require('./lib');
+            const { webpackServe } = require('../lib');
             webpackServe();
         } catch (e) {
             console.log(e);
@@ -33,7 +33,7 @@ program
     .action(async () => {
         process.env.NODE_ENV = 'production';
         try {
-            const { webpackBuild } = require('./lib');
+            const { webpackBuild } = require('../lib');
             webpackBuild();
         } catch (e) {
             console.log(e);
@@ -46,7 +46,7 @@ program
     .usage(`NODE_ENV=development|production ${binName} inspect`)
     .action(async () => {
         try {
-            const { inspectWebpackConfig } = require('./lib');
+            const { inspectWebpackConfig } = require('../lib');
             inspectWebpackConfig();
         } catch (e) {
             console.log(e);
