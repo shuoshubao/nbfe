@@ -7,11 +7,12 @@
         "url": "https://github.com/shuoshubao/nbfe",
         "type": "git"
     },
-    "license": "ISC",
     "bin": {
         "react-cli": "index.js"
     },
     "main": "lib/index.js",
+    "files": ["lib"],
+    "license": "ISC",
     "scripts": {
         "publish-beta": "npm publish --tag beta",
         "inspect": "node index inspect",
@@ -49,7 +50,6 @@
         "postcss": "^8.4.6",
         "postcss-loader": "^6.2.1",
         "postcss-preset-env": "^6.7.0",
-        "prettier": "^2.5.1",
         "sass": "^1.49.7",
         "sass-loader": "^12.4.0",
         "style-loader": "^3.3.1",
