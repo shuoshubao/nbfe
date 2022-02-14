@@ -4,14 +4,12 @@ const { existsSync, readFileSync, writeFileSync } = require('fs');
 const { join, extname } = require('path');
 const util = require('util');
 const { isEqual, omit, flattenDeep, sortBy, uniq } = require('lodash');
-const prettier = require('prettier');
 const dayjs = require('dayjs');
 const filesize = require('filesize');
 const chalk = require('chalk');
 const { createElement } = require('@nbfe/js2html');
 const { enableWebpackDll, packConfig, pkgVersionsKey } = require('./config');
 const { dllManifestPath } = require('./dll-helper');
-const prettierConfig = require('../prettier.config');
 
 // 打印带颜色的信息
 const log = (str, color) => {
@@ -220,7 +218,7 @@ const generateHtml = () => {
             .join('');
         const content = templateContent.replace('</head>', `${cssHtml}</head>`).replace('</body>', `</body>${jsHtml}`);
         const filename = join(packConfig.outputDir, `${k}.html`);
-        writeFileSync(filename, prettier.format(content, { parser: 'html', ...prettierConfig }));
+        writeFileSync(filename, content);
     });
 };
 
