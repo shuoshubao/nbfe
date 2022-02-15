@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.8...@nbfe/react-cli@0.1.9) (2022-02-15)
+
+
+### Bug Fixes
+
+* 模板位置调整 ([65a1cce](https://github.com/shuoshubao/nbfe/commit/65a1cce))
+* host 默认为 localhost ([58b8314](https://github.com/shuoshubao/nbfe/commit/58b8314))
+* html 模板位置 ([1b80680](https://github.com/shuoshubao/nbfe/commit/1b80680))
+* postcss-preset-env 升级 ([971b02a](https://github.com/shuoshubao/nbfe/commit/971b02a))
+
+
+### Features
+
+* 去掉prettier ([d04fee1](https://github.com/shuoshubao/nbfe/commit/d04fee1))
+* 升级依赖包 ([2ce09db](https://github.com/shuoshubao/nbfe/commit/2ce09db))
+
+
+### Performance Improvements
+
+* 调整目录 ([b7399d7](https://github.com/shuoshubao/nbfe/commit/b7399d7))
+* files 字段替换.npmignore ([8919a85](https://github.com/shuoshubao/nbfe/commit/8919a85))
+
+
+
+
+
 ## [0.1.8](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.7...@nbfe/react-cli@0.1.8) (2021-11-23)
 
 

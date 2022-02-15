@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/tinypng@1.0.6...@nbfe/tinypng@1.0.7) (2022-02-15)
+
+
+### Bug Fixes
+
+* 去掉压缩率统计逻辑,有bug ([e69e269](https://github.com/shuoshubao/nbfe/commit/e69e269))
+
+
+
+
+
 ## [1.0.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/tinypng@1.0.5...@nbfe/tinypng@1.0.6) (2021-12-07)
 
 
