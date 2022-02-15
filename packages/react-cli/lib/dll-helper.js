@@ -26,7 +26,7 @@ const injectAddAssetHtmlPlugins = chainableConfig => {
         const filePath = manifest[dllEntryKey][0];
         chainableConfig.plugin(['AddAssetHtmlPlugin', dllEntryKey].join('_')).use(AddAssetHtmlPlugin, [
             {
-                filepath: path.join(outputDir, filePath),
+                filepath: path.join(outputDir, dllDir, `${dllEntryKey}.js`),
                 includeSourcemap: false
             }
         ]);
