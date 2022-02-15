@@ -8,6 +8,9 @@
         "type": "git"
     },
     "license": "ISC",
+    "files": [
+        "dist"
+    ],
     "main": "dist/index.js",
     "scripts": {
         "test": "npx ava --verbose",
