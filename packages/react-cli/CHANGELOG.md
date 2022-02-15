@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.10...@nbfe/react-cli@0.2.0) (2022-02-15)
+
+
+### Bug Fixes
+
+* 去掉冗余代码 ([8a0e8b2](https://github.com/shuoshubao/nbfe/commit/8a0e8b2))
+
+
+
+
+
 ## [0.1.10](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.9...@nbfe/react-cli@0.1.10) (2022-02-15)
 
 
