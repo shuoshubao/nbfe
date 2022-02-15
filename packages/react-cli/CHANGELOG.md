@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.10](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.9...@nbfe/react-cli@0.1.10) (2022-02-15)
+
+
+### Bug Fixes
+
+* add-asset-html-webpack-plugin filepath 设置不对 ([d082fa4](https://github.com/shuoshubao/nbfe/commit/d082fa4))
+
+
+
+
+
 ## [0.1.9](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.8...@nbfe/react-cli@0.1.9) (2022-02-15)
 
 
