@@ -23,7 +23,6 @@ const injectDllReferencePlugins = chainableConfig => {
 const injectAddAssetHtmlPlugins = chainableConfig => {
     const manifest = require(dllManifestPath);
     Object.keys(dllEntry).forEach(dllEntryKey => {
-        const filePath = manifest[dllEntryKey][0];
         chainableConfig.plugin(['AddAssetHtmlPlugin', dllEntryKey].join('_')).use(AddAssetHtmlPlugin, [
             {
                 filepath: path.join(outputDir, dllDir, `${dllEntryKey}.js`),
