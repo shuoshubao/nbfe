@@ -1,15 +1,15 @@
 /*!
-* @nbfe/tools v0.2.12
-* (c) 2019-2021 shuoshubao <759979885@qq.com>
+* @nbfe/tools v0.2.14
+* (c) 2019-2022 shuoshubao <759979885@qq.com>
 * Released under the ISC License.
 */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('lodash')) :
     typeof define === 'function' && define.amd ? define(['exports', 'lodash'], factory) :
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.tools = {}, global.lodash));
-}(this, (function (exports, lodash) { 'use strict';
+})(this, (function (exports, lodash) { 'use strict';
 
-    var version = "0.2.12";
+    var version = "0.2.14";
 
     var Pagination = {
       // Options.jsx
@@ -58,7 +58,7 @@
       rangePlaceholder: ['开始时间', '结束时间']
     };
     var DatePicker = {
-      lang: _.extend({
+      lang: lodash.extend({
         placeholder: '请选择日期',
         yearPlaceholder: '请选择年份',
         quarterPlaceholder: '请选择季度',
@@ -69,11 +69,11 @@
         rangeMonthPlaceholder: ['开始月份', '结束月份'],
         rangeWeekPlaceholder: ['开始周', '结束周']
       }, CalendarLocale),
-      timePickerLocale: _.extend({}, timePickerLocale)
+      timePickerLocale: lodash.extend({}, timePickerLocale)
     };
     DatePicker.lang.ok = '确 定';
     var Calendar = {
-      lang: _.extend({
+      lang: lodash.extend({
         placeholder: '请选择日期',
         yearPlaceholder: '请选择年份',
         quarterPlaceholder: '请选择季度',
@@ -84,7 +84,7 @@
         rangeMonthPlaceholder: ['开始月份', '结束月份'],
         rangeWeekPlaceholder: ['开始周', '结束周']
       }, CalendarLocale),
-      timePickerLocale: _.extend({}, timePickerLocale)
+      timePickerLocale: lodash.extend({}, timePickerLocale)
     };
     Calendar.lang.ok = '确 定';
     var typeTemplate = '${label}不是一个有效的${type}';
@@ -432,7 +432,7 @@
 
     var isUniq = function isUniq() {
       var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      return _.uniq(arr).length === arr.length;
+      return lodash.uniq(arr).length === arr.length;
     };
     /**
      * 空字符串
@@ -478,7 +478,7 @@
      */
 
     var isEmptyValue = function isEmptyValue(value) {
-      return [_.isNull, _.isUndefined, isEmptyString].some(function (v) {
+      return [lodash.isNull, lodash.isUndefined, isEmptyString].some(function (v) {
         return v(value);
       });
     };
@@ -499,7 +499,7 @@
      */
 
     var isPromise = function isPromise(value) {
-      return _.isObject(value) && _.isFunction(value.then);
+      return lodash.isObject(value) && lodash.isFunction(value.then);
     };
     /**
      * Blob
@@ -540,7 +540,7 @@
      */
 
     var isEmptyArray = function isEmptyArray(arr) {
-      return _.isArray(arr) && arr.length === 0;
+      return lodash.isArray(arr) && arr.length === 0;
     };
     /**
      * 空对象
@@ -592,7 +592,7 @@
         args[_key] = arguments[_key];
       }
 
-      return _.flatten(args).every(Boolean);
+      return lodash.flatten(args).every(Boolean);
     };
     /**
      * 全假
@@ -619,7 +619,7 @@
         args[_key2] = arguments[_key2];
       }
 
-      return _.flatten(args).every(function (v) {
+      return lodash.flatten(args).every(function (v) {
         return !Boolean(v);
       });
     };
@@ -658,7 +658,7 @@
         args[_key3] = arguments[_key3];
       }
 
-      return _.flatten(args).some(Boolean);
+      return lodash.flatten(args).some(Boolean);
     };
     /**
      * 部分假
@@ -685,7 +685,7 @@
         args[_key4] = arguments[_key4];
       }
 
-      return _.flatten(args).some(function (v) {
+      return lodash.flatten(args).some(function (v) {
         return !Boolean(v);
       });
     };
@@ -777,7 +777,7 @@
     var produceEmptyObject = function produceEmptyObject() {
       var keys = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
       var emptyText = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-      return _.flatten(keys).reduce(function (prev, cur) {
+      return lodash.flatten(keys).reduce(function (prev, cur) {
         prev[cur] = emptyText;
         return prev;
       }, {});
@@ -1118,7 +1118,7 @@
         args[_key] = arguments[_key];
       }
 
-      return _.flatten(args).reduce(function (prev, cur) {
+      return lodash.flatten(args).reduce(function (prev, cur) {
         return plusTwo(prev, cur);
       }, 0);
     };
@@ -1163,7 +1163,7 @@
         args[_key2] = arguments[_key2];
       }
 
-      return _.flatten(args).reduce(function (prev, cur) {
+      return lodash.flatten(args).reduce(function (prev, cur) {
         return mulTwo(prev, cur);
       }, 1);
     };
@@ -1203,7 +1203,7 @@
 
     var sleep = function sleep() {
       var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : -1;
-      var sleepTime = time < 0 ? _.random(2, 5) : time;
+      var sleepTime = time < 0 ? lodash.random(2, 5) : time;
       return new Promise(function (resolve) {
         return setTimeout(resolve, sleepTime * 1e3);
       });
@@ -1315,12 +1315,12 @@
             _cur$split2$ = _cur$split2[1],
             v = _cur$split2$ === void 0 ? null : _cur$split2$;
 
-        var val = _.isNull(v) ? v : decodeURIComponent(v);
+        var val = lodash.isNull(v) ? v : decodeURIComponent(v);
 
-        if (_.isUndefined(prev[k])) {
+        if (lodash.isUndefined(prev[k])) {
           prev[k] = val;
         } else {
-          prev[k] = _.flatten([prev[k], val]);
+          prev[k] = lodash.flatten([prev[k], val]);
         }
 
         return prev;
@@ -1390,18 +1390,18 @@
             k = _cur[0],
             v = _cur[1];
 
-        if (_.isUndefined(v)) {
+        if (lodash.isUndefined(v)) {
           return prev;
         }
 
-        if (_.isNull(v)) {
+        if (lodash.isNull(v)) {
           prev.push(k);
         } else {
-          var list = _.flatten([v]).filter(function (v2) {
-            return !_.isUndefined(v2);
+          var list = lodash.flatten([v]).filter(function (v2) {
+            return !lodash.isUndefined(v2);
           }).map(function (v2) {
             var val = encodeURIComponent(v2);
-            return _.isNull(v2) ? k : [k, val].join('=');
+            return lodash.isNull(v2) ? k : [k, val].join('=');
           });
           prev.push.apply(prev, _toConsumableArray(list));
         }
@@ -1489,7 +1489,7 @@
             k = _ref2[0],
             v = _ref2[1];
 
-        if (!_.isNil(v) && v !== '') {
+        if (!lodash.isNil(v) && v !== '') {
           prev[k] = v;
         }
 
@@ -1602,7 +1602,7 @@
       var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       var elmentA = document.createElement('a');
       elmentA.href = url;
-      var result = _.pick(elmentA, ['protocol', 'host', 'pathname', 'port', 'search', 'hash', 'origin', 'hostname']);
+      var result = lodash.pick(elmentA, ['protocol', 'host', 'pathname', 'port', 'search', 'hash', 'origin', 'hostname']);
       elmentA = null;
       return result;
     };
@@ -1695,7 +1695,7 @@
       var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var elmentA = document.createElement('a');
       document.body.append(elmentA);
-      var downloadFileName = _.last(url.split('/'));
+      var downloadFileName = lodash.last(url.split('/'));
       setAttrs(elmentA, _objectSpread2({
         href: url,
         download: downloadFileName,
@@ -1744,9 +1744,9 @@
             k = _ref4[0],
             v = _ref4[1];
 
-        var key = _.kebabCase(k); // 对于一些特定属性, 当值为数字时, 加上单位 px
+        var key = lodash.kebabCase(k); // 对于一些特定属性, 当值为数字时, 加上单位 px
 
-        if (_.isNumber(v) && DefaultUnitsPxProperties.includes(key)) {
+        if (lodash.isNumber(v) && DefaultUnitsPxProperties.includes(key)) {
           prev[key] = "".concat(v, "px");
         } else {
           prev[key] = v;
@@ -1903,8 +1903,8 @@
         args[_key] = arguments[_key];
       }
 
-      _.flattenDeep([args]).forEach(function (v) {
-        if (_.isObject(v)) {
+      lodash.flattenDeep([args]).forEach(function (v) {
+        if (lodash.isObject(v)) {
           Object.entries(v).forEach(function (_ref9) {
             var _ref10 = _slicedToArray(_ref9, 2),
                 k2 = _ref10[0],
@@ -1918,7 +1918,7 @@
           classNameList.push(String(v || '').trim());
         }
       });
-      return _.uniq(classNameList.filter(Boolean)).join(' ');
+      return lodash.uniq(classNameList.filter(Boolean)).join(' ');
     };
     /**
      * 给 className 加后缀
@@ -2037,7 +2037,7 @@
       var emptyText = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '--';
       var tempData = data;
 
-      if (_.isPlainObject(data)) {
+      if (lodash.isPlainObject(data)) {
         tempData = convertJsonToEnum(data);
       }
 
@@ -2080,20 +2080,20 @@
           renderLabel = _options$renderLabel === void 0 ? function (node) {
         return node.label;
       } : _options$renderLabel;
-      var list = path ? _.get(res, path, []) : res;
+      var list = path ? lodash.get(res, path, []) : res;
       return list.map(function (v) {
         // 数组的每一项是基本类型: number | string
-        if (!_.isPlainObject(v)) {
+        if (!lodash.isPlainObject(v)) {
           return {
             value: v,
             label: v
           };
         }
 
-        var value = _.get(v, valueKey);
+        var value = lodash.get(v, valueKey);
         var label = renderLabel(_objectSpread2(_objectSpread2({}, v), {}, {
           value: value,
-          label: _.get(v, labelKey)
+          label: lodash.get(v, labelKey)
         }));
         return _objectSpread2(_objectSpread2({}, v), {}, {
           value: value,
@@ -2145,7 +2145,7 @@
         }, []);
       };
 
-      var list = path ? _.get(res, path, []) : res;
+      var list = path ? lodash.get(res, path, []) : res;
       return convertData(list);
     };
     /**
@@ -2306,7 +2306,7 @@
       }, {
         key: "percentage",
         value: function percentage(value) {
-          if (_.isNumber(value)) {
+          if (lodash.isNumber(value)) {
             var temp = Number(mul(value, 1e2).toFixed(2));
             return "".concat(temp, "%");
           }
@@ -2386,7 +2386,9 @@
       }
 
       return String(emptyText);
-    };
+    }; // 自闭合标签
+
+    var voidHtmlTags = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'menuitem', 'meta', 'param', 'source', 'track', 'wbr'];
     var attrKeyAlias = {
       className: 'class'
     };
@@ -2414,7 +2416,7 @@
       var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var children = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
 
-      if (_.isString(children) || _.isNumber(children)) {
+      if (lodash.isString(children) || lodash.isNumber(children)) {
         return gernerateElementText(tagName, attrs, children);
       }
 
@@ -2445,7 +2447,7 @@
 
     var getTooltipHtml = function getTooltipHtml() {
       var str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-      return _.flatten([str]).filter(Boolean).map(String).map(function (v) {
+      return lodash.flatten([str]).filter(Boolean).map(String).map(function (v) {
         return v.replace(/\\n/g, '<br>');
       }).map(function (v) {
         return v.replace(linkReg, function () {
@@ -2492,7 +2494,7 @@
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  reslove(_.pick(img, ['width', 'height']));
+                  reslove(lodash.pick(img, ['width', 'height']));
 
                 case 1:
                 case "end":
@@ -2597,7 +2599,7 @@
           required: true,
           message: "\u8BF7\u9009\u62E9".concat(text),
           transform: function transform(value) {
-            if (_.isNumber(value)) {
+            if (lodash.isNumber(value)) {
               return String(value);
             }
 
@@ -2610,7 +2612,7 @@
         var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
         return [_objectSpread2(_objectSpread2({}, _this.selectRequired(text)), {}, {
           transform: function transform(value) {
-            if (_.isUndefined(value)) {
+            if (lodash.isUndefined(value)) {
               return '';
             }
 
@@ -2618,7 +2620,7 @@
           }
         }), {
           validator: function validator(rule, value, callback) {
-            if (_.isEmpty(value)) {
+            if (lodash.isEmpty(value)) {
               return callback(new Error("\u8BF7\u9009\u62E9".concat(text)));
             }
 
@@ -2633,7 +2635,7 @@
           required: true,
           message: "\u8BF7\u9009\u62E9".concat(text),
           transform: function transform(value) {
-            if (_.isUndefined(value)) {
+            if (lodash.isUndefined(value)) {
               return '';
             }
 
@@ -2672,7 +2674,7 @@
                 k = _ref2[0],
                 v = _ref2[1];
 
-            var _find = _.find(ValidatorRules.numberRangeValidatorList, {
+            var _find = lodash.find(ValidatorRules.numberRangeValidatorList, {
               key: k
             }),
                 description = _find.description,
@@ -2883,7 +2885,7 @@
 
     var pascalCase = function pascalCase() {
       var str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-      return _.upperFirst(_.camelCase(str));
+      return lodash.upperFirst(lodash.camelCase(str));
     };
 
     var getUa = function getUa() {
@@ -3104,7 +3106,8 @@
     exports.trimAll = trimAll;
     exports.updateUrlQuery = updateUrlQuery;
     exports.version = version;
+    exports.voidHtmlTags = voidHtmlTags;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
