@@ -40,7 +40,8 @@ const KEY_LIST = [
     'n03RCY69hnW3yGyrz2Sx1dvNNp4NsnVl',
     'j9b8kB2m2Zx28kk1sN9KFlDHnpR9Mtz6',
     'wyCb1FTD1bDY8Qj3Bl11CDMqGPCKg0L1',
-    'TrDd55gRdc1RH7K32HYHPvlbx5crb0MT'
+    'TrDd55gRdc1RH7K32HYHPvlbx5crb0MT',
+    'VzjzXnvLyZncGtY4HzQFKlXst26mP68G'
 ];
 
 const CompressionsOneMonth = 500;
