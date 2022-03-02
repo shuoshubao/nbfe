@@ -1,7 +1,7 @@
 const { existsSync } = require('fs');
 const { resolve } = require('path');
 const ip = require('ip');
-const { cloneDeep, noop, flatten } = require('lodash');
+const { cloneDeep, noop, flatten, merge } = require('lodash');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const { NODE_ENV = 'production' } = process.env;
@@ -92,10 +92,7 @@ if (existsSync(resolveRootPath(defaultConfig.packConfigPath))) {
         ipAddress,
         defaultConfig
     });
-    packConfig = {
-        ...defaultConfig,
-        ...projectConfig
-    };
+    packConfig = merge(defaultConfig, projectConfig);
 }
 
 packConfig.srcPath = resolveRootPath(packConfig.srcPath);
