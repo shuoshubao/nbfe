@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.0...@nbfe/react-cli@0.2.1) (2022-03-02)
+
+
+### Features
+
+* dll 支持共享 externals ([e5d5437](https://github.com/shuoshubao/nbfe/commit/e5d5437))
+
+
+
+
+
 # [0.2.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.1.10...@nbfe/react-cli@0.2.0) (2022-02-15)
 
 

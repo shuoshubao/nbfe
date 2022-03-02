@@ -1,6 +1,6 @@
 {
     "name": "@nbfe/react-cli",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "React CLI",
     "author": "shuoshubao <759979885@qq.com>",
     "bin": {
