@@ -26,6 +26,7 @@ const webpackConfig = {
             })
         ]
     },
+    externals: packConfig.configureWebpack.externals,
     plugins: [
         new WebpackManifestPlugin({
             fileName: dllManifestFileName,
