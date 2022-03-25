@@ -108,17 +108,9 @@ const checkNeedUpdateDll = () => {
         prev[cur] = itemVersions;
         return prev;
     }, {});
-    const isSame = isEqual(cacheDllManifestVersions, dllManifestVersions);
-    if (isSame) {
-        console.log('[webpack dll] 与之前版本号相同, 不执行 webpack.DllReferencePlugin 构建');
-    } else {
-        console.log('[webpack dll] 与之前版本号不同, 将执行 webpack.DllReferencePlugin 构建');
-        console.log('[webpack dll] 之前的版本号:');
-        console.log(cacheDllManifestVersions);
-        console.log('[webpack dll] 之前的版本号:');
-        console.log(dllManifestVersions);
-    }
-    return !isSame;
+    const isDiffVersion = !isEqual(cacheDllManifestVersions, dllManifestVersions);
+    const isDiffPublicPath = cacheDllManifest.publicPath !== packConfig.publicPath;
+    return isDiffVersion || isDiffPublicPath;
 };
 
 // WebpackManifestPlugin generate

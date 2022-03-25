@@ -31,7 +31,6 @@ const webpackConfig = {
         new WebpackManifestPlugin({
             fileName: dllManifestFileName,
             generate: (seed, files, entries) => {
-                // 注入 publicPath
                 const versions = Object.keys(entries).reduce((prev, cur) => {
                     const itemVersions = packConfig.dllEntry[cur].map(v => {
                         const { version } = require([v, 'package.json'].join('/'));
@@ -45,11 +44,15 @@ const webpackConfig = {
                 return Object.entries(entries).reduce(
                     (prev, [k, v]) => {
                         prev[k] = v.map(v2 => {
+                            // 注入 publicPath
                             return [packConfig.publicPath, v2].join('');
                         });
                         return prev;
                     },
-                    { [pkgVersionsKey]: versions }
+                    {
+                        publicPath: packConfig.publicPath,
+                        [pkgVersionsKey]: versions,
+                    }
                 );
             }
         }),
