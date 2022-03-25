@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.1...@nbfe/react-cli@0.2.2) (2022-03-25)
+
+
+### Features
+
+* dll 缓存依据加上publicPath ([92751e1](https://github.com/shuoshubao/nbfe/commit/92751e1))
+* merge 合并配置 ([cc30595](https://github.com/shuoshubao/nbfe/commit/cc30595))
+
+
+
+
+
 ## [0.2.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.0...@nbfe/react-cli@0.2.1) (2022-03-02)
 
 
