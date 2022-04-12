@@ -45,6 +45,7 @@
         "dayjs": "^1.10.7",
         "filesize": "^8.0.7",
         "html-webpack-plugin": "^5.5.0",
+        "ip": "^1.1.5",
         "less": "^4.1.2",
         "less-loader": "^10.2.0",
         "mini-css-extract-plugin": "^2.5.3",
@@ -64,7 +65,7 @@
         "webpack-bundle-analyzer": "^4.5.0",
         "webpack-chain": "^6.5.1",
         "webpack-cli": "^4.9.2",
-        "webpack-dev-server": "^4.7.4",
+        "webpack-dev-server": "^4.8.1",
         "webpack-manifest-plugin": "^4.1.1",
         "webpack-merge": "^5.8.0"
     },
