@@ -7,6 +7,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const { packConfig, enableWebpackDll } = require('./config');
 const { log, logObject, checkNeedUpdateDll, logSymbols, webpackStatsLog, generateHtml } = require('./utils');
 const devServer = require('./devServer');
+const babelConfig = require('../babel.config');
 
 const webpackCompiler = webpackConfig => {
     return new Promise((resolve, reject) => {
@@ -94,7 +95,12 @@ const inspectWebpackConfig = () => {
     logObject(getWebpackConfig());
 };
 
+const getBabelConfig = () => {
+    return babelConfig;
+};
+
 module.exports = {
+    getBabelConfig,
     getWebpackConfig,
     inspectWebpackConfig,
     webpackServe,

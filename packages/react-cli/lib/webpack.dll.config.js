@@ -51,7 +51,7 @@ const webpackConfig = {
                     },
                     {
                         publicPath: packConfig.publicPath,
-                        [pkgVersionsKey]: versions,
+                        [pkgVersionsKey]: versions
                     }
                 );
             }

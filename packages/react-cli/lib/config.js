@@ -3,6 +3,7 @@ const { resolve } = require('path');
 const ip = require('ip');
 const { cloneDeep, noop, flatten, merge } = require('lodash');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const babelConfig = require('../babel.config');
 
 const { NODE_ENV = 'production' } = process.env;
 
@@ -19,33 +20,6 @@ const resolveRootPath = (to = '', from = process.cwd()) => {
 };
 
 const ipAddress = ip.address();
-
-const babelConfig = {
-    presets: [
-        [
-            '@babel/preset-env',
-            {
-                useBuiltIns: false,
-                modules: false,
-                loose: true
-            }
-        ],
-        '@babel/preset-react'
-    ],
-    plugins: [
-        '@babel/plugin-proposal-export-default-from',
-        ['@babel/plugin-proposal-decorators', { legacy: true }],
-        ['@babel/plugin-proposal-private-methods', { loose: true }],
-        ['@babel/plugin-proposal-class-properties', { loose: true }],
-        [
-            '@babel/plugin-transform-runtime',
-            {
-                helpers: false,
-                regenerator: true
-            }
-        ]
-    ]
-};
 
 const defaultConfig = {
     mode,

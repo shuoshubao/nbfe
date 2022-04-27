@@ -147,11 +147,7 @@ const manifestPluginGenerate = (seed, files, entries) => {
             return v2.path;
         });
 
-        const list = flattenDeep([
-            Object.values(dllManifest),
-            itemCacheGroups,
-            sortedEntryFiles
-        ]);
+        const list = flattenDeep([Object.values(dllManifest), itemCacheGroups, sortedEntryFiles]);
 
         const { css, js } = convertManifest(uniq(list));
 
