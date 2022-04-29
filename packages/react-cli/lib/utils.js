@@ -152,8 +152,8 @@ const manifestPluginGenerate = (seed, files, entries) => {
         const { css, js } = convertManifest(uniq(list));
 
         prev[k] = {
-            css: (packConfig.assets.css || []).concat(css),
-            js: (packConfig.assets.js || []).concat(js)
+            css: (packConfig.assets.css || []).concat(css).filter(Boolean),
+            js: (packConfig.assets.js || []).concat(js).filter(Boolean)
         };
         return prev;
     }, {});
