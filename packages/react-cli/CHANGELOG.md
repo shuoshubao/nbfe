@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.3...@nbfe/react-cli@0.2.4) (2022-04-29)
+
+
+### Bug Fixes
+
+* babel.config.js ([14db1de](https://github.com/shuoshubao/nbfe/commit/14db1de))
+
+
+### Features
+
+* 过滤空值 ([c8790c9](https://github.com/shuoshubao/nbfe/commit/c8790c9))
+
+
+
+
+
 ## [0.2.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.2...@nbfe/react-cli@0.2.3) (2022-04-27)
 
 
