@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.15](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.14...@nbfe/tools@0.2.15) (2022-06-06)
+
+
+### Features
+
+* 校验规则, 增加uniq: 重复项校验 ([e64b4e5](https://github.com/shuoshubao/nbfe/commit/e64b4e5))
+
+
+
+
+
 ## [0.2.14](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.13...@nbfe/tools@0.2.14) (2022-02-15)
 
 **Note:** Version bump only for package @nbfe/tools
