@@ -1,4 +1,4 @@
-import { isEmpty, isNumber, isUndefined, find } from 'lodash';
+import { isEmpty, isNumber, isUndefined, find, uniqWith, isEqual } from 'lodash';
 import { isEmptyArray } from './types';
 
 class ValidatorRules {
@@ -147,6 +147,18 @@ class ValidatorRules {
         return {
             max: num,
             message: `${text}最多${num}个字符`
+        };
+    };
+
+    // uniq
+    uniq = (text = '') => {
+        return {
+            validator: (rule, value) => {
+                if (!isEqual(uniqWith(value, isEqual), value)) {
+                    return Promise.reject(`${text}存在重复项`);
+                }
+                return Promise.resolve();
+            }
         };
     };
 
