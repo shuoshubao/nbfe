@@ -1,0 +1,50 @@
+{
+  "name": "@nbfe/standard",
+  "version": "1.0.0",
+  "description": "前端工程化",
+  "author": "shuoshubao <759979885@qq.com>",
+  "repository": {
+    "url": "https://github.com/shuoshubao/nbfe",
+    "type": "git"
+  },
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "publish:beta": "npm publish --tag beta"
+  },
+  "dependencies": {
+    "@babel/eslint-parser": "^7.17.0",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@nbfe/git-info": "^0.1.2",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "commitizen": "^4.2.4",
+    "cosmiconfig": "^7.0.1",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb": "19.0.2",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-formatter-html": "^2.1.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "eslint-plugin-sonarjs": "^0.13.0",
+    "eslint-plugin-vue": "^8.7.1",
+    "fs-extra": "^10.1.0",
+    "glob": "^8.0.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.0",
+    "lodash": "^4.17.21",
+    "prettier": "^2.6.2",
+    "standard-version": "^9.3.2",
+    "stylelint": "^14.8.2",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-formatters-html": "^1.0.5",
+    "stylelint-prettier": "^2.0.0",
+    "vue-eslint-parser": "^8.3.0"
+  }
+}
