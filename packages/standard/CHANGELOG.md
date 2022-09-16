@@ -1,11 +1,15 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.0.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.0.1...@nbfe/standard@1.0.2) (2022-09-16)
+
+### Bug Fixes
+
+- husky lint-staged 降版本 ([2842677](https://github.com/shuoshubao/nbfe/commit/2842677))
 
 ## 1.0.1 (2022-06-27)
 
-
 ### Features
 
-* @nbfe/standard ([051aa20](https://github.com/shuoshubao/nbfe/commit/051aa20))
+- @nbfe/standard ([051aa20](https://github.com/shuoshubao/nbfe/commit/051aa20))
