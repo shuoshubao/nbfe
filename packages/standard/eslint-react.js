@@ -5,7 +5,7 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': [0],
     'jsx-a11y/anchor-is-valid': [1], // a javascript:void(0)
     'jsx-a11y/no-noninteractive-element-interactions': [0],
-    'jsx-a11y/alt-text': [0], // img alt
+    'jsx-a11y/alt-text': [0], // <img alt="" />
     'jsx-a11y/media-has-caption': [0],
     'react/function-component-definition': [0],
     'react/destructuring-assignment': [0],
