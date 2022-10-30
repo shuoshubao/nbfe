@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.4...@nbfe/react-cli@0.2.5) (2022-10-30)
+
+
+### Features
+
+* cdnResource.json 重命名为 manifest.json ([a1b7342](https://github.com/shuoshubao/nbfe/commit/a1b7342))
+
+
+### Performance Improvements
+
+* 优化代码 ([d4af777](https://github.com/shuoshubao/nbfe/commit/d4af777))
+
+
+
+
+
 ## [0.2.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.3...@nbfe/react-cli@0.2.4) (2022-04-29)
 
 
