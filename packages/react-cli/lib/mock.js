@@ -1,18 +1,20 @@
-const path = require('path');
+const { basename, join } = require('path');
 const { packConfig } = require('./config');
 
 module.exports = app => {
     app.use(async (req, res, next) => {
         let url = req.originalUrl;
-        if (url.indexOf('?') > -1) {
+
+        if (url.includes('?')) {
             [url] = url.split('?');
         }
+
         if (url === '/') {
             next();
             return;
         }
 
-        const fileName = path.basename(url);
+        const fileName = basename(url);
 
         // 有文件后缀的 当做是静态资源
         if (fileName.includes('.')) {
@@ -21,7 +23,7 @@ module.exports = app => {
         }
 
         try {
-            let actionPath = path.join(packConfig.rootPath, 'mock', url);
+            let actionPath = join(packConfig.rootPath, 'mock', url);
             const action = require(actionPath);
             const accept = req.get('Content-Type') || 'application/json';
             res.set('Content-Type', accept);
