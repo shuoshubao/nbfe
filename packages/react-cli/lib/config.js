@@ -29,7 +29,7 @@ const defaultConfig = {
     template: 'public/index.html',
     publicPath: '/',
     outputDir: 'dist',
-    manifestFileName: 'cdnResource.json',
+    manifestFileName: 'manifest.json',
     entry: { index: 'src/index.js' },
     dllEntry: null,
     dllDir: ['dll', mode].join('-'),
