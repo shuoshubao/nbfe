@@ -5,15 +5,7 @@ const { cloneDeep, noop, flatten, merge } = require('lodash');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const babelConfig = require('../babel.config');
 
-const { NODE_ENV = 'production' } = process.env;
-
-process.env.NODE_ENV = NODE_ENV;
-
-const [isDevelopment, isProduction] = [NODE_ENV === 'development', NODE_ENV === 'production'];
-
 const isMac = process.platform === 'darwin';
-
-const mode = isDevelopment ? 'development' : 'production';
 
 const resolveRootPath = (to = '', from = process.cwd()) => {
     return resolve(from, to);
@@ -22,7 +14,6 @@ const resolveRootPath = (to = '', from = process.cwd()) => {
 const ipAddress = ip.address();
 
 const defaultConfig = {
-    mode,
     srcPath: 'src',
     packConfigPath: 'react.config.js',
     rootPath: process.cwd(),
@@ -32,7 +23,6 @@ const defaultConfig = {
     manifestFileName: 'manifest.json',
     entry: { index: 'src/index.js' },
     dllEntry: null,
-    dllDir: ['dll', mode].join('-'),
     enableMock: true,
     alias: {},
     devServer: {},
@@ -59,12 +49,9 @@ let packConfig = cloneDeep(defaultConfig);
 if (existsSync(resolveRootPath(defaultConfig.packConfigPath))) {
     const defineConfig = require(resolveRootPath(defaultConfig.packConfigPath));
     const projectConfig = defineConfig({
-        mode,
-        isDevelopment,
-        isProduction,
+        isDevelopment: process.env.REACT_CLI__ENV === 'development',
         isMac,
-        ipAddress,
-        defaultConfig
+        ipAddress
     });
     packConfig = merge(defaultConfig, projectConfig);
 }
@@ -99,6 +86,7 @@ packConfig.alias = Object.entries(packConfig.alias).reduce(
         '@': packConfig.srcPath
     }
 );
+
 packConfig.outputDir = resolveRootPath(packConfig.outputDir);
 
 const enableWebpackDll = Object.keys(packConfig.dllEntry || {}).length !== 0;
@@ -106,9 +94,6 @@ const enableWebpackDll = Object.keys(packConfig.dllEntry || {}).length !== 0;
 const pkgVersionsKey = 'pkgVersions';
 
 module.exports = {
-    mode,
-    isDevelopment,
-    isProduction,
     isMac,
     packConfig,
     MiniCssExtractPlugin,

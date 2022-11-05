@@ -5,9 +5,9 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { injectDllReferencePlugins, injectAddAssetHtmlPlugins } = require('./dll-helper');
 const { manifestPluginGenerate } = require('./utils');
 
-const { isDevelopment, packConfig, MiniCssExtractPlugin, enableWebpackDll } = require('./config');
+const { packConfig, MiniCssExtractPlugin, enableWebpackDll } = require('./config');
 
-module.exports = chainableConfig => {
+module.exports = (isDevelopment, chainableConfig) => {
     chainableConfig.plugin('MiniCssExtractPlugin').use(MiniCssExtractPlugin, [
         {
             filename: isDevelopment ? 'css/[name].css' : 'css/[name].[contenthash].css',
@@ -15,7 +15,7 @@ module.exports = chainableConfig => {
         }
     ]);
     if (enableWebpackDll) {
-        injectDllReferencePlugins(chainableConfig);
+        injectDllReferencePlugins(isDevelopment, chainableConfig);
     }
     if (isDevelopment) {
         Object.entries(packConfig.entry).forEach(([k]) => {
@@ -34,7 +34,7 @@ module.exports = chainableConfig => {
     }
     if (isDevelopment) {
         if (enableWebpackDll) {
-            injectAddAssetHtmlPlugins(chainableConfig);
+            injectAddAssetHtmlPlugins(isDevelopment, chainableConfig);
         }
     } else {
         chainableConfig.plugin('BundleAnalyzerPlugin').use(BundleAnalyzerPlugin, [
@@ -51,7 +51,7 @@ module.exports = chainableConfig => {
         {
             fileName: packConfig.manifestFileName,
             generate: (seed, files, entries) => {
-                const manifestData = manifestPluginGenerate(seed, files, entries);
+                const manifestData = manifestPluginGenerate(isDevelopment, seed, files, entries);
                 if (packConfig.manifestPluginGenerate) {
                     return packConfig.manifestPluginGenerate({ seed, files, entries, manifestData });
                 }

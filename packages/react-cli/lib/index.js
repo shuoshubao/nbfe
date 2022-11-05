@@ -22,15 +22,15 @@ const webpackCompiler = webpackConfig => {
     });
 };
 
-const webpackBuildDll = async () => {
+const webpackBuildDll = async isDevelopment => {
     if (!enableWebpackDll) {
         return;
     }
-    if (!checkNeedUpdateDll()) {
+    if (!checkNeedUpdateDll(isDevelopment)) {
         return;
     }
     console.log('[webpack dll] 执行');
-    const webpackConfig = require('./webpack.dll.config');
+    const webpackConfig = require('./webpack.dll.config')(isDevelopment);
     try {
         console.time('[webpack dll]');
         await webpackCompiler(webpackConfig);
@@ -41,22 +41,22 @@ const webpackBuildDll = async () => {
     }
 };
 
-const getWebpackConfig = () => {
-    const webpackConfig = require('./webpack.config');
+const getWebpackConfig = (isDevelopment = true) => {
+    const webpackConfig = require('./webpack.config')(isDevelopment);
     const injectPlugins = require('./plugins');
     const injectRules = require('./rules');
     const chainableConfig = new Config();
-    injectPlugins(chainableConfig);
-    injectRules(chainableConfig);
+    injectPlugins(isDevelopment, chainableConfig);
+    injectRules(isDevelopment, chainableConfig);
     packConfig.chainWebpack(chainableConfig);
     return merge(webpackConfig, packConfig.configureWebpack, chainableConfig.toConfig());
 };
 
 const webpackServe = async () => {
     try {
-        await webpackBuildDll();
+        await webpackBuildDll(true);
         console.time('[webpack serve]');
-        const webpackConfig = getWebpackConfig();
+        const webpackConfig = getWebpackConfig(true);
         const compiler = webpack(webpackConfig);
         const server = new WebpackDevServer(devServer, compiler);
         server.start(devServer.port, devServer.host, err => {
@@ -73,8 +73,8 @@ const webpackServe = async () => {
 
 const webpackBuild = async () => {
     try {
-        await webpackBuildDll();
-        const webpackConfig = getWebpackConfig();
+        await webpackBuildDll(false);
+        const webpackConfig = getWebpackConfig(false);
         console.time('[webpack build]');
         await webpackCompiler(webpackConfig);
         console.log(logSymbols.success, 'webpack 构建成功!');
@@ -91,8 +91,7 @@ const webpackBuild = async () => {
 
 // 打印 webpack 配置
 const inspectWebpackConfig = () => {
-    log(packConfig.mode, 'cyan');
-    logObject(getWebpackConfig());
+    logObject(getWebpackConfig(true));
 };
 
 const getBabelConfig = () => {

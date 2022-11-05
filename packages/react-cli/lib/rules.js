@@ -3,7 +3,7 @@
 const { packConfig } = require('./config');
 const injectCssRules = require('./css');
 
-module.exports = chainableConfig => {
+module.exports = (isDevelopment, chainableConfig) => {
     chainableConfig.module
         .rule('js')
         .test(/\.m?jsx?$/)
@@ -35,5 +35,5 @@ module.exports = chainableConfig => {
         .use('ts-loader')
         .loader('ts-loader');
 
-    injectCssRules(chainableConfig);
+    injectCssRules(isDevelopment, chainableConfig);
 };

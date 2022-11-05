@@ -19,8 +19,8 @@ export default class extends React.Component {
     static defaultProps = {};
 
     test = () => {
-        console.log('test')
-    }
+        console.log('test');
+    };
 
     render() {
         this.test();
@@ -29,7 +29,9 @@ export default class extends React.Component {
                 <div styleName="aa">App</div>
                 <img src={ReactLogo} />
                 <img src={DumiLogo} />
-                <div className="logo-png" style={{ height: 180 }}>logo-png</div>
+                <div className="logo-png" style={{ height: 180 }}>
+                    logo-png
+                </div>
             </div>
         );
     }

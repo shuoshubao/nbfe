@@ -9,7 +9,7 @@ const filesize = require('filesize');
 const chalk = require('chalk');
 const { createElement } = require('@nbfe/js2html');
 const { enableWebpackDll, packConfig, pkgVersionsKey } = require('./config');
-const { dllManifestPath } = require('./dll-helper');
+const { getDllManifestPath } = require('./dll-helper');
 
 // 打印带颜色的信息
 const log = (str, color) => {
@@ -92,11 +92,11 @@ const convertManifest = (list = []) => {
 };
 
 // 检测是否需要运行 dll
-const checkNeedUpdateDll = () => {
-    if (!existsSync(dllManifestPath)) {
+const checkNeedUpdateDll = isDevelopment => {
+    if (!existsSync(getDllManifestPath(isDevelopment))) {
         return true;
     }
-    const cacheDllManifest = require(dllManifestPath);
+    const cacheDllManifest = require(getDllManifestPath(isDevelopment));
     const cacheDllManifestVersions = cacheDllManifest[pkgVersionsKey];
     const dllManifestVersions = Object.keys(packConfig.dllEntry).reduce((prev, cur) => {
         const itemVersions = packConfig.dllEntry[cur].map(v => {
@@ -114,10 +114,10 @@ const checkNeedUpdateDll = () => {
 };
 
 // WebpackManifestPlugin generate
-const manifestPluginGenerate = (seed, files, entries) => {
+const manifestPluginGenerate = (isDevelopment, seed, files, entries) => {
     let dllManifest = {};
     if (enableWebpackDll) {
-        dllManifest = require(dllManifestPath);
+        dllManifest = require(getDllManifestPath(isDevelopment));
         dllManifest = omit(dllManifest, [pkgVersionsKey]);
     }
     const manifest = Object.entries(packConfig.entry).reduce((prev, [k]) => {

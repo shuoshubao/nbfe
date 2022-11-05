@@ -1,14 +1,6 @@
-const { isDevelopment, packConfig, MiniCssExtractPlugin } = require('./config');
+const { packConfig, MiniCssExtractPlugin } = require('./config');
 
 const { requireModuleExtension, loaderOptions } = packConfig.css;
-
-const moduleCssLoaderOptions = {
-    import: true,
-    importLoaders: 2,
-    modules: {
-        localIdentName: isDevelopment ? '[name]_[local]_[hash:base64:5]' : '[path]_[name]_[local]_[hash:base64:5]'
-    }
-};
 
 const cssLoaderOptions = {
     less: {
@@ -36,7 +28,7 @@ const cssLoaderName = {
 
 const cssLangList = ['css', 'less', 'scss', 'styl'];
 
-const applyLoaders = (chainableConfig, lang, isCssModule) => {
+const applyLoaders = ({ isDevelopment, chainableConfig, lang, isCssModule }) => {
     const testRegText = isCssModule ? `\\.module\\.${lang}$` : `\\.${lang}$`;
     const testReg = new RegExp(testRegText);
     const ruleName = [lang, isCssModule ? 'module' : ''].filter(Boolean).join('-');
@@ -51,6 +43,13 @@ const applyLoaders = (chainableConfig, lang, isCssModule) => {
             esModule: false
         });
     }
+    const moduleCssLoaderOptions = {
+        import: true,
+        importLoaders: 2,
+        modules: {
+            localIdentName: isDevelopment ? '[name]_[local]_[hash:base64:5]' : '[path]_[name]_[local]_[hash:base64:5]'
+        }
+    };
     rule.use('css-loader')
         .loader('css-loader')
         .options(isCssModule ? moduleCssLoaderOptions : {});
@@ -59,9 +58,9 @@ const applyLoaders = (chainableConfig, lang, isCssModule) => {
     rule.use(loaderName).loader(loaderName).options(getLoaderOptions(lang));
 };
 
-module.exports = chainableConfig => {
+module.exports = (isDevelopment, chainableConfig) => {
     cssLangList.forEach(v => {
-        applyLoaders(chainableConfig, v, false);
-        applyLoaders(chainableConfig, v, true);
+        applyLoaders({ isDevelopment, chainableConfig, lang: v, isCssModule: false });
+        applyLoaders({ isDevelopment, chainableConfig, lang: v, isCssModule: true });
     });
 };

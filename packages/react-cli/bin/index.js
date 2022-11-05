@@ -17,7 +17,7 @@ program
     .description('start development server')
     .usage(`${binName} serve`)
     .action(async () => {
-        process.env.NODE_ENV = 'development';
+        process.env.REACT_CLI__ENV = 'development';
         try {
             const { webpackServe } = require('../lib');
             webpackServe();
@@ -31,7 +31,7 @@ program
     .description('build for production')
     .usage(`${binName} build`)
     .action(async () => {
-        process.env.NODE_ENV = 'production';
+        process.env.REACT_CLI__ENV = 'production';
         try {
             const { webpackBuild } = require('../lib');
             webpackBuild();
@@ -43,7 +43,7 @@ program
 program
     .command('inspect')
     .description('inspect internal webpack config')
-    .usage(`NODE_ENV=development|production ${binName} inspect`)
+    .usage(`${binName} inspect`)
     .action(async () => {
         try {
             const { inspectWebpackConfig } = require('../lib');

@@ -1,17 +1,25 @@
-const path = require('path');
+const { join } = require('path');
 const webpack = require('webpack');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const { packConfig } = require('./config');
 
-const { outputDir, dllEntry, dllDir } = packConfig;
+const { outputDir, dllEntry } = packConfig;
 
-const dllManifestFileName = [dllDir, 'manifest.json'].join('/');
+const getDllDir = isDevelopment => {
+    return ['dll', isDevelopment ? 'development' : 'production'].join('-');
+};
 
-const dllManifestPath = path.join(outputDir, dllManifestFileName);
+const getDllManifestFileName = isDevelopment => {
+    return [getDllDir(isDevelopment), 'manifest.json'].join('/');
+};
 
-const injectDllReferencePlugins = chainableConfig => {
+const getDllManifestPath = isDevelopment => {
+    return join(outputDir, getDllManifestFileName(isDevelopment));
+};
+
+const injectDllReferencePlugins = (isDevelopment, chainableConfig) => {
     Object.keys(dllEntry).forEach(dllEntryKey => {
-        const manifestPath = path.join(outputDir, dllDir, `${dllEntryKey}.manifest.json`);
+        const manifestPath = join(outputDir, getDllDir(isDevelopment), `${dllEntryKey}.manifest.json`);
         chainableConfig.plugin(['DllReferencePlugin', dllEntryKey].join('_')).use(webpack.DllReferencePlugin, [
             {
                 manifest: require(manifestPath)
@@ -20,12 +28,12 @@ const injectDllReferencePlugins = chainableConfig => {
     });
 };
 
-const injectAddAssetHtmlPlugins = chainableConfig => {
-    const manifest = require(dllManifestPath);
+const injectAddAssetHtmlPlugins = (isDevelopment, chainableConfig) => {
+    const manifest = require(getDllManifestPath(isDevelopment));
     Object.keys(dllEntry).forEach(dllEntryKey => {
         chainableConfig.plugin(['AddAssetHtmlPlugin', dllEntryKey].join('_')).use(AddAssetHtmlPlugin, [
             {
-                filepath: path.join(outputDir, dllDir, `${dllEntryKey}.js`),
+                filepath: join(outputDir, getDllDir(isDevelopment), `${dllEntryKey}.js`),
                 includeSourcemap: false
             }
         ]);
@@ -33,8 +41,9 @@ const injectAddAssetHtmlPlugins = chainableConfig => {
 };
 
 module.exports = {
-    dllManifestFileName,
-    dllManifestPath,
+    getDllDir,
+    getDllManifestFileName,
+    getDllManifestPath,
     injectDllReferencePlugins,
     injectAddAssetHtmlPlugins
 };

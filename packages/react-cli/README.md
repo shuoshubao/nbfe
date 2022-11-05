@@ -13,16 +13,14 @@
 ```js
 const { getWebpackConfig } = require('@nbfe/react-cli');
 
-// process.env.NODE_ENV = 'development'|'production';
-const webpackConfig = getWebpackConfig();
+const webpackConfig = getWebpackConfig(false);
 ```
 
 ## react.config.js
 
 ```js
 module.exports = config => {
-    const { mode, isDevelopment, isProduction, isMac, defaultConfig } = config;
-    console.log('mode', mode);
+    const { isDevelopment, isMac, ipAddress } = config;
     return {
         devServer: {
             port: 3000
@@ -33,6 +31,5 @@ module.exports = config => {
     };
 };
 ```
-
 
 [Vue CLI 文档](https://cli.vuejs.org/zh/guide/)
