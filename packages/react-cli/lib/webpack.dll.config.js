@@ -1,15 +1,13 @@
-const { join } = require('path');
+const { join, dirname } = require('path');
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { packConfig, pkgVersionsKey } = require('./config');
-const { getDllDir, getDllManifestFileName } = require('./dll-helper');
-
-const { outputDir } = packConfig;
+const { getDllDir } = require('./dll-helper');
 
 module.exports = isDevelopment => {
-    const dllDir = getDllDir(isDevelopment);
+    const dllDir = isDevelopment ? 'dll-development' : 'dll-production';
     const mode = isDevelopment ? 'development' : 'production';
     const libraryName = isDevelopment ? '__webpack_dll_[name]' : '__webpack_dll_[name]_[fullhash]';
 
@@ -19,7 +17,7 @@ module.exports = isDevelopment => {
         output: {
             publicPath: packConfig.publicPath,
             filename: isDevelopment ? `${dllDir}/[name].js` : `${dllDir}/[name]_[contenthash].js`,
-            path: outputDir,
+            path: dirname(getDllDir(isDevelopment)),
             library: libraryName
         },
         optimization: {
@@ -32,7 +30,7 @@ module.exports = isDevelopment => {
         externals: packConfig.configureWebpack.externals,
         plugins: [
             new WebpackManifestPlugin({
-                fileName: getDllManifestFileName(isDevelopment),
+                fileName: `${dllDir}/manifest.json`,
                 generate: (seed, files, entries) => {
                     const versions = Object.keys(entries).reduce((prev, cur) => {
                         const itemVersions = packConfig.dllEntry[cur].map(v => {
@@ -61,7 +59,7 @@ module.exports = isDevelopment => {
             }),
             new webpack.DllPlugin({
                 name: libraryName,
-                path: join(outputDir, `${dllDir}/[name].manifest.json`)
+                path: join(getDllDir(isDevelopment), '[name].manifest.json')
             })
         ],
         performance: {
@@ -75,7 +73,7 @@ module.exports = isDevelopment => {
                 analyzerMode: 'static',
                 openAnalyzer: false,
                 logLevel: 'silent',
-                reportFilename: [dllDir, 'WebpackAnalyzerReport.html'].join('/')
+                reportFilename: 'WebpackAnalyzerReport.html'
             })
         );
     }

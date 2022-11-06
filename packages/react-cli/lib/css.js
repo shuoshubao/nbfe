@@ -1,6 +1,6 @@
 const { packConfig, MiniCssExtractPlugin } = require('./config');
 
-const { requireModuleExtension, loaderOptions } = packConfig.css;
+const { loaderOptions } = packConfig.css;
 
 const cssLoaderOptions = {
     less: {

@@ -22,7 +22,6 @@ module.exports = (isDevelopment, chainableConfig) => {
             chainableConfig.plugin(['HtmlWebpackPlugin', k].join('_')).use(HtmlWebpackPlugin, [
                 {
                     filename: `${k}.html`,
-                    title: '',
                     template: packConfig.template,
                     scriptLoading: 'blocking',
                     minify: false,

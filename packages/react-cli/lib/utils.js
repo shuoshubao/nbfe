@@ -7,6 +7,7 @@ const { isEqual, omit, flattenDeep, sortBy, uniq } = require('lodash');
 const dayjs = require('dayjs');
 const filesize = require('filesize');
 const chalk = require('chalk');
+const prettier = require('prettier');
 const { createElement } = require('@nbfe/js2html');
 const { enableWebpackDll, packConfig, pkgVersionsKey } = require('./config');
 const { getDllManifestPath } = require('./dll-helper');
@@ -158,7 +159,7 @@ const manifestPluginGenerate = (isDevelopment, seed, files, entries) => {
         return prev;
     }, {});
 
-    const manifestData = {
+    return {
         date: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         seed,
         files: files.map(v => {
@@ -168,13 +169,6 @@ const manifestPluginGenerate = (isDevelopment, seed, files, entries) => {
         dllManifest,
         manifest
     };
-    // 单entry
-    if (Object.keys(packConfig.entry).length === 1) {
-        const entryKey = Object.keys(packConfig.entry)[0];
-        manifestData.css = manifest[entryKey].css;
-        manifestData.js = manifest[entryKey].js;
-    }
-    return manifestData;
 };
 
 // 生成html文件
@@ -206,7 +200,12 @@ const generateHtml = () => {
             .join('');
         const content = templateContent.replace('</head>', `${cssHtml}</head>`).replace('</body>', `</body>${jsHtml}`);
         const filename = join(packConfig.outputDir, `${k}.html`);
-        writeFileSync(filename, content);
+        writeFileSync(
+            filename,
+            prettier.format(content, {
+                parser: 'html'
+            })
+        );
     });
 };
 
