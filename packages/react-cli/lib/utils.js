@@ -4,7 +4,7 @@ const { existsSync, readFileSync, writeFileSync } = require('fs');
 const { join, extname } = require('path');
 const util = require('util');
 const { isEqual, omit, flattenDeep, sortBy, uniq } = require('lodash');
-const dayjs = require('dayjs');
+const { formatTime } = require('@nbfe/tools');
 const filesize = require('filesize');
 const chalk = require('chalk');
 const prettier = require('prettier');
@@ -160,7 +160,7 @@ const manifestPluginGenerate = (isDevelopment, seed, files, entries) => {
     }, {});
 
     return {
-        date: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+        date: formatTime(Date.now(), 'YYYY-MM-DD HH:mm:ss'),
         seed,
         files: files.map(v => {
             return omit(v, ['chunk']);
