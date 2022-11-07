@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.6...@nbfe/react-cli@0.2.7) (2022-11-07)
+
+
+### Performance Improvements
+
+* 依赖优化 ([9827c6e](https://github.com/shuoshubao/nbfe/commit/9827c6e))
+
+
+
+
+
 ## [0.2.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.5...@nbfe/react-cli@0.2.6) (2022-11-07)
 
 
