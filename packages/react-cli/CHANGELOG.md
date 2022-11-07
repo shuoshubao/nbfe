@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.8](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.7...@nbfe/react-cli@0.2.8) (2022-11-07)
+
+
+### Bug Fixes
+
+* chalk 版本 ([3a719cf](https://github.com/shuoshubao/nbfe/commit/3a719cf))
+
+
+
+
+
 ## [0.2.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.6...@nbfe/react-cli@0.2.7) (2022-11-07)
 
 
