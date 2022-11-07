@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.5...@nbfe/react-cli@0.2.6) (2022-11-07)
+
+
+### Features
+
+* 去掉process.env.NODE_ENV逻辑 ([142e08a](https://github.com/shuoshubao/nbfe/commit/142e08a))
+* 升级所有的包 ([e6be5df](https://github.com/shuoshubao/nbfe/commit/e6be5df))
+* dll-development 移到node_modules/.cache目录 ([23b1922](https://github.com/shuoshubao/nbfe/commit/23b1922))
+
+
+
+
+
 ## [0.2.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.4...@nbfe/react-cli@0.2.5) (2022-10-30)
 
 
