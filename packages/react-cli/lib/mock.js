@@ -1,7 +1,10 @@
 const { basename, join } = require('path');
+const bodyParser = require('body-parser');
 const { packConfig } = require('./config');
 
 module.exports = app => {
+    app.use(bodyParser.json());
+
     app.use(async (req, res, next) => {
         let url = req.originalUrl;
 
