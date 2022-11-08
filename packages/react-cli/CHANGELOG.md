@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.9](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.8...@nbfe/react-cli@0.2.9) (2022-11-08)
+
+
+### Features
+
+* #root => #app ([c76ceea](https://github.com/shuoshubao/nbfe/commit/c76ceea))
+* mock 调用 body-parser ([4d3f75a](https://github.com/shuoshubao/nbfe/commit/4d3f75a))
+
+
+
+
+
 ## [0.2.8](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.7...@nbfe/react-cli@0.2.8) (2022-11-07)
 
 
