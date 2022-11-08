@@ -29,7 +29,6 @@ const webpackBuildDll = async isDevelopment => {
     if (!checkNeedUpdateDll(isDevelopment)) {
         return;
     }
-    console.log('[webpack dll] 执行');
     const webpackConfig = require('./webpack.dll.config')(isDevelopment);
     try {
         console.time('[webpack dll]');
