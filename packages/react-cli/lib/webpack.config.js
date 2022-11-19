@@ -7,6 +7,7 @@ const devServer = require('./devServer');
 module.exports = isDevelopment => {
     const mode = isDevelopment ? 'development' : 'production';
     const assetsMaxSize = isDevelopment ? 0 : 1024 * 8;
+
     return {
         mode,
         target: 'web',

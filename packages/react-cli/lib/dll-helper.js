@@ -1,6 +1,8 @@
-const { join } = require('path');
+const { existsSync } = require('fs');
+const { basename, join } = require('path');
+const { isEqual } = require('lodash');
+const { formatTime } = require('@nbfe/tools');
 const webpack = require('webpack');
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const pkg = require('../package.json');
 const { packConfig } = require('./config');
 
@@ -28,20 +30,54 @@ const injectDllReferencePlugins = (isDevelopment, chainableConfig) => {
     });
 };
 
-const injectAddAssetHtmlPlugins = (isDevelopment, chainableConfig) => {
-    Object.keys(dllEntry).forEach(dllEntryKey => {
-        chainableConfig.plugin(['AddAssetHtmlPlugin', dllEntryKey].join('_')).use(AddAssetHtmlPlugin, [
-            {
-                filepath: join(getDllDir(isDevelopment), `${dllEntryKey}.js`),
-                includeSourcemap: false
-            }
-        ]);
-    });
+const getDllVersions = () => {
+    return Object.entries(dllEntry).reduce((prev, [k, v]) => {
+        prev[k] = v.reduce((prev2, cur) => {
+            const { version } = require([cur, 'package.json'].join('/'));
+            prev2[cur] = version;
+            return prev2;
+        }, {});
+        return prev;
+    }, {});
+};
+
+// WebpackManifestPlugin generate
+const manifestPluginGenerate = (isDevelopment, entries) => {
+    const versions = getDllVersions();
+    const manifest = Object.entries(entries).reduce((prev, [k, v]) => {
+        prev[k] = [packConfig.publicPath, basename(getDllDir(isDevelopment)), '/', v[0]].join('');
+        return prev;
+    }, {});
+    return {
+        date: formatTime(Date.now(), 'YYYY-MM-DD HH:mm:ss'),
+        publicPath: packConfig.publicPath,
+        versions,
+        manifest
+    };
+};
+
+// 检测是否需要运行 dll
+const checkNeedUpdateDll = isDevelopment => {
+    if (!existsSync(getDllManifestPath(isDevelopment))) {
+        return true;
+    }
+    const { publicPath, versions } = require(getDllManifestPath(isDevelopment));
+    return !isEqual(
+        {
+            publicPath,
+            versions
+        },
+        {
+            publicPath: packConfig.publicPath,
+            versions: getDllVersions()
+        }
+    );
 };
 
 module.exports = {
     getDllDir,
     getDllManifestPath,
     injectDllReferencePlugins,
-    injectAddAssetHtmlPlugins
+    manifestPluginGenerate,
+    checkNeedUpdateDll
 };

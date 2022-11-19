@@ -1,15 +1,14 @@
 /* eslint-disable no-console */
 
-const { existsSync, readFileSync, writeFileSync } = require('fs');
-const { join, extname } = require('path');
+const { readFileSync, writeFileSync } = require('fs');
+const { extname, join } = require('path');
 const util = require('util');
-const { isEqual, omit, flattenDeep, sortBy, uniq } = require('lodash');
+const { sortBy, flatten } = require('lodash');
 const { formatTime } = require('@nbfe/tools');
 const filesize = require('filesize');
 const chalk = require('chalk');
 const prettier = require('prettier');
-const { createElement } = require('@nbfe/js2html');
-const { enableWebpackDll, packConfig, pkgVersionsKey } = require('./config');
+const { enableWebpackDll, packConfig } = require('./config');
 const { getDllManifestPath } = require('./dll-helper');
 
 // 打印带颜色的信息
@@ -92,118 +91,42 @@ const convertManifest = (list = []) => {
     };
 };
 
-// 检测是否需要运行 dll
-const checkNeedUpdateDll = isDevelopment => {
-    if (!existsSync(getDllManifestPath(isDevelopment))) {
-        return true;
+const getAssets = isDevelopment => {
+    const assets = Object.values(packConfig.assets);
+    if (enableWebpackDll) {
+        const { manifest } = require(getDllManifestPath(isDevelopment));
+        assets.push(Object.values(manifest));
     }
-    const cacheDllManifest = require(getDllManifestPath(isDevelopment));
-    const cacheDllManifestVersions = cacheDllManifest[pkgVersionsKey];
-    const dllManifestVersions = Object.keys(packConfig.dllEntry).reduce((prev, cur) => {
-        const itemVersions = packConfig.dllEntry[cur].map(v => {
-            const { version } = require([v, 'package.json'].join('/'));
-            return {
-                [v]: version
-            };
-        });
-        prev[cur] = itemVersions;
-        return prev;
-    }, {});
-    const isDiffVersion = !isEqual(cacheDllManifestVersions, dllManifestVersions);
-    const isDiffPublicPath = cacheDllManifest.publicPath !== packConfig.publicPath;
-    return isDiffVersion || isDiffPublicPath;
+    return flatten(assets);
 };
 
 // WebpackManifestPlugin generate
-const manifestPluginGenerate = (isDevelopment, seed, files, entries) => {
-    let dllManifest = {};
-    if (enableWebpackDll) {
-        dllManifest = require(getDllManifestPath(isDevelopment));
-        dllManifest = omit(dllManifest, [pkgVersionsKey]);
-    }
-    const manifest = Object.entries(packConfig.entry).reduce((prev, [k]) => {
-        // optimization.splitChunks.cacheGroups
-        const itemCacheGroups = files
-            .filter(v2 => {
-                const name = v2.name.split('.')[0];
-                return name === 'common';
+const manifestPluginGenerate = (isDevelopment, entries) => {
+    const manifest = Object.entries(entries).reduce((prev, [k, v]) => {
+        const assets = getAssets(isDevelopment);
+        assets.push(
+            ...v.map(v2 => {
+                return [packConfig.publicPath, v2].join('');
             })
-            .map(v2 => {
-                return v2.path;
-            });
-
-        const entryFiles = entries[k]
-            .map(v2 => {
-                return files.find(v3 => {
-                    return v3.path.includes(v2);
-                });
-            })
-            .filter(Boolean);
-
-        const sortedEntryFiles = sortBy(entryFiles, v2 => {
-            return files.findIndex(v3 => {
-                return v3.path === v2.path;
-            });
-        }).map(v2 => {
-            return v2.path;
-        });
-
-        const list = flattenDeep([Object.values(dllManifest), itemCacheGroups, sortedEntryFiles]);
-
-        const { css, js } = convertManifest(uniq(list));
-
-        prev[k] = {
-            css: (packConfig.assets.css || []).concat(css).filter(Boolean),
-            js: (packConfig.assets.js || []).concat(js).filter(Boolean)
-        };
+        );
+        prev[k] = convertManifest(assets);
         return prev;
     }, {});
-
     return {
         date: formatTime(Date.now(), 'YYYY-MM-DD HH:mm:ss'),
-        seed,
-        files: files.map(v => {
-            return omit(v, ['chunk']);
-        }),
-        entries,
-        dllManifest,
         manifest
     };
 };
 
-// 生成html文件
-const generateHtml = () => {
-    const templateContent = readFileSync(packConfig.template).toString();
-    const { manifest } = require(join(packConfig.outputDir, packConfig.manifestFileName));
+const formatHtml = () => {
     Object.entries(packConfig.entry).forEach(([k]) => {
-        const { css, js } = manifest[k];
-        const cssHtml = css
-            .map(v => {
-                return createElement({
-                    tagName: 'link',
-                    attrs: {
-                        rel: 'stylesheet',
-                        href: v
-                    }
-                });
-            })
-            .join('');
-        const jsHtml = js
-            .map(v => {
-                return createElement({
-                    tagName: 'script',
-                    attrs: {
-                        src: v
-                    }
-                });
-            })
-            .join('');
-        const content = templateContent.replace('</head>', `${cssHtml}</head>`).replace('</body>', `</body>${jsHtml}`);
-        const filename = join(packConfig.outputDir, `${k}.html`);
+        const filepath = join(packConfig.outputDir, `${k}.html`);
+        const content = readFileSync(filepath).toString();
         writeFileSync(
-            filename,
+            filepath,
             prettier.format(content, {
-                parser: 'html'
+                parser: 'html',
+                printWidth: 160
             })
         );
     });
@@ -214,7 +137,7 @@ module.exports = {
     logObject,
     logSymbols,
     webpackStatsLog,
-    checkNeedUpdateDll,
+    getAssets,
     manifestPluginGenerate,
-    generateHtml
+    formatHtml
 };

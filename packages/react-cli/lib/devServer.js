@@ -1,4 +1,5 @@
 const { packConfig } = require('./config');
+const { getDllDir } = require('./dll-helper');
 const mock = require('./mock');
 
 module.exports = {
@@ -8,13 +9,17 @@ module.exports = {
     allowedHosts: 'all',
     liveReload: true,
     historyApiFallback: true,
-    static: {
-        directory: packConfig.outputDir,
-        staticOptions: undefined,
-        watch: {
-            poll: 3000
+    static: [
+        {
+            directory: packConfig.outputDir,
+            watch: false
+        },
+        {
+            directory: getDllDir(true),
+            publicPath: '/dll-development',
+            watch: false
         }
-    },
+    ],
     onBeforeSetupMiddleware: devServer => {
         const { app } = devServer;
         if (packConfig.enableMock) {

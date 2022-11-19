@@ -40,7 +40,6 @@ const defaultConfig = {
     // https://cli.vuejs.org/zh/guide/webpack.html#链式操作-高级
     chainWebpack: noop,
     manifestPluginGenerate: null,
-    generateHtmlFile: true, // 构建完成后生成 html 文件
     babelConfig
 };
 
@@ -91,12 +90,9 @@ packConfig.outputDir = resolveRootPath(packConfig.outputDir);
 
 const enableWebpackDll = Object.keys(packConfig.dllEntry || {}).length !== 0;
 
-const pkgVersionsKey = 'pkgVersions';
-
 module.exports = {
     isMac,
     packConfig,
     MiniCssExtractPlugin,
-    enableWebpackDll,
-    pkgVersionsKey
+    enableWebpackDll
 };
