@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.9...@nbfe/react-cli@0.3.0) (2022-11-19)
+
+
+### Features
+
+* 优化 webpack dll 逻辑 ([d0dde06](https://github.com/shuoshubao/nbfe/commit/d0dde06))
+
+
+
+
+
 ## [0.2.9](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.8...@nbfe/react-cli@0.2.9) (2022-11-08)
 
 
