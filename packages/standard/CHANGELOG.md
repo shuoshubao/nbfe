@@ -1,6 +1,18 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.0.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.0.2...@nbfe/standard@1.0.3) (2022-11-20)
+
+
+### Bug Fixes
+
+* prettier与eslint的融合 ([bef65b1](https://github.com/shuoshubao/nbfe/commit/bef65b1))
+
+
+
+
 
 ## [1.0.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.0.1...@nbfe/standard@1.0.2) (2022-09-16)
 
