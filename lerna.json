@@ -1,26 +1,26 @@
 {
-  "version": "independent",
-  "npmClient": "npm",
-  "command": {
-    "bootstrap": {
-      "registry": ["https://registry.npmjs.org"]
+    "version": "independent",
+    "npmClient": "npm",
+    "command": {
+        "bootstrap": {
+            "registry": ["https://registry.npmjs.org"]
+        },
+        "version": {
+            "allowBranch": ["master"],
+            "ignoreChanges": [
+                "**/{test,__tests__,docs,bin,_site}/**",
+                "**/*.{LICENSE,md,yml}",
+                "**/{.gitignore,.npmrc,package-lock.json,yarn.lock}"
+            ],
+            "message": "chore(release): publish"
+        },
+        "publish": {
+            "message": "chore(release): publish"
+        }
     },
-    "version": {
-      "allowBranch": ["master"],
-      "ignoreChanges": [
-        "**/{test,__tests__,docs,bin,_site}/**",
-        "**/*.{LICENSE,md,yml}",
-        "**/{.gitignore,.npmrc,package-lock.json,yarn.lock}"
-      ],
-      "message": "chore(release): publish"
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org"
     },
-    "publish": {
-      "message": "chore(release): publish"
-    }
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
-  },
-  "packages": ["packages/*"]
+    "packages": ["packages/*"]
 }

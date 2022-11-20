@@ -17,10 +17,11 @@
         "prettier": "npx prettier --write",
         "lint": "npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html",
         "eslint": "npm run lint -- packages",
-        "eslint:fix": "npm run lint -- --fix packages"
+        "eslint:fix": "npm run lint -- --fix packages",
+        "lint:style": "npx stylelint --fix -o StyleLintReport.html --aei --custom-formatter node_modules/stylelint-formatters-html **/*.{css,less,scss,sass}"
     },
     "dependencies": {
-        "@nbfe/flow": "^0.1.8",
+        "@nbfe/standard": "^1.0.4",
         "lerna": "^3.16.4",
         "typescript": "^3.6.3"
     },
@@ -37,10 +38,21 @@
                 "git add"
             ],
             "*.{ts,tsx,js,jsx,vue}": [
-                "eslint -f table --fix",
+                "eslint -f table",
+                "git add"
+            ],
+            "*.{ts,tsx,js,jsx,vue,css,less,scss,sass,json,md}": [
+                "prettier --write",
+                "git add"
+            ],
+            "*.{css,less,scss,sass}": [
+                "npx stylelint --fix",
                 "git add"
             ]
-        }
+        },
+        "ignore": [
+            "CHANGELOG.md"
+        ]
     },
     "config": {
         "commitizen": {

@@ -1,8 +1,3 @@
-const EslintConfig = require('@nbfe/flow/eslint');
+const { getESLintConfig } = require('@nbfe/standard');
 
-EslintConfig.parserOptions.tsconfigRootDir = __dirname;
-EslintConfig.parserOptions.extraFileExtensions = ['.vue'];
-
-module.exports = {
-    ...EslintConfig
-};
+module.exports = getESLintConfig(['react']);
