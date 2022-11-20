@@ -1,5 +1,11 @@
+const { existsSync } = require('fs')
 const { resolve } = require('path')
-const PrettierConfig = require('./prettier.config')
+
+const LocalPrettierConfigPath = resolve(process.cwd(), './prettier.config.js')
+const PresetPrettierConfigPath = './prettier.config'
+const PrettierConfigPath = existsSync(LocalPrettierConfigPath) ? LocalPrettierConfigPath : PresetPrettierConfigPath
+
+const PrettierConfig = require(PrettierConfigPath)
 
 const EslintConfig = {
   parser: '@babel/eslint-parser',
@@ -26,8 +32,8 @@ const EslintConfig = {
   rules: {
     'prettier/prettier': [2, PrettierConfig, { usePrettierrc: false }],
     'max-len': [0], // 一行最大的代码量
-    semi: [2, 'never'], // 不要分号
-    indent: [1, 2, { SwitchCase: 1 }], // 缩进
+    semi: [2, PrettierConfig.semi ? 'always' : 'never'], // 不要分号
+    indent: [1, PrettierConfig.tabWidth, { SwitchCase: 1 }], // 缩进
     'operator-linebreak': [0], // 与 prettier 的冲突
     'no-plusplus': [0], // ++ --
     'no-eval': [1], // eval 一般是必须使用的场景才用吧
