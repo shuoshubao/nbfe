@@ -13,11 +13,8 @@ const OriginalTemplate = readFileSync(resolvePath('bin/index.vue')).toString();
 const ejsText = readFileSync(resolvePath('bin/index.ejs')).toString();
 
 const getInnerHtml = (tagName = 'template') => {
-    const TagReg = new RegExp(`<${tagName}\\s*.*>(\\s|\\S)*<\/${tagName}>`);
-    return OriginalTemplate.match(TagReg)[0]
-        .split('\n')
-        .slice(1, -1)
-        .join('\n');
+    const TagReg = new RegExp(`<${tagName}\\s*.*>(\\s|\\S)*</${tagName}>`);
+    return OriginalTemplate.match(TagReg)[0].split('\n').slice(1, -1).join('\n');
 };
 
 const writeFileToLib = (fileName = '', content = '') => {

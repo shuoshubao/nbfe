@@ -48,7 +48,7 @@ const getSingleHtmlPlugin = page => {
     });
 };
 
-module.exports = function(app) {
+module.exports = function (app) {
     const htmlCache = {};
 
     const compiler = webpack(webpackConfig);

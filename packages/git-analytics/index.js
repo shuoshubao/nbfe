@@ -19,6 +19,7 @@ const dataToArgv = (data = {}) => {
 const execGitLog = (gitLogConfig, config) => {
     const { silent = true, cwd = process.cwd() } = config || {};
     if (!silent) {
+        // eslint-disable-next-line no-console
         console.log('执行命令:', ['git', 'log', ...dataToArgv(gitLogConfig)].join(' '));
     }
     const { stdout } = spawnSync('git', ['log', ...dataToArgv(gitLogConfig)], { cwd });
@@ -27,7 +28,7 @@ const execGitLog = (gitLogConfig, config) => {
 
 // 后缀: js jsx ts tsx vue
 // ignore 目录: mock test tests
-const getCodeLines = (gitLogConfig = {}, config) => {
+const getCodeLines = (gitLogConfig = {}, config = {}) => {
     const extensions = ['.js', '.jsx', '.ts', '.tsx', '.vue'];
     const lines = {
         commits: 0,
@@ -63,9 +64,10 @@ const getCodeLines = (gitLogConfig = {}, config) => {
             return {
                 insertions: +insertions,
                 deletions: +deletions,
-                filePath: filePath
+                filePath
             };
-        }).filter(v => !!v.filePath);
+        })
+        .filter(v => !!v.filePath);
     const jsDiffArray = diffArray.filter(v => {
         const { filePath } = v;
         // 后缀

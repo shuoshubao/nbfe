@@ -1,3 +1,4 @@
 /packages/*/dist
 /packages/*/CHANGELOG.md
+/packages/tools/docs
 *.min.js

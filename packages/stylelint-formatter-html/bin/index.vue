@@ -1,16 +1,16 @@
 <template>
-    <div id="app" style="display: none;">
+    <div id="app" style="display: none">
         <mtd-card class="stylelint-results">
-            <div slot="title" style="overflow: hidden;">
-                <span style="float: left;">Stylelint报告</span>
-                <span style="float: left; margin-left: 50px;">
+            <div slot="title" style="overflow: hidden">
+                <span style="float: left">Stylelint报告</span>
+                <span style="float: left; margin-left: 50px">
                     <span style="margin-right: : 10px;">排序:</span>
                     <mtd-radio-group v-model="sortModel" @change="handleChangeSort" size="small">
                         <mtd-radio-button :value="1">错误数</mtd-radio-button>
                         <mtd-radio-button :value="2">文件路径</mtd-radio-button>
                     </mtd-radio-group>
                 </span>
-                <mtd-button @click="handleOpenCloseAll(openAll)" type="primary" size="small" style="float: right;">
+                <mtd-button @click="handleOpenCloseAll(openAll)" type="primary" size="small" style="float: right">
                     {{ openAll ? '全部折叠' : '全部展开' }}
                 </mtd-button>
             </div>
@@ -37,7 +37,7 @@
                     <mtd-tooltip content="点击复制文件路径" placement="top">
                         <mtd-icon name="copy-o" @click.stop="handleCopyFilePath(item)" />
                     </mtd-tooltip>
-                    <b class="error-warning-count" style="font-size: 12px;">
+                    <b class="error-warning-count" style="font-size: 12px">
                         <span>{{ item.errorCount + item.warningCount }} problems</span>
                         <span v-if="item.errorCount + item.warningCount !== 0">
                             <span>(</span>
@@ -51,7 +51,7 @@
                     v-show="item.warnings.length"
                     :data="item.warnings"
                     :show-header="false"
-                    style="width: 100%;"
+                    style="width: 100%"
                     size="small"
                 >
                     <mtd-table-column width="70">
@@ -80,7 +80,7 @@
                                 popper-class="popper-class-row-text"
                                 :style="{ width: 500 }"
                             >
-                                <pre style="margin: 0;">{{ scope.row.text }}</pre>
+                                <pre style="margin: 0">{{ scope.row.text }}</pre>
                             </mtd-tooltip>
                         </template>
                     </mtd-table-column>
