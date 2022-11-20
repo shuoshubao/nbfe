@@ -1,6 +1,6 @@
 {
     "name": "@nbfe/parce",
-    "version": "1.1.7",
+    "version": "1.1.8",
     "description": "前端构建工具",
     "author": "shuoshubao <759979885@qq.com>",
     "engines": {

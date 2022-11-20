@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.8](https://github.com/shuoshubao/nbfe/compare/@nbfe/parce@1.1.7...@nbfe/parce@1.1.8) (2022-11-20)
+
+**Note:** Version bump only for package @nbfe/parce
+
+
+
+
+
 ## [1.1.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/parce@1.1.6...@nbfe/parce@1.1.7) (2021-08-11)
 
 **Note:** Version bump only for package @nbfe/parce
