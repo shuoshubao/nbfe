@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "@nbfe/flow": "^0.1.8",
-        "lerna": "^3.16.4",
+        "lerna": "^6.0.3",
         "typescript": "^3.6.3"
     },
     "husky": {
