@@ -3,6 +3,7 @@ export * from './antd-locale';
 export * from './data';
 export * from './date';
 export * from './decimal';
+export * from './memoize';
 export * from './dev';
 export * from './dom';
 export * from './enum';

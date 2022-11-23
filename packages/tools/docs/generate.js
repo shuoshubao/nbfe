@@ -54,6 +54,7 @@ const FilesConfig = [
         categoryName: '类型',
         functions: ['isEmptyValue', 'isEmptyArray', 'isEmptyObject', 'isEmptyString', 'isEveryTruthy', 'isEveryFalsy']
     },
+    { category: 'memoize', categoryName: '缓存' },
     { category: 'dev', categoryName: '调试' },
     { category: 'data', categoryName: '数据' },
     { category: 'react', categoryName: 'React' },
