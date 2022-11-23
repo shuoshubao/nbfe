@@ -1,5 +1,5 @@
 /*!
-* @nbfe/tools v0.2.14
+* @nbfe/tools v0.2.15
 * (c) 2019-2022 shuoshubao <759979885@qq.com>
 * Released under the ISC License.
 */
@@ -9,7 +9,7 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.tools = {}, global.lodash));
 })(this, (function (exports, lodash) { 'use strict';
 
-    var version = "0.2.14";
+    var version = "0.2.15";
 
     var Pagination = {
       // Options.jsx
@@ -1183,6 +1183,58 @@
       var decMax = Math.max(getDecLength(a), getDecLength(b));
       var temp = Math.pow(10, decMax);
       return mulTwo(a, temp) / mulTwo(b, temp);
+    };
+
+    var _require = require('lodash'),
+        cloneDeep = _require.cloneDeep,
+        isEqual = _require.isEqual;
+    /**
+     * memoize/cache
+     * @param  {Function} fn     缓存的函数
+     * @return {Function}        包装的函数
+     * @example
+     *
+     * const add = (a, b) => {
+     *   return a + b;
+     * }
+     *
+     * const memoizedAdd = memoizeOne(add);
+     *
+     * memoizedAdd(1, 2) // 3
+     * memoizedAdd(1, 2) // 3
+     */
+
+
+    var memoize = function memoize(fn) {
+      var caches = [];
+
+      var memoized = function memoized() {
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        var newArgs = cloneDeep(args);
+        var item = caches.find(function (v) {
+          return isEqual(v.args, newArgs);
+        });
+
+        if (item) {
+          return item.data;
+        }
+
+        var data = fn.apply(null, newArgs);
+        caches.unshift({
+          args: newArgs,
+          data: data
+        });
+        return data;
+      };
+
+      memoized.clear = function () {
+        caches.splice(0, Infinity);
+      };
+
+      return memoized;
     };
 
     /**
@@ -2392,6 +2444,7 @@
     var attrKeyAlias = {
       className: 'class'
     };
+
     var gernerateElementText = function gernerateElementText() {
       var tagName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -2411,6 +2464,18 @@
 
       return "<".concat(tagName, " ").concat(attrsText, ">").concat(text, "</").concat(tagName, ">");
     };
+    /**
+     * createElement
+     * @param  {String} tagName  标签名
+     * @param  {Object} attrs    属性
+     * @param  {Array}  children 子元素
+     * @return {String}          html字符串
+     * @example
+     *
+     * createElement('div', { id: 'demo', className: 'demo' }, 'hello') // <div id="demo" className="demo">hello</div>
+     */
+
+
     var createElement = function createElement() {
       var tagName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -2659,6 +2724,19 @@
         return {
           max: num,
           message: "".concat(text, "\u6700\u591A").concat(num, "\u4E2A\u5B57\u7B26")
+        };
+      });
+
+      _defineProperty(this, "uniq", function () {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        return {
+          validator: function validator(rule, value) {
+            if (!_.isEqual(_.uniqWith(value, _.isEqual), value)) {
+              return Promise.reject("".concat(text, "\u5B58\u5728\u91CD\u590D\u9879"));
+            }
+
+            return Promise.resolve();
+          }
         };
       });
 
@@ -3051,7 +3129,6 @@
     exports.formatEmptyToDefault = formatEmptyToDefault;
     exports.formatTime = formatTime;
     exports.formatters = formatters;
-    exports.gernerateElementText = gernerateElementText;
     exports.getAntdLocaleZhCN = getAntdLocaleZhCN;
     exports.getCssText = getCssText;
     exports.getFullUrl = getFullUrl;
@@ -3080,6 +3157,7 @@
     exports.isSomeTruthy = isSomeTruthy;
     exports.isUniq = isUniq;
     exports.linkTo = linkTo;
+    exports.memoize = memoize;
     exports.minus = minus;
     exports.mul = mul;
     exports.parseUrl = parseUrl;
@@ -3106,7 +3184,6 @@
     exports.trimAll = trimAll;
     exports.updateUrlQuery = updateUrlQuery;
     exports.version = version;
-    exports.voidHtmlTags = voidHtmlTags;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -16,12 +16,15 @@
         "test": "npx ava --verbose",
         "test:watch": "npx ava --verbose --watch",
         "coverage": "npx nyc ava",
-        "docs:gernerate": "nodemon docs/generate.js --watch lib",
+        "docs:generate": "nodemon docs/generate.js --watch lib",
         "docs:dev": "rm -rf _site/ && ydoc serve",
         "docs:build": "rm -rf _site/ && ydoc build",
         "coverage:summary": "npx nyc --reporter=lcov --reporter=text-summary ava",
         "build": "rm -rf dist && npx rollup -c",
         "prepublishOnly": "npm run build"
+    },
+    "dependencies": {
+        "lodash": "^4.17.21"
     },
     "devDependencies": {
         "@ava/babel": "^1.0.1",
@@ -39,7 +42,6 @@
         "core-js": "^3.16.0",
         "dox": "^0.9.0",
         "esm": "^3.2.25",
-        "lodash": "^4.17.19",
         "moment": "^2.27.0",
         "node-fetch": "^2.6.0",
         "nyc": "^15.1.0",
