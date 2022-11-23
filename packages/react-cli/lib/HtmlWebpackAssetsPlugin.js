@@ -1,15 +1,16 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const prettier = require('prettier');
+const { memoize } = require('@nbfe/tools');
 const { convertManifest } = require('./utils');
 
-const formatHtml = html => {
+const formatHtml = memoize(html => {
     return prettier.format(html, {
         parser: 'html',
         printWidth: 120
     });
-};
+});
 
-const convertManifestToHtmlPlugin = assets => {
+const convertManifestToHtmlPlugin = memoize(assets => {
     const { css, js } = convertManifest(assets);
 
     return {
@@ -33,7 +34,7 @@ const convertManifestToHtmlPlugin = assets => {
             };
         })
     };
-};
+});
 
 const PluginName = 'HtmlWebpackAssetsPlugin';
 
