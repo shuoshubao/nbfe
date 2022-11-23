@@ -50,7 +50,7 @@ export const getPercentageHtml = (value, config = {}) => {
 };
 
 // 自闭合标签
-export const voidHtmlTags = [
+const voidHtmlTags = [
     'area',
     'base',
     'br',
@@ -72,7 +72,7 @@ const attrKeyAlias = {
     className: 'class'
 };
 
-export const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
+const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
     const attrsText = Object.entries(attrs)
         .map(([k, v]) => {
             const key = attrKeyAlias[k] || k;
@@ -85,6 +85,16 @@ export const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
     return `<${tagName} ${attrsText}>${text}</${tagName}>`;
 };
 
+/**
+ * createElement
+ * @param  {String} tagName  标签名
+ * @param  {Object} attrs    属性
+ * @param  {Array}  children 子元素
+ * @return {String}          html字符串
+ * @example
+ *
+ * createElement('div', { id: 'demo', className: 'demo' }, 'hello') // <div id="demo" className="demo">hello</div>
+ */
 export const createElement = (tagName = '', attrs = {}, children = []) => {
     if (isString(children) || isNumber(children)) {
         return gernerateElementText(tagName, attrs, children);
