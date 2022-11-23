@@ -1,9 +1,9 @@
 const { formatTime } = require('@nbfe/tools');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const HtmlWebpackAssetsPlugin = require('./HtmlWebpackAssetsPlugin');
 const { packConfig, MiniCssExtractPlugin, enableWebpackDll } = require('./config');
 const { injectDllReferencePlugins } = require('./dll-helper');
 const { getAssets, manifestPluginGenerate } = require('./utils');
@@ -28,12 +28,10 @@ module.exports = (isDevelopment, chainableConfig) => {
                 cache: false
             }
         ]);
-        chainableConfig.plugin(['HtmlWebpackTagsPlugin', k].join('_')).use(HtmlWebpackTagsPlugin, [
+
+        chainableConfig.plugin(['HtmlWebpackAssetsPlugin', k].join('_')).use(HtmlWebpackAssetsPlugin, [
             {
-                tags: getAssets(isDevelopment),
-                append: false,
-                usePublicPath: false,
-                scripts: []
+                assets: getAssets(isDevelopment)
             }
         ]);
     });

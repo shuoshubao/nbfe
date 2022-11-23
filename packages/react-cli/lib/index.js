@@ -5,7 +5,7 @@ const { merge } = require('webpack-merge');
 const Config = require('webpack-chain');
 const WebpackDevServer = require('webpack-dev-server');
 const { packConfig, enableWebpackDll } = require('./config');
-const { log, logObject, logSymbols, webpackStatsLog, formatHtml } = require('./utils');
+const { log, logObject, logSymbols, webpackStatsLog } = require('./utils');
 const { checkNeedUpdateDll } = require('./dll-helper');
 const devServer = require('./devServer');
 const babelConfig = require('../babel.config');
@@ -78,7 +78,6 @@ const webpackBuild = async () => {
         console.time('[webpack build]');
         await webpackCompiler(webpackConfig);
         console.log(logSymbols.success, 'webpack 构建成功!');
-        formatHtml();
         console.timeEnd('[webpack build]');
     } catch (e) {
         console.log(logSymbols.error, 'webpack 构建失败!');

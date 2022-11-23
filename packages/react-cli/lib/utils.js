@@ -1,13 +1,11 @@
 /* eslint-disable no-console */
 
-const { readFileSync, writeFileSync } = require('fs');
-const { extname, join } = require('path');
+const { extname } = require('path');
 const util = require('util');
 const { sortBy, flatten } = require('lodash');
 const { formatTime } = require('@nbfe/tools');
 const filesize = require('filesize');
 const chalk = require('chalk');
-const prettier = require('prettier');
 const { enableWebpackDll, packConfig } = require('./config');
 const { getDllManifestPath } = require('./dll-helper');
 
@@ -118,26 +116,12 @@ const manifestPluginGenerate = (isDevelopment, entries) => {
     };
 };
 
-const formatHtml = () => {
-    Object.entries(packConfig.entry).forEach(([k]) => {
-        const filepath = join(packConfig.outputDir, `${k}.html`);
-        const content = readFileSync(filepath).toString();
-        writeFileSync(
-            filepath,
-            prettier.format(content, {
-                parser: 'html',
-                printWidth: 160
-            })
-        );
-    });
-};
-
 module.exports = {
     log,
     logObject,
     logSymbols,
     webpackStatsLog,
+    convertManifest,
     getAssets,
-    manifestPluginGenerate,
-    formatHtml
+    manifestPluginGenerate
 };
