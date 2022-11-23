@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.3.0...@nbfe/react-cli@0.3.1) (2022-11-23)
+
+
+### Features
+
+* 自研插件HtmlWebpackAssetsPlugin 替换 html-webpack-tags-plugin ([e84ec21](https://github.com/shuoshubao/nbfe/commit/e84ec21e87ed5a39ac744a001e09e7d4d94d894a))
+* memoize 优化性能 ([ec999a1](https://github.com/shuoshubao/nbfe/commit/ec999a11d9757c0ca5cbd5c849d4f54c5945fe66))
+
+
+
+
+
 # [0.3.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.2.9...@nbfe/react-cli@0.3.0) (2022-11-19)
 
 

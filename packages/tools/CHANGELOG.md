@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.16](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.15...@nbfe/tools@0.2.16) (2022-11-23)
+
+
+### Features
+
+* 新增方法 memoize ([95a299d](https://github.com/shuoshubao/nbfe/commit/95a299dcb112dc6203a672fe4e0fa05d0ef76e6c))
+
+
+
+
+
 ## [0.2.15](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.14...@nbfe/tools@0.2.15) (2022-06-06)
 
 
