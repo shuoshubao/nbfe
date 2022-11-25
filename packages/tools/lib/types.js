@@ -197,7 +197,7 @@ export const isEveryTruthy = (...args) => {
  * // => false
  */
 export const isEveryFalsy = (...args) => {
-    return flatten(args).every(v => !Boolean(v));
+    return flatten(args).every(v => !v);
 };
 
 /**
@@ -253,5 +253,5 @@ export const isSomeTruthy = (...args) => {
  * // => false
  */
 export const isSomeFalsy = (...args) => {
-    return flatten(args).some(v => !Boolean(v));
+    return flatten(args).some(v => !v);
 };

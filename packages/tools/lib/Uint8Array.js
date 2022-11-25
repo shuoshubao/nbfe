@@ -1,3 +1,5 @@
+/* eslint-disable default-case,no-bitwise */
+
 /**
  * Utf8数组 转 字符串
  * 参考链接:

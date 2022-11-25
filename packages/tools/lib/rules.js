@@ -155,6 +155,7 @@ class ValidatorRules {
         return {
             validator: (rule, value) => {
                 if (!isEqual(uniqWith(value, isEqual), value)) {
+                    // eslint-disable-next-line prefer-promise-reject-errors
                     return Promise.reject(`${text}存在重复项`);
                 }
                 return Promise.resolve();

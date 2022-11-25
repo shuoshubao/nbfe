@@ -1,5 +1,6 @@
+/* eslint-disable no-use-before-define */
+
 import { kebabCase, isNumber, isObject, flattenDeep, uniq, last } from 'lodash';
-import { stringifyUrl } from './route';
 import { isEmptyObject } from './types';
 
 /**

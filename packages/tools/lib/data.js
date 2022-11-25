@@ -1,4 +1,4 @@
-import { omit, flatten } from 'lodash';
+import { flatten } from 'lodash';
 import { isEmptyValue } from './types';
 
 /**
@@ -107,6 +107,7 @@ export const produceEmptyObject = (keys = [], emptyText = '') => {
 export const formatEmptyToDefault = (data = {}, formater = {}) => {
     Object.entries(data).forEach(([k, v]) => {
         Object.entries(formater).forEach(([k2, v2]) => {
+            // eslint-disable-next-line sonarjs/no-collapsible-if
             if (k2 === k) {
                 if (isEmptyValue(v)) {
                     data[k] = v2;

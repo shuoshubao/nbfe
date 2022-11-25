@@ -105,67 +105,69 @@ export const defineMomentLocaleZhCn = moment => {
             llll: 'YYYY年M月D日dddd HH:mm'
         },
         meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
-        meridiemHour: function (hour, meridiem) {
+        meridiemHour(hour, meridiem) {
             if (hour === 12) {
+                // eslint-disable-next-line no-param-reassign
                 hour = 0;
             }
             if (meridiem === '凌晨' || meridiem === '早上' || meridiem === '上午') {
                 return hour;
-            } else if (meridiem === '下午' || meridiem === '晚上') {
-                return hour + 12;
-            } else {
-                // '中午'
-                return hour >= 11 ? hour : hour + 12;
             }
+            if (meridiem === '下午' || meridiem === '晚上') {
+                return hour + 12;
+            }
+            // '中午'
+            return hour >= 11 ? hour : hour + 12;
         },
-        meridiem: function (hour, minute, isLower) {
-            var hm = hour * 100 + minute;
+        meridiem(hour, minute) {
+            const hm = hour * 100 + minute;
             if (hm < 600) {
                 return '凌晨';
-            } else if (hm < 900) {
-                return '早上';
-            } else if (hm < 1130) {
-                return '上午';
-            } else if (hm < 1230) {
-                return '中午';
-            } else if (hm < 1800) {
-                return '下午';
-            } else {
-                return '晚上';
             }
+            if (hm < 900) {
+                return '早上';
+            }
+            if (hm < 1130) {
+                return '上午';
+            }
+            if (hm < 1230) {
+                return '中午';
+            }
+            if (hm < 1800) {
+                return '下午';
+            }
+            return '晚上';
         },
         calendar: {
             sameDay: '[今天]LT',
             nextDay: '[明天]LT',
-            nextWeek: function (now) {
+            nextWeek(now) {
                 if (now.week() !== this.week()) {
                     return '[下]dddLT';
-                } else {
-                    return '[本]dddLT';
                 }
+                return '[本]dddLT';
             },
             lastDay: '[昨天]LT',
-            lastWeek: function (now) {
+            lastWeek(now) {
                 if (this.week() !== now.week()) {
                     return '[上]dddLT';
-                } else {
-                    return '[本]dddLT';
                 }
+                return '[本]dddLT';
             },
             sameElse: 'L'
         },
         dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
-        ordinal: function (number, period) {
+        ordinal(number, period) {
             switch (period) {
                 case 'd':
                 case 'D':
                 case 'DDD':
-                    return number + '日';
+                    return `${number}日`;
                 case 'M':
-                    return number + '月';
+                    return `${number}月`;
                 case 'w':
                 case 'W':
-                    return number + '周';
+                    return `${number}周`;
                 default:
                     return number;
             }

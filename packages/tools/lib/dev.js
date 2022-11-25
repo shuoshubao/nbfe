@@ -17,6 +17,7 @@ import { random } from 'lodash';
  */
 export const sleep = (time = -1) => {
     const sleepTime = time < 0 ? random(2, 5) : time;
+    // eslint-disable-next-line no-promise-executor-return
     return new Promise(resolve => setTimeout(resolve, sleepTime * 1e3));
 };
 
