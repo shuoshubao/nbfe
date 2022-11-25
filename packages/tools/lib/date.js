@@ -1,5 +1,3 @@
-const WeekTextMap = ['日', '一', '二', '三', '四', '五', '六'];
-
 /**
  * 日期格式化
  * 参考: [dayjs.format](https://dayjs.gitee.io/docs/zh-CN/display/format)
@@ -38,6 +36,7 @@ const WeekTextMap = ['日', '一', '二', '三', '四', '五', '六'];
  * // => '--'
  */
 export const formatTime = (date, format = 'YYYY-MM-DD', invalidText = '--') => {
+    const WeekTextMap = ['日', '一', '二', '三', '四', '五', '六'];
     if (+date <= 0) {
         return invalidText;
     }
@@ -83,7 +82,7 @@ export const formatTime = (date, format = 'YYYY-MM-DD', invalidText = '--') => {
  * @return {*}        注册中文语言包
  * @example
  *
- * import * as moment from 'moment';
+ * const moment = require('moment');
  * defineMomentLocaleZhCn(moment);
  */
 export const defineMomentLocaleZhCn = moment => {
