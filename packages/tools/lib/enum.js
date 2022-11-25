@@ -62,7 +62,7 @@ export const convertJsonToEnum = (data = {}) => {
  * @return {String}           value对应的label
  * @example
  *
- * const data = [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格' } }]
+ * const data = [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格' }]
  * getValueByLabel('优秀', data)
  * // => 5
  */
@@ -85,7 +85,7 @@ export const getValueByLabel = (label, data = [], emptyText = '--') => {
  * @return {Array}         标准的枚举数据格式 [{ value, label }]
  * @example
  *
- * const res = { code: 1, data: { list: [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格' } }] }, message: 'success' }
+ * const res = { code: 1, data: { list: [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格' }] }, message: 'success' }
  * convertDataToEnum(res, { path: 'data.list', valueKey: 'code', labelKey: 'desc' })
  * // => [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格' }]
  */
@@ -129,7 +129,7 @@ export const convertDataToEnum = (res, options = {}) => {
  * @return {Array}         标准的枚举数据格式 [{ value, label }]
  * @example
  *
- * const res = { code: 1, data: { list: [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格', list: [ { code: 3.5, desc: '一般' } ] } }] }, message: 'success' }
+ * const res = { code: 1, data: { list: [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格', list: [ { code: 3.5, desc: '一般' }] }] }, message: 'success' }
  * convertDataToCascader(res, { path: 'data.list', valueKey: 'code', labelKey: 'desc', childrenKey: 'list' })
  * // => [{ value: 5, label: '优秀' }, { value: 4, label: '良好' }, { value: 3, label: '及格', children: [{ value: 3.5, label: '一般' }] }]
  */
@@ -170,13 +170,13 @@ export const convertDataToCascader = (res, config) => {
  * @return {*}            值
  * @example
  *
- * const data = [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格' } }];
+ * const data = [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格' }];
  * getValueInCollection('优秀', data, { key: 'code', valueKey: 'desc' })
  * // => 5
  *
  * @example
  *
- * const data = [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格' } }];
+ * const data = [{ code: 5, desc: '优秀' }, { code: 4, desc: '良好' }, { code: 3, desc: '及格' }];
  * getValueInCollection(5, data, { valueKey: 'code', key: 'desc' })
  * // => '优秀'
  */

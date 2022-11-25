@@ -4,8 +4,8 @@
 
 # 开发
 
--   执行 `npm run docs:dev` // 启动 `ydoc` 服务, 浏览器打开 `http://127.0.0.1:9999`
--   执行 `docs:gernerate` // 监听 `lib` 目录的修改, 实时解析注释生成文档
+-   执行 `npm run docs:dev` // 启动 `ydoc` 服务, 浏览器打开 `http://localhost:9999`
+-   执行 `docs:generate` // 监听 `lib` 目录的修改, 实时解析注释生成文档
 
 # 单测
 

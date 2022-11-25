@@ -1,6 +1,6 @@
 # 安装
 
-```
+```sh
 npm i @nbfe/tools
 ```
 

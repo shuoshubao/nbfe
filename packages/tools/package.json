@@ -40,11 +40,13 @@
         "ava": "^3.12.1",
         "browser-env": "^3.3.0",
         "core-js": "^3.16.0",
-        "dox": "^0.9.0",
+        "dox": "^1.0.0",
         "esm": "^3.2.25",
+        "highlight.js": "^11.7.0",
         "moment": "^2.27.0",
         "node-fetch": "^2.6.0",
         "nyc": "^15.1.0",
+        "pako": "^2.1.0",
         "rollup": "^2.67.2",
         "rollup-plugin-terser": "^7.0.2"
     }

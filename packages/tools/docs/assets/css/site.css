@@ -55,11 +55,13 @@
     margin-top: 10px;
 }
 
-.markdown-body .item-method-content > pre {
+.markdown-body .item-method-content pre {
     padding: 10px 15px;
-    margin-bottom: 10px;
-    line-height: 1.3;
-    background-color: #eee;
+    margin: 0;
+    line-height: 20px;
+    background-color: #283646;
+    color: #ddd;
+    border-top: 1px solid #fff;
 }
 
 /* anticon  */

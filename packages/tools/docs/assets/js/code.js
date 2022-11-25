@@ -15,9 +15,7 @@ window.addEventListener('load', () => {
         // Try in REPL
         if (icon && icon.classList.contains('action-showREPL')) {
             const { funcname, example } = icon.dataset;
-            const Examples = JSON.parse(decodeURIComponent(atob(example))).map(v => {
-                return decodeURIComponent(atob(v));
-            });
+            const Examples = JSON.parse(pako.inflate(new Uint8Array(example.split(',')), { to: 'string' }));
             const source = [
                 `require('lodash');`,
                 `const { ${funcname} } = require('@nbfe/tools');`,
@@ -33,7 +31,9 @@ window.addEventListener('load', () => {
                     .join('\n')
                     .trim(),
                 ''
-            ].join('\n');
+            ]
+                .join('\n')
+                .trim();
             const time = Date.now();
             const domId = ['runkit', 'container', 'dom', time].join('-');
             Modal.info({

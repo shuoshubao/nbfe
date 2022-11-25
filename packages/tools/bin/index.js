@@ -3,8 +3,10 @@ const { readFileSync, writeFileSync } = require('fs');
 const { removeSync, ensureDirSync, copySync } = require('fs-extra');
 const { sync: globSync } = require('glob');
 const { parseComments } = require('dox');
-const { map, filter, sortBy, flatten, escape } = require('lodash');
+const pako = require('pako');
+const { map, filter, sortBy, flatten } = require('lodash');
 const { createElement } = require('@nbfe/js2html');
+const hljs = require('highlight.js');
 const { FilesConfig } = require('./util');
 
 const files = map(FilesConfig, 'category').map(v => {
@@ -25,12 +27,7 @@ ensureDirSync('docs/documents');
 copySync('CHANGELOG.md', 'docs/CHANGELOG.md');
 writeFileSync('docs/assets/js/index.umd.js', readFileSync('dist/index.umd.js').toString().replaceAll('lodash.', '_.'));
 
-sortBy(files, v => {
-    const fileName = v.split(/[\/|.]/)[1];
-    return FilesConfig.findIndex(v2 => {
-        return v2.category === fileName;
-    });
-}).forEach(v => {
+files.forEach(v => {
     const fileName = v.split(/[\/|.]/)[1];
     const { categoryName = '', functions = [] } = FilesConfig.find(v2 => {
         return v2.category === fileName;
@@ -66,7 +63,6 @@ sortBy(files, v => {
             const Returns = filter(tags, { type: 'return' });
             const Example = filter(tags, { type: 'example' });
             const DataSetExample = map(Example, 'string').map(v2 => {
-                return Buffer.from(v2.trim()).toString('base64');
                 return v2.trim();
             });
             return createElement({
@@ -224,9 +220,7 @@ sortBy(files, v => {
                                             ariaLabel: '图标: code',
                                             class: 'anticon anticon-code-sandbox action-showREPL',
                                             'data-funcname': v.funcName,
-                                            'data-example': Buffer.from(JSON.stringify(DataSetExample)).toString(
-                                                'base64'
-                                            )
+                                            'data-example': pako.deflate(JSON.stringify(DataSetExample)).toString()
                                         },
                                         text:
                                             '<svg viewBox="64 64 896 896" focusable="false" data-icon="code-sandbox" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M709.6 210l.4-.2h.2L512 96 313.9 209.8h-.2l.7.3L151.5 304v416L512 928l360.5-208V304l-162.9-94zM482.7 843.6L339.6 761V621.4L210 547.8V372.9l272.7 157.3v313.4zM238.2 321.5l134.7-77.8 138.9 79.7 139.1-79.9 135.2 78-273.9 158-274-158zM814 548.3l-128.8 73.1v139.1l-143.9 83V530.4L814 373.1v175.2z"></path></svg>'
@@ -244,18 +238,16 @@ sortBy(files, v => {
                             },
                             ...Example.map((v, i) => {
                                 const { string } = v;
+                                const { value } = hljs.highlight(string.trim(), { language: 'js' });
                                 return {
                                     tagName: 'pre',
-                                    text: escape(string),
-                                    attrs: {
-                                        style:
-                                            i === 0
-                                                ? {}
-                                                : {
-                                                      marginTop: -16,
-                                                      borderTop: '1px solid #fff'
-                                                  }
-                                    }
+                                    children: [
+                                        {
+                                            tagName: 'code',
+                                            class: 'hljs language-js',
+                                            text: value
+                                        }
+                                    ]
                                 };
                             })
                         ]

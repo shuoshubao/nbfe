@@ -8,7 +8,8 @@ module.exports = {
         'import-asset': {
             css: [
                 'https://file.ljcdn.com/bs/antd/4.16.6/dist/antd.min.css',
-                isDevelopment ? '/assets/css/site.css' : 'https://shuoshubao.github.io/nbfe/assets/css/site.css'
+                isDevelopment ? '/assets/css/site.css' : 'https://shuoshubao.github.io/nbfe/assets/css/site.css',
+                'https://unpkg.com/highlight.js@latest/styles/vs2015.css'
             ],
             js: [
                 'https://file.ljcdn.com/bs/lodash/4.17.21/lodash.min.js',
@@ -17,6 +18,7 @@ module.exports = {
                 'https://file.ljcdn.com/bs/antd/4.16.6/dist/antd.min.js',
                 'https://embed.runkit.com',
                 isDevelopment ? '/assets/js/index.umd.js' : 'https://shuoshubao.github.io/nbfe/assets/js/index.umd.js',
+                'https://unpkg.com/pako@latest/dist/pako.min.js',
                 isDevelopment ? '/assets/js/code.js' : 'https://shuoshubao.github.io/nbfe/assets/js/code.js'
             ]
         }
