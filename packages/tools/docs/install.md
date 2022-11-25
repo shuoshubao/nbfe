@@ -12,7 +12,7 @@ import { search, getLabelByValue, classNames, copyText } from '@nbfe/tools';
 
 # 调试
 
-本文档为了方便大家调试, 特地将工具包打包成 umd 模式, 直接注入到了页面中, 挂载到了 windows.tools
+本文档为了方便调试, 特地将工具包打包成 umd 模式, 直接注入到了页面中, 挂载到了 windows.tools
 
 你可以直接打开浏览器控制台, 输入 `Object.keys(tools)` 即可看到所有的方法
 

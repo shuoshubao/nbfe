@@ -5,7 +5,7 @@ banner:
   btns: 
     - { name: '开始', href: './documents/index.html', primary: true }
     - { name: 'Github', href: 'https://github.com/shuoshubao/nbfe/tree/master/packages/tools', primary: true }
-  caption: '当前版本: v0.2.12'
+  caption: '当前版本: v0.2.16'
 features: 
   - { name: '零依赖', desc: '只依赖 lodash, 不搞一些基础的重复' }
   - { name: '懂业务', desc: '完全基于业务和组件库提炼, 没有花里胡哨的功能' }
