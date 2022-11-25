@@ -15,24 +15,23 @@ window.addEventListener('load', () => {
         // Try in REPL
         if (icon && icon.classList.contains('action-showREPL')) {
             const { funcname, example } = icon.dataset;
+            const Examples = JSON.parse(decodeURIComponent(atob(example))).map(v => {
+                return decodeURIComponent(atob(v));
+            });
             const source = [
                 `require('lodash');`,
                 `const { ${funcname} } = require('@nbfe/tools');`,
                 '',
-                example
-                    .replaceAll('__@@__', '\n')
-                    .split('\n')
-                    .reduce((prev, cur) => {
-                        if (cur.includes('// => ')) {
-                            prev.push(cur, '');
-                        } else {
-                            prev.push(cur);
-                        }
-                        return prev;
-                    }, [])
+                Examples.reduce((prev, cur) => {
+                    if (cur.includes('// => ')) {
+                        prev.push(cur, '');
+                    } else {
+                        prev.push(cur);
+                    }
+                    return prev;
+                }, [])
                     .join('\n')
-                    .trim()
-                    .replaceAll('\n\n', '\n'),
+                    .trim(),
                 ''
             ].join('\n');
             const time = Date.now();
