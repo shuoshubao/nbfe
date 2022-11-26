@@ -8,7 +8,7 @@ module.exports = {
         'import-asset': {
             css: [
                 'https://file.ljcdn.com/bs/antd/4.16.6/dist/antd.min.css',
-                isDevelopment ? '/assets/css/site.css' : 'https://shuoshubao.github.io/nbfe/assets/css/site.css',
+                isDevelopment ? '/assets/css/site.css' : 'https://shuoshubao.github.io/tools/assets/css/site.css',
                 'https://unpkg.com/highlight.js@latest/styles/vs2015.css'
             ],
             js: [
@@ -17,9 +17,9 @@ module.exports = {
                 'https://file.ljcdn.com/bs/react-dom/17.0.2/umd/react-dom.production.min.js',
                 'https://file.ljcdn.com/bs/antd/4.16.6/dist/antd.min.js',
                 'https://embed.runkit.com',
-                isDevelopment ? '/assets/js/index.umd.js' : 'https://shuoshubao.github.io/nbfe/assets/js/index.umd.js',
+                'https://unpkg.com/@nbfe/tools@latest/dist/index.min.js',
                 'https://unpkg.com/pako@latest/dist/pako.min.js',
-                isDevelopment ? '/assets/js/code.js' : 'https://shuoshubao.github.io/nbfe/assets/js/code.js'
+                isDevelopment ? '/assets/js/code.js' : 'https://shuoshubao.github.io/tools/assets/js/code.js'
             ]
         }
     }

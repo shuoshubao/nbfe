@@ -3,7 +3,7 @@ banner:
   name: '工具库'
   desc: '提高复用性, 更懂你的工具库'
   btns: 
-    - { name: '开始', href: './documents/index.html', primary: true }
+    - { name: '开始', href: './documents/date.html', primary: true }
     - { name: 'Github', href: 'https://github.com/shuoshubao/nbfe/tree/master/packages/tools', primary: true }
   caption: '当前版本: v0.2.16'
 features: 
