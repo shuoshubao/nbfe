@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.17](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.16...@nbfe/tools@0.2.17) (2022-11-26)
+
+
+### Bug Fixes
+
+* 修复eslint问题 ([9708d0b](https://github.com/shuoshubao/nbfe/commit/9708d0b1de01b847dda2434ef083faecf84158bb))
+* 修改示例 ([a8f5999](https://github.com/shuoshubao/nbfe/commit/a8f59997707bb8c66635169a24184c33621458e4))
+* require => import ([3a2d60a](https://github.com/shuoshubao/nbfe/commit/3a2d60a693ea9b067bb9fb9c7585bf7cb761e3f9))
+
+
+
+
+
 ## [0.2.16](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.15...@nbfe/tools@0.2.16) (2022-11-23)
 
 
