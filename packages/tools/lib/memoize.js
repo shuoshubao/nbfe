@@ -1,4 +1,4 @@
-const { cloneDeep, isEqual } = require('lodash');
+import { cloneDeep, isEqual } from 'lodash';
 
 /**
  * memoize/cache
