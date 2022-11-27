@@ -79,10 +79,11 @@ const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
             return [key, `"${v}"`].join('=');
         })
         .join(' ');
+    const tagNameStart = [tagName, attrsText].filter(Boolean).join(' ');
     if (voidHtmlTags.includes(tagName)) {
-        return `<${tagName} ${attrsText} />`;
+        return `<${tagNameStart} />`;
     }
-    return `<${tagName} ${attrsText}>${text}</${tagName}>`;
+    return `<${tagNameStart}>${text}</${tagName}>`;
 };
 
 /**
@@ -98,9 +99,6 @@ const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
 export const createElement = (tagName = '', attrs = {}, children = []) => {
     if (isString(children) || isNumber(children)) {
         return gernerateElementText(tagName, attrs, children);
-    }
-    if (children.length === 0) {
-        return gernerateElementText(tagName, attrs, '');
     }
     return gernerateElementText(
         tagName,
