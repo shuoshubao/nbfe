@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.18](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.17...@nbfe/tools@0.2.18) (2022-11-28)
+
+
+### Bug Fixes
+
+* createElement 单标签且无props时多一个空格 ([77b0a93](https://github.com/shuoshubao/nbfe/commit/77b0a93acbdb13cf691ca94303d393a0cbc6f084))
+* createElement style 处理 ([4f06ae0](https://github.com/shuoshubao/nbfe/commit/4f06ae031faafc16d56b0d418ac9626104dcf336))
+
+
+### Features
+
+* createElement props 可以传null ([842cabe](https://github.com/shuoshubao/nbfe/commit/842cabea50cf95d87be9feb67ac5cbfd96dff701))
+
+
+
+
+
 ## [0.2.17](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.16...@nbfe/tools@0.2.17) (2022-11-26)
 
 

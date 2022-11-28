@@ -1,6 +1,6 @@
 {
     "name": "@nbfe/react-cli",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "description": "React CLI",
     "author": "shuoshubao <759979885@qq.com>",
     "bin": {
@@ -35,7 +35,7 @@
         "@babel/register": "^7.18.9",
         "@babel/runtime": "^7.20.1",
         "@babel/runtime-corejs3": "^7.20.1",
-        "@nbfe/tools": "^0.2.17",
+        "@nbfe/tools": "^0.2.18",
         "babel-loader": "^9.1.0",
         "babel-plugin-import": "^1.13.5",
         "body-parser": "^1.20.1",
