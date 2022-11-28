@@ -2,8 +2,8 @@ import { pick } from 'lodash';
 
 /**
  * 获取图片的尺寸
- * @param  {String} url [description]
- * @return {Object}     [description]
+ * @param  {String} url 图片的url
+ * @return {Object}     图片的尺寸 { width, height }
  * @example
  *
  * (async() => {
@@ -28,8 +28,8 @@ export const getImageSize = (url = '') => {
 
 /**
  * 将图片的 http-url 变成 base64
- * @param  {String} url [description]
- * @return {String}     [description]
+ * @param  {String} url 图片的url
+ * @return {String}     图片的base64数据
  */
 export const changeImageUrlToBase64 = url => {
     if (url.startsWith('data:image')) {

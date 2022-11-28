@@ -27,8 +27,8 @@ export const getParams = (str, key) => {
 
 /**
  * 获取 search 参数
- * @param  {String} key [description]
- * @return {String|Object}     [description]
+ * @param  {String} key key值
+ * @return {String|Object}    传key时返回字符串; 不传key时, 则返回所有query参数的json
  * @example
  *
  * // 假设当前的url为 http://aa.com/abc/d?a=1&b=2

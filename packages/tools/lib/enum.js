@@ -3,7 +3,7 @@ import { isEmptyValue } from './types';
 
 /**
  * 通过 value 获取 label
- * @param  {*} value     [description]
+ * @param  {*} value     value 值
  * @param  {Array}  [data=[{ value, label }]]      数据源
  * @param  {String} [emptyText='--'] 空值
  * @return {String}           value对应的label
@@ -56,7 +56,7 @@ export const convertJsonToEnum = (data = {}) => {
 /**
  * 通过 label 获取 value
  * @see getLabelByValue
- * @param  {*} value     [description]
+ * @param  {*} label     label 值
  * @param  {Array}  [data=[{ value, label }]]      数据源
  * @param  {String} [emptyText='--'] 空值
  * @return {String}           value对应的label

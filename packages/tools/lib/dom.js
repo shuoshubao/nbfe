@@ -44,8 +44,8 @@ export const downloadBlob = (blob, options = {}) => {
 
 /**
  * 下载文件
- * @param  {String} url    [description]
- * @param  {Object} config [description]
+ * @param  {String} url    文件地址
+ * @param  {Object} config a 链接的属性
  * @return {*}       undefined
  * @example
  *
@@ -89,7 +89,7 @@ const DefaultUnitsPxProperties = ['font-size', 'margin', 'padding', 'border'];
 
 /**
  * 给cssom加上单位px
- * @param  {Object} [cssom] [description]
+ * @param  {Object} [cssom] css 对象
  * @return {Object}       带有'px'单位的 cssom
  * @example
  *
@@ -184,8 +184,7 @@ export const getWordWidth = (word = '', cssom = {}) => {
 
 /**
  * 复制文本
- * @param  {*} element   [description]
- * @param  {Object} attrs [description]
+ * @param  {*} text   要复制的文本
  * @return {*}       undefined
  * @example
  *

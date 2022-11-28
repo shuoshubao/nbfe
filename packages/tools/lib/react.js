@@ -1,6 +1,6 @@
 /**
  * setState => promise
- * @param  {*} context  [description]
+ * @param  {*} context  this
  * @param  {Object} newState 新的状态
  * @return {*}          无
  * @example

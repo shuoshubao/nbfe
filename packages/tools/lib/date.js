@@ -1,10 +1,10 @@
 /**
  * 日期格式化
  * 参考: [dayjs.format](https://dayjs.gitee.io/docs/zh-CN/display/format)
- * @param  {Number|String|Date} date        [description]
- * @param  {String} [format='YYYY-MM-DD']      format
- * @param  {String} [invalidText='--'] [description]
- * @return {String}             [description]
+ * @param  {Number|String|Date} date        日期
+ * @param  {String} [format='YYYY-MM-DD']      格式化
+ * @param  {String} [invalidText='--'] 解析错误时的返回
+ * @return {String}             日期格式文本
  * @example
  *
  * formatTime(1628659676589);

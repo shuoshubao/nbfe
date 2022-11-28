@@ -48,8 +48,8 @@ export const isEmptyString = value => {
 
 /**
  * 空值: null undefined ''
- * @param  {*} value [description]
- * @return {Boolean}     [description]
+ * @param  {*} value 值
+ * @return {Boolean}     是否为空值
  * @example
  *
  * isEmptyValue(null);
@@ -71,7 +71,7 @@ export const isEmptyValue = value => {
 
 /**
  * Promise
- * @param  {*} value [description]
+ * @param  {*} value 值
  * @return {Boolean}     是否是Promise
  * @example
  *
@@ -90,7 +90,7 @@ export const isPromise = value => {
 
 /**
  * Blob
- * @param  {*} value [description]
+ * @param  {*} value 值
  * @return {Boolean}     是否是Blob类型
  * @example
  *
