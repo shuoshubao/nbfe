@@ -6,7 +6,7 @@ const pako = require('pako');
 const { map, filter, sortBy, flatten } = require('lodash');
 const hljs = require('highlight.js');
 const { createElement } = require('../dist');
-const { FilesConfig } = require('./util');
+const { FilesConfig, SvgIcons } = require('./util');
 
 const files = map(FilesConfig, 'category').map(v => {
     return ['lib', `${v}.js`].join('/');
@@ -53,7 +53,7 @@ files.forEach(v => {
     const markdownText = sortedExportList
         .map(v2 => {
             const { funcName, callText } = v2;
-            const { description, tags } = docs.find(v3 => {
+            const { description, tags, code } = docs.find(v3 => {
                 return v3.ctx.name === funcName;
             });
             const Aliases = filter(tags, { type: 'alias' });
@@ -81,7 +81,24 @@ files.forEach(v => {
                                 {
                                     className: 'item-method-name-area'
                                 },
-                                callText
+                                [
+                                    [
+                                        'i',
+                                        {
+                                            style: {
+                                                marginRight: 10,
+                                                cursor: 'pointer'
+                                            },
+                                            ariaLabel: '图标: code',
+                                            className: 'anticon anticon-code action-showSourceCode',
+                                            'data-code': pako
+                                                .deflate(hljs.highlight(code.trim(), { language: 'js' }).value)
+                                                .toString()
+                                        },
+                                        SvgIcons.CodeOutlined
+                                    ],
+                                    ['span', null, callText]
+                                ]
                             ]
                         ]
                     ],
@@ -91,13 +108,13 @@ files.forEach(v => {
                             className: 'item-method-content'
                         },
                         [
-                            ['div', {}, delHtmlTag(description.summary)],
+                            ['div', null, delHtmlTag(description.summary)],
                             ...flatten(
                                 See.map(v3 => {
                                     const { string } = v3;
                                     const isUrl = string.startsWith('http');
                                     return [
-                                        ['h4', {}, 'See'],
+                                        ['h4', null, 'See'],
                                         [
                                             'a',
                                             {
@@ -116,7 +133,7 @@ files.forEach(v => {
                                 Aliases.map(v3 => {
                                     const { string } = v3;
                                     return [
-                                        ['h4', {}, 'Aliases'],
+                                        ['h4', null, 'Aliases'],
                                         [
                                             'div',
                                             {
@@ -129,12 +146,12 @@ files.forEach(v => {
                                     ];
                                 })
                             ),
-                            ['h4', {}, 'Arguments'],
+                            ['h4', null, 'Arguments'],
                             ...filter(tags, { type: 'param' }).map(v3 => {
                                 const { name, typesDescription } = v3;
                                 return [
                                     'div',
-                                    {},
+                                    null,
                                     [
                                         [
                                             'strong',
@@ -154,16 +171,16 @@ files.forEach(v => {
                                             },
                                             ` (${delHtmlTag(typesDescription)})`
                                         ],
-                                        ['span', {}, [':', delHtmlTag(v3.description)].join(' ')]
+                                        ['span', null, [':', delHtmlTag(v3.description)].join(' ')]
                                     ]
                                 ];
                             }),
-                            ['h4', {}, 'Returns'],
+                            ['h4', null, 'Returns'],
                             ...Returns.map(v3 => {
                                 const { typesDescription } = v3;
                                 return [
                                     'span',
-                                    {},
+                                    null,
                                     [
                                         [
                                             'strong',
@@ -174,15 +191,15 @@ files.forEach(v => {
                                             },
                                             `(${delHtmlTag(typesDescription)})`
                                         ],
-                                        ['span', {}, [':', delHtmlTag(v3.description)].join(' ')]
+                                        ['span', null, [':', delHtmlTag(v3.description)].join(' ')]
                                     ]
                                 ];
                             }),
                             [
                                 'h4',
-                                {},
+                                null,
                                 [
-                                    ['span', {}, 'Example'],
+                                    ['span', null, 'Example'],
                                     [
                                         'i',
                                         {
@@ -195,7 +212,7 @@ files.forEach(v => {
                                             'data-funcname': funcName,
                                             'data-example': pako.deflate(JSON.stringify(DataSetExample)).toString()
                                         },
-                                        '<svg viewBox="64 64 896 896" focusable="false" data-icon="code-sandbox" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M709.6 210l.4-.2h.2L512 96 313.9 209.8h-.2l.7.3L151.5 304v416L512 928l360.5-208V304l-162.9-94zM482.7 843.6L339.6 761V621.4L210 547.8V372.9l272.7 157.3v313.4zM238.2 321.5l134.7-77.8 138.9 79.7 139.1-79.9 135.2 78-273.9 158-274-158zM814 548.3l-128.8 73.1v139.1l-143.9 83V530.4L814 373.1v175.2z"></path></svg>'
+                                        SvgIcons.CodeSandboxOutlined
                                     ]
                                 ]
                             ],
@@ -213,7 +230,7 @@ files.forEach(v => {
                                 const { value } = hljs.highlight(string.trim(), { language: 'js' });
                                 return [
                                     'pre',
-                                    {},
+                                    null,
                                     [
                                         [
                                             'code',

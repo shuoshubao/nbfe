@@ -12,9 +12,31 @@ const { Modal } = antd;
 window.addEventListener('load', () => {
     document.body.addEventListener('click', e => {
         const icon = e.target.closest('.anticon');
+        if (!icon) {
+            return;
+        }
+        const { classList, dataset } = icon;
+        // ShowSourceCode
+        if (classList.contains('action-showSourceCode')) {
+            const { code } = dataset;
+            const codeText = pako.inflate(new Uint8Array(code.split(',')), { to: 'string' });
+            Modal.info({
+                width: 800,
+                maskClosable: true,
+                okText: '关闭',
+                className: 'modal-source-code',
+                content: createElement(
+                    'pre',
+                    {},
+                    createElement('code', {
+                        dangerouslySetInnerHTML: { __html: codeText }
+                    })
+                )
+            });
+        }
         // Try in REPL
-        if (icon && icon.classList.contains('action-showREPL')) {
-            const { funcname, example } = icon.dataset;
+        if (classList.contains('action-showREPL')) {
+            const { funcname, example } = dataset;
             const Examples = JSON.parse(pako.inflate(new Uint8Array(example.split(',')), { to: 'string' }));
             const source = [
                 `require('lodash');`,
@@ -37,6 +59,9 @@ window.addEventListener('load', () => {
             const time = Date.now();
             const domId = ['runkit', 'container', 'dom', time].join('-');
             Modal.info({
+                width: 1200,
+                maskClosable: true,
+                okText: '关闭',
                 title: createElement('div', {}, [
                     createElement(
                         'span',
@@ -59,8 +84,6 @@ window.addEventListener('load', () => {
                         [`可在浏览器控制台直接调用 tools.${funcname}`]
                     )
                 ]),
-                width: 1200,
-                okText: '关闭',
                 content: createElement(
                     'div',
                     {
