@@ -1,12 +1,12 @@
 .m-aside {
-    margin: 0;
     height: 100% !important;
-    padding: 65px 0 0 0;
+    margin: 0;
+    padding: 65px 0 0;
 }
 
 .m-summary {
-    border-right: 1px solid #edf0f7;
     padding: 20px;
+    border-right: 1px solid #edf0f7;
 }
 
 .m-header .m-header-title .name {
@@ -15,10 +15,10 @@
 }
 
 .m-content-container {
-    margin: 0;
     min-width: auto;
     max-width: none;
-    padding: 30px 20px;
+    margin: 0;
+    padding: 20px;
 }
 
 .markdown-body h2 {
@@ -26,10 +26,15 @@
     padding-bottom: 0;
 }
 
-.m-main h2:before,
-.m-main h3:before {
-    margin: 0;
+.m-main h2::before,
+.m-main h3::before {
     height: 0;
+    margin: 0;
+}
+
+.markdown-body .item-method-name {
+  margin-top: -65px;
+  padding-top: 65px
 }
 
 .markdown-body .item-method-name:target .item-method-name-area {
@@ -37,13 +42,13 @@
 }
 
 .markdown-body .item-method-name .item-method-name-area {
-    background-color: #eee;
-    font-weight: 700;
-    padding: 20px;
-    border-left: 5px solid transparent;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    font-weight: 700;
+    background-color: #eee;
+    border-left: 5px solid transparent;
 }
 
 .markdown-body .item-method-name .item-method-name-area .anticon {
@@ -51,17 +56,23 @@
 }
 
 .markdown-body .item-method-content {
-    padding: 20px 0;
     margin-top: 10px;
+    padding: 20px 0;
 }
 
 .markdown-body .item-method-content pre {
-    padding: 10px 15px;
     margin: 0;
+    padding: 0;
+    color: #ddd;
+    font-size: 14px;
     line-height: 20px;
     background-color: #283646;
-    color: #ddd;
     border-top: 1px solid #fff;
+}
+
+.markdown-body .item-method-content pre code.hljs {
+    color: #ddd;
+    text-shadow: none;
 }
 
 /* anticon  */
@@ -73,7 +84,7 @@
     text-align: center;
     text-transform: none;
     vertical-align: -0.125em;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

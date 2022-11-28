@@ -1,12 +1,11 @@
 require('core-js');
 const { readFileSync, writeFileSync } = require('fs');
-const { removeSync, ensureDirSync, copySync } = require('fs-extra');
-const { sync: globSync } = require('glob');
+const { ensureDirSync, copySync } = require('fs-extra');
 const { parseComments } = require('dox');
 const pako = require('pako');
 const { map, filter, sortBy, flatten } = require('lodash');
-const { createElement } = require('@nbfe/js2html');
 const hljs = require('highlight.js');
+const { createElement } = require('../dist');
 const { FilesConfig } = require('./util');
 
 const files = map(FilesConfig, 'category').map(v => {
@@ -22,24 +21,23 @@ const delHtmlTag = (str = '') => {
 
 const MenuListText = [];
 
-// removeSync('docs/documents');
 ensureDirSync('docs/documents');
 copySync('CHANGELOG.md', 'docs/CHANGELOG.md');
 
 files.forEach(v => {
-    const fileName = v.split(/[\/|.]/)[1];
+    const fileName = v.split(/[/|.]/)[1];
     const { categoryName = '', functions = [] } = FilesConfig.find(v2 => {
         return v2.category === fileName;
     });
     const content = readFileSync(v).toString();
     const exportList = content
         .split('\n')
-        .filter(v => {
-            return v.includes('export const');
+        .filter(v2 => {
+            return v2.includes('export const');
         })
-        .map(v => {
-            const funcName = v.split(' ')[2];
-            const text = v.replace('export const ', '').replace(' => {', '');
+        .map(v2 => {
+            const funcName = v2.split(' ')[2];
+            const text = v2.replace('export const ', '').replace(' => {', '');
             const argText = text.replace(`${funcName} = `, '');
             const callText = `${funcName}(${argText})`.replace('((', '(').replace('))', ')');
             return {
@@ -53,211 +51,190 @@ files.forEach(v => {
         return index === -1 ? exportList.length : index;
     });
     const markdownText = sortedExportList
-        .map(v => {
-            const { description, tags, code } = docs.find(v2 => {
-                return v2.ctx.name === v.funcName;
+        .map(v2 => {
+            const { funcName, callText } = v2;
+            const { description, tags } = docs.find(v3 => {
+                return v3.ctx.name === funcName;
             });
             const Aliases = filter(tags, { type: 'alias' });
             const See = filter(tags, { type: 'see' });
             const Returns = filter(tags, { type: 'return' });
             const Example = filter(tags, { type: 'example' });
-            const DataSetExample = map(Example, 'string').map(v2 => {
-                return v2.trim();
+            const DataSetExample = map(Example, 'string').map(v3 => {
+                return v3.trim();
             });
-            return createElement({
-                tagName: 'div',
-                attr: {
-                    class: 'item-method'
+            return createElement(
+                'div',
+                {
+                    className: 'item-method'
                 },
-                children: [
-                    {
-                        tagName: 'div',
-                        attrs: {
-                            id: v.funcName.toLowerCase(),
-                            class: 'item-method-name',
-                            style: {
-                                marginTop: -65,
-                                paddingTop: '65px'
-                            }
+                [
+                    [
+                        'div',
+                        {
+                            id: funcName.toLowerCase(),
+                            className: 'item-method-name'
                         },
-                        children: [
-                            {
-                                tagName: 'div',
-                                attrs: {
-                                    class: 'item-method-name-area'
+                        [
+                            [
+                                'div',
+                                {
+                                    className: 'item-method-name-area'
                                 },
-                                text: v.callText
-                            }
+                                callText
+                            ]
                         ]
-                    },
-                    {
-                        tagName: 'div',
-                        attrs: {
-                            class: 'item-method-content'
+                    ],
+                    [
+                        'div',
+                        {
+                            className: 'item-method-content'
                         },
-                        children: [
-                            {
-                                tagName: 'div',
-                                text: delHtmlTag(description.summary)
-                            },
+                        [
+                            ['div', {}, delHtmlTag(description.summary)],
                             ...flatten(
-                                See.map(v => {
-                                    const { string } = v;
+                                See.map(v3 => {
+                                    const { string } = v3;
                                     const isUrl = string.startsWith('http');
                                     return [
-                                        {
-                                            tagName: 'h4',
-                                            text: 'See'
-                                        },
-                                        {
-                                            tagName: 'a',
-                                            attrs: {
+                                        ['h4', {}, 'See'],
+                                        [
+                                            'a',
+                                            {
                                                 href: isUrl ? string : 'javascript:void(0)',
                                                 target: isUrl ? '_blank' : undefined,
                                                 style: {
                                                     color: '#1890ff'
                                                 }
                                             },
-                                            text: string
-                                        }
+                                            string
+                                        ]
                                     ];
                                 })
                             ),
                             ...flatten(
-                                Aliases.map(v => {
-                                    const { string } = v;
+                                Aliases.map(v3 => {
+                                    const { string } = v3;
                                     return [
-                                        {
-                                            tagName: 'h4',
-                                            text: 'Aliases'
-                                        },
-                                        {
-                                            tagName: 'div',
-                                            attrs: {
+                                        ['h4', {}, 'Aliases'],
+                                        [
+                                            'div',
+                                            {
                                                 style: {
                                                     color: '#1890ff'
                                                 }
                                             },
-                                            text: string
-                                        }
+                                            string
+                                        ]
                                     ];
                                 })
                             ),
-                            {
-                                tagName: 'h4',
-                                text: 'Arguments'
-                            },
-                            ...filter(tags, { type: 'param' }).map(v => {
-                                const { name, typesDescription, description } = v;
-                                return {
-                                    tagName: 'div',
-                                    children: [
-                                        {
-                                            tagName: 'strong',
-                                            attrs: {
+                            ['h4', {}, 'Arguments'],
+                            ...filter(tags, { type: 'param' }).map(v3 => {
+                                const { name, typesDescription } = v3;
+                                return [
+                                    'div',
+                                    {},
+                                    [
+                                        [
+                                            'strong',
+                                            {
                                                 style: {
                                                     color: '#1890ff'
                                                 }
                                             },
-                                            text: name
-                                        },
-                                        {
-                                            tagName: 'strong',
-                                            attrs: {
+                                            name
+                                        ],
+                                        [
+                                            'strong',
+                                            {
                                                 style: {
                                                     color: '#1890ff'
                                                 }
                                             },
-                                            text: ` (${delHtmlTag(typesDescription)})`
-                                        },
-                                        {
-                                            tagName: 'span',
-                                            text: [':', delHtmlTag(description)].join(' ')
-                                        }
+                                            ` (${delHtmlTag(typesDescription)})`
+                                        ],
+                                        ['span', {}, [':', delHtmlTag(v3.description)].join(' ')]
                                     ]
-                                };
+                                ];
                             }),
-                            {
-                                tagName: 'h4',
-                                text: 'Returns'
-                            },
-                            ...Returns.map(v => {
-                                const { typesDescription, description } = v;
-                                return {
-                                    tagName: 'span',
-                                    children: [
-                                        {
-                                            tagName: 'strong',
-                                            attrs: {
+                            ['h4', {}, 'Returns'],
+                            ...Returns.map(v3 => {
+                                const { typesDescription } = v3;
+                                return [
+                                    'span',
+                                    {},
+                                    [
+                                        [
+                                            'strong',
+                                            {
                                                 style: {
                                                     color: '#1890ff'
                                                 }
                                             },
-                                            text: `(${delHtmlTag(typesDescription)})`
-                                        },
-                                        {
-                                            tagName: 'span',
-                                            text: [':', delHtmlTag(description)].join(' ')
-                                        }
+                                            `(${delHtmlTag(typesDescription)})`
+                                        ],
+                                        ['span', {}, [':', delHtmlTag(v3.description)].join(' ')]
                                     ]
-                                };
+                                ];
                             }),
-                            {
-                                tagName: 'h4',
-                                children: [
-                                    {
-                                        tagName: 'span',
-                                        text: 'Example'
-                                    },
-                                    {
-                                        tagName: 'i',
-                                        attrs: {
+                            [
+                                'h4',
+                                {},
+                                [
+                                    ['span', {}, 'Example'],
+                                    [
+                                        'i',
+                                        {
                                             style: {
                                                 marginLeft: 10,
                                                 cursor: 'pointer'
                                             },
                                             ariaLabel: '图标: code',
-                                            class: 'anticon anticon-code-sandbox action-showREPL',
-                                            'data-funcname': v.funcName,
+                                            className: 'anticon anticon-code-sandbox action-showREPL',
+                                            'data-funcname': funcName,
                                             'data-example': pako.deflate(JSON.stringify(DataSetExample)).toString()
                                         },
-                                        text: '<svg viewBox="64 64 896 896" focusable="false" data-icon="code-sandbox" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M709.6 210l.4-.2h.2L512 96 313.9 209.8h-.2l.7.3L151.5 304v416L512 928l360.5-208V304l-162.9-94zM482.7 843.6L339.6 761V621.4L210 547.8V372.9l272.7 157.3v313.4zM238.2 321.5l134.7-77.8 138.9 79.7 139.1-79.9 135.2 78-273.9 158-274-158zM814 548.3l-128.8 73.1v139.1l-143.9 83V530.4L814 373.1v175.2z"></path></svg>'
-                                    }
+                                        '<svg viewBox="64 64 896 896" focusable="false" data-icon="code-sandbox" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M709.6 210l.4-.2h.2L512 96 313.9 209.8h-.2l.7.3L151.5 304v416L512 928l360.5-208V304l-162.9-94zM482.7 843.6L339.6 761V621.4L210 547.8V372.9l272.7 157.3v313.4zM238.2 321.5l134.7-77.8 138.9 79.7 139.1-79.9 135.2 78-273.9 158-274-158zM814 548.3l-128.8 73.1v139.1l-143.9 83V530.4L814 373.1v175.2z"></path></svg>'
+                                    ]
                                 ]
-                            },
-                            {
-                                tagName: 'div',
-                                attrs: {
+                            ],
+                            [
+                                'div',
+                                {
                                     style: {
                                         display: Example.length ? 'none' : 'block'
                                     }
                                 },
-                                text: '暂无'
-                            },
-                            ...Example.map((v, i) => {
-                                const { string } = v;
+                                '暂无'
+                            ],
+                            ...Example.map(v3 => {
+                                const { string } = v3;
                                 const { value } = hljs.highlight(string.trim(), { language: 'js' });
-                                return {
-                                    tagName: 'pre',
-                                    children: [
-                                        {
-                                            tagName: 'code',
-                                            class: 'hljs language-js',
-                                            text: value
-                                        }
+                                return [
+                                    'pre',
+                                    {},
+                                    [
+                                        [
+                                            'code',
+                                            {
+                                                className: 'hljs language-js'
+                                            },
+                                            value
+                                        ]
                                     ]
-                                };
+                                ];
                             })
                         ]
-                    }
+                    ]
                 ]
-            });
+            );
         })
         .join('\n');
     MenuListText.push(`- [${categoryName || fileName}](${fileName}.md)`);
     MenuListText.push(
-        ...sortedExportList.map(v => {
-            return `  - [${v.funcName}](${fileName}.md#${v.funcName})`;
+        ...sortedExportList.map(v3 => {
+            return `  - [${v3.funcName}](${fileName}.md#${v3.funcName})`;
         })
     );
     writeFileSync(`docs/documents/${fileName}.md`, markdownText);
