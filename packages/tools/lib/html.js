@@ -74,7 +74,7 @@ const attrKeyAlias = {
 };
 
 const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
-    const attrsText = Object.entries(attrs)
+    const attrsText = Object.entries(attrs || {})
         .map(([k, v]) => {
             const key = attrKeyAlias[k] || k;
             if (key === 'style') {
