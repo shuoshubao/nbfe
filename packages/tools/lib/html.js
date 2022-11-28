@@ -1,5 +1,6 @@
 import { flatten, isString, isNumber } from 'lodash';
 import { formatters } from './formatters';
+import { getCssText } from './dom';
 
 /**
  * 百分比html
@@ -76,6 +77,9 @@ const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
     const attrsText = Object.entries(attrs)
         .map(([k, v]) => {
             const key = attrKeyAlias[k] || k;
+            if (key === 'style') {
+                return [key, `"${getCssText(v)}"`].join('=');
+            }
             return [key, `"${v}"`].join('=');
         })
         .join(' ');
@@ -88,7 +92,7 @@ const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
 
 /**
  * createElement
- * @param  {String} tagName  标签名
+ * @param  {String} type  标签名
  * @param  {Object} attrs    属性
  * @param  {Array}  children 子元素
  * @return {String}          html字符串
@@ -96,13 +100,13 @@ const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
  *
  * createElement('div', { id: 'demo', className: 'demo' }, 'hello') // <div id="demo" className="demo">hello</div>
  */
-export const createElement = (tagName = '', attrs = {}, children = []) => {
+export const createElement = (type = '', props = {}, children = []) => {
     if (isString(children) || isNumber(children)) {
-        return gernerateElementText(tagName, attrs, children);
+        return gernerateElementText(type, props, children);
     }
     return gernerateElementText(
-        tagName,
-        attrs,
+        type,
+        props,
         children
             .map(v => {
                 return createElement(...v);
