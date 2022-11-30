@@ -1,8 +1,8 @@
-const { formatTime } = require('@nbfe/tools');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const dayjs = require('dayjs');
 const HtmlWebpackAssetsPlugin = require('./HtmlWebpackAssetsPlugin');
 const { packConfig, MiniCssExtractPlugin, enableWebpackDll } = require('./config');
 const { injectDllReferencePlugins } = require('./dll-helper');
@@ -43,7 +43,7 @@ module.exports = (isDevelopment, chainableConfig) => {
                 logLevel: 'silent',
                 reportFilename: 'WebpackAnalyzerReport.html',
                 reportTitle: () => {
-                    return ['WebpackAnalyzerReport', formatTime(Date.now(), 'YYYY-MM-DD HH:mm:ss')].join(': ');
+                    return ['WebpackAnalyzerReport', dayjs().format('YYYY-MM-DD HH:mm:ss')].join(': ');
                 }
             }
         ]);

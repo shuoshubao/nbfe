@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const prettier = require('prettier');
-const { memoize } = require('@nbfe/tools');
+const { memoize } = require('lodash');
 const { convertManifest } = require('./utils');
 
 const formatHtml = memoize(html => {

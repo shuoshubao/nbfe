@@ -3,7 +3,7 @@
 const { extname } = require('path');
 const util = require('util');
 const { sortBy, flatten } = require('lodash');
-const { formatTime } = require('@nbfe/tools');
+const dayjs = require('dayjs');
 const filesize = require('filesize');
 const chalk = require('chalk');
 const { enableWebpackDll, packConfig } = require('./config');
@@ -111,7 +111,7 @@ const manifestPluginGenerate = (isDevelopment, entries) => {
         return prev;
     }, {});
     return {
-        date: formatTime(Date.now(), 'YYYY-MM-DD HH:mm:ss'),
+        date: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         manifest
     };
 };

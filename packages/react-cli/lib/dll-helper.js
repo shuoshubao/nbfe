@@ -1,7 +1,7 @@
 const { existsSync } = require('fs');
 const { basename, join } = require('path');
 const { isEqual } = require('lodash');
-const { formatTime } = require('@nbfe/tools');
+const dayjs = require('dayjs');
 const webpack = require('webpack');
 const pkg = require('../package.json');
 const { packConfig } = require('./config');
@@ -49,7 +49,7 @@ const manifestPluginGenerate = (isDevelopment, entries) => {
         return prev;
     }, {});
     return {
-        date: formatTime(Date.now(), 'YYYY-MM-DD HH:mm:ss'),
+        date: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         publicPath: packConfig.publicPath,
         versions,
         manifest
