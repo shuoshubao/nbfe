@@ -1,6 +1,6 @@
 # 安装
 
-```shell
+```sh
 npm i -D @nbfe/standard
 ```
 

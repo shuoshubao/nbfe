@@ -9,6 +9,23 @@
   },
   "license": "ISC",
   "main": "index.js",
+  "keywords": [
+    "standard",
+    "engineering",
+    "workflow",
+    "JavaScript Standard Style",
+    "code style",
+    "lint",
+    "eslint",
+    "stylelint",
+    "sonarjs",
+    "commitlint",
+    "commitizen",
+    "lint-staged",
+    "husky",
+    "lerna",
+    "standard-version"
+  ],
   "scripts": {
     "publish:beta": "npm publish --tag beta"
   },
