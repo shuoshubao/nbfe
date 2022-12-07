@@ -1,6 +1,5 @@
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const dayjs = require('dayjs');
 const HtmlWebpackAssetsPlugin = require('./HtmlWebpackAssetsPlugin');
@@ -48,7 +47,6 @@ module.exports = (isDevelopment, chainableConfig) => {
             }
         ]);
     }
-    chainableConfig.plugin('NodePolyfillPlugin').use(NodePolyfillPlugin);
     chainableConfig.plugin('WebpackManifestPlugin').use(WebpackManifestPlugin, [
         {
             generate: (seed, files, entries) => {
