@@ -23,10 +23,11 @@ const getLoaderOptions = lang => {
 };
 
 const cssLoaderName = {
-    styl: 'stylus'
+    styl: 'stylus',
+    scss: 'sass'
 };
 
-const cssLangList = ['css', 'less', 'scss', 'styl'];
+const cssLangList = ['css', 'less', 'sass', 'scss', 'styl'];
 
 const applyLoaders = ({ isDevelopment, chainableConfig, lang, isCssModule }) => {
     const testRegText = isCssModule ? `\\.module\\.${lang}$` : `\\.${lang}$`;
