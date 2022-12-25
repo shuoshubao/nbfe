@@ -47,6 +47,15 @@ export default [
     {
         input: 'lib/index.js',
         output: {
+            file: 'dist/index.esm.js',
+            format: 'esm',
+            banner: getBanner()
+        },
+        plugins
+    },
+    {
+        input: 'lib/index.js',
+        output: {
             globals: {
                 lodash: '_'
             },
