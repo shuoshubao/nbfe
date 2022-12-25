@@ -1,12 +1,15 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body {
-    font-size: 14px;
+    margin: 0;
 }
 
-.logo-png {
-    background-image: url('~@/assets/images/react.png');
-    background-repeat: no-repeat;
-}
-
-.logo-svg {
-    background-image: url('../images/react.svg');
+*,
+::after,
+::before {
+    box-sizing: border-box;
 }
