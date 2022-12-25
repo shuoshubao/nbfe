@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.19](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.18...@nbfe/tools@0.2.19) (2022-12-25)
+
+
+### Bug Fixes
+
+* 调整格式 ([42e276e](https://github.com/shuoshubao/nbfe/commit/42e276ee19c03ca23b3237318fb4d98ec72f8f8f))
+* **rollup:** @rollup/plugin-terser ([e69d5af](https://github.com/shuoshubao/nbfe/commit/e69d5af681dc4dd975a002e19b2dd1bfc05a998d))
+* **rollup:** umd globals ([29a5c08](https://github.com/shuoshubao/nbfe/commit/29a5c085caebf32de6e16e428809ef3534774f0c))
+
+
+### Features
+
+* **rollup:** esm ([1bffb22](https://github.com/shuoshubao/nbfe/commit/1bffb2249d47fb9b2d7e7dd2564a9a0eee342b45))
+
+
+
+
+
 ## [0.2.18](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.17...@nbfe/tools@0.2.18) (2022-11-28)
 
 

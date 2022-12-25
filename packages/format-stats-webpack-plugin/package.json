@@ -1,6 +1,6 @@
 {
   "name": "@nbfe/format-stats-webpack-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "webpack stats 分析",
   "author": "shuoshubao <759979885@qq.com>",
   "repository": {

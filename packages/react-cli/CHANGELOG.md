@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.3.4...@nbfe/react-cli@0.3.5) (2022-12-25)
+
+
+### Bug Fixes
+
+* 调整格式 ([42e276e](https://github.com/shuoshubao/nbfe/commit/42e276ee19c03ca23b3237318fb4d98ec72f8f8f))
+* remove node-polyfill-webpack-plugin ([282810b](https://github.com/shuoshubao/nbfe/commit/282810b8a30270287091fb356d322f33a4ea0db9))
+* sass scss 配置出错 ([9417f76](https://github.com/shuoshubao/nbfe/commit/9417f760b2a000851210f3d09055727d6442356a))
+
+
+
+
+
 ## [0.3.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.3.3...@nbfe/react-cli@0.3.4) (2022-11-30)
 
 

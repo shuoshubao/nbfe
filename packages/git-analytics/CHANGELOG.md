@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/git-analytics@0.1.4...@nbfe/git-analytics@0.1.5) (2022-12-25)
+
+
+### Bug Fixes
+
+* 调整格式 ([42e276e](https://github.com/shuoshubao/nbfe/commit/42e276ee19c03ca23b3237318fb4d98ec72f8f8f))
+
+
+
+
+
 ## [0.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/git-analytics@0.1.3...@nbfe/git-analytics@0.1.4) (2022-11-20)
 
 **Note:** Version bump only for package @nbfe/git-analytics

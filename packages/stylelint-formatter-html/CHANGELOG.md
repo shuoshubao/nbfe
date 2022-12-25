@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.7](https://github.com/shuoshubao/nbfe/compare/stylelint-formatters-html@1.0.6...stylelint-formatters-html@1.0.7) (2022-12-25)
+
+
+### Bug Fixes
+
+* 调整格式 ([42e276e](https://github.com/shuoshubao/nbfe/commit/42e276ee19c03ca23b3237318fb4d98ec72f8f8f))
+
+
+
+
+
 ## [1.0.6](https://github.com/shuoshubao/nbfe/compare/stylelint-formatters-html@1.0.5...stylelint-formatters-html@1.0.6) (2022-11-20)
 
 **Note:** Version bump only for package stylelint-formatters-html
