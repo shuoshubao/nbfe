@@ -3,7 +3,6 @@ import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
-import replace from '@rollup/plugin-replace';
 import pkg from './package.json';
 
 const createComment = data => {
@@ -48,20 +47,15 @@ export default [
     {
         input: 'lib/index.js',
         output: {
+            globals: {
+                lodash: '_'
+            },
             name: 'tools',
             file: 'dist/index.min.js',
             format: 'umd',
             banner: getBanner()
         },
         external: ['lodash'],
-        plugins: [
-            ...plugins,
-            nodeResolve(),
-            commonjs(),
-            replace({
-                'lodash.': '_.'
-            }),
-            terser()
-        ]
+        plugins: [...plugins, nodeResolve(), commonjs(), terser()]
     }
 ];
