@@ -1,4 +1,4 @@
-import { uniq, isNull, isUndefined, isFunction, isObject, isArray, flatten } from 'lodash';
+import { uniq, isNull, isUndefined, isFunction, isObject, isArray, flatten } from 'lodash'
 
 /**
  * 重复数组
@@ -20,8 +20,8 @@ import { uniq, isNull, isUndefined, isFunction, isObject, isArray, flatten } fro
  * // => false
  */
 export const isUniq = (arr = []) => {
-    return uniq(arr).length === arr.length;
-};
+  return uniq(arr).length === arr.length
+}
 
 /**
  * 空字符串
@@ -43,8 +43,8 @@ export const isUniq = (arr = []) => {
  * // => false
  */
 export const isEmptyString = value => {
-    return value === '';
-};
+  return value === ''
+}
 
 /**
  * 空值: null undefined ''
@@ -66,8 +66,8 @@ export const isEmptyString = value => {
  * // => false
  */
 export const isEmptyValue = value => {
-    return [isNull, isUndefined, isEmptyString].some(v => v(value));
-};
+  return [isNull, isUndefined, isEmptyString].some(v => v(value))
+}
 
 /**
  * Promise
@@ -85,8 +85,8 @@ export const isEmptyValue = value => {
  * // => false
  */
 export const isPromise = value => {
-    return isObject(value) && isFunction(value.then);
-};
+  return isObject(value) && isFunction(value.then)
+}
 
 /**
  * Blob
@@ -103,8 +103,8 @@ export const isPromise = value => {
  * // => false
  */
 export const isBlob = value => {
-    return Object.prototype.toString.call(value) === '[object Blob]';
-};
+  return Object.prototype.toString.call(value) === '[object Blob]'
+}
 
 /**
  * 空数组
@@ -126,8 +126,8 @@ export const isBlob = value => {
  * // => false
  */
 export const isEmptyArray = arr => {
-    return isArray(arr) && arr.length === 0;
-};
+  return isArray(arr) && arr.length === 0
+}
 
 /**
  * 空对象
@@ -149,8 +149,8 @@ export const isEmptyArray = arr => {
  * // => false
  */
 export const isEmptyObject = obj => {
-    return obj && isEmptyArray(Object.keys(obj));
-};
+  return obj && isEmptyArray(Object.keys(obj))
+}
 
 /**
  * 全真
@@ -174,8 +174,8 @@ export const isEmptyObject = obj => {
  * // true
  */
 export const isEveryTruthy = (...args) => {
-    return flatten(args).every(Boolean);
-};
+  return flatten(args).every(Boolean)
+}
 
 /**
  * 全假
@@ -197,8 +197,8 @@ export const isEveryTruthy = (...args) => {
  * // => false
  */
 export const isEveryFalsy = (...args) => {
-    return flatten(args).every(v => !v);
-};
+  return flatten(args).every(v => !v)
+}
 
 /**
  * 部分真
@@ -230,8 +230,8 @@ export const isEveryFalsy = (...args) => {
  * // => false
  */
 export const isSomeTruthy = (...args) => {
-    return flatten(args).some(Boolean);
-};
+  return flatten(args).some(Boolean)
+}
 
 /**
  * 部分假
@@ -253,5 +253,5 @@ export const isSomeTruthy = (...args) => {
  * // => false
  */
 export const isSomeFalsy = (...args) => {
-    return flatten(args).some(v => !v);
-};
+  return flatten(args).some(v => !v)
+}

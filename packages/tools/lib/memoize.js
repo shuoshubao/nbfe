@@ -1,4 +1,4 @@
-import { cloneDeep, isEqual } from 'lodash';
+import { cloneDeep, isEqual } from 'lodash'
 
 /**
  * memoize/cache
@@ -16,24 +16,24 @@ import { cloneDeep, isEqual } from 'lodash';
  * memoizedAdd(1, 2) // 3
  */
 export const memoize = fn => {
-    const caches = [];
-    const memoized = (...args) => {
-        const newArgs = cloneDeep(args);
-        const item = caches.find(v => {
-            return isEqual(v.args, newArgs);
-        });
-        if (item) {
-            return item.data;
-        }
-        const data = fn(...newArgs);
-        caches.unshift({
-            args: newArgs,
-            data
-        });
-        return data;
-    };
-    memoized.clear = () => {
-        caches.splice(0, Infinity);
-    };
-    return memoized;
-};
+  const caches = []
+  const memoized = (...args) => {
+    const newArgs = cloneDeep(args)
+    const item = caches.find(v => {
+      return isEqual(v.args, newArgs)
+    })
+    if (item) {
+      return item.data
+    }
+    const data = fn(...newArgs)
+    caches.unshift({
+      args: newArgs,
+      data
+    })
+    return data
+  }
+  memoized.clear = () => {
+    caches.splice(0, Infinity)
+  }
+  return memoized
+}

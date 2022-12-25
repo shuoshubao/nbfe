@@ -1,5 +1,5 @@
-import { flatten } from 'lodash';
-import { isEmptyValue } from './types';
+import { flatten } from 'lodash'
+import { isEmptyValue } from './types'
 
 /**
  * 只保留对象的部分属性(删除之外的属性)
@@ -16,12 +16,12 @@ import { isEmptyValue } from './types';
  *
  */
 export const reserveProperties = (data = {}, keys = []) => {
-    Object.keys(data)
-        .filter(v => !keys.includes(v))
-        .forEach(v => {
-            delete data[v];
-        });
-};
+  Object.keys(data)
+    .filter(v => !keys.includes(v))
+    .forEach(v => {
+      delete data[v]
+    })
+}
 
 /**
  * 批量删除属性
@@ -36,10 +36,10 @@ export const reserveProperties = (data = {}, keys = []) => {
  * // => { b: 2, c: 3 };
  */
 export const removeProperties = (data = {}, keys = []) => {
-    keys.forEach(v => {
-        delete data[v];
-    });
-};
+  keys.forEach(v => {
+    delete data[v]
+  })
+}
 
 /**
  * 批量删除属性值为空的属性
@@ -53,12 +53,12 @@ export const removeProperties = (data = {}, keys = []) => {
  * // => { b: 0, c: false, e: { a: 0 } };
  */
 export const removeEmptyProperties = (data = {}) => {
-    Object.entries(data).forEach(([k, v]) => {
-        if (isEmptyValue(v)) {
-            delete data[k];
-        }
-    });
-};
+  Object.entries(data).forEach(([k, v]) => {
+    if (isEmptyValue(v)) {
+      delete data[k]
+    }
+  })
+}
 
 /**
  * 产生一个值全为空的对象
@@ -76,11 +76,11 @@ export const removeEmptyProperties = (data = {}) => {
  * // => { a: null, b: null }
  */
 export const produceEmptyObject = (keys = [], emptyText = '') => {
-    return flatten(keys).reduce((prev, cur) => {
-        prev[cur] = emptyText;
-        return prev;
-    }, {});
-};
+  return flatten(keys).reduce((prev, cur) => {
+    prev[cur] = emptyText
+    return prev
+  }, {})
+}
 
 /**
  * 将数据中的空值替换为默认值
@@ -105,17 +105,17 @@ export const produceEmptyObject = (keys = [], emptyText = '') => {
  * // => { a: 1, b: -1, c: -1, d: ' ' }
  */
 export const formatEmptyToDefault = (data = {}, formater = {}) => {
-    Object.entries(data).forEach(([k, v]) => {
-        Object.entries(formater).forEach(([k2, v2]) => {
-            // eslint-disable-next-line sonarjs/no-collapsible-if
-            if (k2 === k) {
-                if (isEmptyValue(v)) {
-                    data[k] = v2;
-                }
-            }
-        });
-    });
-};
+  Object.entries(data).forEach(([k, v]) => {
+    Object.entries(formater).forEach(([k2, v2]) => {
+      // eslint-disable-next-line sonarjs/no-collapsible-if
+      if (k2 === k) {
+        if (isEmptyValue(v)) {
+          data[k] = v2
+        }
+      }
+    })
+  })
+}
 
 /**
  * 将 promise变成一个只有 resolved 态
@@ -127,19 +127,19 @@ export const formatEmptyToDefault = (data = {}, formater = {}) => {
  * // nothing
  */
 export const booleanPromise = (promise, params) => {
-    return new Promise(resolve => {
-        let tempPromise;
-        if (params) {
-            tempPromise = promise(params);
-        } else {
-            tempPromise = promise();
-        }
-        tempPromise
-            .then(() => {
-                resolve(true);
-            })
-            .catch(() => {
-                resolve(false);
-            });
-    });
-};
+  return new Promise(resolve => {
+    let tempPromise
+    if (params) {
+      tempPromise = promise(params)
+    } else {
+      tempPromise = promise()
+    }
+    tempPromise
+      .then(() => {
+        resolve(true)
+      })
+      .catch(() => {
+        resolve(false)
+      })
+  })
+}

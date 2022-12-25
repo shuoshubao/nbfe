@@ -1,24 +1,24 @@
-import { flatten } from 'lodash';
+import { flatten } from 'lodash'
 
 const getDecLength = num => {
-    const [, dec = ''] = String(num).split('.');
-    return dec.length;
-};
+  const [, dec = ''] = String(num).split('.')
+  return dec.length
+}
 
 const removeDot = num => {
-    return +String(num).replace('.', '');
-};
+  return +String(num).replace('.', '')
+}
 
 const mulTwo = (a, b) => {
-    const decAll = getDecLength(a) + getDecLength(b);
-    return (removeDot(a) * removeDot(b)) / 10 ** decAll;
-};
+  const decAll = getDecLength(a) + getDecLength(b)
+  return (removeDot(a) * removeDot(b)) / 10 ** decAll
+}
 
 const plusTwo = (a, b) => {
-    const decMax = Math.max(getDecLength(a), getDecLength(b));
-    const temp = 10 ** decMax;
-    return (mulTwo(a, temp) + mulTwo(b, temp)) / temp;
-};
+  const decMax = Math.max(getDecLength(a), getDecLength(b))
+  const temp = 10 ** decMax
+  return (mulTwo(a, temp) + mulTwo(b, temp)) / temp
+}
 
 /**
  * 浮点数计算-加法
@@ -41,10 +41,10 @@ const plusTwo = (a, b) => {
  * // => 0.3
  */
 export const plus = (...args) => {
-    return flatten(args).reduce((prev, cur) => {
-        return plusTwo(prev, cur);
-    }, 0);
-};
+  return flatten(args).reduce((prev, cur) => {
+    return plusTwo(prev, cur)
+  }, 0)
+}
 
 /**
  * 浮点数计算-减法
@@ -58,8 +58,8 @@ export const plus = (...args) => {
  * // => 0.2
  */
 export const minus = (a, b) => {
-    return plus(a, mulTwo(b, -1));
-};
+  return plus(a, mulTwo(b, -1))
+}
 
 /**
  * 浮点数计算-乘法
@@ -82,10 +82,10 @@ export const minus = (a, b) => {
  * // => 0.001
  */
 export const mul = (...args) => {
-    return flatten(args).reduce((prev, cur) => {
-        return mulTwo(prev, cur);
-    }, 1);
-};
+  return flatten(args).reduce((prev, cur) => {
+    return mulTwo(prev, cur)
+  }, 1)
+}
 
 /**
  * 浮点数计算-除法
@@ -99,12 +99,12 @@ export const mul = (...args) => {
  * // => 3
  */
 export const div = (a, b) => {
-    const decMax = Math.max(getDecLength(a), getDecLength(b));
-    const temp = 10 ** decMax;
-    return mulTwo(a, temp) / mulTwo(b, temp);
-};
+  const decMax = Math.max(getDecLength(a), getDecLength(b))
+  const temp = 10 ** decMax
+  return mulTwo(a, temp) / mulTwo(b, temp)
+}
 
-export { plus as add };
-export { minus as sub };
-export { mul as times };
-export { div as dividedBy };
+export { plus as add }
+export { minus as sub }
+export { mul as times }
+export { div as dividedBy }

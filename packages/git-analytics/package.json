@@ -1,12 +1,12 @@
 {
-    "name": "@nbfe/git-analytics",
-    "version": "0.1.4",
-    "description": "git 统计信息",
-    "author": "shuoshubao <759979885@qq.com>",
-    "repository": {
-        "url": "https://github.com/shuoshubao/nbfe",
-        "type": "git"
-    },
-    "license": "ISC",
-    "main": "index.js"
+  "name": "@nbfe/git-analytics",
+  "version": "0.1.4",
+  "description": "git 统计信息",
+  "author": "shuoshubao <759979885@qq.com>",
+  "repository": {
+    "url": "https://github.com/shuoshubao/nbfe",
+    "type": "git"
+  },
+  "license": "ISC",
+  "main": "index.js"
 }

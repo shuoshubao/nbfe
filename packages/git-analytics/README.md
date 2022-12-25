@@ -12,18 +12,18 @@ git log 统计信息
 
 获取项目的行数变化
 
--   后缀: js jsx ts tsx vue
--   ignore 目录: mock test tests
+- 后缀: js jsx ts tsx vue
+- ignore 目录: mock test tests
 
 ```js
-const { getCodeLines } = require('@nbfe/git-analytics');
+const { getCodeLines } = require('@nbfe/git-analytics')
 
 const lines = getCodeLines({
-    since: '2020-08-16', // 自从
-    until: '2021-04-23' // 直到
-});
+  since: '2020-08-16', // 自从
+  until: '2021-04-23' // 直到
+})
 
-console.log(lines);
+console.log(lines)
 
 /**
  * {

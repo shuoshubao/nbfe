@@ -1,12 +1,12 @@
 # Useage
 
--   mkdir your_project
--   cd your_project
--   yarn init -y
--   yarn add parce
--   npx parce init
--   npx parce dev
--   npx parce build
+- mkdir your_project
+- cd your_project
+- yarn init -y
+- yarn add parce
+- npx parce init
+- npx parce dev
+- npx parce build
 
 > parce -h
 
@@ -23,9 +23,9 @@
             └── index.vue
 ```
 
--   project.config.js 项目配置文件
--   src/common.js 项目公用文件
--   src/view/\*\*/index.vue 根据 `index.vue` 生成页面
+- project.config.js 项目配置文件
+- src/common.js 项目公用文件
+- src/view/\*\*/index.vue 根据 `index.vue` 生成页面
 
 # project.config.js
 
@@ -99,4 +99,4 @@ package-lock.json
 
 ### mark
 
--   npm publish --registry https://registry.npmjs.org
+- npm publish --registry https://registry.npmjs.org

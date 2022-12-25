@@ -1,4 +1,4 @@
-import { random } from 'lodash';
+import { random } from 'lodash'
 
 /**
  * 睡眠函数
@@ -16,10 +16,10 @@ import { random } from 'lodash';
  * // => 3秒后输出: 1
  */
 export const sleep = (time = -1) => {
-    const sleepTime = time < 0 ? random(2, 5) : time;
-    // eslint-disable-next-line no-promise-executor-return
-    return new Promise(resolve => setTimeout(resolve, sleepTime * 1e3));
-};
+  const sleepTime = time < 0 ? random(2, 5) : time
+  // eslint-disable-next-line no-promise-executor-return
+  return new Promise(resolve => setTimeout(resolve, sleepTime * 1e3))
+}
 
 /**
  * 模拟接口请求
@@ -32,9 +32,9 @@ export const sleep = (time = -1) => {
  * // => 1.5秒后输出: { a: 1 }
  */
 export const fakeFetch = (data = {}, time = -1) => {
-    return new Promise(resolve => {
-        sleep(time).then(() => {
-            resolve(data);
-        });
-    });
-};
+  return new Promise(resolve => {
+    sleep(time).then(() => {
+      resolve(data)
+    })
+  })
+}

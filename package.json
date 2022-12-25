@@ -1,63 +1,63 @@
 {
-    "name": "shuoshubao",
-    "version": "1.0.0",
-    "private": true,
-    "description": "技术项目合集",
-    "repository": {
-        "url": "https://github.com/shuoshubao/nbfe",
-        "type": "git"
-    },
-    "license": "ISC",
-    "scripts": {
-        "commit": "npx git-cz",
-        "version:patch": "npx lerna version patch --conventional-commits",
-        "version:minor": "npx lerna version minor --conventional-commits",
-        "version:major": "npx lerna version major --conventional-commits",
-        "release": "npx lerna publish from-package",
-        "prettier": "npx prettier --write",
-        "lint": "npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html",
-        "eslint": "npm run lint -- packages",
-        "eslint:fix": "npm run lint -- --fix packages",
-        "lint:style": "npx stylelint --fix -o StyleLintReport.html --aei --custom-formatter node_modules/stylelint-formatters-html **/*.{css,less,scss,sass}"
-    },
-    "dependencies": {
-        "@nbfe/standard": "^1.0.9",
-        "lerna": "^3.16.4",
-        "typescript": "^3.6.3"
-    },
-    "husky": {
-        "hooks": {
-            "commit-msg": "commitlint -e $GIT_PARAMS",
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "linters": {
-            "*.{ts,tsx,js,jsx,vue,css,less,scss,sass,json,md}": [
-                "prettier --write",
-                "git add"
-            ],
-            "*.{css,less,scss,sass}": [
-                "npx stylelint --fix",
-                "git add"
-            ],
-            "*.{ts,tsx,js,jsx,vue}": [
-                "eslint -f table",
-                "git add"
-            ]
-        },
-        "ignore": [
-            "CHANGELOG.md"
-        ]
-    },
-    "config": {
-        "commitizen": {
-            "path": "./node_modules/cz-conventional-changelog"
-        }
-    },
-    "commitlint": {
-        "extends": [
-            "@commitlint/config-conventional"
-        ]
+  "name": "shuoshubao",
+  "version": "1.0.0",
+  "private": true,
+  "description": "技术项目合集",
+  "repository": {
+    "url": "https://github.com/shuoshubao/nbfe",
+    "type": "git"
+  },
+  "license": "ISC",
+  "scripts": {
+    "commit": "npx git-cz",
+    "version:patch": "npx lerna version patch --conventional-commits",
+    "version:minor": "npx lerna version minor --conventional-commits",
+    "version:major": "npx lerna version major --conventional-commits",
+    "release": "npx lerna publish from-package",
+    "prettier": "npx prettier --write",
+    "lint": "npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html",
+    "eslint": "npm run lint -- packages",
+    "eslint:fix": "npm run lint -- --fix packages",
+    "lint:style": "npx stylelint --fix -o StyleLintReport.html --aei --custom-formatter node_modules/stylelint-formatters-html **/*.{css,less,scss,sass}"
+  },
+  "dependencies": {
+    "@nbfe/standard": "^1.0.9",
+    "lerna": "^3.16.4",
+    "typescript": "^3.6.3"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{ts,tsx,js,jsx,vue,css,less,scss,sass,json,md}": [
+        "prettier --write",
+        "git add"
+      ],
+      "*.{css,less,scss,sass}": [
+        "npx stylelint --fix",
+        "git add"
+      ],
+      "*.{ts,tsx,js,jsx,vue}": [
+        "eslint -f table",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "CHANGELOG.md"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
 }

@@ -9,10 +9,10 @@
 ## 使用
 
 ```javascript
-const getGitInfo = require('@nbfe/git-info');
-console.log(getGitInfo());
-console.log(getGitInfo('.'));
-console.log(getGitInfo('src/main.js'));
+const getGitInfo = require('@nbfe/git-info')
+console.log(getGitInfo())
+console.log(getGitInfo('.'))
+console.log(getGitInfo('src/main.js'))
 ```
 
 ## 返回

@@ -1,6 +1,6 @@
-import { flatten, isString, isNumber } from 'lodash';
-import { formatters } from './formatters';
-import { getCssText } from './dom';
+import { flatten, isString, isNumber } from 'lodash'
+import { formatters } from './formatters'
+import { getCssText } from './dom'
 
 /**
  * 百分比html
@@ -24,71 +24,71 @@ import { getCssText } from './dom';
  * // => '23%'
  */
 export const getPercentageHtml = (value, config = {}) => {
-    const {
-        emptyText = '--', // 空文本
-        reverse = false, // 颜色切换
-        disabled = false // 不使用颜色
-    } = config;
-    const tempValue = formatters.percentage(value);
-    const greenColor = '#00b365';
-    const redColor = '#f5483b';
-    if (value > 0) {
-        if (disabled) {
-            return tempValue;
-        }
-        return `<span style="color: ${reverse ? redColor : greenColor};">${tempValue}</span>`;
+  const {
+    emptyText = '--', // 空文本
+    reverse = false, // 颜色切换
+    disabled = false // 不使用颜色
+  } = config
+  const tempValue = formatters.percentage(value)
+  const greenColor = '#00b365'
+  const redColor = '#f5483b'
+  if (value > 0) {
+    if (disabled) {
+      return tempValue
     }
-    if (value < 0) {
-        if (disabled) {
-            return tempValue;
-        }
-        return `<span style="color: ${reverse ? greenColor : redColor};">${tempValue}</span>`;
+    return `<span style="color: ${reverse ? redColor : greenColor};">${tempValue}</span>`
+  }
+  if (value < 0) {
+    if (disabled) {
+      return tempValue
     }
-    if (value === 0) {
-        return tempValue;
-    }
-    return String(emptyText);
-};
+    return `<span style="color: ${reverse ? greenColor : redColor};">${tempValue}</span>`
+  }
+  if (value === 0) {
+    return tempValue
+  }
+  return String(emptyText)
+}
 
 // 自闭合标签
 const voidHtmlTags = [
-    'area',
-    'base',
-    'br',
-    'col',
-    'embed',
-    'hr',
-    'img',
-    'input',
-    'link',
-    'menuitem',
-    'meta',
-    'param',
-    'source',
-    'track',
-    'wbr'
-];
+  'area',
+  'base',
+  'br',
+  'col',
+  'embed',
+  'hr',
+  'img',
+  'input',
+  'link',
+  'menuitem',
+  'meta',
+  'param',
+  'source',
+  'track',
+  'wbr'
+]
 
 const attrKeyAlias = {
-    className: 'class'
-};
+  className: 'class'
+}
 
 const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
-    const attrsText = Object.entries(attrs || {})
-        .map(([k, v]) => {
-            const key = attrKeyAlias[k] || k;
-            if (key === 'style') {
-                return [key, `"${getCssText(v)}"`].join('=');
-            }
-            return [key, `"${v}"`].join('=');
-        })
-        .join(' ');
-    const tagNameStart = [tagName, attrsText].filter(Boolean).join(' ');
-    if (voidHtmlTags.includes(tagName)) {
-        return `<${tagNameStart} />`;
-    }
-    return `<${tagNameStart}>${text}</${tagName}>`;
-};
+  const attrsText = Object.entries(attrs || {})
+    .map(([k, v]) => {
+      const key = attrKeyAlias[k] || k
+      if (key === 'style') {
+        return [key, `"${getCssText(v)}"`].join('=')
+      }
+      return [key, `"${v}"`].join('=')
+    })
+    .join(' ')
+  const tagNameStart = [tagName, attrsText].filter(Boolean).join(' ')
+  if (voidHtmlTags.includes(tagName)) {
+    return `<${tagNameStart} />`
+  }
+  return `<${tagNameStart}>${text}</${tagName}>`
+}
 
 /**
  * createElement
@@ -101,22 +101,22 @@ const gernerateElementText = (tagName = '', attrs = {}, text = '') => {
  * createElement('div', { id: 'demo', className: 'demo' }, 'hello') // <div id="demo" className="demo">hello</div>
  */
 export const createElement = (type = '', props = {}, children = []) => {
-    if (isString(children) || isNumber(children)) {
-        return gernerateElementText(type, props, children);
-    }
-    return gernerateElementText(
-        type,
-        props,
-        children
-            .map(v => {
-                return createElement(...v);
-            })
-            .join('')
-    );
-};
+  if (isString(children) || isNumber(children)) {
+    return gernerateElementText(type, props, children)
+  }
+  return gernerateElementText(
+    type,
+    props,
+    children
+      .map(v => {
+        return createElement(...v)
+      })
+      .join('')
+  )
+}
 
 // 解析url: [文案|链接]
-const linkReg = /\[(.+?)\|(.+?)\]/g;
+const linkReg = /\[(.+?)\|(.+?)\]/g
 
 /**
  * 字符串转链接
@@ -133,28 +133,28 @@ const linkReg = /\[(.+?)\|(.+?)\]/g;
  * // => 'aa<a heref="cc.co" style="color: #fff; fontWeight: bold; textDecoration: underline">链接</a>bb'
  */
 export const getTooltipHtml = (str = '') => {
-    return flatten([str])
-        .filter(Boolean)
-        .map(String)
-        .map(v => {
-            return v.replace(/\\n/g, '<br>');
-        })
-        .map(v => {
-            return v.replace(linkReg, (...args) => {
-                const [, text, href] = args;
-                return gernerateElementText(
-                    'a',
-                    {
-                        href,
-                        target: '_blank',
-                        style: {
-                            color: '#fff',
-                            fontWeight: 'bold',
-                            textDecoration: 'underline'
-                        }
-                    },
-                    text
-                );
-            });
-        });
-};
+  return flatten([str])
+    .filter(Boolean)
+    .map(String)
+    .map(v => {
+      return v.replace(/\\n/g, '<br>')
+    })
+    .map(v => {
+      return v.replace(linkReg, (...args) => {
+        const [, text, href] = args
+        return gernerateElementText(
+          'a',
+          {
+            href,
+            target: '_blank',
+            style: {
+              color: '#fff',
+              fontWeight: 'bold',
+              textDecoration: 'underline'
+            }
+          },
+          text
+        )
+      })
+    })
+}

@@ -1,16 +1,16 @@
-const { log } = require('../../utils');
-const formatStats = require('./formatStats');
-const prepack = require('./prepack');
-const afterpack = require('./afterpack');
-const convertDefine = require('./convertDefine');
+const { log } = require('../../utils')
+const formatStats = require('./formatStats')
+const prepack = require('./prepack')
+const afterpack = require('./afterpack')
+const convertDefine = require('./convertDefine')
 
-const noop = () => {};
+const noop = () => {}
 
 module.exports = {
-    log,
-    noop,
-    formatStats,
-    prepack,
-    afterpack,
-    convertDefine
-};
+  log,
+  noop,
+  formatStats,
+  prepack,
+  afterpack,
+  convertDefine
+}

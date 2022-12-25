@@ -8,9 +8,9 @@
  * // => false
  */
 export const pifyValidate = validateFn => {
-    return new Promise(resolve => {
-        validateFn(valid => {
-            resolve(valid);
-        });
-    });
-};
+  return new Promise(resolve => {
+    validateFn(valid => {
+      resolve(valid)
+    })
+  })
+}

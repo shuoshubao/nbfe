@@ -1,28 +1,28 @@
 {
-    "name": "@nbfe/tinypng",
-    "version": "1.0.8",
-    "description": "封装 tinify",
-    "author": "shuoshubao <759979885@qq.com>",
-    "homepage": "https://github.com/shuoshubao/nbfe#readme",
-    "license": "ISC",
-    "main": "index.js",
-    "bin": {
-        "tinypng": "index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/shuoshubao/nbfe.git"
-    },
-    "scripts": {
-        "publish-beta": "npm publish --tag beta"
-    },
-    "dependencies": {
-        "async": "^3.2.0",
-        "chalk": "^4.0.0",
-        "glob": "^7.1.6",
-        "ora": "^4.0.4",
-        "progress": "^2.0.3",
-        "tinify": "^1.6.1",
-        "yargs": "^17.3.0"
-    }
+  "name": "@nbfe/tinypng",
+  "version": "1.0.8",
+  "description": "封装 tinify",
+  "author": "shuoshubao <759979885@qq.com>",
+  "homepage": "https://github.com/shuoshubao/nbfe#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "bin": {
+    "tinypng": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shuoshubao/nbfe.git"
+  },
+  "scripts": {
+    "publish-beta": "npm publish --tag beta"
+  },
+  "dependencies": {
+    "async": "^3.2.0",
+    "chalk": "^4.0.0",
+    "glob": "^7.1.6",
+    "ora": "^4.0.4",
+    "progress": "^2.0.3",
+    "tinify": "^1.6.1",
+    "yargs": "^17.3.0"
+  }
 }

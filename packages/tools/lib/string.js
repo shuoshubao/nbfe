@@ -1,4 +1,4 @@
-import { upperFirst, camelCase } from 'lodash';
+import { upperFirst, camelCase } from 'lodash'
 
 /**
  * trim 所有空白
@@ -10,8 +10,8 @@ import { upperFirst, camelCase } from 'lodash';
  * // => 'abc'
  */
 export const trimAll = (str = '') => {
-    return str.replace(/\s+/g, '');
-};
+  return str.replace(/\s+/g, '')
+}
 
 /**
  * 帕斯卡
@@ -43,5 +43,5 @@ export const trimAll = (str = '') => {
  * // => 'ABc'
  */
 export const pascalCase = (str = '') => {
-    return upperFirst(camelCase(str));
-};
+  return upperFirst(camelCase(str))
+}
