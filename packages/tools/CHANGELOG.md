@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.19...@nbfe/tools@0.3.0) (2022-12-25)
+
+
+### Features
+
+* module dist/index.esm.js ([594587a](https://github.com/shuoshubao/nbfe/commit/594587ae2f0d70a62d155b795b81d9ebf7d470f5))
+
+
+
+
+
 ## [0.2.19](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.18...@nbfe/tools@0.2.19) (2022-12-25)
 
 
