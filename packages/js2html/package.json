@@ -12,7 +12,8 @@
   "license": "MIT",
   "repository": {
     "url": "https://github.com/shuoshubao/nbfe",
-    "type": "git"
+    "type": "git",
+    "directory": "packages/js2html"
   },
   "scripts": {
     "build": "npx rollup -c",

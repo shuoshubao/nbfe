@@ -14,7 +14,8 @@
   ],
   "repository": {
     "url": "https://github.com/shuoshubao/nbfe",
-    "type": "git"
+    "type": "git",
+    "directory": "packages/react-cli"
   },
   "license": "ISC",
   "scripts": {

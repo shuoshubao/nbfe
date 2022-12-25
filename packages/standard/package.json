@@ -5,7 +5,8 @@
   "author": "shuoshubao <759979885@qq.com>",
   "repository": {
     "url": "https://github.com/shuoshubao/nbfe",
-    "type": "git"
+    "type": "git",
+    "directory": "packages/standard"
   },
   "license": "ISC",
   "main": "index.js",

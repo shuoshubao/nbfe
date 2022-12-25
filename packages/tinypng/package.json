@@ -11,7 +11,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shuoshubao/nbfe.git"
+    "url": "git+https://github.com/shuoshubao/nbfe.git",
+    "directory": "packages/tinypng"
   },
   "scripts": {
     "publish-beta": "npm publish --tag beta"
