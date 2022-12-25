@@ -13,6 +13,7 @@
     "dist"
   ],
   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "scripts": {
     "test": "npx ava --verbose",
     "test:watch": "npx ava --verbose --watch",
