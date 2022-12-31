@@ -56,10 +56,12 @@ const docText = generateDocument({
       content: 'width=device-width, initial-scale=1'
     }
   ],
-  link: {
-    'shortcut icon': '/static/favicon.ico',
-    'dns-prefetch': 'bala'
-  },
+  link: [
+    {
+      rel: 'shortcut icon',
+      href: '/favicon.ico'
+    }
+  ],
   headScript: [
     {
       src: 'bala.js',
