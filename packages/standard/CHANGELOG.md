@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.0.10...@nbfe/standard@1.1.0) (2023-01-02)
+
+**Note:** Version bump only for package @nbfe/standard
+
+
+
+
+
 ## [1.0.10](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.0.9...@nbfe/standard@1.0.10) (2022-12-25)
 
 **Note:** Version bump only for package @nbfe/standard

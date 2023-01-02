@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.8...@nbfe/js2html@1.2.0) (2023-01-02)
+
+
+### Bug Fixes
+
+* lodash; link array ([baf71be](https://github.com/shuoshubao/nbfe/commit/baf71be72c2763b8df31045cd5548cd1f8934c55))
+
+
+
+
+
 ## [1.1.8](https://github.com/shuoshubao/nbfe/compare/@nbfe/js2html@1.1.7...@nbfe/js2html@1.1.8) (2022-12-25)
 
 

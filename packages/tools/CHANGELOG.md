@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.3.0...@nbfe/tools@0.4.0) (2023-01-02)
+
+
+### Features
+
+* lodash-es ([20d1683](https://github.com/shuoshubao/nbfe/commit/20d168300b413c885d9fb7942b51495f15af6c5e))
+
+
+
+
+
 # [0.3.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.2.19...@nbfe/tools@0.3.0) (2022-12-25)
 
 
