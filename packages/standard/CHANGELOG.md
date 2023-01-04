@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.0...@nbfe/standard@1.1.1) (2023-01-04)
+
+
+### Features
+
+* 升级 eslint-formatter-html ([efb4da1](https://github.com/shuoshubao/nbfe/commit/efb4da1e733d3b826005ce21ed977faf5d4a720b))
+
+
+
+
+
 # [1.1.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.0.10...@nbfe/standard@1.1.0) (2023-01-02)
 
 **Note:** Version bump only for package @nbfe/standard
