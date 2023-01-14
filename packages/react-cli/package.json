@@ -67,7 +67,7 @@
     "thread-loader": "^3.0.4",
     "ts-loader": "^9.4.1",
     "webpack": "^5.75.0",
-    "webpack-bundle-analyzer": "^4.7.0",
+    "webpack-analyzer-plugin": "^0.1.7",
     "webpack-chain": "^6.5.1",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1",

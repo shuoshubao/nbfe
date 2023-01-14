@@ -1,7 +1,6 @@
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const dayjs = require('dayjs')
+const WebpackAnalyzerPlugin = require('webpack-analyzer-plugin')
 const HtmlWebpackAssetsPlugin = require('./HtmlWebpackAssetsPlugin')
 const { packConfig, MiniCssExtractPlugin, enableWebpackDll } = require('./config')
 const { injectDllReferencePlugins } = require('./dll-helper')
@@ -35,17 +34,7 @@ module.exports = (isDevelopment, chainableConfig) => {
     ])
   })
   if (!isDevelopment) {
-    chainableConfig.plugin('BundleAnalyzerPlugin').use(BundleAnalyzerPlugin, [
-      {
-        analyzerMode: 'static',
-        openAnalyzer: false,
-        logLevel: 'silent',
-        reportFilename: 'WebpackAnalyzerReport.html',
-        reportTitle: () => {
-          return ['WebpackAnalyzerReport', dayjs().format('YYYY-MM-DD HH:mm:ss')].join(': ')
-        }
-      }
-    ])
+    chainableConfig.plugin('WebpackAnalyzerPlugin').use(WebpackAnalyzerPlugin)
   }
   chainableConfig.plugin('WebpackManifestPlugin').use(WebpackManifestPlugin, [
     {
