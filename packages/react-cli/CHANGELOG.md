@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.3.5...@nbfe/react-cli@0.3.6) (2023-01-14)
+
+
+### Features
+
+* replace webpack-bundle-analyzer with webpack-analyzer-plugin ([9cf2362](https://github.com/shuoshubao/nbfe/commit/9cf23621dea6bad0f0e7d956cc45ac7764ea957e))
+
+
+
+
+
 ## [0.3.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.3.4...@nbfe/react-cli@0.3.5) (2022-12-25)
 
 
