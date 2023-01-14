@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@nbfe/standard": "^1.0.9",
-    "lerna": "^3.16.4",
+    "lerna": "^6.4.1",
     "typescript": "^3.6.3"
   },
   "husky": {
