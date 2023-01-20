@@ -8,6 +8,7 @@
     "type": "git",
     "directory": "packages/tools"
   },
+  "homepage": "https://shuoshubao.github.io/tools",
   "license": "ISC",
   "files": [
     "dist"
