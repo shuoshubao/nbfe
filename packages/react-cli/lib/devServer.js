@@ -1,3 +1,4 @@
+const cors = require('cors')
 const { packConfig } = require('./config')
 const { getDllDir } = require('./dll-helper')
 const mock = require('./mock')
@@ -22,18 +23,9 @@ module.exports = {
   ],
   setupMiddlewares: (middlewares, devServer) => {
     const { app } = devServer
+    app.use(cors())
     if (packConfig.enableMock) {
       mock(app)
-      app.use('*', (req, res, next) => {
-        res.header('Access-Control-Allow-Credentials', 'true')
-        res.header('Access-Control-Allow-Origin', '*')
-        res.header('Access-Control-Allow-Methods', 'GET,POST')
-        res.header(
-          'Access-Control-Allow-Headers',
-          'Origin,Accept,Content-Type,Content-Length, Authorization, Accept,X-Requested-With'
-        )
-        next()
-      })
     }
     return middlewares
   },
