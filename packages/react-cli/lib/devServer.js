@@ -20,7 +20,7 @@ module.exports = {
       watch: false
     }
   ],
-  onBeforeSetupMiddleware: devServer => {
+  setupMiddlewares: (middlewares, devServer) => {
     const { app } = devServer
     if (packConfig.enableMock) {
       mock(app)
@@ -35,6 +35,7 @@ module.exports = {
         next()
       })
     }
+    return middlewares
   },
   ...packConfig.devServer
 }
