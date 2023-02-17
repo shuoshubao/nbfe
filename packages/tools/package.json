@@ -19,7 +19,7 @@
     "test": "npx ava --verbose",
     "test:watch": "npx ava --verbose --watch",
     "coverage": "npx nyc ava",
-    "coverage:summary": "npx nyc --reporter=lcov --reporter=text-summary ava",
+    "coverage:summary": "npx nyc --reporter=istanbul-reporter-html --reporter=text-summary ava",
     "lodash-es": "cp dist/index.esm.js dist/index-es.js && npx replace lodash lodash-es dist/index-es.js",
     "build": "rm -rf dist && npx rollup -c && npm run lodash-es",
     "prepublishOnly": "npm run build"
@@ -41,6 +41,7 @@
     "ava": "^3.12.1",
     "browser-env": "^3.3.0",
     "esm": "^3.2.25",
+    "istanbul-reporter-html": "^0.3.0",
     "moment": "^2.27.0",
     "node-fetch": "^2.6.0",
     "nyc": "^15.1.0",
