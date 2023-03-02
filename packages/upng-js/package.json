@@ -1,0 +1,14 @@
+{
+  "name": "@nbfe/upng-js",
+  "version": "1.0.0",
+  "description": "A fork of upng-js",
+  "author": "shuoshubao <shuoshubao@gmail.com>",
+  "repository": {
+    "url": "https://github.com/shuoshubao/nbfe",
+    "type": "git",
+    "directory": "packages/upng-js"
+  },
+  "dependencies": {
+    "pako": "^2.1.0"
+  }
+}
