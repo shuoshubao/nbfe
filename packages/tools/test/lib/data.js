@@ -1,5 +1,18 @@
 import test from 'ava'
-import { formatEmptyToDefault } from '../../lib/data'
+import { arrayMove, formatEmptyToDefault } from '../../lib/data'
+
+test('arrayMove', async t => {
+  const { deepEqual } = t
+
+  const arr1 = [11, 22, 33, 44, 55, 66]
+  const arr11 = arrayMove(arr1, 0, 1)
+  deepEqual(arr1, [22, 11, 33, 44, 55, 66])
+  deepEqual(arr11, [22, 11, 33, 44, 55, 66])
+
+  const arr2 = [11, 22, 33, 44, 55, 66]
+  arrayMove(arr2, 0, -1)
+  deepEqual(arr2, [66, 22, 33, 44, 55, 11])
+})
 
 test('formatEmptyToDefault', async t => {
   const { deepEqual } = t

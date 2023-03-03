@@ -1,6 +1,39 @@
 import { flatten } from 'lodash'
 import { isEmptyValue } from './types'
 
+// 数组索引, 负数纠正为正数
+const getPositiveIndex = (index, length) => {
+  return index < 0 ? length + index : index
+}
+
+/**
+ * 数组交换位置
+ * @param  {Array}    arr         [数组]
+ * @param  {Number}   fromIndex   起始位置
+ * @param  {Number}   toIndex     结束位置
+ * @return {Array}                源数据被修改
+ * @example
+ *
+ * const arr1 = [11, 22, 33, 44, 55, 66]
+ * arrayMove(arr1, 0, 1)
+ * console.log(arr1)
+ *
+ * @example
+ *
+ * const arr2 = [11, 22, 33, 44, 55, 66]
+ * arrayMove(arr2, 0, -1)
+ * console.log(arr2)
+ */
+export const arrayMove = (arr, fromIndex, toIndex) => {
+  const { length } = arr
+  const start = getPositiveIndex(fromIndex, length)
+  const end = getPositiveIndex(toIndex, length)
+  const ref = [arr[start], arr[end]]
+  arr[start] = ref[1]
+  arr[end] = ref[0]
+  return arr
+}
+
 /**
  * 只保留对象的部分属性(删除之外的属性)
  * @param  {Object} [data] 数据源
