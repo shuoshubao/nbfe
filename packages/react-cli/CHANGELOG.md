@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.3.6...@nbfe/react-cli@0.3.7) (2023-03-03)
+
+
+### Bug Fixes
+
+* devServer onBeforeSetupMiddleware => setupMiddlewares ([72e0245](https://github.com/shuoshubao/nbfe/commit/72e024569d91b5dd16e2aa46d03df51a8ddec732))
+
+
+### Features
+
+* cors ([7487fd7](https://github.com/shuoshubao/nbfe/commit/7487fd71fbdf32d4328494fa561bf5c1373b6e32))
+* replace webpack-bundle-analyzer with webpack-analyzer-plugin ([b4e642f](https://github.com/shuoshubao/nbfe/commit/b4e642f8b066368b263f989f6693644250411306))
+* upgrade dependencies ([dfcce14](https://github.com/shuoshubao/nbfe/commit/dfcce14fa0c7a14f8d367a0656496dc64c30673e))
+
+
+
+
+
 ## [0.3.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.3.5...@nbfe/react-cli@0.3.6) (2023-01-14)
 
 

@@ -1,6 +1,19 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.4.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.4.0...@nbfe/tools@0.4.1) (2023-03-03)
+
+
+### Features
+
+* 新增 arrayMove; 数组交换位置 ([933b395](https://github.com/shuoshubao/nbfe/commit/933b395be4357dc0134e9a856a0aa92e4e1b8456))
+* add homepage ([97f71b5](https://github.com/shuoshubao/nbfe/commit/97f71b59f9bb97d743d4db2f46dd9be9bad43978))
+
+
+
+
 
 # [0.4.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/tools@0.3.0...@nbfe/tools@0.4.0) (2023-01-02)
 
