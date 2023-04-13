@@ -1,15 +1,18 @@
 const { basename, join } = require('path')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const { packConfig } = require('./config')
 
 module.exports = app => {
+  app.use(cors())
+
   app.use(bodyParser.json())
 
   app.use(async (req, res, next) => {
     let url = req.originalUrl
 
     if (url.includes('?')) {
-      ;[url] = url.split('?')
+      url = url.split('?')[0]
     }
 
     if (url === '/') {

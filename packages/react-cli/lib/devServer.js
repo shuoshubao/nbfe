@@ -1,4 +1,3 @@
-const cors = require('cors')
 const { packConfig } = require('./config')
 const { getDllDir } = require('./dll-helper')
 const mock = require('./mock')
@@ -23,7 +22,6 @@ module.exports = {
   ],
   setupMiddlewares: (middlewares, devServer) => {
     const { app } = devServer
-    app.use(cors())
     if (packConfig.enableMock) {
       mock(app)
     }
