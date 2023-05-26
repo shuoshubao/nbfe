@@ -28,24 +28,7 @@ module.exports = isDevelopment => {
           extractComments: false
         }),
         new CssMinimizerPlugin()
-      ],
-      splitChunks: {
-        chunks: 'initial',
-        minSize: 30000,
-        minChunks: 1,
-        maxAsyncRequests: 5,
-        maxInitialRequests: 3,
-        cacheGroups: {
-          default: false,
-          vendors: false,
-          common: {
-            name: 'common',
-            chunks: 'all',
-            minChunks: 3,
-            reuseExistingChunk: true
-          }
-        }
-      }
+      ]
     },
     module: {
       rules: [
