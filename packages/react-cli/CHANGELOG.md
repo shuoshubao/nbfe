@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.4.0...@nbfe/react-cli@0.4.1) (2023-05-26)
+
+
+### Features
+
+* splitChunks 留给用户自己配置吧 ([b68358e](https://github.com/shuoshubao/nbfe/commit/b68358e64bb390782f20304c71e10cf62cd9dad5))
+
+
+
+
+
 # [0.4.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.3.7...@nbfe/react-cli@0.4.0) (2023-05-26)
 
 
