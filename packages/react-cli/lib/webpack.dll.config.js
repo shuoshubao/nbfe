@@ -2,6 +2,7 @@ const { join } = require('path')
 const webpack = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const WebpackAnalyzerPlugin = require('webpack-analyzer-plugin')
 const { packConfig } = require('./config')
 const { getDllDir, manifestPluginGenerate } = require('./dll-helper')
@@ -44,6 +45,14 @@ module.exports = isDevelopment => {
   }
 
   if (!isDevelopment) {
+    webpackConfig.plugins.push(
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        openAnalyzer: false,
+        logLevel: 'silent',
+        reportFilename: 'WebpackAnalyzerReport.html'
+      })
+    )
     webpackConfig.plugins.push(new WebpackAnalyzerPlugin())
   }
   return webpackConfig
