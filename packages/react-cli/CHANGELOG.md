@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.3.7...@nbfe/react-cli@0.4.0) (2023-05-26)
+
+
+### Bug Fixes
+
+* cors mock ([2c81586](https://github.com/shuoshubao/nbfe/commit/2c815869599ff11fdbcaef1890c8819a7574f72d))
+
+
+### Features
+
+* 升级依赖 ([d6fe8ac](https://github.com/shuoshubao/nbfe/commit/d6fe8acf2a9ea16cf210af73ab623451a036c406))
+* 同时启用 webpack-bundle-analyzer ([ac014b3](https://github.com/shuoshubao/nbfe/commit/ac014b3b67585312c3834e16495a431e41eea305))
+
+
+
+
+
 ## [0.3.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.3.6...@nbfe/react-cli@0.3.7) (2023-03-03)
 
 
