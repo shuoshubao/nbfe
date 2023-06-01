@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.1...@nbfe/standard@1.1.2) (2023-06-01)
+
+
+### Features
+
+* 增加 postcss-less postcss-scss ([f6397f7](https://github.com/shuoshubao/nbfe/commit/f6397f70932e1cd0e3944b9f1d2612a054d694ee))
+
+
+
+
+
 ## [1.1.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.0...@nbfe/standard@1.1.1) (2023-01-04)
 
 
