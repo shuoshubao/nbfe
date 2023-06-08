@@ -20,6 +20,7 @@ module.exports = isDevelopment => {
       path: getDllDir(isDevelopment),
       library: libraryName
     },
+    devtool: isDevelopment ? 'eval-cheap-module-source-map' : false,
     optimization: {
       minimizer: [
         new TerserPlugin({
