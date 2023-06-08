@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.4.1...@nbfe/react-cli@0.4.2) (2023-06-08)
+
+
+### Bug Fixes
+
+* webpack dll 时也加上 devtool ([8a3d46a](https://github.com/shuoshubao/nbfe/commit/8a3d46a4f87e0c93dda39210ac60e925f9cee534))
+
+
+
+
+
 ## [0.4.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.4.0...@nbfe/react-cli@0.4.1) (2023-05-26)
 
 
