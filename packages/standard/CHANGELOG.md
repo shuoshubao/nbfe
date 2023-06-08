@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.2...@nbfe/standard@1.1.3) (2023-06-08)
+
+
+### Features
+
+* no-unused-vars @typescript-eslint/no-unused-vars 共存问题 ([19b44e3](https://github.com/shuoshubao/nbfe/commit/19b44e3732bfcccebc7079e7f9c57fac967a3f10))
+
+
+
+
+
 ## [1.1.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.1...@nbfe/standard@1.1.2) (2023-06-01)
 
 
