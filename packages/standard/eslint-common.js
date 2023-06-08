@@ -29,6 +29,22 @@ const EslintConfig = {
     mocha: true,
     jest: true
   },
+  overrides: [
+    {
+      files: ['*.js', '*.jsx'],
+      rules: {
+        'no-unused-vars': [2],
+        '@typescript-eslint/no-unused-vars': [0]
+      }
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'no-unused-vars': [0],
+        '@typescript-eslint/no-unused-vars': [2]
+      }
+    }
+  ],
   rules: {
     'prettier/prettier': [2, PrettierConfig, { usePrettierrc: false }],
     'max-len': [0], // 一行最大的代码量
