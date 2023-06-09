@@ -8,6 +8,7 @@ const { packConfig, enableWebpackDll } = require('./config')
 const { log, logObject, logSymbols, webpackStatsLog } = require('./utils')
 const { checkNeedUpdateDll } = require('./dll-helper')
 const devServer = require('./devServer')
+const createServer = require('./vite')
 const babelConfig = require('../babel.config')
 
 const webpackCompiler = webpackConfig => {
@@ -53,6 +54,10 @@ const getWebpackConfig = (isDevelopment = true) => {
 }
 
 const webpackServe = async () => {
+  if (packConfig.enableVite) {
+    createServer()
+    return
+  }
   try {
     await webpackBuildDll(true)
     console.time('[webpack serve]')
