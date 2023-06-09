@@ -1,4 +1,3 @@
-const { readFileSync } = require('fs')
 const { relative } = require('path')
 const { createServer } = require('vite')
 const react = require('@vitejs/plugin-react-swc')
@@ -46,9 +45,9 @@ const htmlPlugin = () => {
     name: 'html-transform',
     transformIndexHtml: {
       enforce: 'pre',
-      async transform() {
+      async transform(html) {
         return {
-          html: readFileSync(packConfig.template).toString(),
+          html,
           tags
         }
       }

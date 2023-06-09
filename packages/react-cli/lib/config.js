@@ -40,7 +40,7 @@ const defaultConfig = {
   srcPath: 'src',
   packConfigPath: 'react.config.js',
   rootPath,
-  template: 'public/index.html',
+  template: 'index.html',
   enableVite: true,
   publicPath: '/',
   outputDir: 'dist',
@@ -87,7 +87,7 @@ packConfig.packConfigPath = resolveRootPath(packConfig.packConfigPath)
 
 packConfig.template = resolveRootPath(packConfig.template)
 if (!existsSync(packConfig.template)) {
-  packConfig.template = resolve(__dirname, './index.html')
+  packConfig.template = resolve(__dirname, '../index.html')
 }
 
 packConfig.entry = Object.entries(packConfig.entry).reduce((prev, [k, v]) => {
