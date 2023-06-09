@@ -7,21 +7,47 @@ const babelConfig = require('../babel.config')
 
 const isMac = process.platform === 'darwin'
 
-const resolveRootPath = (to = '', from = process.cwd()) => {
-  return resolve(from, to)
+const ipAddress = ip.address()
+
+const rootPath = process.cwd()
+
+const resolveRootPath = (to = '') => {
+  return resolve(rootPath, to)
 }
 
-const ipAddress = ip.address()
+// 获取默认的 entry index
+const getDefaultIndexEntry = () => {
+  const indexJs = 'src/index.js'
+  const indexJsx = 'src/index.jsx'
+  const indexTs = 'src/index.ts'
+  const indexTsx = 'src/index.tsx'
+  if (existsSync(resolve(rootPath, indexJs))) {
+    return indexJs
+  }
+  if (existsSync(resolve(rootPath, indexJsx))) {
+    return indexJsx
+  }
+  if (existsSync(resolve(rootPath, indexTs))) {
+    return indexTs
+  }
+  if (existsSync(resolve(rootPath, indexTsx))) {
+    return indexTsx
+  }
+  return indexJs
+}
 
 const defaultConfig = {
   srcPath: 'src',
   packConfigPath: 'react.config.js',
-  rootPath: process.cwd(),
+  rootPath,
   template: 'public/index.html',
+  enableVite: true,
   publicPath: '/',
   outputDir: 'dist',
   manifestFileName: 'manifest.json',
-  entry: { index: 'src/index.js' },
+  entry: {
+    index: getDefaultIndexEntry()
+  },
   dllEntry: null,
   enableMock: true,
   alias: {},
