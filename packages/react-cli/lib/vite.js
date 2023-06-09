@@ -2,6 +2,7 @@ const { relative } = require('path')
 const { createServer } = require('vite')
 const react = require('@vitejs/plugin-react-swc')
 const { viteExternalsPlugin } = require('vite-plugin-externals')
+const { pick } = require('lodash')
 const { packConfig } = require('./config')
 const devServer = require('./devServer')
 
@@ -42,7 +43,7 @@ const tags = [
 
 const htmlPlugin = () => {
   return {
-    name: 'html-transform',
+    name: 'vite:html',
     transformIndexHtml: {
       enforce: 'pre',
       async transform(html) {
@@ -57,10 +58,7 @@ const htmlPlugin = () => {
 
 const viteConfig = {
   configFile: false,
-  server: {
-    port: devServer.port,
-    host: devServer.host
-  },
+  server: pick(devServer, 'port', 'host', 'proxy'),
   css: {
     preprocessorOptions: {
       less: {
