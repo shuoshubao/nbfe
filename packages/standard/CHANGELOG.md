@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.3...@nbfe/standard@1.1.4) (2023-06-09)
+
+
+### Features
+
+* selector-class-pattern css 选择器命名规则: kebab lowerCamelCase UpperCamelCase ([585623e](https://github.com/shuoshubao/nbfe/commit/585623e6c1a8f2f0414ae8c4ad4097167e9387b0))
+
+
+
+
+
 ## [1.1.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.2...@nbfe/standard@1.1.3) (2023-06-08)
 
 
