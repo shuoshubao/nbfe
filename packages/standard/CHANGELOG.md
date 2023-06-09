@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.4...@nbfe/standard@1.1.5) (2023-06-09)
+
+
+### Bug Fixes
+
+* selector-class-pattern 移除前后的斜杠 ([5b46951](https://github.com/shuoshubao/nbfe/commit/5b46951654e1f636bcc9aacb68468f77a3bda95a))
+
+
+
+
+
 ## [1.1.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.3...@nbfe/standard@1.1.4) (2023-06-09)
 
 
