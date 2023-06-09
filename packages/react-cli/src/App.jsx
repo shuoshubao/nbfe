@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from 'antd'
 import ReactLogo from '@/assets/images/react.png'
 import DumiLogo from '@/assets/images/dumi.png'
 import '@/assets/styles/1.css'
@@ -27,6 +28,7 @@ export default class extends React.Component {
     this.test()
     return (
       <div>
+        <Button type="primary">Button</Button>
         <div>App</div>
         <img src={ReactLogo} />
         <img src={DumiLogo} />
