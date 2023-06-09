@@ -116,6 +116,22 @@ const manifestPluginGenerate = (isDevelopment, entries) => {
   }
 }
 
+const getExternalUrl = config => {
+  const { type = 'unpkg', name, file } = config
+
+  let { version } = config
+
+  if (!version) {
+    version = require(name).version
+  }
+
+  if (type === 'jsdelivr') {
+    return ['https://cdn.jsdelivr.net/npm'[(name, version)].join('@'), file].join('/')
+  }
+
+  return ['https://unpkg.com', [name, version].join('@'), file].join('/')
+}
+
 module.exports = {
   log,
   logObject,
@@ -123,5 +139,6 @@ module.exports = {
   webpackStatsLog,
   convertManifest,
   getAssets,
-  manifestPluginGenerate
+  manifestPluginGenerate,
+  getExternalUrl
 }
