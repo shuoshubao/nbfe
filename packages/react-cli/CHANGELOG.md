@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.0...@nbfe/react-cli@1.0.1) (2023-06-09)
+
+
+### Features
+
+* 增加工具方法 getExternalUrl, 获取包的npm托管 url ([1f5e71b](https://github.com/shuoshubao/nbfe/commit/1f5e71bb25ea04f5c66fa22e61429a0395d21904))
+* index.html 默认放根目录吧; 移除 public/index.html 设定, 和 vite 保持一致的设计吧 ([f5eae85](https://github.com/shuoshubao/nbfe/commit/f5eae856b8a3a6c7ba54fec77cca51ccbe1e9418))
+
+
+
+
+
 # [1.0.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.4.2...@nbfe/react-cli@1.0.0) (2023-06-09)
 
 
