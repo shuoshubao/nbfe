@@ -3,9 +3,8 @@
 const { readFileSync } = require('fs')
 const { writeJsonSync, removeSync, copySync } = require('fs-extra')
 const { resolve, basename, relative } = require('path')
-const { get, merge, intersection } = require('lodash')
+const { merge } = require('lodash')
 const { sync: globSync } = require('glob')
-const { execSync } = require('child_process')
 const getGitInfo = require('@nbfe/git-info')
 
 const rootPath = process.cwd()
@@ -25,7 +24,7 @@ merge(pkg, {
     prettier: 'npx prettier --write',
     lint: 'npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html',
     'lint:style':
-      'npx stylelint --fix -o StyleLintReport.html --aei --custom-formatter node_modules/stylelint-formatters-html **/*.{css,less,scss,sass}'
+      'npx stylelint --fix -o StyleLintReport.html --custom-formatter node_modules/stylelint-formatters-html **/*.{css,less,scss,sass}'
   },
   husky: {
     hooks: {
@@ -89,27 +88,3 @@ const getPkgSpaces = () => {
   return firstRow.slice(0, firstRow.indexOf('"'))
 }
 writeJsonSync(pkgPath, pkg, { spaces: getPkgSpaces() })
-
-// 清理重复的包, 避免重复安装
-;(() => {
-  const { dependencies } = require('./package.json')
-  try {
-    // eslint-disable-next-line import/no-extraneous-dependencies
-    const pkgConfig = require('@nbfe/standard/package.json')
-    Object.assign(dependencies, get(pkgConfig, 'dependencies', {}))
-  } catch (e) {}
-  const projectDependencies = { ...get(pkg, 'dependencies', {}), ...get(pkg, 'devDependencies', {}) }
-  const intersectionDependencies = intersection(Object.keys(dependencies), Object.keys(projectDependencies))
-  if (!intersectionDependencies.length) {
-    return
-  }
-  const execSyncList = list => {
-    list.forEach(v => {
-      console.log('开始执行: ', v)
-      execSync(v)
-    })
-  }
-  const execUninstall = ['npm un', ...intersectionDependencies].join(' ')
-  execSyncList([execUninstall])
-  console.log('执行完毕!')
-})()

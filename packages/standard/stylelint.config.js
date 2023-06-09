@@ -24,6 +24,6 @@ module.exports = {
     'unit-no-unknown': null,
     'prettier/prettier': true,
     'font-family-no-missing-generic-family-keyword': null,
-    'selector-class-pattern': '/^[a-zA-Z][-a-zA-Z0-9]+$/'
+    'selector-class-pattern': '^[a-zA-Z][-a-zA-Z0-9]+$'
   }
 }
