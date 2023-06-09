@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.4.2...@nbfe/react-cli@1.0.0) (2023-06-09)
+
+
+### Features
+
+* 启动时默认使用vite, 可配置enableVite启用/关闭 ([03c1181](https://github.com/shuoshubao/nbfe/commit/03c118139b6437d97cb050f18cfbbd7235eac2bb))
+* 自动获取 entry.index src/index ([9e3af8a](https://github.com/shuoshubao/nbfe/commit/9e3af8a519f069a519b77116df12fe160e4e1b06))
+
+
+
+
+
 ## [0.4.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.4.1...@nbfe/react-cli@0.4.2) (2023-06-08)
 
 
