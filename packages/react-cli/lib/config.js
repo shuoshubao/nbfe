@@ -117,6 +117,7 @@ packConfig.outputDir = resolveRootPath(packConfig.outputDir)
 const enableWebpackDll = Object.keys(packConfig.dllEntry || {}).length !== 0
 
 module.exports = {
+  ipAddress,
   isMac,
   packConfig,
   MiniCssExtractPlugin,
