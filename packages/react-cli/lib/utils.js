@@ -1,30 +1,12 @@
 /* eslint-disable no-console */
 
 const { extname } = require('path')
-const util = require('util')
 const { sortBy, flatten } = require('lodash')
 const dayjs = require('dayjs')
 const filesize = require('filesize')
-const chalk = require('chalk')
 const { enableWebpackDll, packConfig } = require('./config')
 const { getDllManifestPath } = require('./dll-helper')
-
-// 打印带颜色的信息
-const log = (str, color) => {
-  console.log(color ? chalk[color](str) : str)
-}
-
-// 打印对象
-const logObject = obj => {
-  console.log(util.inspect(obj, { showHidden: false, depth: null }))
-}
-
-const logSymbols = {
-  info: 'ℹ️',
-  success: '✅',
-  warning: '⚠️',
-  error: '❌️'
-}
+const { log } = require('./helpers')
 
 // webpack 打包信息输出
 const webpackStatsLog = (webpackConfig, err, stats) => {
@@ -116,29 +98,9 @@ const manifestPluginGenerate = (isDevelopment, entries) => {
   }
 }
 
-const getExternalUrl = config => {
-  const { type = 'unpkg', name, file } = config
-
-  let { version } = config
-
-  if (!version) {
-    version = require(name).version
-  }
-
-  if (type === 'jsdelivr') {
-    return ['https://cdn.jsdelivr.net/npm'[(name, version)].join('@'), file].join('/')
-  }
-
-  return ['https://unpkg.com', [name, version].join('@'), file].join('/')
-}
-
 module.exports = {
-  log,
-  logObject,
-  logSymbols,
   webpackStatsLog,
   convertManifest,
   getAssets,
-  manifestPluginGenerate,
-  getExternalUrl
+  manifestPluginGenerate
 }
