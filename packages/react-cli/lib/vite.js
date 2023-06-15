@@ -3,6 +3,7 @@ const { createServer } = require('vite')
 const { version: VITE_VERSION } = require('vite/package.json')
 const react = require('@vitejs/plugin-react-swc')
 const { viteExternalsPlugin } = require('vite-plugin-externals')
+const { default: svgr } = require('vite-plugin-svgr')
 const { pick } = require('lodash')
 const colors = require('picocolors')
 const { performance } = require('perf_hooks')
@@ -74,7 +75,14 @@ const viteConfig = {
     alias
   },
   define: getDefineData(define),
-  plugins: [react(), externals && viteExternalsPlugin(externals), htmlPlugin()].filter(Boolean)
+  plugins: [
+    react(),
+    svgr({
+      exportAsDefault: true
+    }),
+    externals && viteExternalsPlugin(externals),
+    htmlPlugin()
+  ].filter(Boolean)
 }
 
 module.exports = async () => {

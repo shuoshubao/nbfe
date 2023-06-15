@@ -1,6 +1,5 @@
 const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const miniSVGDataURI = require('mini-svg-data-uri')
 const { isMac, packConfig } = require('./config')
 const devServer = require('./devServer')
 
@@ -45,21 +44,15 @@ module.exports = isDevelopment => {
           }
         },
         {
-          test: /\.svg$/i,
-          type: 'asset',
-          generator: {
-            dataUrl(content) {
-              return miniSVGDataURI(content.toString())
+          test: /\.svg$/,
+          use: [
+            {
+              loader: '@svgr/webpack'
             }
-          },
-          parser: {
-            dataUrlCondition: {
-              maxSize: assetsMaxSize
-            }
-          }
+          ]
         },
         {
-          test: /\.(otf|eot|woff2?|ttf|svg)$/i,
+          test: /\.(otf|eot|woff2?|ttf)$/i,
           type: 'asset',
           generator: {
             filename: 'assets/fonts/[name].[hash][ext]'
