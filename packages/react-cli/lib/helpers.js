@@ -2,10 +2,23 @@
  * @Author: shuoshubao
  * @Date:   2023-06-13 19:39:57
  * @Last Modified by:   shuoshubao
- * @Last Modified time: 2023-06-13 19:45:43
+ * @Last Modified time: 2023-06-13 20:10:39
  */
 const util = require('util')
+const { format } = require('url')
 const chalk = require('chalk')
+const ip = require('ip')
+
+const ipAddress = ip.address()
+
+const getNetworkUrl = devServer => {
+  return format({
+    protocol: 'http',
+    hostname: ipAddress,
+    port: devServer.port,
+    pathname: '/'
+  })
+}
 
 // 打印带颜色的信息
 const log = (str, color) => {
@@ -42,9 +55,20 @@ const getExternalUrl = config => {
   return ['https://unpkg.com', [name, version].join('@'), file].join('/')
 }
 
+const getDefineData = define => {
+  return Object.entries(define || {}).reduce((prev, [k, v]) => {
+    const key = ['process.env', k].join('.')
+    prev[key] = JSON.stringify(v)
+    return prev
+  }, {})
+}
+
 module.exports = {
+  ipAddress,
+  getNetworkUrl,
   log,
   logObject,
   logSymbols,
-  getExternalUrl
+  getExternalUrl,
+  getDefineData
 }

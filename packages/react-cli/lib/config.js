@@ -1,13 +1,11 @@
 const { existsSync } = require('fs')
 const { resolve } = require('path')
-const ip = require('ip')
 const { cloneDeep, noop, flatten, merge } = require('lodash')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { ipAddress } = require('./helpers')
 const babelConfig = require('../babel.config')
 
 const isMac = process.platform === 'darwin'
-
-const ipAddress = ip.address()
 
 const rootPath = process.cwd()
 
@@ -52,6 +50,7 @@ const defaultConfig = {
   enableMock: true,
   alias: {},
   devServer: {},
+  define: {},
   // external 所需的cdn资源, 或者其他需要预先加载的 css js 资源
   assets: {
     css: [],
@@ -117,7 +116,6 @@ packConfig.outputDir = resolveRootPath(packConfig.outputDir)
 const enableWebpackDll = Object.keys(packConfig.dllEntry || {}).length !== 0
 
 module.exports = {
-  ipAddress,
   isMac,
   packConfig,
   MiniCssExtractPlugin,

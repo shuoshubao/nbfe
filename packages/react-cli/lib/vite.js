@@ -1,5 +1,4 @@
 const { relative } = require('path')
-const { format } = require('url')
 const { createServer } = require('vite')
 const { version: VITE_VERSION } = require('vite/package.json')
 const react = require('@vitejs/plugin-react-swc')
@@ -7,10 +6,11 @@ const { viteExternalsPlugin } = require('vite-plugin-externals')
 const { pick } = require('lodash')
 const colors = require('picocolors')
 const { performance } = require('perf_hooks')
-const { ipAddress, packConfig } = require('./config')
+const { packConfig } = require('./config')
+const { getNetworkUrl, getDefineData } = require('./helpers')
 const devServer = require('./devServer')
 
-const { rootPath, entry, alias, assets, configureWebpack } = packConfig
+const { rootPath, entry, alias, assets, configureWebpack, define } = packConfig
 const { externals } = configureWebpack
 
 const tags = [
@@ -73,6 +73,7 @@ const viteConfig = {
   resolve: {
     alias
   },
+  define: getDefineData(define),
   plugins: [react(), externals && viteExternalsPlugin(externals), htmlPlugin()].filter(Boolean)
 }
 
@@ -88,18 +89,13 @@ module.exports = async () => {
     `ready in ${colors.reset(colors.bold(Math.ceil(performance.now() - viteStartTime)))} ms`
   )
 
-  info(`  ${colors.green(`${colors.bold('VITE')} v${VITE_VERSION}`)}  ${startupDurationString}`, {
+  const viteVersionString = `${colors.bold('VITE')} v${VITE_VERSION}`
+
+  info(`  ${colors.green(viteVersionString)}  ${startupDurationString}`, {
     clear: !server.config.logger.hasWarned
   })
 
   server.printUrls()
 
-  const url = format({
-    protocol: 'http',
-    hostname: ipAddress,
-    port: devServer.port,
-    pathname: '/'
-  })
-
-  info(`  ${colors.green('➜')}  ${colors.bold('Network')}: ${url}`)
+  info(`  ${colors.green('➜')}  ${colors.bold('Network')}: ${getNetworkUrl(devServer)}`)
 }
