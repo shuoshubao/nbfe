@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.2...@nbfe/react-cli@1.0.3) (2023-06-15)
+
+
+### Features
+
+* @svgr/webpack vite-plugin-svgr svg; 不再转base64 ([353ad5c](https://github.com/shuoshubao/nbfe/commit/353ad5ca72236253cf8774410ebb047fa072ca45))
+
+
+
+
+
 ## [1.0.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.1...@nbfe/react-cli@1.0.2) (2023-06-15)
 
 
