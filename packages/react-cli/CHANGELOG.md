@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.1...@nbfe/react-cli@1.0.2) (2023-06-15)
+
+
+### Features
+
+* 透传 devServer port host proxy ([62a051f](https://github.com/shuoshubao/nbfe/commit/62a051fc1b58b18183950298e74f626170734597))
+* 新增配置 define, webpack.DefinePlugin, 直接挂到 process.env 上 ([7346fc0](https://github.com/shuoshubao/nbfe/commit/7346fc0f58042c39c8916c63ebdccd1141a74d80))
+* 增加helpers文件, 暴露工具方法 ([4d9cc4d](https://github.com/shuoshubao/nbfe/commit/4d9cc4d75564ffab9a2b4bfa172bfaa9b24f25f6))
+* vite 输出版本号,启动时间,ip address ([7460a12](https://github.com/shuoshubao/nbfe/commit/7460a12483ab0de10dd3b2959c3d70eca791fdac))
+
+
+
+
+
 ## [1.0.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.0...@nbfe/react-cli@1.0.1) (2023-06-09)
 
 
