@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.4...@nbfe/react-cli@1.0.5) (2023-06-20)
+
+
+### Bug Fixes
+
+* alias 可传入绝对路径, 如果目标位置不存在则不处理 ([b17386e](https://github.com/shuoshubao/nbfe/commit/b17386e5abeed43ad7ba5568db580a6576717688))
+
+
+
+
+
 ## [1.0.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.3...@nbfe/react-cli@1.0.4) (2023-06-19)
 
 **Note:** Version bump only for package @nbfe/react-cli
