@@ -1,5 +1,5 @@
 const { existsSync } = require('fs')
-const { resolve } = require('path')
+const { resolve, isAbsolute } = require('path')
 const { cloneDeep, noop, flatten, merge } = require('lodash')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { ipAddress } = require('./helpers')
@@ -10,6 +10,9 @@ const isMac = process.platform === 'darwin'
 const rootPath = process.cwd()
 
 const resolveRootPath = (to = '') => {
+  if (isAbsolute(to)) {
+    return to
+  }
   return resolve(rootPath, to)
 }
 
@@ -103,7 +106,9 @@ packConfig.entry = Object.entries(packConfig.entry).reduce((prev, [k, v]) => {
 
 packConfig.alias = Object.entries(packConfig.alias).reduce(
   (prev, [k, v]) => {
-    prev[k] = resolveRootPath(v)
+    if (existsSync(resolveRootPath(v))) {
+      prev[k] = resolveRootPath(v)
+    }
     return prev
   },
   {
