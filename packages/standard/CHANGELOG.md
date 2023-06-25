@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.6...@nbfe/standard@1.2.0) (2023-06-25)
+
+
+### Bug Fixes
+
+* lint-staged 配置更新 ([fcba30a](https://github.com/shuoshubao/nbfe/commit/fcba30a6ec412b73546c2b6ead5d4f605536e5ad))
+
+
+### Features
+
+* commander: init prettier eslint ([41605bb](https://github.com/shuoshubao/nbfe/commit/41605bb5a7b1ffeb983cb3f2598e8d425c463e6c))
+
+
+
+
+
 ## [1.1.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.5...@nbfe/standard@1.1.6) (2023-06-25)
 
 
