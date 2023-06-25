@@ -22,12 +22,9 @@ merge(pkg, {
       'npx stylelint --fix -o StyleLintReport.html --custom-formatter node_modules/stylelint-formatters-html **/*.{css,less,scss,sass}'
   },
   'lint-staged': {
-    linters: {
-      '*.{ts,tsx,js,jsx,vue,css,less,scss,sass,json,md}': ['prettier --write', 'git add'],
-      '*.{css,less,scss,sass}': ['npx stylelint --fix', 'git add'],
-      '*.{ts,tsx,js,jsx,vue}': ['eslint -f table', 'git add']
-    },
-    ignore: ['CHANGELOG.md']
+    '*.{ts,tsx,js,jsx,vue,css,less,scss,sass,json,md}': ['prettier --write', 'git add'],
+    '*.{css,less,scss,sass}': ['npx stylelint --fix', 'git add'],
+    '*.{ts,tsx,js,jsx,vue}': ['eslint -f table', 'git add']
   },
   config: {
     commitizen: {
@@ -38,9 +35,6 @@ merge(pkg, {
     extends: ['@commitlint/config-conventional']
   }
 })
-
-// 删除多余的钩子
-delete pkg.scripts.precommit
 
 // 删除 eslint 其他配置文件
 removeSync(resolve(rootPath, '.eslintrc.json'))
@@ -77,3 +71,9 @@ const getPkgSpaces = () => {
   return firstRow.slice(0, firstRow.indexOf('"'))
 }
 writeJsonSync(pkgPath, pkg, { spaces: getPkgSpaces() })
+
+console.log('// 删除之前的钩子')
+console.log('rm -rf .git/hooks', '\n')
+
+console.log('husky 权限问题')
+console.log('chmod ug+x .husky/*', '\n')
