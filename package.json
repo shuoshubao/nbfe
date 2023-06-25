@@ -27,22 +27,17 @@
     "typescript": "^3.6.3"
   },
   "lint-staged": {
-    "linters": {
-      "*.{ts,tsx,js,jsx,vue,css,less,scss,sass,json,md}": [
-        "prettier --write",
-        "git add"
-      ],
-      "*.{css,less,scss,sass}": [
-        "npx stylelint --fix",
-        "git add"
-      ],
-      "*.{ts,tsx,js,jsx,vue}": [
-        "eslint -f table",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "CHANGELOG.md"
+    "*.{ts,tsx,js,jsx,vue,css,less,scss,sass,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{css,less,scss,sass}": [
+      "npx stylelint --fix",
+      "git add"
+    ],
+    "*.{ts,tsx,js,jsx,vue}": [
+      "eslint -f table",
+      "git add"
     ]
   },
   "config": {
