@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.5...@nbfe/standard@1.1.6) (2023-06-25)
+
+
+### Features
+
+* 去掉 @nbfe/git-info ([f5e349c](https://github.com/shuoshubao/nbfe/commit/f5e349c754ebba021bbad820e83de1dcc0862217))
+* 升级 husky lint-staged ([adc08ab](https://github.com/shuoshubao/nbfe/commit/adc08abbcf39c0c0afa644fb9fc64b86824124b7))
+
+
+
+
+
 ## [1.1.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.4...@nbfe/standard@1.1.5) (2023-06-09)
 
 
