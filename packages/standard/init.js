@@ -2,21 +2,15 @@
 
 const { readFileSync } = require('fs')
 const { writeJsonSync, removeSync, copySync } = require('fs-extra')
-const { resolve, basename, relative } = require('path')
+const { resolve, basename } = require('path')
 const { merge } = require('lodash')
 const { sync: globSync } = require('glob')
-const getGitInfo = require('@nbfe/git-info')
 
 const rootPath = process.cwd()
+
 const pkgPath = resolve(rootPath, 'package.json')
 
 const pkg = require(pkgPath)
-
-const gitInfo = getGitInfo(rootPath)
-
-const commitizenPath = ['.', relative(gitInfo.projectPath, rootPath), 'node_modules/cz-conventional-changelog']
-  .filter(Boolean)
-  .join('/')
 
 merge(pkg, {
   scripts: {
@@ -37,7 +31,7 @@ merge(pkg, {
   },
   config: {
     commitizen: {
-      path: commitizenPath
+      path: 'cz-conventional-changelog'
     }
   },
   commitlint: {

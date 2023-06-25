@@ -10,6 +10,9 @@
   },
   "license": "ISC",
   "main": "index.js",
+  "bin": {
+    "standard": "bin.js"
+  },
   "keywords": [
     "standard",
     "engineering",
@@ -34,7 +37,6 @@
     "@babel/eslint-parser": "^7.19.1",
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
-    "@nbfe/git-info": "^0.1.3",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "commitizen": "^4.2.5",
