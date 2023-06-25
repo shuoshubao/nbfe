@@ -20,17 +20,12 @@ const commitizenPath = ['.', relative(gitInfo.projectPath, rootPath), 'node_modu
 
 merge(pkg, {
   scripts: {
+    prepare: 'husky install',
     commit: 'npx git-cz',
     prettier: 'npx prettier --write',
     lint: 'npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html',
     'lint:style':
       'npx stylelint --fix -o StyleLintReport.html --custom-formatter node_modules/stylelint-formatters-html **/*.{css,less,scss,sass}'
-  },
-  husky: {
-    hooks: {
-      'commit-msg': 'commitlint -e $GIT_PARAMS',
-      'pre-commit': 'lint-staged'
-    }
   },
   'lint-staged': {
     linters: {
