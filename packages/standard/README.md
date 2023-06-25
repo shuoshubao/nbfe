@@ -9,7 +9,7 @@ npm i -D @nbfe/standard
 # init
 
 ```shell
-node node_modules/@nbfe/standard/init
+npx standard init
 ```
 
 // package.json
