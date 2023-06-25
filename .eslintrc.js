@@ -1,3 +1,3 @@
-const { getESLintConfig } = require('@nbfe/standard');
+const { getESLintConfig } = require('@nbfe/standard')
 
-module.exports = getESLintConfig(['react']);
+module.exports = getESLintConfig(['react'])

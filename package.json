@@ -9,6 +9,7 @@
   },
   "license": "ISC",
   "scripts": {
+    "prepare": "husky install",
     "commit": "npx git-cz",
     "version:patch": "npx lerna version patch --conventional-commits",
     "version:minor": "npx lerna version minor --conventional-commits",
@@ -18,18 +19,12 @@
     "lint": "npx eslint --ext .ts,.tsx,.js,.jsx,.vue -f html -o ESLintReport.html",
     "eslint": "npm run lint -- packages",
     "eslint:fix": "npm run lint -- --fix packages",
-    "lint:style": "npx stylelint --fix -o StyleLintReport.html --aei --custom-formatter node_modules/stylelint-formatters-html **/*.{css,less,scss,sass}"
+    "lint:style": "npx stylelint --fix -o StyleLintReport.html --custom-formatter node_modules/stylelint-formatters-html **/*.{css,less,scss,sass}"
   },
   "dependencies": {
-    "@nbfe/standard": "^1.0.9",
+    "@nbfe/standard": "^1.1.6",
     "lerna": "^6.4.1",
     "typescript": "^3.6.3"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "linters": {
@@ -52,7 +47,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "cz-conventional-changelog"
     }
   },
   "commitlint": {
