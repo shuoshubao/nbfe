@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.2.2...@nbfe/standard@1.2.3) (2023-06-26)
+
+
+### Bug Fixes
+
+* prettierConfig 合并 ([78cb69b](https://github.com/shuoshubao/nbfe/commit/78cb69ba0bd7f2ca43b5deed657f28cf7bce6015))
+
+
+
+
+
 ## [1.2.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.2.1...@nbfe/standard@1.2.2) (2023-06-26)
 
 
