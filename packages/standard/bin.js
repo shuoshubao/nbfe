@@ -86,11 +86,6 @@ const init = () => {
 
 const program = new Command()
 
-// program
-//   .option('--init', '初始化')
-//   .option('--prettier', 'prettier')
-//   .option('--eslint', 'eslint')
-
 program
   .command('init')
   .description('初始化')
@@ -140,9 +135,11 @@ program
 
     const results = await eslint.lintFiles(files)
 
-    const formatter = await eslint.loadFormatter('html')
+    const rulesMeta = eslint.getRulesMetaForResults(results)
 
-    const resultText = formatter.format(results)
+    const htmlFormatter = require('eslint-formatter-html')
+
+    const resultText = htmlFormatter(results, { cwd: rootPath, rulesMeta })
 
     writeFileSync(resolve(rootPath, 'ESLintReport.html'), resultText)
   })
