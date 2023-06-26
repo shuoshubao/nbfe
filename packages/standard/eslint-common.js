@@ -1,11 +1,12 @@
 const { existsSync } = require('fs')
 const { resolve } = require('path')
+const PresetPrettierConfig = require('./prettier.config')
 
 const LocalPrettierConfigPath = resolve(process.cwd(), './prettier.config.js')
-const PresetPrettierConfigPath = './prettier.config'
-const PrettierConfigPath = existsSync(LocalPrettierConfigPath) ? LocalPrettierConfigPath : PresetPrettierConfigPath
 
-const PrettierConfig = require(PrettierConfigPath)
+const LocalPrettierConfig = existsSync(LocalPrettierConfigPath) ? require(LocalPrettierConfigPath) : {}
+
+const PrettierConfig = { ...PresetPrettierConfig, ...LocalPrettierConfig }
 
 const EslintConfig = {
   parser: '@babel/eslint-parser',
