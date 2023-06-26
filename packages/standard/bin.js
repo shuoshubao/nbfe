@@ -4,7 +4,7 @@
 
 const { readFileSync, writeFileSync } = require('fs')
 const { writeJsonSync, removeSync, copySync } = require('fs-extra')
-const { resolve, basename } = require('path')
+const { resolve, join, basename } = require('path')
 const { merge } = require('lodash')
 const { sync: globSync } = require('glob')
 const { Command } = require('commander')
@@ -123,23 +123,25 @@ program
     const { ESLint } = require('eslint')
     const { getESLintConfig } = require('.')
 
+    const eslintConfig = getESLintConfig((options.language || 'react').split(','))
+
     const eslint = new ESLint({
       useEslintrc: false,
-      overrideConfig: getESLintConfig((options.language || 'react').split(','))
+      cwd: __dirname,
+      overrideConfig: eslintConfig
     })
 
     const files = source.map(v => {
       if (v.includes('.')) {
-        return v
+        return join(rootPath, v)
       }
-      return `${v}/**/*.{js,jsx,ts,tsx,vue}`
+      return join(rootPath, `${v}/**/*.{js,jsx,ts,tsx,vue}`)
     })
-
-    console.log(files)
 
     const results = await eslint.lintFiles(files)
 
     const formatter = await eslint.loadFormatter('html')
+
     const resultText = formatter.format(results)
 
     writeFileSync(resolve(rootPath, 'ESLintReport.html'), resultText)
