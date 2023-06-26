@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.2.0...@nbfe/standard@1.2.1) (2023-06-26)
+
+
+### Bug Fixes
+
+* 文件绝对路径; eslint cwd ([77215ec](https://github.com/shuoshubao/nbfe/commit/77215ec1b82a8a7285ec711a771bad9a6c1b19a2))
+* eslint rulesMeta, 修复路径问题 ([76b42f2](https://github.com/shuoshubao/nbfe/commit/76b42f2bd502253db8f95ddad732f90474b7671e))
+
+
+
+
+
 # [1.2.0](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.6...@nbfe/standard@1.2.0) (2023-06-25)
 
 
