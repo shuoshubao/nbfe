@@ -120,6 +120,13 @@ program
 
     const eslintConfig = getESLintConfig((options.language || 'react').split(','))
 
+    eslintConfig.parserOptions.requireConfigFile = false
+    eslintConfig.parserOptions.babelOptions = {
+      babelrc: false,
+      configFile: false,
+      presets: ['@babel/preset-env', '@babel/preset-react']
+    }
+
     const eslint = new ESLint({
       useEslintrc: false,
       cwd: __dirname,
