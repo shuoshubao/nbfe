@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.2.1...@nbfe/standard@1.2.2) (2023-06-26)
+
+
+### Bug Fixes
+
+* babel config 内置 ([aaecc5b](https://github.com/shuoshubao/nbfe/commit/aaecc5b9bc2432abe289dc1a0d6159bd974f1ce2))
+
+
+
+
+
 ## [1.2.1](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.2.0...@nbfe/standard@1.2.1) (2023-06-26)
 
 
