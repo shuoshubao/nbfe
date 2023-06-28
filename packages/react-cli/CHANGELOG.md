@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.5...@nbfe/react-cli@1.0.6) (2023-06-28)
+
+
+### Features
+
+* assets 可以传入对象 ([67b5caf](https://github.com/shuoshubao/nbfe/commit/67b5caf0cdcbed56d3b8a9f82831500943c9b4ef))
+
+
+
+
+
 ## [1.0.5](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.4...@nbfe/react-cli@1.0.5) (2023-06-20)
 
 
