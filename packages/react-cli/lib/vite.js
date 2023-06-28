@@ -4,7 +4,7 @@ const { version: VITE_VERSION } = require('vite/package.json')
 const react = require('@vitejs/plugin-react-swc')
 const { viteExternalsPlugin } = require('vite-plugin-externals')
 const { default: svgr } = require('vite-plugin-svgr')
-const { pick } = require('lodash')
+const { isString, pick } = require('lodash')
 const colors = require('picocolors')
 const { performance } = require('perf_hooks')
 const { packConfig } = require('./config')
@@ -16,32 +16,48 @@ const { externals } = configureWebpack
 
 const tags = [
   assets.css.map(v => {
-    return {
-      injectTo: 'head-prepend',
-      tag: 'link',
-      attrs: {
-        rel: 'stylesheet',
-        href: v
+    if (isString(v)) {
+      return {
+        injectTo: 'head-prepend',
+        tag: 'link',
+        attrs: {
+          rel: 'stylesheet',
+          href: v
+        }
       }
     }
-  }),
-  entry.index.map(v => {
+    const { innerHTML, ...attrs } = v
     return {
-      injectTo: 'body-prepend',
-      tag: 'script',
-      attrs: {
+      injectTo: 'head-prepend',
+      tag: 'style',
+      attrs,
+      children: innerHTML
+    }
+  }),
+  [
+    ...assets.js,
+    ...entry.index.map(v => {
+      return {
         type: 'module',
         src: relative(rootPath, v)
       }
+    })
+  ].map(v => {
+    if (isString(v)) {
+      return {
+        injectTo: 'body-prepend',
+        tag: 'script',
+        attrs: {
+          src: v
+        }
+      }
     }
-  }),
-  assets.js.map(v => {
+    const { innerHTML, ...attrs } = v
     return {
       injectTo: 'body-prepend',
       tag: 'script',
-      attrs: {
-        src: v
-      }
+      attrs,
+      children: innerHTML
     }
   })
 ].flat()

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 const { extname } = require('path')
-const { sortBy, flatten } = require('lodash')
+const { sortBy, cloneDeep } = require('lodash')
 const dayjs = require('dayjs')
 const filesize = require('filesize')
 const { enableWebpackDll, packConfig } = require('./config')
@@ -53,43 +53,26 @@ const webpackStatsLog = (webpackConfig, err, stats) => {
   console.table(sortData)
 }
 
-/**
- * [将资源转换为 css 和 js 数组]
- * @param  {Array}  list [资源列表]
- * @return {Object}      [css 和 js 数组]
- */
-const convertManifest = (list = []) => {
-  const css = list.filter(v => {
-    return v.endsWith('.css')
-  })
-  const js = list.filter(v => {
-    return v.endsWith('.js')
-  })
-  return {
-    css,
-    js
-  }
-}
-
+// 合并 packConfig.assets 和 webpack.dll 产物
 const getAssets = isDevelopment => {
-  const assets = Object.values(packConfig.assets)
+  const assets = cloneDeep(packConfig.assets)
   if (enableWebpackDll) {
     const { manifest } = require(getDllManifestPath(isDevelopment))
-    assets.push(Object.values(manifest))
+    assets.js.push(...Object.values(manifest))
   }
-  return flatten(assets)
+  return assets
 }
 
 // WebpackManifestPlugin generate
 const manifestPluginGenerate = (isDevelopment, entries) => {
   const manifest = Object.entries(entries).reduce((prev, [k, v]) => {
     const assets = getAssets(isDevelopment)
-    assets.push(
-      ...v.map(v2 => {
-        return [packConfig.publicPath, v2].join('')
-      })
-    )
-    prev[k] = convertManifest(assets)
+    const list = v.map(v2 => {
+      return [packConfig.publicPath, v2].join('')
+    })
+    assets.css.push(...list.filter(v2 => v2.endsWith('.css')))
+    assets.js.push(...list.filter(v2 => v2.endsWith('.js')))
+    prev[k] = assets
     return prev
   }, {})
   return {
@@ -100,7 +83,6 @@ const manifestPluginGenerate = (isDevelopment, entries) => {
 
 module.exports = {
   webpackStatsLog,
-  convertManifest,
   getAssets,
   manifestPluginGenerate
 }

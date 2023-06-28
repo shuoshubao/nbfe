@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const prettier = require('prettier')
-const { memoize } = require('lodash')
-const { convertManifest } = require('./utils')
+const { isString, memoize } = require('lodash')
 
 const formatHtml = memoize(html => {
   return prettier.format(html, {
@@ -11,26 +10,44 @@ const formatHtml = memoize(html => {
 })
 
 const convertManifestToHtmlPlugin = memoize(assets => {
-  const { css, js } = convertManifest(assets)
+  const { css, js } = assets
 
   return {
     css: css.map(v => {
-      return {
-        tagName: 'link',
-        voidTag: true,
-        attributes: {
-          rel: 'stylesheet',
-          href: v
+      if (isString(v)) {
+        return {
+          tagName: 'link',
+          voidTag: true,
+          attributes: {
+            rel: 'stylesheet',
+            href: v
+          }
         }
+      }
+      const { innerHTML, ...attributes } = v
+      return {
+        tagName: 'style',
+        voidTag: false,
+        innerHTML,
+        attributes
       }
     }),
     js: js.map(v => {
+      if (isString(v)) {
+        return {
+          tagName: 'script',
+          voidTag: false,
+          attributes: {
+            src: v
+          }
+        }
+      }
+      const { innerHTML, ...attributes } = v
       return {
         tagName: 'script',
         voidTag: false,
-        attributes: {
-          src: v
-        }
+        innerHTML,
+        attributes
       }
     })
   }
