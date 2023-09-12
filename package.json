@@ -24,8 +24,7 @@
   "dependencies": {
     "@nbfe/standard": "^1.1.6",
     "lerna": "^6.4.1",
-    "typescript": "^3.6.3",
-    "url-loader": "^4.1.1"
+    "typescript": "^3.6.3"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,vue,css,less,scss,sass,json,md}": [
