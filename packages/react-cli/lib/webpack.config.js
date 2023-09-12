@@ -45,11 +45,7 @@ module.exports = isDevelopment => {
         },
         {
           test: /\.svg$/,
-          use: [
-            {
-              loader: '@svgr/webpack'
-            }
-          ]
+          use: ['@svgr/webpack', 'url-loader']
         },
         {
           test: /\.(otf|eot|woff2?|ttf)$/i,

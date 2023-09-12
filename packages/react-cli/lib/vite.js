@@ -91,14 +91,7 @@ const viteConfig = {
     alias
   },
   define: getDefineData(define),
-  plugins: [
-    react(),
-    svgr({
-      exportAsDefault: true
-    }),
-    externals && viteExternalsPlugin(externals),
-    htmlPlugin()
-  ].filter(Boolean)
+  plugins: [react(), svgr(), externals && viteExternalsPlugin(externals), htmlPlugin()].filter(Boolean)
 }
 
 module.exports = async () => {
