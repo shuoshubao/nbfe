@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.7](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.6...@nbfe/react-cli@1.0.7) (2023-09-12)
+
+
+### Features
+
+* @svgr/webpack 修改配置, 可以作为 url 引入 ([6b35629](https://github.com/shuoshubao/nbfe/commit/6b35629408a3b42b7ac07e302ec6f09dcb3931cd))
+
+
+
+
+
 ## [1.0.6](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.5...@nbfe/react-cli@1.0.6) (2023-06-28)
 
 
