@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.1.1...@nbfe/standard@1.2.4) (2023-11-07)
+
+
+### Bug Fixes
+
+* 文件绝对路径; eslint cwd ([77215ec](https://github.com/shuoshubao/nbfe/commit/77215ec1b82a8a7285ec711a771bad9a6c1b19a2))
+* babel config 内置 ([aaecc5b](https://github.com/shuoshubao/nbfe/commit/aaecc5b9bc2432abe289dc1a0d6159bd974f1ce2))
+* eslint rulesMeta, 修复路径问题 ([76b42f2](https://github.com/shuoshubao/nbfe/commit/76b42f2bd502253db8f95ddad732f90474b7671e))
+* lint-staged 配置更新 ([fcba30a](https://github.com/shuoshubao/nbfe/commit/fcba30a6ec412b73546c2b6ead5d4f605536e5ad))
+* prettierConfig 合并 ([78cb69b](https://github.com/shuoshubao/nbfe/commit/78cb69ba0bd7f2ca43b5deed657f28cf7bce6015))
+* selector-class-pattern 移除前后的斜杠 ([5b46951](https://github.com/shuoshubao/nbfe/commit/5b46951654e1f636bcc9aacb68468f77a3bda95a))
+
+
+### Features
+
+* 去掉 @nbfe/git-info ([f5e349c](https://github.com/shuoshubao/nbfe/commit/f5e349c754ebba021bbad820e83de1dcc0862217))
+* 升级 husky lint-staged ([adc08ab](https://github.com/shuoshubao/nbfe/commit/adc08abbcf39c0c0afa644fb9fc64b86824124b7))
+* 增加 postcss-less postcss-scss ([f6397f7](https://github.com/shuoshubao/nbfe/commit/f6397f70932e1cd0e3944b9f1d2612a054d694ee))
+* commander: init prettier eslint ([41605bb](https://github.com/shuoshubao/nbfe/commit/41605bb5a7b1ffeb983cb3f2598e8d425c463e6c))
+* no-unused-vars @typescript-eslint/no-unused-vars 共存问题 ([19b44e3](https://github.com/shuoshubao/nbfe/commit/19b44e3732bfcccebc7079e7f9c57fac967a3f10))
+* selector-class-pattern css 选择器命名规则: kebab lowerCamelCase UpperCamelCase ([585623e](https://github.com/shuoshubao/nbfe/commit/585623e6c1a8f2f0414ae8c4ad4097167e9387b0))
+
+
+
+
+
 ## [1.2.3](https://github.com/shuoshubao/nbfe/compare/@nbfe/standard@1.2.2...@nbfe/standard@1.2.3) (2023-06-26)
 
 

@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@0.3.7...@nbfe/react-cli@1.0.9) (2023-11-07)
+
+
+### Bug Fixes
+
+* alias 可传入绝对路径, 如果目标位置不存在则不处理 ([b17386e](https://github.com/shuoshubao/nbfe/commit/b17386e5abeed43ad7ba5568db580a6576717688))
+* cors mock ([2c81586](https://github.com/shuoshubao/nbfe/commit/2c815869599ff11fdbcaef1890c8819a7574f72d))
+* react-cli url-loader ([b899ebf](https://github.com/shuoshubao/nbfe/commit/b899ebf5e308ca28d98c591b75770cc1d46f4a72))
+* webpack dll 时也加上 devtool ([8a3d46a](https://github.com/shuoshubao/nbfe/commit/8a3d46a4f87e0c93dda39210ac60e925f9cee534))
+
+
+### Features
+
+* @svgr/webpack 修改配置, 可以作为 url 引入 ([6b35629](https://github.com/shuoshubao/nbfe/commit/6b35629408a3b42b7ac07e302ec6f09dcb3931cd))
+* @svgr/webpack vite-plugin-svgr svg; 不再转base64 ([353ad5c](https://github.com/shuoshubao/nbfe/commit/353ad5ca72236253cf8774410ebb047fa072ca45))
+* 启动时默认使用vite, 可配置enableVite启用/关闭 ([03c1181](https://github.com/shuoshubao/nbfe/commit/03c118139b6437d97cb050f18cfbbd7235eac2bb))
+* 升级依赖 ([d6fe8ac](https://github.com/shuoshubao/nbfe/commit/d6fe8acf2a9ea16cf210af73ab623451a036c406))
+* 同时启用 webpack-bundle-analyzer ([ac014b3](https://github.com/shuoshubao/nbfe/commit/ac014b3b67585312c3834e16495a431e41eea305))
+* 透传 devServer port host proxy ([62a051f](https://github.com/shuoshubao/nbfe/commit/62a051fc1b58b18183950298e74f626170734597))
+* 新增配置 define, webpack.DefinePlugin, 直接挂到 process.env 上 ([7346fc0](https://github.com/shuoshubao/nbfe/commit/7346fc0f58042c39c8916c63ebdccd1141a74d80))
+* 增加工具方法 getExternalUrl, 获取包的npm托管 url ([1f5e71b](https://github.com/shuoshubao/nbfe/commit/1f5e71bb25ea04f5c66fa22e61429a0395d21904))
+* 增加helpers文件, 暴露工具方法 ([4d9cc4d](https://github.com/shuoshubao/nbfe/commit/4d9cc4d75564ffab9a2b4bfa172bfaa9b24f25f6))
+* 自动获取 entry.index src/index ([9e3af8a](https://github.com/shuoshubao/nbfe/commit/9e3af8a519f069a519b77116df12fe160e4e1b06))
+* assets 可以传入对象 ([67b5caf](https://github.com/shuoshubao/nbfe/commit/67b5caf0cdcbed56d3b8a9f82831500943c9b4ef))
+* index.html 默认放根目录吧; 移除 public/index.html 设定, 和 vite 保持一致的设计吧 ([f5eae85](https://github.com/shuoshubao/nbfe/commit/f5eae856b8a3a6c7ba54fec77cca51ccbe1e9418))
+* splitChunks 留给用户自己配置吧 ([b68358e](https://github.com/shuoshubao/nbfe/commit/b68358e64bb390782f20304c71e10cf62cd9dad5))
+* vite 输出版本号,启动时间,ip address ([7460a12](https://github.com/shuoshubao/nbfe/commit/7460a12483ab0de10dd3b2959c3d70eca791fdac))
+
+
+
+
+
 ## [1.0.8](https://github.com/shuoshubao/nbfe/compare/@nbfe/react-cli@1.0.7...@nbfe/react-cli@1.0.8) (2023-09-12)
 
 

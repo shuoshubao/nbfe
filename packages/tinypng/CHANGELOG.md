@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.11](https://github.com/shuoshubao/nbfe/compare/@nbfe/tinypng@1.0.9...@nbfe/tinypng@1.0.11) (2023-11-07)
+
+
+### Bug Fixes
+
+* tinypng 有个 key 失效了 ([fb668ba](https://github.com/shuoshubao/nbfe/commit/fb668ba5fe54b5aa4a08d62d7748244e898d1a3c))
+
+
+### Features
+
+* 升级tinify ([e53232d](https://github.com/shuoshubao/nbfe/commit/e53232d936f2a24f949778bd8ae3d00e4cdbbe60))
+
+
+
+
+
 ## [1.0.10](https://github.com/shuoshubao/nbfe/compare/@nbfe/tinypng@1.0.9...@nbfe/tinypng@1.0.10) (2023-06-16)
 
 

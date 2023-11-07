@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/shuoshubao/nbfe/compare/stylelint-formatters-html@1.1.0...stylelint-formatters-html@1.1.1) (2023-11-07)
+
+
+### Bug Fixes
+
+* _postcssResult 可能为空 ([bfe5631](https://github.com/shuoshubao/nbfe/commit/bfe5631c366be8b3572254bcd3699f435ca2c6de))
+
+
+
+
+
 # [1.1.0](https://github.com/shuoshubao/nbfe/compare/stylelint-formatters-html@1.0.7...stylelint-formatters-html@1.1.0) (2023-01-02)
 
 **Note:** Version bump only for package stylelint-formatters-html
