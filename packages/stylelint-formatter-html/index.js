@@ -12,7 +12,7 @@ const rootPath = process.cwd()
  */
 const formatStylelintResults = (results = []) => {
   results.forEach(v => {
-    const { source, _postcssResult } = v
+    const { source, _postcssResult = '' } = v
     v.source = relative(rootPath, source)
     v.css = _postcssResult.toString()
     v.warnings = v.warnings.map(v2 => {
