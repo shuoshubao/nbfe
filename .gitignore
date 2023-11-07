@@ -12,9 +12,8 @@ yarn-error.log*
 # lerna
 lerna-debug.log
 
-# npm yarn
+# yarn
 yarn.lock
-package-lock.json
 
 # Eslint
 ESLintReport.html
