@@ -13,7 +13,7 @@ const EslintConfig = {
   parserOptions: {
     requireConfigFile: false,
     sourceType: 'module',
-    ecmaVersion: 2022,
+    ecmaVersion: 'latest',
     ecmaFeatures: {
       jsx: true,
       legacyDecorators: true
