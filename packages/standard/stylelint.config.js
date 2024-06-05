@@ -1,16 +1,16 @@
 module.exports = {
-  extends: ['stylelint-config-standard', 'stylelint-config-prettier', 'stylelint-config-rational-order'],
+  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
   plugins: ['stylelint-prettier'],
-  // overrides: [
-  //   {
-  //     files: ['**/*.scss'],
-  //     customSyntax: 'postcss-scss'
-  //   },
-  //   {
-  //     files: ['**/*.less'],
-  //     customSyntax: 'postcss-less'
-  //   }
-  // ],
+  overrides: [
+    {
+      files: ['**/*.scss'],
+      customSyntax: 'postcss-scss'
+    },
+    {
+      files: ['**/*.less'],
+      customSyntax: 'postcss-less'
+    }
+  ],
   rules: {
     'max-nesting-depth': 10,
     'selector-pseudo-class-no-unknown': [
