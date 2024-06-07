@@ -2,7 +2,6 @@ node_modules
 packages/*/node_modules
 packages/*/docs
 packages/standard/templates
-packages/tools/_site
 dist
 build
 *.min.js
